@@ -1,0 +1,32 @@
+{
+  "configurations": [
+    {
+      "name": "Mac",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "/opt/homebrew/include/c++/16",
+        "/opt/homebrew/include/c++/16/aarch64-apple-darwin25",
+        "/opt/homebrew/include/c++/16/backward"
+      ],
+      "compilerPath": "/opt/homebrew/bin/g++-16",
+      "cStandard": "c17",
+      "cppStandard": "c++20",
+      "intelliSenseMode": "macos-gcc-arm64"
+    },
+    {
+      "name": "Win32",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "C:/msys64/ucrt64/include/c++/15.2.0",
+        "C:/msys64/ucrt64/include/c++/15.2.0/x86_64-w64-mingw32",
+        "C:/msys64/ucrt64/include/c++/15.2.0/backward",
+        "C:/msys64/ucrt64/include"
+      ],
+      "compilerPath": "C:/msys64/ucrt64/bin/g++.exe",
+      "cStandard": "c17",
+      "cppStandard": "c++20",
+      "intelliSenseMode": "windows-gcc-x64"
+    }
+  ],
+  "version": 4
+}

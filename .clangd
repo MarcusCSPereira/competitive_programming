@@ -1,0 +1,28 @@
+# Faz o clangd usar os includes do GCC (libstdc++), para #include <bits/stdc++.h>.
+# Caminhos inexistentes sao ignorados pelo clang, entao os dois SOs convivem aqui.
+#
+# -nostdinc++ e obrigatorio: sem ele o clangd mistura a libc++ dele com a
+# libstdc++ do GCC e enche o arquivo de erros falsos de "reference is ambiguous".
+#
+# macOS: GCC do Homebrew. Se atualizar para o GCC 17, troque "16" pelo novo major
+# e ajuste "aarch64-apple-darwin25" conforme `g++-16 -dumpmachine`.
+# Windows (MSYS2 UCRT64): troque o --target para x86_64-w64-windows-gnu.
+CompileFlags:
+  Add:
+    - -std=c++20
+    - --target=arm64-apple-darwin
+    - -nostdinc++
+    - -isystem
+    - /opt/homebrew/include/c++/16
+    - -isystem
+    - /opt/homebrew/include/c++/16/aarch64-apple-darwin25
+    - -isystem
+    - /opt/homebrew/include/c++/16/backward
+    - -isystem
+    - C:/msys64/ucrt64/include/c++/15.2.0
+    - -isystem
+    - C:/msys64/ucrt64/include/c++/15.2.0/x86_64-w64-mingw32
+    - -isystem
+    - C:/msys64/ucrt64/include/c++/15.2.0/backward
+    - -isystem
+    - C:/msys64/ucrt64/include

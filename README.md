@@ -2,6 +2,8 @@
 
 Caderno pessoal de programação competitiva em C++. As soluções ficam agrupadas por rating do Codeforces, contest, ICPC, aula e avaliação.
 
+Perfil de competição: [ICPC ID B9GB7UBU9KIC](https://icpc.global/ICPCID/B9GB7UBU9KIC). Participação na fase sub-regional de 2026.
+
 ## Plataformas
 
 ![Codeforces](https://img.shields.io/badge/Codeforces-marcuscspereira-1F8ACB?logo=codeforces&logoColor=white)
@@ -16,7 +18,7 @@ Caderno pessoal de programação competitiva em C++. As soluções ficam agrupad
 | `streak-keeper/`                             | Problemas resolvidos para manter a streak                        |
 | `ICPC/`                                      | Problemas de ICPC                                                |
 | `aulas/`                                     | Exercícios de aula (STL, greedy, grafos, DP, teoria dos números) |
-| `avaliacoes/`                                | Listas, warmups e provas                                         |
+| `aulas/avaliacoes/`                                | Listas, warmups e provas                                         |
 | `template.cpp`                               | Ponto de partida de I/O e macros                                 |
 
 
@@ -24,7 +26,7 @@ O nome de cada solução segue `nome_do_problema-id.cpp` quando o id da questão
 
 ## Template
 
-O arquivo usado em contest é o `[template.cpp](template.cpp)`:
+O arquivo usado em contest é o [template.cpp](template.cpp):
 
 ```cpp
 #include <bits/stdc++.h>

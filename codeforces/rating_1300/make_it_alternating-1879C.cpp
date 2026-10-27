@@ -23,8 +23,8 @@ void solve(){
       count = 1;
     }
   }
-
   ans = ans * count % 998244353;
+
   ll fat = 1;
   for (int i = 2; i <= op; i++) {
     fat = fat * i % 998244353;

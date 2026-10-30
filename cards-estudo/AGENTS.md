@@ -63,3 +63,11 @@
     manuscrito como conferido nessa origem. Ao aparecer no caderno, vincular ao
     mesmo ID e aos quatro cards existentes. Consultar `estado/revisao-recentes.json`
     e `analises/2026-10-28-rating1300.md`; os cursores PDF seguem 99 e 16.
+15. Em 29/10 o usuário autorizou a rotina diária às 12:30 (America/Bahia).
+    A automação `gerar-cards-do-goodnotes` retorna a este chat. Leia também
+    `rotina-diaria.md`. Reconciliar lotes pendentes de importação mesmo quando
+    os PDFs não mudarem. Os totais e próximos IDs dos itens anteriores são
+    históricos; use sempre o cursor atual. Preserve 10 novos por dia no Anki.
+    Execute geração, testes e publicação dos conteúdos validados dentro do
+    escopo autorizado; não exigir nova aprovação a cada lote. Não confundir
+    validação manual do fluxo com confirmação de uma execução futura agendada.

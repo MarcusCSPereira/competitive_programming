@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "revision": 98,
+  "revision": 103,
   "timezone": "America/Bahia",
   "created_at": "2026-10-28T16:57:29-03:00",
-  "updated_at": "2026-10-28T21:24:46-03:00",
+  "updated_at": "2026-10-29T22:20:55-03:00",
   "phase": "historical_backfill",
-  "last_run_id": "2026-10-28-rating1300-090",
+  "last_run_id": "2026-10-29-diaria-099",
   "drive_account": "marcus.cesar.sp@gmail.com",
   "drive_folder_url": "https://drive.google.com/drive/u/3/folders/14BAvQwVD7kuo90RbTmYZgLkFtLGJpyhc",
   "id_counters": {
     "next_problem": 62,
-    "next_card": 92
+    "next_card": 94
   },
   "notebooks": {
     "problemas": {
@@ -24,14 +24,14 @@
       },
       "source_snapshot": {
         "method": "drive_desktop_local_verified_snapshot",
-        "local_path": ".cache/sync/snapshots/2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250.pdf",
-        "sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
-        "size_bytes": 68343204,
+        "local_path": ".cache/sync/snapshots/ff8cc3dab9ddcdce4f2b905f652ddea06618d35bbef6a62de75db15e5d12c7f7.pdf",
+        "sha256": "ff8cc3dab9ddcdce4f2b905f652ddea06618d35bbef6a62de75db15e5d12c7f7",
+        "size_bytes": 68663286,
         "page_count": 99,
         "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
         "same_bytes_as_drive_verified": false,
         "matches_fresh_cloud_size_and_mtime": true,
-        "sync_run_id": "e7a260ec-99cb-4f89-9052-d1ac727383a7",
+        "sync_run_id": "7ac7852b-c9b9-4165-9d16-fb68258b23cf",
         "page_image_sha256": {
           "45": "9ffedcba31c800c1b4b1d36d5688f3f49c54ca2affea15b641bb29ce8a8083bd",
           "46": "0d18ba92f88c5db3d3d054a726c95dae036d1ce7a92b1c379fc9265bd5988833",
@@ -87,7 +87,7 @@
           "96": "9b72bed54d284d8023f302716b71e1662694868b588ca4be54d4e233d32e19c1",
           "97": "8b0cb7911eca2079b4127e09041155a973e164f4ee57af3d4bdcb793b7f3cf0a",
           "98": "3af6be3d12d544a2ec070230d724f8321d3b7fa2ece13e1cb8d936eda3fa5538",
-          "99": "a1f84cbe6ededba36d275fb7693081dc39d296858079ab1bd91b916b0caa56ee"
+          "99": "88d8f329d60f965686524505640df46e1e5e7f22981d7578e582e2c6235de017"
         }
       },
       "inspection": {
@@ -207,13 +207,20 @@
           "cp-problem-000007",
           "cp-problem-000006"
         ],
-        "full_extraction_complete": false,
-        "selection_policy": "Melhores assuntos transferíveis; uma ou mais perguntas por unidade, deduplicando conceitos."
+        "full_extraction_complete": true,
+        "selection_policy": "Melhores assuntos transferíveis; uma ou mais perguntas por unidade, deduplicando conceitos.",
+        "remaining_handwritten_gaps": [
+          {
+            "unit_id": "cp-problem-000006",
+            "field": "handwritten_logic",
+            "resolution": "Validated logic supplied by solved repository code and official statement; handwritten field still blank."
+          }
+        ]
       },
       "generation": {
-        "next_page": 99,
-        "next_unit_id": "cp-problem-000006",
-        "last_completed_unit_id": "cp-problem-000007",
+        "next_page": 100,
+        "next_unit_id": null,
+        "last_completed_unit_id": "cp-problem-000006",
         "completed_unit_ids": [
           "cp-problem-000008",
           "cp-problem-000009",
@@ -264,7 +271,8 @@
           "cp-problem-000050",
           "cp-problem-000051",
           "cp-problem-000052",
-          "cp-problem-000007"
+          "cp-problem-000007",
+          "cp-problem-000006"
         ],
         "validated_card_ids": [
           "cp-note-000001",
@@ -332,25 +340,17 @@
           "cp-note-000081",
           "cp-note-000082",
           "cp-note-000083",
-          "cp-note-000091"
+          "cp-note-000091",
+          "cp-note-000092",
+          "cp-note-000093"
         ],
-        "open_unit": {
-          "id": "cp-problem-000006",
-          "title": "Roof Construction",
-          "notebook_id": "problemas",
-          "pages": [
-            99
-          ],
-          "status": "title_only_waiting_for_content"
-        },
-        "pending_units": [
-          "cp-problem-000006"
-        ]
+        "open_unit": null,
+        "pending_units": []
       },
       "export": {
-        "last_batch_id": "2026-10-28-rating1300",
+        "last_batch_id": "2026-10-29-diaria",
         "import_confirmed": true,
-        "manifest": "exportacoes/2026-10-28-rating1300-manifest.json"
+        "manifest": "exportacoes/2026-10-29-diaria-manifest.json"
       },
       "source_snapshot_history": [
         {
@@ -406,6 +406,74 @@
               "sha256": "13ee9725f665a324526037f428c0e10abf51d5b9cb5eef0776c3d2b6f65b3997",
               "dpi": 100
             }
+          }
+        },
+        {
+          "method": "drive_desktop_local_verified_snapshot",
+          "local_path": ".cache/sync/snapshots/2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250.pdf",
+          "sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+          "size_bytes": 68343204,
+          "page_count": 99,
+          "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+          "same_bytes_as_drive_verified": false,
+          "matches_fresh_cloud_size_and_mtime": true,
+          "sync_run_id": "e7a260ec-99cb-4f89-9052-d1ac727383a7",
+          "page_image_sha256": {
+            "45": "9ffedcba31c800c1b4b1d36d5688f3f49c54ca2affea15b641bb29ce8a8083bd",
+            "46": "0d18ba92f88c5db3d3d054a726c95dae036d1ce7a92b1c379fc9265bd5988833",
+            "47": "7ec1400a2158ae61282e251daeab49bd15f1f377e57a1aa090162aa3d8234e3c",
+            "48": "a1a01f09a2d9190d03bc2bac7e811641aa90254bd439233c3956e93d5163eece",
+            "49": "758da2b8922341b2c0214815e163f58b81d447a578408d83bb32ebf9c74fe3eb",
+            "50": "b83c00961af78e0eb2b6f0989cc24f5d2667d2559607a8cb074d2d5dda808280",
+            "51": "780182df8a62c22895aaad8301e70aef7a02990dac94b2c8421c2a996a6d23e1",
+            "52": "07d8f891b98641974f9f17fda9afecab28fb8165db8ae46fd4713f64d51f08fa",
+            "53": "7741978f662730009590a72eca6f3657bf2a7c5095923eafe0ec5a9b244c918a",
+            "54": "e98041fdb0e2070b427674bc34e3cb11e7a2e4e5c52197d12eca4084f1eb9291",
+            "55": "3af1bfbeb423b96ae191670f1586ac2a1614170eabae6c1355e852e54357615a",
+            "56": "392e6adbf251d45aadc212012bce79e27eb7818397e7cdaf44dbb99e9e00af67",
+            "57": "b7c9fc41cf15ebda3928cf427ac8166eadb2a044e6c63dbc5682792f8ce5ec07",
+            "58": "299cc6bec2e3e568f4b149f346761a8e495fdda323ffc84723008b27d42f4d09",
+            "59": "4607da875ea20256b1b0ab42751b25fd101131858f5967e9367779a0d9a19c56",
+            "60": "027c6ad4d36d08d3d525dfd1fe469eab140a6296ea2ca8c9d130a308ee081d26",
+            "61": "965c85a780b8885c1d4bb4624569d75d518ca92b878da1a34ce0965d1e9654b4",
+            "62": "bdaa85e7b70ea6d49c788d9c058acd33f785e647f62dca9d9e86009f0f02c617",
+            "63": "d91e3b079f93a6d468310fd59b18904868929961f76dd0e8245d025da97d7405",
+            "64": "a41d776918996c93c4228caa7c0ef18b7a0e5f393b002f6213445c9200926dc5",
+            "65": "4fb0df045a2fdd903727726df8afdf56794d93332a5bf0a1dc11a1339ee6f564",
+            "66": "772c55a7b28fbd89a3fe21ffee868a0ad4fc1529f22b220c835806c6f14cd7d3",
+            "67": "be941fffb6559a588ddf592b54cfff7498ace996fcde397cbbfafaae1f2c9b74",
+            "68": "55a440c8c1ea1760f25fe5f18f917e4dea71f2cf65fd469fecc8ab1554c342f5",
+            "69": "2976321bae8c879adc1715d0b0eeb9d328507886acc97a51ea20d5c721e2eb8d",
+            "70": "3cdd965315f9dbb490a7451072f16722e42a49f6287511b27eda108a65fe75be",
+            "71": "fb6ca060a135510d4c9c8e7b4c420f71643e5c8d4aca928b008b926cd63c71b1",
+            "72": "65e41b3f3a1fdf06cdbca42ae1c9928b0d8458de5deffa39faab62419a4f2532",
+            "73": "1e8db663cd02327c2922cd2832f71145a69c72786e3597bb9bfe7e67e77c5103",
+            "74": "cf288df5bdb82de7790961e805957e0f1e1f3cb62004e1ee080cbc4366668156",
+            "75": "08f302fbbd1be3a8dce54dd7871bd40c4b317055b25db392d45454e9c7488805",
+            "76": "598dbd5a75e834c448e93685b70b1ab8d02ff4f40cbf7279dbb8f80ee947f49b",
+            "77": "9faa8cda4e60484bdfbe4fccf42db5bb8d5ed043e670e31191d45c3bd37586c9",
+            "78": "7d35b7e4fce370732236c764caeb4d6b56b15f1e3f0b6df6b267464344fe4aaa",
+            "79": "d5576aa5b399d053c815dc2f8ce68ef0d172d8ee40b06a0cf69fd73489472fe6",
+            "80": "532f3dca2e59fd2fbd2834f8060ca2e1fefd225ae22ac574909ffb7312fc3f07",
+            "81": "0e24accbfc8cb0676c72f35e7543fc39e4f33458346f9a200b565b1f658bd75e",
+            "82": "4235e9d722489abf46b5e962ac0e54628b998f3afbba7b06479fbbf18e61d8a5",
+            "83": "dc78126f860b3317614ec15838f9054754c607cea645a9076b38605366f635de",
+            "84": "86612cfa514117254662b514e49a93ab3a7c680d42e0f751490b3efb69085219",
+            "85": "6a3607c22865594c1c3bb1e92a2aff0ee89f1d4f4d83716e667611dc8e71a6dd",
+            "86": "52b26d642cefe167f2cc8ce6be88e86484a18ddf769344cc1b7d90ef610577ce",
+            "87": "788caeca9b7d58bac2be0a8fbee25587b09ca0a63db441010febc9b2e710fc0b",
+            "88": "50a61c381f1650e37ebce6bcebc8a6f9b8f7f85ca4061ae668abb710fc2d3ed6",
+            "89": "145321e21ea9975ffa0a2dec163b80a58283ad4bd846527463cdb4b4dd7d19ea",
+            "90": "5f61d48ae90dfc267a988e0f4c02efc458fe4808af7f89ba30baca95853d4a1e",
+            "91": "930008760124a83a6cb3f660b09c6425201fa8368cf3ef1d4a0eb5ebbf64690d",
+            "92": "1355bf4db331722a3d95e95226ff05a3631b652175af91e1161af77b9dd23f4b",
+            "93": "5d1ce68aca016968355fb75fb0c66abf3a9f479262540733646ed60ed6b1c869",
+            "94": "b0bc47d2d3c37643cd2be5070bee57e8c3c21a9502333b6f2c723d6cb9bc7253",
+            "95": "ac42db639051864e30e4e9b77b8521d0f3ec5909767c50794ff14bdd8cd87f9d",
+            "96": "9b72bed54d284d8023f302716b71e1662694868b588ca4be54d4e233d32e19c1",
+            "97": "8b0cb7911eca2079b4127e09041155a973e164f4ee57af3d4bdcb793b7f3cf0a",
+            "98": "3af6be3d12d544a2ec070230d724f8321d3b7fa2ece13e1cb8d936eda3fa5538",
+            "99": "a1f84cbe6ededba36d275fb7693081dc39d296858079ab1bd91b916b0caa56ee"
           }
         }
       ]
@@ -569,14 +637,36 @@
     }
   },
   "pending_actions": [
-    "Retomar Roof Construction na página 99 quando houver desenvolvimento.",
     "Conferir mudanças em páginas anteriores antes de retomar futuras versões dos PDFs.",
-    "Antes de agendar, validar execução desacompanhada e frequência desejada; nenhum agendamento criado.",
-    "Ao localizar Make it Alternating no PDF, vincular a cp-problem-000061 e aos cards 000087–000090, sem duplicar."
+    "Ao localizar Make it Alternating no PDF, vincular a cp-problem-000061 e aos cards 000087–000090, sem duplicar.",
+    "Conferir a primeira execução disparada pela rotina diária às 12:30.",
+    "Ao surgir lógica manuscrita de Roof Construction, vincular ao mesmo ID e complementar os cards existentes.",
+    "Conferir a primeira abertura oculta do Codex no próximo início de sessão do macOS.",
+    "Conferir a primeira abertura oculta do Anki no próximo início de sessão do macOS."
   ],
   "automation": {
-    "created": false,
-    "schedule": null
+    "created": true,
+    "id": "gerar-cards-do-goodnotes",
+    "kind": "heartbeat",
+    "status": "ACTIVE",
+    "time": "12:30",
+    "timezone": "America/Bahia",
+    "schedule": "Todos os dias às 12:30",
+    "created_at": "2026-10-29T21:55:25.007632-03:00",
+    "first_unattended_run_verified": false,
+    "manual_pipeline_validation": "passed",
+    "name": "Gerar cards do Goodnotes",
+    "target_thread_id": "01a183a6-2aeb-7b61-bd6d-2ad18227b3b6",
+    "last_manual_validation_at": "2026-10-29T22:06:52-03:00",
+    "workflow_file": "rotina-diaria.md",
+    "state_file": "estado/automacao-diaria.json",
+    "definition_readback_verified": true,
+    "verified_at": "2026-10-29T22:13:53-03:00",
+    "codex_start_at_login": true,
+    "codex_launch_hidden": true,
+    "startup_config": "estado/codex-inicio-sessao.json",
+    "anki_start_at_login": true,
+    "anki_launch_hidden": true
   },
   "anki": {
     "deck_name_proposed": "Programação competitiva",
@@ -599,7 +689,7 @@
     "deck_id": 1793225719777,
     "deck_visible_in_ankiweb": true,
     "bidirectional_sync_verified": true,
-    "last_sync_verified_at": "2026-10-28T21:24:46-03:00",
+    "last_sync_verified_at": "2026-10-29T22:06:52-03:00",
     "note_type_configured": true,
     "proof_file": ".cache/anki/2026-10-28-baralho-sincronizado.png",
     "note_type_id": "1793226284779",
@@ -627,26 +717,29 @@
       "idempotent_rerun_verified": true
     },
     "first_batch_import_confirmed": true,
-    "imported_notes": 91,
-    "imported_cards": 91,
+    "imported_notes": 93,
+    "imported_cards": 93,
     "scheduler_observed": "sm2",
     "daily_new_limit": 10,
     "preset_id": "1793233318088",
     "preset_name": "Programação competitiva",
     "available_new_verified": 10,
-    "new_mix": "afterReviews"
+    "new_mix": "afterReviews",
+    "start_at_login": true,
+    "launch_hidden_on_login": true,
+    "startup_config": "estado/anki-inicio-sessao.json"
   },
   "acquisition": {
     "config_file": "estado/fontes.json",
     "preferred_transport": "drive_desktop_local",
-    "verified_at": "2026-10-29T00:03:38.937605+00:00",
+    "verified_at": "2026-10-30T00:54:50.770089+00:00",
     "report_file": "analises/2026-10-28-acesso-drive.md",
     "note": "Disponibilidade offline e inicialização do Drive verificadas; gate de metadados remotos recentes e snapshots locais validado. Cursores e inspeção preservados.",
     "sync_protocol": "sincronizacao.md",
     "sync_status_file": "estado/sincronizacao.json",
     "sync_required_before_every_run": true,
     "drive_to_mac_owner": "agent",
-    "last_sync_run_id": "83323976-8b9b-4940-9f43-72f5b2bf8678"
+    "last_sync_run_id": "7ac7852b-c9b9-4165-9d16-fb68258b23cf"
   },
   "format_pilot": {
     "status": "approved",
@@ -736,11 +829,11 @@
     "verified_at": "2026-10-28T21:00:10-03:00"
   },
   "current_totals": {
-    "cards": 91,
-    "problemas": 66,
+    "cards": 93,
+    "problemas": 68,
     "big-tech-problems": 21,
     "repositorio-cpp": 4,
-    "verified_at": "2026-10-28T21:14:44-03:00"
+    "verified_at": "2026-10-29T22:06:52-03:00"
   },
   "recent_problem_review": {
     "status": "synced",
@@ -789,5 +882,27 @@
       "import_confirmed": true,
       "last_batch_id": "2026-10-28-rating1300"
     }
+  },
+  "daily_pipeline": {
+    "status": "synced",
+    "run_id": "2026-10-29-diaria-099",
+    "sync_run_id": "7ac7852b-c9b9-4165-9d16-fb68258b23cf",
+    "started_at": "2026-10-29T21:55:25.007632-03:00",
+    "old_problemas_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+    "new_problemas_sha256": "ff8cc3dab9ddcdce4f2b905f652ddea06618d35bbef6a62de75db15e5d12c7f7",
+    "changed_authorized_pages": [
+      99
+    ],
+    "validated_card_ids": [
+      "cp-note-000092",
+      "cp-note-000093"
+    ],
+    "validation_report": "estado/validacao-diaria-2026-10-29.json",
+    "batch_id": "2026-10-29-diaria",
+    "new_cards": 2,
+    "total_cards": 93,
+    "verified_at": "2026-10-29T22:06:52-03:00",
+    "manifest": "exportacoes/2026-10-29-diaria-manifest.json",
+    "report": "analises/2026-10-29-rotina-diaria.md"
   }
 }

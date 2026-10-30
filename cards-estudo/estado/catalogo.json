@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-28T21:11:18-03:00",
+  "updated_at": "2026-10-29T22:06:52-03:00",
   "units": [
     {
       "id": "cp-problem-000001",
@@ -171,10 +171,42 @@
       ],
       "title": "Roof Construction",
       "platform_id_observed": "cf-1632B",
-      "status": "title_only_waiting_for_content",
-      "official_statement_verified": false,
-      "cards_generated": [],
-      "notes": "Só título no final da fonte atual. Retomar se a questão ganhar conteúdo."
+      "status": "selected_topics_generated_validated",
+      "official_statement_verified": true,
+      "cards_generated": [
+        "cp-note-000092",
+        "cp-note-000093"
+      ],
+      "notes": "A página 99 passou a conter enunciado em 29/10. Campo de lógica manuscrita vazio. Solução local concluída no commit 2a79895 e enunciado oficial usados para validar e gerar dois cards, preservando o ID da questão. Quando a lógica manuscrita aparecer, reanalisar sem duplicar.",
+      "platform_id": "1632B",
+      "rating_verified": 1000,
+      "local_code": "codeforces/rating_1000/roof_construction-1632B.cpp",
+      "local_code_sha256": "06cdd05b97358f13e8d48a29ba2d63dc292632dc227623e43cd34c5cf958a77f",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1632/B",
+      "source_snapshot_sha256": "ff8cc3dab9ddcdce4f2b905f652ddea06618d35bbef6a62de75db15e5d12c7f7",
+      "topics": [
+        "XOR e bit mais significativo",
+        "maior potência de dois por inteiros",
+        "minimax e limite inferior",
+        "construção de permutação por grupos"
+      ],
+      "handwriting_status": "statement_present_logic_empty",
+      "logic_source": "local_solution_and_official_statement",
+      "correction": "Minimizar o maior XOR entre pares adjacentes, conforme enunciado oficial; anotação sugere maximização.",
+      "notes_history": [
+        {
+          "note": "Só título no final da fonte atual. Retomar se a questão ganhar conteúdo.",
+          "superseded_at": "2026-10-29T22:06:52-03:00"
+        }
+      ],
+      "correction_record": {
+        "anotacao_original": "Descrição indica buscar o maior valor entre XORs de pares.",
+        "correcao": "Minimizar o máximo XOR entre vizinhos da permutação.",
+        "evidencia": "https://codeforces.com/problemset/problem/1632/B",
+        "status_validacao": "confirmed_against_official_statement_and_local_solution"
+      },
+      "import_confirmed": true,
+      "last_batch_id": "2026-10-29-diaria"
     },
     {
       "id": "cp-problem-000007",

@@ -1,0 +1,19 @@
+{
+  "new_cards": 2,
+  "total_cards": 93,
+  "previous_notes_and_scheduling_preserved": 91,
+  "daily_new_limit": 10,
+  "new_mix": "afterReviews",
+  "sync": {
+    "collectionComplete": true,
+    "mediaComplete": true
+  },
+  "ankiconnect_start_from_closed_app_tested": true,
+  "verified_at": "2026-10-29T22:06:52-03:00",
+  "batch_id": "2026-10-29-diaria",
+  "idempotent_plan": {
+    "create": 0,
+    "update": 0,
+    "unchanged": 2
+  }
+}

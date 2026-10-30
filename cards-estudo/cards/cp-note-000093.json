@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000093",
+  "content_key": "minimax_xor_permutacao_por_grupos",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como construir uma permutação de 0 a n-1 que minimize o maior XOR entre vizinhos? Como provar um limite inferior e construir uma ordem que o atinge?",
+  "back": {
+    "answer": "O objetivo é minimizar max(p[i] XOR p[i+1]), considerando somente pares adjacentes. Isso não é maximizar o XOR nem aplicar XOR a todos os elementos juntos.\n\nSeja K a maior potência de dois até n-1. Como K≤n-1<2K, os valores se dividem em [0,K-1], com o bit K desligado, e [K,n-1], com esse bit ligado. Os dois grupos são não vazios e qualquer permutação precisa atravessar entre eles em alguma adjacência. Esse par tem XOR≥K: nenhuma solução pode ter custo menor que K.\n\nPara atingir o limite, emita K-1,K-2,…,0 e depois K,K+1,…,n-1. Dentro de cada grupo o bit K se cancela e o XOR é menor que K. Na única fronteira, os vizinhos são 0 e K, cujo XOR é exatamente K. Assim o custo máximo é K e a construção é ótima.\n\nNão basta separar os grupos em qualquer ordem: a fronteira precisa ser bem escolhida. Para n=3, a ordem crescente [0,1,2] tem custo 3; [1,0,2] tem custo 2, o limite ótimo. O código inclui uma função para medir o objetivo em pares adjacentes e conferir a construção.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "vector<int> construirRoof(int n) {\n    assert(n>=2);\n    int K=1;\n    while (K<=(n-1)/2) K<<=1;\n    vector<int> p; p.reserve(n);\n    for (int x=K-1;x>=0;--x) p.push_back(x);\n    for (int x=K;x<n;++x) p.push_back(x);\n    return p;\n}\nint custoRoof(const vector<int>& p) {\n    int maior=0;\n    for (int i=1;i<(int)p.size();++i) maior=max(maior,p[i-1]^p[i]);\n    return maior;\n}",
+    "complexity": "O(n) de tempo para construir e medir. A saída ocupa O(n); a construção usa O(1) auxiliar além dela.",
+    "success_criteria": [
+      "Provar que a travessia entre grupos impõe custo pelo menos K.",
+      "Escolher uma fronteira de XOR exatamente K e limitar os pares internos.",
+      "Verificar a permutação e o objetivo em vizinhos, sem confundir mínimo com máximo."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::diaria_20261029",
+    "assunto::minimax_xor_permutacao_por_grupos",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000006",
+      "title": "Roof Construction",
+      "pages_1based": [
+        99
+      ],
+      "source_snapshot_sha256": "ff8cc3dab9ddcdce4f2b905f652ddea06618d35bbef6a62de75db15e5d12c7f7",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1632/B",
+      "local_code_path": "codeforces/rating_1000/roof_construction-1632B.cpp",
+      "local_code_sha256": "06cdd05b97358f13e8d48a29ba2d63dc292632dc227623e43cd34c5cf958a77f",
+      "highlight_color": "context_black_blue_red",
+      "provenance": "Página 99 contém título/enunciado e cabeçalho de lógica vazio. Raciocínio conferido a partir da solução local do usuário e do enunciado oficial; não atribuir a prova a uma anotação manuscrita inexistente."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-29-diaria-099",
+    "sync_run_id": "7ac7852b-c9b9-4165-9d16-fb68258b23cf",
+    "learning_origin": "partial_notebook_plus_local_solution_and_official_statement"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "handwriting_scope": "Statement only; handwritten logic still empty.",
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "clarifications": [
+      "A anotação fala em maior valor; o enunciado oficial pede minimizar o máximo XOR entre pares adjacentes.",
+      "O código local calcula potência de dois com log2/pow; o card usa inteiros sem ponto flutuante."
+    ],
+    "test_report": "estado/validacao-diaria-2026-10-29.json",
+    "validated_at": "2026-10-29T22:01:37-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793322132686",
+    "card_ids": [
+      "1793322132686"
+    ],
+    "fields_sha256": "486931c414e019a7ea0ddcd9cc27598633ad149b6d9a2b70d1ea954b2f0d9c02",
+    "last_batch_id": "2026-10-29-diaria"
+  }
+}

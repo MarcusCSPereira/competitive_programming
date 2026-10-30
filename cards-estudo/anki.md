@@ -170,3 +170,11 @@ substituído por esta configuração.
 Em 2026-10-28T21:24:46-03:00, o usuário solicitou **10 novos por dia**, substituindo o limite
 anterior de 5. Revisões continuam antes dos novos. Todos os 91 cards e seus
 agendamentos foram preservados; a sincronização foi confirmada.
+
+## Abertura automática em segundo plano
+
+A pedido do usuário, o Anki foi configurado para abrir oculto no início da sessão
+do Mac, a partir do próximo login. Isso permite à rotina das 12:30 usar a API
+sem trazer a janela à frente. A configuração está validada; o primeiro login
+ainda está pendente de observação. Todos os cards e o limite de 10/dia foram
+preservados. Veja `estado/anki-inicio-sessao.json`.

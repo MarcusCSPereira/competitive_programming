@@ -1,0 +1,14 @@
+{
+  "label": "local.codex.open-at-login",
+  "plist_path": "/Users/marcus_cs_pereira/Library/LaunchAgents/local.codex.open-at-login.plist",
+  "bundle_id": "com.openai.codex",
+  "app_path_verified": "/Applications/ChatGPT.app",
+  "start_at_user_login": true,
+  "launch_hidden": true,
+  "launch_in_background": true,
+  "configuration_validated": true,
+  "takes_effect": "next_user_login",
+  "first_login_launch_verified": false,
+  "configured_at": "2026-10-29T22:13:53-03:00",
+  "explicitly_disabled": false
+}

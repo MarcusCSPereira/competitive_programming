@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "compiler": "clang++ C++17",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "tested_cards": {
+    "cp-note-000092": {
+      "code_sha256": "3fa6bedb7b7c2ccaecdb1d242baea54fcb2612f78677a64c4f412588e013afc8",
+      "case_sha256": "b3e14d166c3cd5f74ad7d04b68c675e2b8a083b40fcccb1737c6d7be027de6ea"
+    },
+    "cp-note-000093": {
+      "code_sha256": "98558a5d15236544ed520d4d04c3e129204b87efaf08b7a2e39ca5bad1c96f2f",
+      "case_sha256": "c04e22c2ed8a6eb93d87f8cfd2e77b744611b8c1c3cb4e3898e3d27e3f51e744"
+    }
+  }
+}

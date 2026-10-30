@@ -1,0 +1,31 @@
+{
+  "batch_id": "2026-10-29-diaria",
+  "plan": {
+    "batch_id": "2026-10-29-diaria",
+    "create": 2,
+    "update": 0,
+    "unchanged": 0,
+    "total": 2
+  },
+  "status": "synced",
+  "notes": {
+    "cp-note-000092": {
+      "note_id": "1793322132685",
+      "card_ids": [
+        "1793322132685"
+      ],
+      "fields_sha256": "84ef69c21f83d104aec40558a10c638444776822986e3156cc98830b20cd74cd"
+    },
+    "cp-note-000093": {
+      "note_id": "1793322132686",
+      "card_ids": [
+        "1793322132686"
+      ],
+      "fields_sha256": "486931c414e019a7ea0ddcd9cc27598633ad149b6d9a2b70d1ea954b2f0d9c02"
+    }
+  },
+  "sync": {
+    "collectionComplete": true,
+    "mediaComplete": true
+  }
+}

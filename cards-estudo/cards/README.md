@@ -1,10 +1,15 @@
 # Cards autorais
 
-Há **91 cards validados**, `cp-note-000001` a `cp-note-000091`, publicados e
+Há **93 cards validados**, `cp-note-000001` a `cp-note-000093`, publicados e
 sincronizados no baralho Programação competitiva. O primeiro lote tem 69, e a
 revisão de cobertura acrescentou 17. A revisão das questões recentes acrescentou
 5 e melhorou 2 existentes, sem trocar seus IDs. Consulte a
 [distribuição por problema](../exportacoes/distribuicao.md).
+
+O processamento incremental de 29/10 acrescentou dois cards de Roof Construction.
+O lote é `../exportacoes/2026-10-29-diaria.md`, com casos em
+`../tests/diaria-2026-10-29-cases.json` e relatório
+`../estado/validacao-diaria-2026-10-29.json`.
 
 Cada JSON é a fonte editável: pergunta, teoria, código C++17, complexidade,
 critérios de acerto, assuntos, páginas e versão das fontes. IDs são imutáveis.

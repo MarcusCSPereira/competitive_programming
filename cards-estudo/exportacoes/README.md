@@ -2,7 +2,8 @@
 
 Os lotes **2026-10-28-historico** (69), **2026-10-28-expansao** (17 novos) e
 **2026-10-28-rating1300** (5 novos e 2 atualizados) foram importados por
-AnkiConnect e sincronizados com AnkiWeb: **91 cards únicos**.
+AnkiConnect e sincronizados com AnkiWeb. O lote **2026-10-29-diaria** acrescentou
+2 de Roof Construction: **93 cards únicos** ao todo.
 [distribuicao.md](distribuicao.md) mostra quantos estão associados a cada questão,
 incluindo conceitos compartilhados. A versão `.md` de cada lote permite ler seus cards; `.json`
 contém os campos HTML enviados, e `.tsv` é a alternativa para importação manual.

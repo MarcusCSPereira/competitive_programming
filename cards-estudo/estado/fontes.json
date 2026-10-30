@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "verified_at": "2026-10-28T21:29:34.899827+00:00",
+  "verified_at": "2026-10-30T00:54:50.770089+00:00",
   "preferred_transport": "drive_desktop_local",
   "read_only_sources": true,
   "account": "marcus.cesar.sp@gmail.com",
@@ -22,13 +22,13 @@
       "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
       "drive_url": "https://drive.google.com/file/d/1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy/view",
       "page_count": 99,
-      "size_bytes": 68343204,
-      "sha256_local": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "size_bytes": 68663286,
+      "sha256_local": "ff8cc3dab9ddcdce4f2b905f652ddea06618d35bbef6a62de75db15e5d12c7f7",
       "stable_during_read": true,
       "matches_cloud_metadata_size": true,
       "text_probe_page": 45,
       "text_probe_chars": 1370,
-      "mtime_ns": 1793214854006000041
+      "mtime_ns": 1793292960137000083
     },
     "big-tech-problems": {
       "file_name": "Big Tech Problems.pdf",
@@ -87,7 +87,7 @@
     "offline_confirmation": "Finder: Available offline; inverse menu: Disponibilizar apenas on-line",
     "drive_launch_at_login_verified_enabled": true,
     "remote_checksums_exposed_by_connector": false,
-    "last_verified_run_id": "83323976-8b9b-4940-9f43-72f5b2bf8678",
-    "last_verified_at": "2026-10-29T00:03:38.937605+00:00"
+    "last_verified_run_id": "7ac7852b-c9b9-4165-9d16-fb68258b23cf",
+    "last_verified_at": "2026-10-30T00:54:50.770089+00:00"
   }
 }

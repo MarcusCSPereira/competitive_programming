@@ -1,0 +1,32 @@
+[
+  {
+    "id": "cp-note-000092",
+    "fields": {
+      "ID": "cp-note-000092",
+      "Frente": "<p>Como o bit mais significativo ajuda a limitar o valor de a XOR b? Como achar a maior potência de dois até um inteiro sem log2 nem pow em C++17?</p>",
+      "Verso": "<p>XOR liga um bit exatamente quando os operandos diferem naquela posição. Logo o bit mais alto em que a e b diferem domina o valor do XOR: se essa posição vale K=2^k, então K≤(a XOR b)&lt;2K. Os bits abaixo dela somam no máximo K-1. Em C++, ^ é XOR; não é exponenciação.</p><p>Se 0≤a&lt;K e K≤b&lt;2K, o bit de valor K difere e a XOR b é pelo menos K. Se ambos estão no mesmo lado desse corte e são menores que 2K, esse bit se cancela e o XOR fica abaixo de K. Essa divisão em grupos é o ponto central da construção de Roof Construction.</p><p>Para achar a maior potência de dois K≤x, dobre K enquanto o próximo dobro couber em x. A condição K≤x/2 evita testar 2*K antes de saber que a multiplicação cabe. O domínio é x≥1, aplicável a x=n-1 porque o problema garante n≥2. O laço inteiro evita depender de arredondamento de funções de ponto flutuante perto de potências de dois.</p><pre><code class=\"language-cpp\">int maiorPotenciaAte(int x) {\n    assert(x&gt;=1);\n    int K=1;\n    while (K&lt;=x/2) K&lt;&lt;=1;\n    return K;\n}\nbool ladosDiferentes(int a,int b,int K) {\n    // Contrato: K é potência de dois e 0&lt;=a,b&lt;2*K.\n    return ((a&amp;K)!=0) != ((b&amp;K)!=0);\n}</code></pre><p><strong>Complexidade:</strong> O(log x) de tempo e O(1) de espaço. Os testes de bit e a operação XOR custam O(1) para inteiros da máquina.</p><details><summary>Critério de acerto</summary><ul><li>Relacionar o maior bit diferente aos limites K e 2K do XOR.</li><li>Distinguir ^ de exponenciação e &amp; do teste de um bit.</li><li>Dobrar com um limite inteiro seguro e tratar x≥1.</li></ul></details>",
+      "Fonte": "<ul><li><a href=\"https://codeforces.com/problemset/problem/1632/B\">Roof Construction · problemas · páginas 99</a></li></ul>"
+    },
+    "tags": [
+      "assunto::xor_bit_mais_significativo",
+      "cp_goodnotes",
+      "lote::diaria_20261029",
+      "origem::problemas"
+    ]
+  },
+  {
+    "id": "cp-note-000093",
+    "fields": {
+      "ID": "cp-note-000093",
+      "Frente": "<p>Como construir uma permutação de 0 a n-1 que minimize o maior XOR entre vizinhos? Como provar um limite inferior e construir uma ordem que o atinge?</p>",
+      "Verso": "<p>O objetivo é minimizar max(p[i] XOR p[i+1]), considerando somente pares adjacentes. Isso não é maximizar o XOR nem aplicar XOR a todos os elementos juntos.</p><p>Seja K a maior potência de dois até n-1. Como K≤n-1&lt;2K, os valores se dividem em [0,K-1], com o bit K desligado, e [K,n-1], com esse bit ligado. Os dois grupos são não vazios e qualquer permutação precisa atravessar entre eles em alguma adjacência. Esse par tem XOR≥K: nenhuma solução pode ter custo menor que K.</p><p>Para atingir o limite, emita K-1,K-2,…,0 e depois K,K+1,…,n-1. Dentro de cada grupo o bit K se cancela e o XOR é menor que K. Na única fronteira, os vizinhos são 0 e K, cujo XOR é exatamente K. Assim o custo máximo é K e a construção é ótima.</p><p>Não basta separar os grupos em qualquer ordem: a fronteira precisa ser bem escolhida. Para n=3, a ordem crescente [0,1,2] tem custo 3; [1,0,2] tem custo 2, o limite ótimo. O código inclui uma função para medir o objetivo em pares adjacentes e conferir a construção.</p><pre><code class=\"language-cpp\">vector&lt;int&gt; construirRoof(int n) {\n    assert(n&gt;=2);\n    int K=1;\n    while (K&lt;=(n-1)/2) K&lt;&lt;=1;\n    vector&lt;int&gt; p; p.reserve(n);\n    for (int x=K-1;x&gt;=0;--x) p.push_back(x);\n    for (int x=K;x&lt;n;++x) p.push_back(x);\n    return p;\n}\nint custoRoof(const vector&lt;int&gt;&amp; p) {\n    int maior=0;\n    for (int i=1;i&lt;(int)p.size();++i) maior=max(maior,p[i-1]^p[i]);\n    return maior;\n}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo para construir e medir. A saída ocupa O(n); a construção usa O(1) auxiliar além dela.</p><details><summary>Critério de acerto</summary><ul><li>Provar que a travessia entre grupos impõe custo pelo menos K.</li><li>Escolher uma fronteira de XOR exatamente K e limitar os pares internos.</li><li>Verificar a permutação e o objetivo em vizinhos, sem confundir mínimo com máximo.</li></ul></details>",
+      "Fonte": "<ul><li><a href=\"https://codeforces.com/problemset/problem/1632/B\">Roof Construction · problemas · páginas 99</a></li></ul>"
+    },
+    "tags": [
+      "assunto::minimax_xor_permutacao_por_grupos",
+      "cp_goodnotes",
+      "lote::diaria_20261029",
+      "origem::problemas"
+    ]
+  }
+]

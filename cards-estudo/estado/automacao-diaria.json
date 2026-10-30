@@ -1,0 +1,23 @@
+{
+  "id": "gerar-cards-do-goodnotes",
+  "name": "Gerar cards do Goodnotes",
+  "kind": "heartbeat",
+  "status": "ACTIVE",
+  "schedule": {
+    "frequency": "daily",
+    "time": "12:30",
+    "timezone": "America/Bahia"
+  },
+  "target_thread_id": "01a183a6-2aeb-7b61-bd6d-2ad18227b3b6",
+  "workspace": "/Users/marcus_cs_pereira/Programacao/prog_competitiva/C++",
+  "definition_readback_verified": true,
+  "machine_timezone_verified": "America/Bahia",
+  "definition_hash_sha256": "16918fbf8127c4e3fb7ba7e7015f808c94cfcd83be54ef7b68505da2b84ca397",
+  "created_at": "2026-10-29T21:54:51-03:00",
+  "verified_at": "2026-10-29T22:13:53-03:00",
+  "manual_pipeline_validation": "passed",
+  "first_unattended_run_verified": false,
+  "daily_new_cards_limit": 10,
+  "workflow_file": "rotina-diaria.md",
+  "startup_file": "estado/codex-inicio-sessao.json"
+}

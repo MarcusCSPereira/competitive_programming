@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000092",
+  "content_key": "xor_bit_mais_significativo",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como o bit mais significativo ajuda a limitar o valor de a XOR b? Como achar a maior potência de dois até um inteiro sem log2 nem pow em C++17?",
+  "back": {
+    "answer": "XOR liga um bit exatamente quando os operandos diferem naquela posição. Logo o bit mais alto em que a e b diferem domina o valor do XOR: se essa posição vale K=2^k, então K≤(a XOR b)<2K. Os bits abaixo dela somam no máximo K-1. Em C++, ^ é XOR; não é exponenciação.\n\nSe 0≤a<K e K≤b<2K, o bit de valor K difere e a XOR b é pelo menos K. Se ambos estão no mesmo lado desse corte e são menores que 2K, esse bit se cancela e o XOR fica abaixo de K. Essa divisão em grupos é o ponto central da construção de Roof Construction.\n\nPara achar a maior potência de dois K≤x, dobre K enquanto o próximo dobro couber em x. A condição K≤x/2 evita testar 2*K antes de saber que a multiplicação cabe. O domínio é x≥1, aplicável a x=n-1 porque o problema garante n≥2. O laço inteiro evita depender de arredondamento de funções de ponto flutuante perto de potências de dois.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int maiorPotenciaAte(int x) {\n    assert(x>=1);\n    int K=1;\n    while (K<=x/2) K<<=1;\n    return K;\n}\nbool ladosDiferentes(int a,int b,int K) {\n    // Contrato: K é potência de dois e 0<=a,b<2*K.\n    return ((a&K)!=0) != ((b&K)!=0);\n}",
+    "complexity": "O(log x) de tempo e O(1) de espaço. Os testes de bit e a operação XOR custam O(1) para inteiros da máquina.",
+    "success_criteria": [
+      "Relacionar o maior bit diferente aos limites K e 2K do XOR.",
+      "Distinguir ^ de exponenciação e & do teste de um bit.",
+      "Dobrar com um limite inteiro seguro e tratar x≥1."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::diaria_20261029",
+    "assunto::xor_bit_mais_significativo",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000006",
+      "title": "Roof Construction",
+      "pages_1based": [
+        99
+      ],
+      "source_snapshot_sha256": "ff8cc3dab9ddcdce4f2b905f652ddea06618d35bbef6a62de75db15e5d12c7f7",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1632/B",
+      "local_code_path": "codeforces/rating_1000/roof_construction-1632B.cpp",
+      "local_code_sha256": "06cdd05b97358f13e8d48a29ba2d63dc292632dc227623e43cd34c5cf958a77f",
+      "highlight_color": "context_black_blue_red",
+      "provenance": "Página 99 contém título/enunciado e cabeçalho de lógica vazio. Raciocínio conferido a partir da solução local do usuário e do enunciado oficial; não atribuir a prova a uma anotação manuscrita inexistente."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-29-diaria-099",
+    "sync_run_id": "7ac7852b-c9b9-4165-9d16-fb68258b23cf",
+    "learning_origin": "partial_notebook_plus_local_solution_and_official_statement"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "handwriting_scope": "Statement only; handwritten logic still empty.",
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "clarifications": [
+      "A anotação fala em maior valor; o enunciado oficial pede minimizar o máximo XOR entre pares adjacentes.",
+      "O código local calcula potência de dois com log2/pow; o card usa inteiros sem ponto flutuante."
+    ],
+    "test_report": "estado/validacao-diaria-2026-10-29.json",
+    "validated_at": "2026-10-29T22:01:37-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793322132685",
+    "card_ids": [
+      "1793322132685"
+    ],
+    "fields_sha256": "84ef69c21f83d104aec40558a10c638444776822986e3156cc98830b20cd74cd",
+    "last_batch_id": "2026-10-29-diaria"
+  }
+}

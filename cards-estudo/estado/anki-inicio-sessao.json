@@ -1,0 +1,14 @@
+{
+  "label": "local.anki.open-at-login",
+  "plist_path": "/Users/marcus_cs_pereira/Library/LaunchAgents/local.anki.open-at-login.plist",
+  "bundle_id": "net.ankiweb.anki",
+  "app_path_verified": "/Applications/Anki.app",
+  "start_at_user_login": true,
+  "launch_hidden": true,
+  "launch_in_background": true,
+  "configuration_validated": true,
+  "explicitly_disabled": false,
+  "takes_effect": "next_user_login",
+  "first_login_launch_verified": false,
+  "configured_at": "2026-10-29T22:20:55-03:00"
+}

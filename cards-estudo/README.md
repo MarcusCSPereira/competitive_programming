@@ -9,24 +9,27 @@ Transformar aprendizados das questões já estudadas em revisões curtas no celu
 preservando a escrita no iPad como rotina principal. Primeiro recuperar o passado;
 depois incorporar questões novas e alterações em anotações antigas.
 
-**Fase atual: 91 cards sincronizados**, após o primeiro lote de 69, uma revisão
+**Fase atual: 93 cards sincronizados**, após o primeiro lote de 69, uma revisão
 de cobertura com 17 novos e a revisão das questões recentes com **5 novos e
-2 atualizações**. Todos têm teoria e uso
+2 atualizações**, e 2 cards de Roof Construction no primeiro processamento
+incremental de 29/10. Todos têm teoria e uso
 concreto em C++17, com validação de código. Os dois pilotos aprovados preservam
 seus IDs. Veja o [lote inicial](exportacoes/2026-10-28-historico.md), os
 [17 complementos](exportacoes/2026-10-28-expansao.md), a
 [distribuição por problema](exportacoes/distribuicao.md) e a
-[revisão das questões recentes](analises/2026-10-28-rating1300.md).
-Não há tarefa agendada.
+[revisão das questões recentes](analises/2026-10-28-rating1300.md) e a
+[validação da rotina diária](analises/2026-10-29-rotina-diaria.md).
+**Automação ativa: todos os dias às 12:30, America/Bahia**, neste chat.
+Operação e condições de execução em [rotina-diaria.md](rotina-diaria.md).
 
 **Rotina configurada:** 10 cards novos por dia, com revisões antes dos novos.
-Todos os 91 continuam no baralho; o número diário mostrado na tela não é o
+Todos os 93 continuam no baralho; o número diário mostrado na tela não é o
 total da coleção. Configuração e verificação em `estado/anki-limite-diario.json`.
 
 Make it Alternating (1879C, rating 1300 verificado) recebeu quatro cards a partir
 da solução do repositório e do enunciado oficial. Sua página não foi localizada
 no snapshot autorizado do caderno: a origem é `repositorio-cpp`, sem página
-inventada. Há 66 cards de Problemas, 21 de Big Tech Problems e 4 dessa fonte local.
+inventada. Há 68 cards de Problemas, 21 de Big Tech Problems e 4 dessa fonte local.
 O [lote mais recente](exportacoes/2026-10-28-rating1300.md) inclui também um novo
 card de Red Versus Blue e as versões aprimoradas de Luke Is a Foodie e Shoe Shuffling.
 
@@ -162,10 +165,12 @@ fora do escopo. A faixa 45–99 foi lida em cores no snapshot validado do Drive.
 A 45 começa com a legenda e Microwaves; a continuação de Forked na 49 foi
 reconciliada com o início nas 48–50, preservando o ID previamente catalogado.
 
-O cursor de Problemas fica na **99** porque Roof Construction só tem título
-nessa página e permanece pendente. Os demais assuntos selecionados têm cards
-validados e importados. Em Big Tech Problems, o próximo ponto é **16**, após as
-15 páginas atuais. Sempre verificar alterações anteriores antes de continuar.
+O cursor de Problemas está em **100**, após as 99 páginas atuais. Roof Construction
+recebeu enunciado na página 99 e foi resolvida no repositório; os cards foram
+validados com o código e o enunciado oficial. O campo manuscrito de lógica ainda
+está vazio, e essa origem complementar está declarada. Em Big Tech Problems, o
+próximo ponto é **16**, após as 15 páginas atuais. Sempre verificar alterações
+anteriores antes de continuar, inclusive a lógica manuscrita que vier a ser incluída.
 
 ## Como transformar aprendizados em cards
 
@@ -217,7 +222,7 @@ cards-estudo/
   .cache/render/               # Imagens/OCR intermediários, ignorados
 ```
 
-As pastas `cards/` e `exportacoes/` contêm os três lotes definitivos.
+As pastas `cards/` e `exportacoes/` contêm os quatro lotes definitivos.
 O repositório guarda o conteúdo autoral e os checkpoints; respostas,
 intervalos e estatísticas de revisão ficam no Anki/AnkiWeb. O histórico local
 anterior `../../.revisao/estado.json` (relativo a esta pasta) não deve ser apagado
@@ -267,7 +272,12 @@ Reimportações devem preservar a mesma nota e seus cards. Mudar o número/tipo 
 templates ou recriar IDs exige cuidado específico com o histórico. Não substituir
 `collection.anki2`. Manter manifesto de cada lote e confirmação separada de import.
 
-## Rotina proposta e automação futura
+## Rotina diária
+
+A automação `gerar-cards-do-goodnotes` executa o processo neste chat às 12:30
+todos os dias, no fuso America/Bahia. É necessário o Mac ligado e o Codex aberto;
+a rotina confere o Drive e pode iniciar o Anki quando estiver fechado. Não há
+geração artificial quando nada mudou; retomar lotes pendentes continua necessário.
 
 1. Resolver e anotar normalmente no Goodnotes; o backup atualiza o PDF no Drive.
 2. Uma execução lê `estado/fontes.json`, verifica a sincronização e obtém uma
@@ -276,17 +286,16 @@ templates ou recriar IDs exige cuidado específico com o histórico. Não substi
    metadados e servir de alternativa quando o acesso local não estiver disponível.
 3. Extrair por questão, validar, gerar/atualizar cards no repo e salvar checkpoint.
 4. Exportar um lote idempotente, importar no Anki do Mac e sincronizar com AnkiWeb.
-5. Revisar no celular em pequenos intervalos; começar com cerca de 10 minutos/dia
-   e 3–5 cards novos/dia, ajustando à carga real. Revisões difíceis continuam
+5. Revisar no celular em pequenos intervalos. O usuário escolheu **10 novos/dia**,
+   com revisões primeiro. Revisões difíceis continuam
    voltando; o agendador do Anki decide os intervalos a partir das avaliações.
    A coleção foi observada com SM-2; FSRS não foi ativado nesta execução.
 6. Reservar prática no computador para reimplementar padrões e questões difíceis.
 
-Antes de agendar: validar aquisição na conta correta, leitura de cores e código,
-cursor com recuperação, IDs/importação sem duplicatas, revisão de um lote piloto
-e ausência de geração para cadernos incompletos. Essas etapas são requisitos do
-fluxo, não automações já instaladas. Notificações e horários ainda não foram
-solicitados nem configurados.
+Aquisição, comparação incremental, cursor, testes e publicação foram exercitados
+manualmente em 29/10. A agenda foi criada e relida; a primeira execução disparada
+pelo agendador ainda será confirmada pelo seu resultado. A configuração está em
+`estado/automacao-diaria.json`. A criação da agenda não comprova execução futura.
 
 ## Critério para começar o primeiro lote
 

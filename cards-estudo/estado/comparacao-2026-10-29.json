@@ -1,0 +1,239 @@
+{
+  "compared_pages": [
+    45,
+    99
+  ],
+  "page_count": 99,
+  "changed_rendered_pages": [
+    99
+  ],
+  "comparison_format": "Poppler PPM 72dpi",
+  "render_dpi_inspection": 110,
+  "old_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+  "new_sha256": "ff8cc3dab9ddcdce4f2b905f652ddea06618d35bbef6a62de75db15e5d12c7f7",
+  "fingerprints": {
+    "45": {
+      "old": "006de0a9decfa240f701f67eadcd788769856fea4cd5cdd9a5b65c52ef0eb3a0",
+      "new": "006de0a9decfa240f701f67eadcd788769856fea4cd5cdd9a5b65c52ef0eb3a0"
+    },
+    "46": {
+      "old": "86570d9fda4af20ee23e3077f6ae978771067c5a7e0c6888869ccc8e974f633f",
+      "new": "86570d9fda4af20ee23e3077f6ae978771067c5a7e0c6888869ccc8e974f633f"
+    },
+    "47": {
+      "old": "3aa0e8613345a3274f5f4333c286217aab65605d016d2de9fec0163566891608",
+      "new": "3aa0e8613345a3274f5f4333c286217aab65605d016d2de9fec0163566891608"
+    },
+    "48": {
+      "old": "662f6bcc835fc22427f182df27e065b7c9c7d944737c55e628bef6d0140a4f1c",
+      "new": "662f6bcc835fc22427f182df27e065b7c9c7d944737c55e628bef6d0140a4f1c"
+    },
+    "49": {
+      "old": "21582f79e6e3c29247c2e5aea39c03e8b4a3afc09a2b74e3400d738d093bdfd0",
+      "new": "21582f79e6e3c29247c2e5aea39c03e8b4a3afc09a2b74e3400d738d093bdfd0"
+    },
+    "50": {
+      "old": "206817ff555163e1d772ac373259c1f81b6419ff229c0924904fc775ded5eb8d",
+      "new": "206817ff555163e1d772ac373259c1f81b6419ff229c0924904fc775ded5eb8d"
+    },
+    "51": {
+      "old": "c4b21b4067d880e90dc54b7aeee1429d6e478c6184aeb4d5650cd2816fb2e527",
+      "new": "c4b21b4067d880e90dc54b7aeee1429d6e478c6184aeb4d5650cd2816fb2e527"
+    },
+    "52": {
+      "old": "9f064aad7f49fb1aadc3d8bed7d593c1a42f6e9322d3c4aa1a9b13ece1dcf5d5",
+      "new": "9f064aad7f49fb1aadc3d8bed7d593c1a42f6e9322d3c4aa1a9b13ece1dcf5d5"
+    },
+    "53": {
+      "old": "6fbc20018eea8650d6103e2ab883dc41773856d4c28e65063bc45ec7c4802889",
+      "new": "6fbc20018eea8650d6103e2ab883dc41773856d4c28e65063bc45ec7c4802889"
+    },
+    "54": {
+      "old": "53bae7ce0529dee57fcd390ef6ef582002dff4f46a8f159362b347265e5c97b4",
+      "new": "53bae7ce0529dee57fcd390ef6ef582002dff4f46a8f159362b347265e5c97b4"
+    },
+    "55": {
+      "old": "a94dfda205d477936e38760d96362cc634f228728af8db1b348c3446c9a75358",
+      "new": "a94dfda205d477936e38760d96362cc634f228728af8db1b348c3446c9a75358"
+    },
+    "56": {
+      "old": "c16ce98039b272cf87357473bb3f5da9e4d7180a56ece91a0e6a4463495d881e",
+      "new": "c16ce98039b272cf87357473bb3f5da9e4d7180a56ece91a0e6a4463495d881e"
+    },
+    "57": {
+      "old": "e7338c651cc4252c5163ae4a1feb0b73d72c3eebd935d4e468e346f9fb21a975",
+      "new": "e7338c651cc4252c5163ae4a1feb0b73d72c3eebd935d4e468e346f9fb21a975"
+    },
+    "58": {
+      "old": "bad7eb48e3b470ad3cf19cbedf18966904ad7075dc0ebac1ed0bfea32fb3d640",
+      "new": "bad7eb48e3b470ad3cf19cbedf18966904ad7075dc0ebac1ed0bfea32fb3d640"
+    },
+    "59": {
+      "old": "eb53cd4fd0932f3fb139ad8581c04f382b77c6171fa998cf912edc2c005ffc21",
+      "new": "eb53cd4fd0932f3fb139ad8581c04f382b77c6171fa998cf912edc2c005ffc21"
+    },
+    "60": {
+      "old": "dfec77f0760d8c895a437df30361f4dbf227f1524d2ace2d419428b0d9fc0b7e",
+      "new": "dfec77f0760d8c895a437df30361f4dbf227f1524d2ace2d419428b0d9fc0b7e"
+    },
+    "61": {
+      "old": "b3b0105a72e64ae90de8cd3b3f5049d655efe88ad8fae157c8828749987b65f6",
+      "new": "b3b0105a72e64ae90de8cd3b3f5049d655efe88ad8fae157c8828749987b65f6"
+    },
+    "62": {
+      "old": "c417a6dedc008e5204b97a46b173258f5daa6d4b43b0661d7ceb9a03c61bc136",
+      "new": "c417a6dedc008e5204b97a46b173258f5daa6d4b43b0661d7ceb9a03c61bc136"
+    },
+    "63": {
+      "old": "3ee8806a77f7f0d2504559faf40ce430b05795b3698ba87a65b6e12c848edfeb",
+      "new": "3ee8806a77f7f0d2504559faf40ce430b05795b3698ba87a65b6e12c848edfeb"
+    },
+    "64": {
+      "old": "91474021e62267daf613c3858aba07f2050e74d1c973171ddd80b90070dab479",
+      "new": "91474021e62267daf613c3858aba07f2050e74d1c973171ddd80b90070dab479"
+    },
+    "65": {
+      "old": "e87a1e0c90b9ba8b9a239f6d17363284ada809d9a77859b9e565f9345e8f97f0",
+      "new": "e87a1e0c90b9ba8b9a239f6d17363284ada809d9a77859b9e565f9345e8f97f0"
+    },
+    "66": {
+      "old": "e95fdbddfc3ca8d66c46df3c8d5fa331e3a4af54c7183ee73a62b9f4c05ff80f",
+      "new": "e95fdbddfc3ca8d66c46df3c8d5fa331e3a4af54c7183ee73a62b9f4c05ff80f"
+    },
+    "67": {
+      "old": "35e059ba8fca781e2e02366bc0904cb2e4b2b3480b4e15eac26625ee775fe8d7",
+      "new": "35e059ba8fca781e2e02366bc0904cb2e4b2b3480b4e15eac26625ee775fe8d7"
+    },
+    "68": {
+      "old": "86cfb18b79e0cc650abbe97bb2e1c767fe1b9e1a97a774641b1f66a07f3d5dcb",
+      "new": "86cfb18b79e0cc650abbe97bb2e1c767fe1b9e1a97a774641b1f66a07f3d5dcb"
+    },
+    "69": {
+      "old": "f803ee9dd5dbd3337df9ce4590f0941ed0cfb82b960a031000d1717241158e38",
+      "new": "f803ee9dd5dbd3337df9ce4590f0941ed0cfb82b960a031000d1717241158e38"
+    },
+    "70": {
+      "old": "7af7085f75c6aca002a20f1f0f94e8af883f4266a440c28d7e74342cb5295ab2",
+      "new": "7af7085f75c6aca002a20f1f0f94e8af883f4266a440c28d7e74342cb5295ab2"
+    },
+    "71": {
+      "old": "a1e3ff1968655114fe7cc877dffc875c7a727e29028e84e135d960a1ad4238e0",
+      "new": "a1e3ff1968655114fe7cc877dffc875c7a727e29028e84e135d960a1ad4238e0"
+    },
+    "72": {
+      "old": "9178c3489ed448a954354dd09be83c42ca54b29b3f85c06e05227776015aef34",
+      "new": "9178c3489ed448a954354dd09be83c42ca54b29b3f85c06e05227776015aef34"
+    },
+    "73": {
+      "old": "471d52e207fe6e2b727f29ad63936c5b621e30efd887ab6dd8cc6c6b5c91d35c",
+      "new": "471d52e207fe6e2b727f29ad63936c5b621e30efd887ab6dd8cc6c6b5c91d35c"
+    },
+    "74": {
+      "old": "9acaeca7d3d86f4b4bbfa14463cda4b620182b2323e4d189cff65d2354b6a603",
+      "new": "9acaeca7d3d86f4b4bbfa14463cda4b620182b2323e4d189cff65d2354b6a603"
+    },
+    "75": {
+      "old": "38ec08194f4f9f18ee30736697e35802d773315aa11001931c1a53682ad68032",
+      "new": "38ec08194f4f9f18ee30736697e35802d773315aa11001931c1a53682ad68032"
+    },
+    "76": {
+      "old": "a63e3305818398ef5397c4fedd8faf3ffb7ecf5a99ed67b627370ab50eb7903a",
+      "new": "a63e3305818398ef5397c4fedd8faf3ffb7ecf5a99ed67b627370ab50eb7903a"
+    },
+    "77": {
+      "old": "7393779668a44ece393df6f1378d1d7db7a629bc9c99fa2f92f2c35f5bf58781",
+      "new": "7393779668a44ece393df6f1378d1d7db7a629bc9c99fa2f92f2c35f5bf58781"
+    },
+    "78": {
+      "old": "99a8cec8a854b00f9685c4b08c70b30741692aae0a8ad54a3157504fd9c97a2e",
+      "new": "99a8cec8a854b00f9685c4b08c70b30741692aae0a8ad54a3157504fd9c97a2e"
+    },
+    "79": {
+      "old": "963632b06ddf822c5f7a6615de860c9245b53daaed463447b22dfb6542bc2433",
+      "new": "963632b06ddf822c5f7a6615de860c9245b53daaed463447b22dfb6542bc2433"
+    },
+    "80": {
+      "old": "fd1548eec9f252facbfa1ff55658dc9fe332d706c2018a17619ca4a170cb5319",
+      "new": "fd1548eec9f252facbfa1ff55658dc9fe332d706c2018a17619ca4a170cb5319"
+    },
+    "81": {
+      "old": "cdd8caff8e96f069ee7029b64b5696fb831865d4e4be72c42333957f8a710d62",
+      "new": "cdd8caff8e96f069ee7029b64b5696fb831865d4e4be72c42333957f8a710d62"
+    },
+    "82": {
+      "old": "842383615fa1c5a724a137cb2cccc06b91dce2c0e144cd5d5e20e2c867a098bf",
+      "new": "842383615fa1c5a724a137cb2cccc06b91dce2c0e144cd5d5e20e2c867a098bf"
+    },
+    "83": {
+      "old": "b63780d6b57e0e0fdeac8cdbefc91fab564ad80409bb2463bc0ce2974c209c4c",
+      "new": "b63780d6b57e0e0fdeac8cdbefc91fab564ad80409bb2463bc0ce2974c209c4c"
+    },
+    "84": {
+      "old": "b853c704eca0bfb78a1937b67a0f480f911fd96fac67c2881f697254417b581a",
+      "new": "b853c704eca0bfb78a1937b67a0f480f911fd96fac67c2881f697254417b581a"
+    },
+    "85": {
+      "old": "72657a86173699e8ec231276b282211c5c270a1ca644f0b7bc9fabd2022d7999",
+      "new": "72657a86173699e8ec231276b282211c5c270a1ca644f0b7bc9fabd2022d7999"
+    },
+    "86": {
+      "old": "7e864797ec5a63a4c125158f8d7a8cc7d6aa3326ea830c85e2c73a33b1177a77",
+      "new": "7e864797ec5a63a4c125158f8d7a8cc7d6aa3326ea830c85e2c73a33b1177a77"
+    },
+    "87": {
+      "old": "434083d55dab5e93b7d3467be79e3f01e1c448afaa9d74c2a2f8a71e7297c26c",
+      "new": "434083d55dab5e93b7d3467be79e3f01e1c448afaa9d74c2a2f8a71e7297c26c"
+    },
+    "88": {
+      "old": "86e0d4baf1220ecb1768256f0c1452638d7e117b92752852da2f55001e112982",
+      "new": "86e0d4baf1220ecb1768256f0c1452638d7e117b92752852da2f55001e112982"
+    },
+    "89": {
+      "old": "301149e952968454cb30c93507f2adf8441a2d380aeb5e18b034bd8aaac04c44",
+      "new": "301149e952968454cb30c93507f2adf8441a2d380aeb5e18b034bd8aaac04c44"
+    },
+    "90": {
+      "old": "b2ccc4515afc09adcc06de8bfbdb64b9b3bd8f203b585559a2d158d917338d71",
+      "new": "b2ccc4515afc09adcc06de8bfbdb64b9b3bd8f203b585559a2d158d917338d71"
+    },
+    "91": {
+      "old": "47cca927a586443b4e8a2d68aadd76a36def9b8bd1761af5a42117359e7a6fc3",
+      "new": "47cca927a586443b4e8a2d68aadd76a36def9b8bd1761af5a42117359e7a6fc3"
+    },
+    "92": {
+      "old": "f0fd69dba19cd34664e1f7663abdc0f378276a281c2c08438341fd002599c93b",
+      "new": "f0fd69dba19cd34664e1f7663abdc0f378276a281c2c08438341fd002599c93b"
+    },
+    "93": {
+      "old": "592e73607858718d9fd7bf9bc088603e80325278b18f6859fcdb474243829df4",
+      "new": "592e73607858718d9fd7bf9bc088603e80325278b18f6859fcdb474243829df4"
+    },
+    "94": {
+      "old": "80f34bf3d902513a757139e1257cc52d54b0f0453e9097c41460115cc61ccfd9",
+      "new": "80f34bf3d902513a757139e1257cc52d54b0f0453e9097c41460115cc61ccfd9"
+    },
+    "95": {
+      "old": "4db867d7995cbc45dc59f1fc2b027b401ad8590c6aede897a2896842df78c5e5",
+      "new": "4db867d7995cbc45dc59f1fc2b027b401ad8590c6aede897a2896842df78c5e5"
+    },
+    "96": {
+      "old": "d365ba65ddbdf5dfdeb9d2f89a37c4cea94d5e5380b636f2d2b36326315ae0e7",
+      "new": "d365ba65ddbdf5dfdeb9d2f89a37c4cea94d5e5380b636f2d2b36326315ae0e7"
+    },
+    "97": {
+      "old": "20e1d7d5aef7856ecd42678f652b4564e27d372db693050e5770226c9d4b4d9b",
+      "new": "20e1d7d5aef7856ecd42678f652b4564e27d372db693050e5770226c9d4b4d9b"
+    },
+    "98": {
+      "old": "7d0d27ea1bb5fce448eeef2d978bf43e0d814aac5c7031da544916f20923d23e",
+      "new": "7d0d27ea1bb5fce448eeef2d978bf43e0d814aac5c7031da544916f20923d23e"
+    },
+    "99": {
+      "old": "cc868629da71a55704b82b7712ad7f809641207b97d8984b53e1e1801958fece",
+      "new": "3e8bcf2a8a1f548316b4d97de97f1538269f2cbead2faba64722d29c8fb8317d"
+    }
+  },
+  "run_id": "2026-10-29-diaria-099",
+  "sync_run_id": "7ac7852b-c9b9-4165-9d16-fb68258b23cf",
+  "compared_at": "2026-10-29T22:01:37-03:00"
+}

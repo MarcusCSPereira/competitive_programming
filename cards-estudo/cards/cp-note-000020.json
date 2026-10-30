@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000020",
+  "content_key": "divisao_teto_limites",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como calcular divisão inteira com teto sem ponto flutuante e usar limites de capacidade para obter quantidades mínimas e máximas?",
+  "back": {
+    "answer": "Para a>=0 e b>0, ceil(a/b)=a/b+(a%b!=0). Essa forma evita overflow de a+b-1. Com ônibus de 4 ou 6 rodas, um total n é possível se n é par e n>=4. O mínimo é ceil(n/6) e o máximo floor(n/4); a mistura de 4 e 6 permite ajustar as sobras. Em agrupamentos gerais, somar antes de aplicar teto nunca aumenta o resultado: ceil((x+y)/d)<=ceil(x/d)+ceil(y/d).",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "long long ceilDiv(long long a,long long b) {\n    return a/b+(a%b!=0);\n}\npair<long long,long long> onibus(long long n) {\n    if(n<4 || n%2) return {-1,-1};\n    return {ceilDiv(n,6),n/4};\n}",
+    "complexity": "O(1) de tempo e espaço; a>=0 e b>0.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::divisao_teto_limites",
+    "origem::problemas",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000019",
+      "title": "AvtoBus",
+      "pages_1based": [
+        62,
+        63
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1679/A",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    },
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000032",
+      "title": "Strange Partition",
+      "pages_1based": [
+        75,
+        76
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1471/A",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210792",
+    "card_ids": [
+      "1793230210793"
+    ],
+    "fields_sha256": "a513e78758acf1bce34b1304cffda156577df18fde2ae292f75b65811f3812cc",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

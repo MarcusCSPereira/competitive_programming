@@ -1,0 +1,24 @@
+{
+  "deck_name": "Programação competitiva",
+  "deck_id": "1793225719777",
+  "preset_id": "1793233318088",
+  "previous_daily_new_limit": 5,
+  "daily_new_limit": 10,
+  "new_mix": "afterReviews",
+  "reviews_per_day": 200,
+  "counts_after": {
+    "deckId": "1793225719777",
+    "new": 10,
+    "learning": 0,
+    "review": 0,
+    "total": 91
+  },
+  "cards_preserved": 91,
+  "card_scheduling_preserved": 91,
+  "sync": {
+    "collectionComplete": true,
+    "mediaComplete": true
+  },
+  "verified_at": "2026-10-28T21:24:46-03:00",
+  "reason": "Pedido explícito do usuário: 10 novos por dia."
+}

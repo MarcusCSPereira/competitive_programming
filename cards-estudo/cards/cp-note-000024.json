@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000024",
+  "content_key": "equacao_pa_multiplo",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como transformar a condição de três números em progressão aritmética numa checagem O(1) ao multiplicar exatamente um deles por um inteiro positivo?",
+  "back": {
+    "answer": "Uma PA satisfaz a+c=2b. Isole o valor novo para cada escolha: aNovo=2b-c, bNovo=(a+c)/2, cNovo=2b-a. O valor novo deve ser positivo e múltiplo inteiro do valor original. Para o termo central, a+c também precisa ser par. Testar as três possibilidades evita escolher um caso por intuição sem cobrir os outros.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "bool fazerPA(long long a,long long b,long long c) {\n    auto multiplo=[](long long novo,long long antigo){\n        return novo>0 && novo%antigo==0;\n    };\n    return multiplo(2*b-c,a)\n        || ((a+c)%2==0 && multiplo((a+c)/2,b))\n        || multiplo(2*b-a,c);\n}",
+    "complexity": "O(1) de tempo e espaço; a,b,c positivos e intermediários cabem em long long.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::equacao_pa_multiplo",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000023",
+      "title": "Make AP",
+      "pages_1based": [
+        66,
+        67,
+        68
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1624/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210796",
+    "card_ids": [
+      "1793230210797"
+    ],
+    "fields_sha256": "212d9b1431d6109e45accb06824d99fedfdff636630c16326b193a5dbbfc952a",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

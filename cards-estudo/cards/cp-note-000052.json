@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000052",
+  "content_key": "rotacao_blocos_sem_fixos",
+  "revision": 2,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como reorganizar índices dentro de grupos de valores iguais para que ninguém receba o próprio item? Quando a construção é impossível?",
+  "back": {
+    "answer": "Na entrada ordenada, valores iguais formam blocos. Um bloco de tamanho 1 não tem outro índice compatível: é impossível. Para cada bloco com pelo menos dois elementos, uma rotação cíclica dos índices cria uma permutação sem pontos fixos e mantém os valores iguais. No problema dos sapatos, todos precisam receber tamanho >=ao próprio; a soma dos tamanhos é preservada, então ninguém pode aumentar estritamente sem alguém diminuir. Portanto as trocas ficam entre tamanhos iguais.\n\nNão substitua a rotação por trocas de pares disjuntos: um bloco de tamanho ímpar pode deixar alguém no próprio lugar. Em [5,5,5], trocar só os dois primeiros deixa o terceiro fixo; a rotação de índices [2,3,1] movimenta os três. Isso reforça por que a construção usa o bloco inteiro.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "vector<int> embaralhar(const vector<int>& a) {\n    vector<int> p(a.size());\n    for(int l=0;l<(int)a.size();){\n        int r=l; while(r<(int)a.size() && a[r]==a[l]) ++r;\n        if(r-l==1) return {};\n        for(int i=l;i<r;++i) p[i]=(i+1<r ? i+2 : l+1);\n        l=r;\n    }\n    return p;\n}",
+    "complexity": "O(n) de tempo e O(n) de espaço da permutação.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::rotacao_blocos_sem_fixos",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000050",
+      "title": "Shoe Shuffling",
+      "pages_1based": [
+        95,
+        96
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1691/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-rating1300.json",
+    "validated_at": "2026-10-28T21:11:18-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210824",
+    "card_ids": [
+      "1793230210825"
+    ],
+    "fields_sha256": "b28f255d2df9fd7e262959b2dc59fc1a3e09f5631a1d7f16afbd46d763603f23",
+    "last_batch_id": "2026-10-28-rating1300"
+  },
+  "coverage_review": {
+    "run_id": "2026-10-28-rating1300-090",
+    "sync_run_id": "83323976-8b9b-4940-9f43-72f5b2bf8678",
+    "learning_origin": "clarifying_counterexample"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-28-rating1300",
+  "card_ids": [
+    "cp-note-000087",
+    "cp-note-000088",
+    "cp-note-000089",
+    "cp-note-000090",
+    "cp-note-000091",
+    "cp-note-000051",
+    "cp-note-000052"
+  ],
+  "new_card_ids": [
+    "cp-note-000087",
+    "cp-note-000088",
+    "cp-note-000089",
+    "cp-note-000090",
+    "cp-note-000091"
+  ],
+  "updated_card_ids": [
+    "cp-note-000051",
+    "cp-note-000052"
+  ],
+  "validation_report": "estado/validacao-rating1300.json",
+  "source_sync_run_id": "83323976-8b9b-4940-9f43-72f5b2bf8678",
+  "purpose": "Lacuna de Make it Alternating e aprofundamento das construções recentes."
+}

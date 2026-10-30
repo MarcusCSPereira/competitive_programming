@@ -1,0 +1,7 @@
+# Fontes grandes, pessoais e reproduzíveis; metadados ficam versionáveis.
+.cache/
+__pycache__/
+estado/*.lock
+estado/*.tmp
+estado/*.bak
+exportacoes/*.apkg

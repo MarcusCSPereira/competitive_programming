@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000068",
+  "content_key": "fila_pilha_interfaces",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Qual a diferença entre queue e stack e como usar suas interfaces em C++17? O que pop retorna e quando front/top é válido?",
+  "back": {
+    "answer": "queue segue FIFO: o primeiro a entrar é o primeiro a sair; consulte front e insira com push. stack segue LIFO: o último a entrar sai primeiro; consulte top. Em ambos, pop remove e retorna void: leia o elemento antes de removê-lo. front e top exigem contêiner não vazio. Esses adaptadores não oferecem iteração comum como vector.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "pair<vector<int>,vector<int>> ordens(const vector<int>& a){\n    queue<int> fila;stack<int> pilha;\n    for(int x:a){fila.push(x);pilha.push(x);}\n    vector<int> fifo,lifo;\n    while(!fila.empty()){fifo.push_back(fila.front());fila.pop();}\n    while(!pilha.empty()){lifo.push_back(pilha.top());pilha.pop();}\n    return {fifo,lifo};\n}",
+    "complexity": "O(n) de tempo e espaço para armazenar e consumir n elementos.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::fila_pilha_interfaces",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000060",
+      "title": "Inicialização de contêineres compostos",
+      "pages_1based": [
+        12,
+        13
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": null,
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210840",
+    "card_ids": [
+      "1793230210841"
+    ],
+    "fields_sha256": "18a9209d188f3ae73fe516b8746d969b0b6510778b33c6c933d05296735ccaa7",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

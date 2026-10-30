@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000003",
+  "content_key": "dijkstra_estados",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Quando a possibilidade de usar uma aresta depende de quantos recursos já foram usados, por que dist[v] não basta? Como implementar Dijkstra com até K usos de uma alternativa?",
+  "back": {
+    "answer": "Duas chegadas ao mesmo vértice podem ter futuros diferentes: uma gastou o recurso e a outra ainda o possui. O estado deve guardar (v, usados), e a distância é dist[v][usados]. Uma aresta normal preserva usados; a alternativa consome mais um. Todos os pesos precisam ser não negativos. Como o limite é até K, a resposta é o mínimo entre todos os estados finais, não apenas dist[destino][K].",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "struct Aresta { int v; long long normal, extra; };\nlong long menorCaminho(const vector<vector<Aresta>>& g, int K) {\n    const long long INF = LLONG_MAX / 4;\n    int n = g.size();\n    vector<vector<long long>> d(n, vector<long long>(K+1, INF));\n    using Estado = tuple<long long,int,int>;\n    priority_queue<Estado, vector<Estado>, greater<Estado>> pq;\n    d[0][0]=0; pq.push({0,0,0});\n    while (!pq.empty()) {\n        auto estado=pq.top(); pq.pop();\n        long long c=get<0>(estado);\n        int u=get<1>(estado),k=get<2>(estado);\n        if (c!=d[u][k]) continue;\n        for (auto e:g[u]) {\n            auto relaxar = [&](int nk, long long peso) {\n                if (c+peso<d[e.v][nk]) {\n                    d[e.v][nk]=c+peso; pq.push({d[e.v][nk],e.v,nk});\n                }\n            };\n            relaxar(k,e.normal);\n            if (e.extra>=0 && k<K) relaxar(k+1,e.extra);\n        }\n    }\n    return *min_element(d.back().begin(),d.back().end());\n}",
+    "complexity": "O((K+1)(V+E) log((K+1)V)) de tempo; dist ocupa O((K+1)V), além do grafo e da fila.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::dijkstra_estados",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000008",
+      "title": "Microwaves",
+      "pages_1based": [
+        45,
+        46
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": null,
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210775",
+    "card_ids": [
+      "1793230210776"
+    ],
+    "fields_sha256": "ff3b03645fe9ebae2c22fb68bcd2fd8e2198c0cb2da0b519de68aced6b0db9fe",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

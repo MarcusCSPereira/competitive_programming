@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000083",
+  "content_key": "shift_largura_e_produto_inteiro",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Ao calcular quantidadeDeUns * 2^quantidadeDeZeros com 1ULL<<zeros, o que ainda precisa ser verificado? Por que trocar pow por shift não resolve qualquer limite?",
+  "back": {
+    "answer": "O tipo do operando esquerdo controla a largura do shift: 1 é int; 1ULL é unsigned long long. O número de posições precisa ser menor que a largura desse tipo e não pode ser negativo. Um shift pela largura inteira é comportamento indefinido, mesmo com operando sem sinal.\n\nDepois de gerar 2^zeros, a multiplicação pela quantidade de uns também precisa caber. Antes de multiplicar, compare uns com MAX/potencia. Se não couber, o problema exige outro tratamento: inteiro maior, aritmética modular ou biblioteca de precisão arbitrária, conforme o enunciado. O código apenas sinaliza falha e não escolhe silenciosamente uma dessas alternativas.\n\nEm Luntik, o limite anotado N≤60 já permite provar que a conta cabe; este card explicita os cuidados necessários quando o mesmo padrão é reutilizado com limites maiores. Se não há uns, a resposta é zero sem sequer executar o shift.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "bool contarSeguro(unsigned long long uns,unsigned zeros,\n                  unsigned long long& resultado) {\n    if (uns==0) {resultado=0; return true;}\n    unsigned largura=numeric_limits<unsigned long long>::digits;\n    if (zeros>=largura) return false;\n    unsigned long long potencia=1ULL<<zeros;\n    if (uns>ULLONG_MAX/potencia) return false;\n    resultado=uns*potencia;\n    return true;\n}",
+    "complexity": "O(1) de tempo e espaço no modelo de inteiros da máquina; contagens arbitrariamente grandes exigem outra representação.",
+    "success_criteria": [
+      "Usar um operando esquerdo com o tipo correto.",
+      "Verificar a largura antes de deslocar.",
+      "Verificar também a multiplicação posterior."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::expansao_20261028",
+    "assunto::shift_largura_e_produto_inteiro",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000027",
+      "title": "Luntik and Subsequences",
+      "pages_1based": [
+        71,
+        72
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1582/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-expansao-072",
+    "sync_run_id": "b9f78700-9140-42d3-9354-cee80c562b26",
+    "learning_origin": "didactic_extension",
+    "technical_references": [
+      "https://eel.is/c++draft/expr.shift"
+    ]
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-expansao.json",
+    "validated_at": "2026-10-28T20:56:56-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793231826530",
+    "card_ids": [
+      "1793231826530"
+    ],
+    "fields_sha256": "ff3973f4f851a7caa1f71f59e39e5f4c228a53e1daeba2f9346e5eb306e95efe",
+    "last_batch_id": "2026-10-28-expansao"
+  }
+}

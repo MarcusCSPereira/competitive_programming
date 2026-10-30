@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000080",
+  "content_key": "sort_comparador_estrito_desempate",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como escrever um comparador de sort com ordem decrescente e desempate crescente? Por que usar >= ou misturar critérios com OR pode quebrar a ordenação?",
+  "back": {
+    "answer": "O comparador responde se a deve vir estritamente antes de b. Portanto comp(a,a) deve ser false. Usar >= quando as chaves são iguais faz um elemento vir antes de si mesmo e viola a ordenação estrita exigida pelo sort. A relação também deve ser transitiva: se a vem antes de b e b de c, a deve vir antes de c.\n\nCompare primeiro o critério principal. Só quando ele empatar, compare o desempate. Em Monsters, usamos o resto efetivo decrescente e, no empate, o índice original crescente. Se todos os critérios empatarem, retorne false. Não combine indiscriminadamente a.resto>b.resto || a.indice<b.indice: o segundo critério poderia contradizer o primeiro.\n\nTambém prefira comparar diretamente a subtrair chaves: uma subtração pode estourar. sort não preserva automaticamente a ordem de entrada em empates; se a regra exige um índice, ele deve aparecer no comparador.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "struct ItemOrdenacao { long long resto; int indice; };\nbool antes(const ItemOrdenacao& a,const ItemOrdenacao& b) {\n    if (a.resto!=b.resto) return a.resto>b.resto;\n    return a.indice<b.indice;\n}\nvector<int> ordemDosIndices(vector<ItemOrdenacao> itens) {\n    sort(itens.begin(),itens.end(),antes);\n    vector<int> resposta;\n    for (const auto& item:itens) resposta.push_back(item.indice);\n    return resposta;\n}",
+    "complexity": "O(N log N) comparações. Cada comparação custa O(1); o vetor de saída ocupa O(N).",
+    "success_criteria": [
+      "Retornar false ao comparar um item com ele mesmo.",
+      "Aplicar o desempate apenas quando o critério principal empatar.",
+      "Usar comparações diretas sem subtrair valores potencialmente grandes."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::expansao_20261028",
+    "assunto::sort_comparador_estrito_desempate",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000041",
+      "title": "Monsters",
+      "pages_1based": [
+        84
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1849/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-expansao-072",
+    "sync_run_id": "b9f78700-9140-42d3-9354-cee80c562b26",
+    "learning_origin": "implementation_detail_from_notes",
+    "technical_references": [
+      "https://eel.is/c++draft/alg.sorting#general"
+    ]
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-expansao.json",
+    "validated_at": "2026-10-28T20:56:56-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793231826527",
+    "card_ids": [
+      "1793231826527"
+    ],
+    "fields_sha256": "8d6a19b1549a1a3923db1b9ef042609f1af563efb78149a7c265c9ee0b1522e3",
+    "last_batch_id": "2026-10-28-expansao"
+  }
+}

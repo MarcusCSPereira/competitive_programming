@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000058",
+  "content_key": "map_lookup_sem_inserir",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Quando usar find, count e operator[] em um map ou unordered_map? Por que uma consulta com [] pode alterar a estrutura?",
+  "back": {
+    "answer": "operator[] insere uma chave ausente com valor padrão. Isso é útil para contar frequências e agrupar, mas perigoso para uma consulta que deveria apenas verificar existência, especialmente num cache com limite de capacidade. find retorna um iterador e permite ler o valor sem inserir; count retorna 0 ou 1 para mapas de chave única. Em C++17, use find em vez de contains, que chegou no C++20.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int buscar(const unordered_map<int,int>& mp,int chave) {\n    auto it=mp.find(chave);\n    return it==mp.end() ? -1 : it->second;\n}\nunordered_map<int,int> frequencias(const vector<int>& a){\n    unordered_map<int,int> f;\n    for(int x:a) ++f[x]; // inserção intencional, valor inicial 0\n    return f;\n}",
+    "complexity": "unordered_map: O(1) médio por acesso; map: O(log U). Frequências usam O(U) espaço.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::map_lookup_sem_inserir",
+    "origem::big-tech-problems",
+    "origem::big-tech-problems",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000053",
+      "title": "LRU Cache",
+      "pages_1based": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": "https://leetcode.com/problems/lru-cache/description/",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    },
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000054",
+      "title": "Group Anagrams",
+      "pages_1based": [
+        5
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": "https://leetcode.com/problems/group-anagrams/description/",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    },
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000055",
+      "title": "Top K Frequent Elements",
+      "pages_1based": [
+        5,
+        6
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": "https://leetcode.com/problems/top-k-frequent-elements/description/",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210830",
+    "card_ids": [
+      "1793230210831"
+    ],
+    "fields_sha256": "506e64263fcd2b0be31bada0cdf1ec4c0b65f72417b08426110541f2e119dbd6",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

@@ -1,0 +1,500 @@
+{
+  "batch_id": "2026-10-28-historico",
+  "plan": {
+    "batch_id": "2026-10-28-historico",
+    "create": 69,
+    "update": 0,
+    "unchanged": 0,
+    "total": 69
+  },
+  "status": "synced",
+  "notes": {
+    "cp-note-000001": {
+      "note_id": "1793230210773",
+      "card_ids": [
+        "1793230210774"
+      ],
+      "fields_sha256": "a3352d9b434e2b6d3d08445fee1b0f0ec0a3d05fbeee86c875c736431b6205ee"
+    },
+    "cp-note-000002": {
+      "note_id": "1793230210774",
+      "card_ids": [
+        "1793230210775"
+      ],
+      "fields_sha256": "0f82c42a8883b11768706c02ce28f3513088b4684921d5a28ab75809462fa55a"
+    },
+    "cp-note-000003": {
+      "note_id": "1793230210775",
+      "card_ids": [
+        "1793230210776"
+      ],
+      "fields_sha256": "ff3b03645fe9ebae2c22fb68bcd2fd8e2198c0cb2da0b519de68aced6b0db9fe"
+    },
+    "cp-note-000004": {
+      "note_id": "1793230210776",
+      "card_ids": [
+        "1793230210777"
+      ],
+      "fields_sha256": "62302e6673ae77371d3612ca6c0f67714e7ebb16db501f84770bd0b2c1b3d0fe"
+    },
+    "cp-note-000005": {
+      "note_id": "1793230210777",
+      "card_ids": [
+        "1793230210778"
+      ],
+      "fields_sha256": "f981db1b684dc61a090c7e99b2c79b5b70f598e7f25fb55225aaa1d97271837c"
+    },
+    "cp-note-000006": {
+      "note_id": "1793230210778",
+      "card_ids": [
+        "1793230210779"
+      ],
+      "fields_sha256": "d0303bba8d5eca4ba1e105f42b833e0e7e2949d7782af17618f47d78f351e039"
+    },
+    "cp-note-000007": {
+      "note_id": "1793230210779",
+      "card_ids": [
+        "1793230210780"
+      ],
+      "fields_sha256": "753af8eae2ece921e04cf99295a10abc83995b5d100d77ce752948143585d0b8"
+    },
+    "cp-note-000008": {
+      "note_id": "1793230210780",
+      "card_ids": [
+        "1793230210781"
+      ],
+      "fields_sha256": "167434b5e70ab33ca368f995759b438b1cc97ab98c4d3c8ff42a288c730bbc66"
+    },
+    "cp-note-000009": {
+      "note_id": "1793230210781",
+      "card_ids": [
+        "1793230210782"
+      ],
+      "fields_sha256": "6f208aad7a0fe1b62295d11638614e5b253328f339fefda96dd904d5a2f6f720"
+    },
+    "cp-note-000010": {
+      "note_id": "1793230210782",
+      "card_ids": [
+        "1793230210783"
+      ],
+      "fields_sha256": "7f13d7c5e0b0747612af08b805b157c62093064d867d54776bc930a1212222d2"
+    },
+    "cp-note-000011": {
+      "note_id": "1793230210783",
+      "card_ids": [
+        "1793230210784"
+      ],
+      "fields_sha256": "70e7e68b7ce9f0eb0a31621f695c6cc1bf65a4e48d2889e0f3cb75f6b84d6e24"
+    },
+    "cp-note-000012": {
+      "note_id": "1793230210784",
+      "card_ids": [
+        "1793230210785"
+      ],
+      "fields_sha256": "126eabf2f0db1d5e27878be864e9ab98a2bc4685da8138a8b7791b2d1b69e3c9"
+    },
+    "cp-note-000013": {
+      "note_id": "1793230210785",
+      "card_ids": [
+        "1793230210786"
+      ],
+      "fields_sha256": "d2b53cac0a2e7fcaf5c2d34999e96a224c58fc239b104238e5139ebdcdd399cc"
+    },
+    "cp-note-000014": {
+      "note_id": "1793230210786",
+      "card_ids": [
+        "1793230210787"
+      ],
+      "fields_sha256": "83c43b7d7444c70e9dbdd84fc9c9088720a18f50ec58cf8392d640ee411a0e4c"
+    },
+    "cp-note-000015": {
+      "note_id": "1793230210787",
+      "card_ids": [
+        "1793230210788"
+      ],
+      "fields_sha256": "799e036acbc6bafc18a7ba327cad7f3be8d8f65ee3e729a8af278af3873ddd18"
+    },
+    "cp-note-000016": {
+      "note_id": "1793230210788",
+      "card_ids": [
+        "1793230210789"
+      ],
+      "fields_sha256": "3469e5a5195af5bb234a7374c711c96003b27eac1b9fea47e7720c0440aee099"
+    },
+    "cp-note-000017": {
+      "note_id": "1793230210789",
+      "card_ids": [
+        "1793230210790"
+      ],
+      "fields_sha256": "baf9d3d5eee57ba0910c4fb1cf8c4a2ce1d426da2e0d965afc6ffcfff98b3716"
+    },
+    "cp-note-000018": {
+      "note_id": "1793230210790",
+      "card_ids": [
+        "1793230210791"
+      ],
+      "fields_sha256": "c48eb5f911aa6046c4a7daa211228d2de2ec5042df73f83aa562627b97390b8b"
+    },
+    "cp-note-000019": {
+      "note_id": "1793230210791",
+      "card_ids": [
+        "1793230210792"
+      ],
+      "fields_sha256": "ac4064afb3e8b80e3078e785b055a1b4e1b2b3477e7427662fa8a902b905a6a2"
+    },
+    "cp-note-000020": {
+      "note_id": "1793230210792",
+      "card_ids": [
+        "1793230210793"
+      ],
+      "fields_sha256": "a513e78758acf1bce34b1304cffda156577df18fde2ae292f75b65811f3812cc"
+    },
+    "cp-note-000021": {
+      "note_id": "1793230210793",
+      "card_ids": [
+        "1793230210794"
+      ],
+      "fields_sha256": "c3a21713f65efbe4fc3a0fd7b98d843aef7a662bce6ff7d539e0307450978d38"
+    },
+    "cp-note-000022": {
+      "note_id": "1793230210794",
+      "card_ids": [
+        "1793230210795"
+      ],
+      "fields_sha256": "6c93c7df2dc60be850c388c72dfe74fca8ba95e9a72d77b75c6e6fc7d16105b1"
+    },
+    "cp-note-000023": {
+      "note_id": "1793230210795",
+      "card_ids": [
+        "1793230210796"
+      ],
+      "fields_sha256": "6cfea5aeb34f2d872038a97135a1b66777875584f78c6f0cedcee0c8a547185a"
+    },
+    "cp-note-000024": {
+      "note_id": "1793230210796",
+      "card_ids": [
+        "1793230210797"
+      ],
+      "fields_sha256": "212d9b1431d6109e45accb06824d99fedfdff636630c16326b193a5dbbfc952a"
+    },
+    "cp-note-000025": {
+      "note_id": "1793230210797",
+      "card_ids": [
+        "1793230210798"
+      ],
+      "fields_sha256": "484aa8ab52edbeb2262f786b904737dac081c42a0c0dda903929a7667d63b062"
+    },
+    "cp-note-000026": {
+      "note_id": "1793230210798",
+      "card_ids": [
+        "1793230210799"
+      ],
+      "fields_sha256": "c13e1e84f2ccae29a9f5774b48eecdc5ef4f315603941dc8c138973c665269a4"
+    },
+    "cp-note-000027": {
+      "note_id": "1793230210799",
+      "card_ids": [
+        "1793230210800"
+      ],
+      "fields_sha256": "32e46fcad6414349269dad39716eab14e84d63d362b367f8e393af38f78bfe24"
+    },
+    "cp-note-000028": {
+      "note_id": "1793230210800",
+      "card_ids": [
+        "1793230210801"
+      ],
+      "fields_sha256": "85f5eee7c1d5f2aac62ebea825786849e0a9c08fb00d774aa2f1ad4e5774e199"
+    },
+    "cp-note-000029": {
+      "note_id": "1793230210801",
+      "card_ids": [
+        "1793230210802"
+      ],
+      "fields_sha256": "ae67ec410d3bcd3d6e28d20671fbeff1f66747ad07eccd6129a9bed6e57f18e1"
+    },
+    "cp-note-000030": {
+      "note_id": "1793230210802",
+      "card_ids": [
+        "1793230210803"
+      ],
+      "fields_sha256": "4ed89dfe763c910962943395acb0ebedfd41a3c814f81ef7c1c1fa940134841d"
+    },
+    "cp-note-000031": {
+      "note_id": "1793230210803",
+      "card_ids": [
+        "1793230210804"
+      ],
+      "fields_sha256": "9c72ba80353444b800bb17aad7be5e9e25333c27f775ab4a72c3c709616a18ff"
+    },
+    "cp-note-000032": {
+      "note_id": "1793230210804",
+      "card_ids": [
+        "1793230210805"
+      ],
+      "fields_sha256": "02dadedd86ef45f2f18cefcc048469dc3961938bca0960ff4b2b648912c7d5b2"
+    },
+    "cp-note-000033": {
+      "note_id": "1793230210805",
+      "card_ids": [
+        "1793230210806"
+      ],
+      "fields_sha256": "fa078355b073024699a8832fad7ba29a9cb1fb17ec1ca78c0ab4986ef56f6e47"
+    },
+    "cp-note-000034": {
+      "note_id": "1793230210806",
+      "card_ids": [
+        "1793230210807"
+      ],
+      "fields_sha256": "ee7968b978eea5857fa584814fdc360f6f77631122519d80f78862590d189b2c"
+    },
+    "cp-note-000035": {
+      "note_id": "1793230210807",
+      "card_ids": [
+        "1793230210808"
+      ],
+      "fields_sha256": "b4d48e99e86af9a99c2a9b3a4d43a9d698ff6fb6936a85b500edc32ff20e1d06"
+    },
+    "cp-note-000036": {
+      "note_id": "1793230210808",
+      "card_ids": [
+        "1793230210809"
+      ],
+      "fields_sha256": "83661d1da790e5d887114d3c9b878b8110f5261c581201fea55841a562fa974d"
+    },
+    "cp-note-000037": {
+      "note_id": "1793230210809",
+      "card_ids": [
+        "1793230210810"
+      ],
+      "fields_sha256": "63100ba21b42035ff4c9aaf7cab7c7e30b23f8db5d1e3b3e9cb68d6a4308dca1"
+    },
+    "cp-note-000038": {
+      "note_id": "1793230210810",
+      "card_ids": [
+        "1793230210811"
+      ],
+      "fields_sha256": "b9fe1587b4583b1d8d95dd3261374264a723cb3239c9b65e117a42ea32c8b536"
+    },
+    "cp-note-000039": {
+      "note_id": "1793230210811",
+      "card_ids": [
+        "1793230210812"
+      ],
+      "fields_sha256": "f99abde08e18163103f648f6e1877d33b956716f3975173f04f3b82430e4dabb"
+    },
+    "cp-note-000040": {
+      "note_id": "1793230210812",
+      "card_ids": [
+        "1793230210813"
+      ],
+      "fields_sha256": "68dfd7ec8a17216bbad3fbe9983ce76bfc4f1664fd6bf0fbbfcb312daa05b903"
+    },
+    "cp-note-000041": {
+      "note_id": "1793230210813",
+      "card_ids": [
+        "1793230210814"
+      ],
+      "fields_sha256": "325b9c612adfac62975e0fc81b559f8f32d1a0aa1c68265b83f6948d4e3149e6"
+    },
+    "cp-note-000042": {
+      "note_id": "1793230210814",
+      "card_ids": [
+        "1793230210815"
+      ],
+      "fields_sha256": "604cf8b14bd6fbc84ff43a4d74ca568646de44036cc355e16ae1a4c3e01de047"
+    },
+    "cp-note-000043": {
+      "note_id": "1793230210815",
+      "card_ids": [
+        "1793230210816"
+      ],
+      "fields_sha256": "8feb5454be91435bcbe1578bcd846d206ac69e1f9d4b935974263484025c938a"
+    },
+    "cp-note-000044": {
+      "note_id": "1793230210816",
+      "card_ids": [
+        "1793230210817"
+      ],
+      "fields_sha256": "466ae4a984a5fde90df006a338eb45adba704a84e79d18ced18555095533648f"
+    },
+    "cp-note-000045": {
+      "note_id": "1793230210817",
+      "card_ids": [
+        "1793230210818"
+      ],
+      "fields_sha256": "079ea57c613dc6a6b1ce19540e0380e8c3562c5aab76dae195d7f653817c97c3"
+    },
+    "cp-note-000046": {
+      "note_id": "1793230210818",
+      "card_ids": [
+        "1793230210819"
+      ],
+      "fields_sha256": "a29ad6117081fd0bfa3381a6c5010eb8bb34d439b7dee4daa0993d6e1bc6d13a"
+    },
+    "cp-note-000047": {
+      "note_id": "1793230210819",
+      "card_ids": [
+        "1793230210820"
+      ],
+      "fields_sha256": "203dd4013124d1ce61ffb4d2fbb75c491c4d51e1167a19b1f0feac4e80198292"
+    },
+    "cp-note-000048": {
+      "note_id": "1793230210820",
+      "card_ids": [
+        "1793230210821"
+      ],
+      "fields_sha256": "a68c080f00d28ed69551740709443bf04f2286f2dc498b72c9cd0363e661b7c6"
+    },
+    "cp-note-000049": {
+      "note_id": "1793230210821",
+      "card_ids": [
+        "1793230210822"
+      ],
+      "fields_sha256": "92daca0169a4f7e4bfeea94b23d7492e3e9e2743561722134eefe282a29a14d2"
+    },
+    "cp-note-000050": {
+      "note_id": "1793230210822",
+      "card_ids": [
+        "1793230210823"
+      ],
+      "fields_sha256": "3684067240ab7229795d4c498e3f78ba2ea2b0b3c03a3dacccaef0d938b2e763"
+    },
+    "cp-note-000051": {
+      "note_id": "1793230210823",
+      "card_ids": [
+        "1793230210824"
+      ],
+      "fields_sha256": "9151569ea1a2c3c5f6dd81a2234f65460e3440f0f040dd5a27e808da312d6790"
+    },
+    "cp-note-000052": {
+      "note_id": "1793230210824",
+      "card_ids": [
+        "1793230210825"
+      ],
+      "fields_sha256": "ddcb402a8952f7bfe91a2125db17c0c01c82eb743fc7914d80d32690ff0ffa2c"
+    },
+    "cp-note-000053": {
+      "note_id": "1793230210825",
+      "card_ids": [
+        "1793230210826"
+      ],
+      "fields_sha256": "ae5cc6d7db57acddfa8e7a54b8ee1b9fd414df790ffdabb48f76aee425768df8"
+    },
+    "cp-note-000054": {
+      "note_id": "1793230210826",
+      "card_ids": [
+        "1793230210827"
+      ],
+      "fields_sha256": "73f2f57a3a7489f6c590adc2e8f1c9a1ec7e11cc688fa31c0f923994136b6c0d"
+    },
+    "cp-note-000055": {
+      "note_id": "1793230210827",
+      "card_ids": [
+        "1793230210828"
+      ],
+      "fields_sha256": "641e1c953e30664e01f736b9e60e7bc4e50a9a95645042fe479319b959dbc0e2"
+    },
+    "cp-note-000056": {
+      "note_id": "1793230210828",
+      "card_ids": [
+        "1793230210829"
+      ],
+      "fields_sha256": "8776b515fea0fff9d738dd22399196e9770b00d21535d15d0500b4618fdc03f6"
+    },
+    "cp-note-000057": {
+      "note_id": "1793230210829",
+      "card_ids": [
+        "1793230210830"
+      ],
+      "fields_sha256": "2e94f82a617c3b204869c4146f200e2aec37b992ba5427ce15e87304621a30da"
+    },
+    "cp-note-000058": {
+      "note_id": "1793230210830",
+      "card_ids": [
+        "1793230210831"
+      ],
+      "fields_sha256": "506e64263fcd2b0be31bada0cdf1ec4c0b65f72417b08426110541f2e119dbd6"
+    },
+    "cp-note-000059": {
+      "note_id": "1793230210831",
+      "card_ids": [
+        "1793230210832"
+      ],
+      "fields_sha256": "8b32d92ef399a3a72ded5ac8fdd47be32ae8000f8ce649dcf9945a4a29d6e89f"
+    },
+    "cp-note-000060": {
+      "note_id": "1793230210832",
+      "card_ids": [
+        "1793230210833"
+      ],
+      "fields_sha256": "c94d82762a673c5b9292aaaaa6283625accd954a3dc1f99583811b9cd27066cb"
+    },
+    "cp-note-000061": {
+      "note_id": "1793230210833",
+      "card_ids": [
+        "1793230210834"
+      ],
+      "fields_sha256": "651edfa2fb81ee712712f0d280a0bdd1dc975fd6a6482453688249f5f2e742fe"
+    },
+    "cp-note-000062": {
+      "note_id": "1793230210834",
+      "card_ids": [
+        "1793230210835"
+      ],
+      "fields_sha256": "5894fdc4cb39e6d61fb737eaa5520dfd0eb900d89f543c4b5f4cab1f45e0d8ee"
+    },
+    "cp-note-000063": {
+      "note_id": "1793230210835",
+      "card_ids": [
+        "1793230210836"
+      ],
+      "fields_sha256": "b3a59ada33019adbaa65ec88352b95ae003d8ee137e0c3d97f86a7893e0f7724"
+    },
+    "cp-note-000064": {
+      "note_id": "1793230210836",
+      "card_ids": [
+        "1793230210837"
+      ],
+      "fields_sha256": "3f03855164de0b2bcb23337eefb309feb468db67e1137d0580d483a91d658092"
+    },
+    "cp-note-000065": {
+      "note_id": "1793230210837",
+      "card_ids": [
+        "1793230210838"
+      ],
+      "fields_sha256": "921641afbc5df3ed924b88eeeec8c961c9b9a3cc5998ca872f101fec8031d6cb"
+    },
+    "cp-note-000066": {
+      "note_id": "1793230210838",
+      "card_ids": [
+        "1793230210839"
+      ],
+      "fields_sha256": "1edba1b61579058014d28fc0dac9a9e3fe357ef89c14edeb6e6337667d367a43"
+    },
+    "cp-note-000067": {
+      "note_id": "1793230210839",
+      "card_ids": [
+        "1793230210840"
+      ],
+      "fields_sha256": "a19d8d490a4acc4eca33c9be13eb7802a614f7c88ab487b45aef96a991c66496"
+    },
+    "cp-note-000068": {
+      "note_id": "1793230210840",
+      "card_ids": [
+        "1793230210841"
+      ],
+      "fields_sha256": "18a9209d188f3ae73fe516b8746d969b0b6510778b33c6c933d05296735ccaa7"
+    },
+    "cp-note-000069": {
+      "note_id": "1793230210841",
+      "card_ids": [
+        "1793230210842"
+      ],
+      "fields_sha256": "d14958b45d693aa378518bb4fe9579d31a81a0b6f564dd542d10600b3a7f763e"
+    }
+  },
+  "sync": {
+    "collectionComplete": true,
+    "mediaComplete": true
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000014",
+  "content_key": "comparacoes_monotonas",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como a maior sequência de sinais iguais numa string de < e > determina o mínimo de valores distintos necessários para satisfazer as comparações?",
+  "back": {
+    "answer": "Uma sequência de L sinais iguais impõe uma cadeia estritamente crescente ou decrescente com L+1 valores distintos. Isso dá um limite inferior. Ele é suficiente: ao mudar a direção, podemos reutilizar níveis, atribuindo a cada posição um nível compatível com as cadeias monotônicas incidentes. Portanto a resposta é a maior sequência de sinais iguais mais 1. Não é preciso tentar valores do array.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int niveis(const string& s) {\n    int atual=0,melhor=0; char anterior=0;\n    for(char c:s){\n        atual=(c==anterior ? atual+1 : 1);\n        melhor=max(melhor,atual); anterior=c;\n    }\n    return melhor+1;\n}",
+    "complexity": "O(n) de tempo e O(1) de espaço.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::comparacoes_monotonas",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000013",
+      "title": "Comparison String",
+      "pages_1based": [
+        56,
+        57
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1837/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210786",
+    "card_ids": [
+      "1793230210787"
+    ],
+    "fields_sha256": "83c43b7d7444c70e9dbdd84fc9c9088720a18f50ec58cf8392d640ee411a0e4c",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

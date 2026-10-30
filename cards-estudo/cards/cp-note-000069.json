@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000069",
+  "content_key": "soma_listas_carry",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como somar duas linked lists de dígitos em ordem inversa, construindo uma nova lista? Como tratar tamanhos diferentes e o carry final?",
+  "back": {
+    "answer": "Percorra enquanto houver um nó em qualquer entrada OU carry. Uma lista terminada contribui zero. Some os dois dígitos e o carry anterior; o novo dígito é soma%10 e o próximo carry é soma/10. Conecte um nó à lista de saída e avance cada entrada somente se ela existir. O carry deve participar da condição do laço: 9+1 precisa produzir 0->1, mesmo depois de ambas as entradas terminarem. Um sentinela local simplifica a construção sem precisar de delete para ele.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "ListNode* somar(const ListNode* a,const ListNode* b){\n    ListNode head(0);ListNode* actual=&head;int carry=0;\n    while(a || b || carry){\n        int soma=carry+(a?a->val:0)+(b?b->val:0);\n        carry=soma/10;\n        actual->next=new ListNode(soma%10);actual=actual->next;\n        if(a)a=a->next;\n        if(b)b=b->next;\n    }\n    return head.next;\n}",
+    "complexity": "O(max(n,m)) de tempo, O(1) auxiliar e O(max(n,m)) para a saída; dígitos entre 0 e 9.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::soma_listas_carry",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000005",
+      "title": "Add Two Numbers",
+      "pages_1based": [
+        14
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": "https://leetcode.com/problems/add-two-numbers/description/",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210841",
+    "card_ids": [
+      "1793230210842"
+    ],
+    "fields_sha256": "d14958b45d693aa378518bb4fe9579d31a81a0b6f564dd542d10600b3a7f763e",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

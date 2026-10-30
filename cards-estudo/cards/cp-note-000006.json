@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000006",
+  "content_key": "sweep_line_intervalos",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como encontrar o máximo de pessoas simultâneas em intervalos de presença sem percorrer cada minuto? Como tratar saída e entrada no mesmo instante?",
+  "back": {
+    "answer": "Converta cada intervalo semiaberto [chegada, saída) em dois eventos: +quantidade na chegada e -quantidade na saída. Ordene e acumule os deltas. Agrupar todos os deltas do mesmo instante aplica corretamente a convenção de que quem sai nesse instante já não ocupa espaço. Se a entrada fornece duração t, a saída é chegada+t. Não aloquem um vetor pelo maior horário: o custo depende da quantidade de eventos.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "long long pico(const vector<tuple<long long,long long,long long>>& presencas) {\n    map<long long,long long> delta;\n    for(auto [inicio,fim,qtd]:presencas) {\n        if(inicio>=fim) continue;\n        delta[inicio]+=qtd; delta[fim]-=qtd;\n    }\n    long long atual=0,maior=0;\n    for(auto [tempo,mudanca]:delta) {\n        (void)tempo; atual+=mudanca; maior=max(maior,atual);\n    }\n    return maior;\n}",
+    "complexity": "O(N log N) de tempo e O(N) de espaço.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::sweep_line_intervalos",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000009",
+      "title": "Porquinho da Índia",
+      "pages_1based": [
+        46,
+        47,
+        48
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": null,
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210778",
+    "card_ids": [
+      "1793230210779"
+    ],
+    "fields_sha256": "d0303bba8d5eca4ba1e105f42b833e0e7e2949d7782af17618f47d78f351e039",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000039",
+  "content_key": "divisibilidade_produto",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Por que tornar um produto divisível por um primo é diferente de torná-lo divisível por 4? Como minimizar incrementos para k entre 2 e 5?",
+  "back": {
+    "answer": "Para k primo, basta que algum fator se torne múltiplo de k: o custo é o mínimo de (k-a[i]%k)%k. Para k=4, o produto também pode ganhar os dois fatores 2 em elementos diferentes. Além de tornar um elemento múltiplo de 4, considere obter dois pares: se já há dois, custo 0; um, custo 1; nenhum, custo 2. Compare as alternativas e não multiplique todo o array, pois pode estourar.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int incrementosProduto(const vector<int>& a,int k) {\n    int melhor=k,pares=0;\n    for(int x:a){\n        melhor=min(melhor,(k-x%k)%k);\n        pares+=(x%2==0);\n    }\n    if(k==4) melhor=min(melhor,max(0,2-pares));\n    return melhor;\n}",
+    "complexity": "O(n) de tempo e O(1) de espaço; 2<=k<=5 e n>=2.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::divisibilidade_produto",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000038",
+      "title": "Raspberries",
+      "pages_1based": [
+        80,
+        81
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1883/C",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210811",
+    "card_ids": [
+      "1793230210812"
+    ],
+    "fields_sha256": "f99abde08e18163103f648f6e1877d33b956716f3975173f04f3b82430e4dabb",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

@@ -1,0 +1,261 @@
+#separator:Tab
+#html:true
+#notetype:CP Goodnotes
+#deck:Programação competitiva
+#tags column:5
+cp-note-000070	<p>Como representar um grafo ponderado e bidirecional com até 10^5 vértices sem uma matriz N×N? Como guardar custo normal e custo alternativo ausente?</p>	"<p>Use uma lista de adjacência: g[u] guarda só as conexões que realmente saem de u. Uma conexão bidirecional precisa aparecer em g[u] e g[v]. Os dois registros representam a mesma ligação física, com os mesmos custos.</p><p>O índice externo 1…N pode ser convertido para 0…N-1 na leitura. Em Microwaves, cada registro guarda destino, custo de fibra e custo de micro-ondas. O valor -1 significa que a alternativa não existe; não é um peso negativo a ser relaxado. O Dijkstra expande cada registro preservando o recurso ou consumindo um uso quando a alternativa existe.</p><p>Uma matriz teria N² posições mesmo com poucas arestas. A lista ocupa O(V+E), guardando 2E registros no caso bidirecional. Os custos e as distâncias não precisam ter o mesmo limite: a soma de muitos custos pode exigir long long.</p><pre><code class=""language-cpp"">struct Ligacao { int destino; long long fibra, micro; };
+vector&lt;vector&lt;Ligacao&gt;&gt; montarGrafo(
+    int n, const vector&lt;tuple&lt;int,int,long long,long long&gt;&gt;&amp; linhas) {
+    vector&lt;vector&lt;Ligacao&gt;&gt; g(n);
+    for (auto [u,v,fibra,micro] : linhas) {
+        --u; --v; // entrada em base 1
+        g[u].push_back({v,fibra,micro});
+        g[v].push_back({u,fibra,micro});
+    }
+    return g;
+}</code></pre><p><strong>Complexidade:</strong> O(V+E) de tempo e memória para montar o grafo; 2E registros continuam sendo O(E).</p><details><summary>Critério de acerto</summary><ul><li>Inserir cada ligação nos dois sentidos e converter a base dos índices.</li><li>Guardar -1 como ausência da alternativa, sem usar isso como peso.</li><li>Comparar O(V+E) da lista com O(V²) da matriz.</li></ul></details>"	<ul><li>Microwaves · problemas · páginas 45, 46</li></ul>	assunto::grafo_esparso_bidirecional cp_goodnotes lote::expansao_20261028 origem::problemas
+cp-note-000071	<p>No Dijkstra, por que descobrir um vértice não significa finalizar sua distância? Quando posso parar ao alcançar o destino, inclusive se o estado guarda recursos usados?</p>	"<p>Descobrir significa ter encontrado alguma proposta; outra rota ainda pode melhorá-la. Por exemplo, 0→1 custa 10, mas 0→2→1 custa 1+1. Marcar 1 como definitivo ao inseri-lo na fila descartaria a rota de custo 2.</p><p>Com pesos não negativos, a menor proposta atual retirada do min-heap pode ser finalizada. Primeiro descarte propostas obsoletas; depois é seguro retornar quando retirar o destino. Se o problema aceita até K usos, o primeiro estado atual do destino retirado é o menor entre todos os números de usos. A identidade do estado continua sendo (v, usados): não use um único visited[v] para bloquear as outras camadas.</p><p>BFS com fila comum minimiza número de arestas e só serve diretamente quando todas têm o mesmo custo. Havendo custos negativos, esta garantia do Dijkstra deixa de valer. O código assume custos não negativos e somas finitas dentro do intervalo escolhido para INF.</p><pre><code class=""language-cpp"">struct ArestaFim { int v; long long normal, extra; };
+long long ateDestino(const vector&lt;vector&lt;ArestaFim&gt;&gt;&amp; g, int K) {
+    const long long INF=LLONG_MAX/4;
+    vector&lt;vector&lt;long long&gt;&gt; d(g.size(),vector&lt;long long&gt;(K+1,INF));
+    using Estado=tuple&lt;long long,int,int&gt;;
+    priority_queue&lt;Estado,vector&lt;Estado&gt;,greater&lt;Estado&gt;&gt; fila;
+    d[0][0]=0; fila.push({0,0,0});
+    while (!fila.empty()) {
+        auto estado=fila.top(); fila.pop();
+        long long c=get&lt;0&gt;(estado);
+        int u=get&lt;1&gt;(estado),k=get&lt;2&gt;(estado);
+        if (c!=d[u][k]) continue;
+        if (u==(int)g.size()-1) return c; // após retirar, não ao descobrir
+        for (auto e:g[u]) {
+            auto relaxar=[&amp;](int nk,long long peso) {
+                if (c+peso&lt;d[e.v][nk]) {
+                    d[e.v][nk]=c+peso;
+                    fila.push({d[e.v][nk],e.v,nk});
+                }
+            };
+            relaxar(k,e.normal);
+            if (e.extra&gt;=0 &amp;&amp; k&lt;K) relaxar(k+1,e.extra);
+        }
+    }
+    return -1; // nenhum estado do destino é alcançável
+}</code></pre><p><strong>Complexidade:</strong> Para grafo simples: O((K+1)(V+E) log((K+1)V)) no pior caso. Distâncias ocupam O((K+1)V), além do grafo e das propostas da fila.</p><details><summary>Critério de acerto</summary><ul><li>Distinguir descoberta de retirada da menor proposta atual.</li><li>Descartar propostas obsoletas antes do retorno antecipado.</li><li>Preservar o número de recursos usados na identidade de cada estado.</li></ul></details>"	<ul><li>Microwaves · problemas · páginas 45, 46</li></ul>	assunto::dijkstra_finalizacao_na_retirada cp_goodnotes lote::expansao_20261028 origem::problemas
+cp-note-000072	<p>Como escolher o tipo e o valor INF para somas de caminhos ou fórmulas? Por que guardar o resultado em long long não corrige uma multiplicação feita antes em int?</p>	"<p>O tipo do destino não muda retroativamente o tipo da expressão: long long x=n*p pode multiplicar dois ints e estourar antes da atribuição. Promova antes: 1LL*n*p, desde que o resultado também caiba em long long.</p><p>Em caminhos com pesos não negativos, um menor caminho pode ser escolhido simples no grafo de estados. Com S estados e peso máximo W, (S-1)*W limita o custo de um caminho simples. Esse limite precisa ser estritamente menor que INF. Em Microwaves, S=(K+1)*V; considere K no orçamento de tempo e memória, e não apenas V.</p><p>INF=LLONG_MAX/4 oferece margem, mas não é uma licença para somar qualquer valor. Não relaxe uma distância inalcançável. Para evitar overflow na própria soma, compare peso com INF-atual antes de somar. O código rejeita custos fora do domínio representável; o chamador deve comprovar que as restrições do problema cabem nesse domínio.</p><pre><code class=""language-cpp"">constexpr long long INF_DIST=LLONG_MAX/4;
+bool limiteCabe(long long estados,long long pesoMaximo) {
+    if (estados&lt;1 || pesoMaximo&lt;0) return false;
+    return pesoMaximo==0 || estados-1&lt;=(INF_DIST-1)/pesoMaximo;
+}
+bool relaxarSeguro(long long atual,long long peso,long long&amp; destino) {
+    if (atual&lt;0 || atual&gt;=INF_DIST || peso&lt;0) return false;
+    if (peso&gt;=INF_DIST-atual) return false;
+    long long candidato=atual+peso;
+    if (candidato&gt;=destino) return false;
+    destino=candidato;
+    return true;
+}</code></pre><p><strong>Complexidade:</strong> O(1) por verificação/relaxamento. S representa todos os estados, incluindo as camadas do recurso.</p><details><summary>Critério de acerto</summary><ul><li>Promover os operandos antes da multiplicação.</li><li>Comprovar o limite finito abaixo de INF e considerar o grafo expandido.</li><li>Não somar INF nem avaliar uma soma que poderia estourar.</li></ul></details>"	"<ul><li>Microwaves · problemas · páginas 45, 46</li><li><a href=""https://codeforces.com/problemset/problem/1878/C"">Vasilije in Cacak · problemas · páginas 52</a></li></ul>"	assunto::distancias_overflow_e_infinito cp_goodnotes lote::expansao_20261028 origem::problemas
+cp-note-000073	<p>Como resolver um grafo funcional em que uma pessoa vai, recusa ou depende de outra? Como propagar o intervalo de presença e impedir que ciclos e cadeias longas causem problemas?</p>	"<p>Não basta detectar um ciclo: cada pessoa precisa receber uma resposta final reutilizável. Um aceite fornece o intervalo [chegada, chegada+duração); uma recusa ou dependência de não convidado fornece ausência. Uma cadeia herda a resposta do seu fim. Um ciclo sem resposta independente não leva ninguém à festa; quem depende dele também fica ausente.</p><p>Use cor 0 para não visto, 1 para o caminho atual e 2 para resultado pronto. Siga os ponteiros guardando o caminho. Ao encontrar um aceite, recusa ou resultado pronto, resolva a base; ao reencontrar cor 1, a base é ausência. Volte pelo caminho em ordem reversa e marque todos como resolvidos.</p><p>Isso substitui recursão por um vetor e evita estouro da pilha em 10^5 dependências. Pessoas que convergem para a mesma cadeia reutilizam a resposta. Copie o intervalo, mas mantenha a quantidade de pessoas de cada convidado: essa quantidade própria será o peso dos eventos na sweep line.</p><pre><code class=""language-cpp"">struct Presenca { bool vai=false; long long inicio=0,fim=0; };
+vector&lt;Presenca&gt; resolver(const vector&lt;char&gt;&amp; tipo,const vector&lt;int&gt;&amp; prox,
+                         const vector&lt;pair&lt;long long,long long&gt;&gt;&amp; intervalo) {
+    int n=tipo.size(); vector&lt;int&gt; cor(n,0); vector&lt;Presenca&gt; resposta(n);
+    for (int s=0;s&lt;n;++s) {
+        if (cor[s]==2) continue;
+        vector&lt;int&gt; caminho; int u=s;
+        while (u!=-1 &amp;&amp; cor[u]==0) {
+            if (tipo[u]==&#x27;A&#x27;) {
+                resposta[u]={true,intervalo[u].first,intervalo[u].second};
+                cor[u]=2; break;
+            }
+            if (tipo[u]==&#x27;D&#x27; || prox[u]==-1) {cor[u]=2; break;}
+            cor[u]=1; caminho.push_back(u); u=prox[u];
+        }
+        Presenca base;
+        if (u!=-1 &amp;&amp; cor[u]==2) base=resposta[u];
+        // Cor 1 indica ciclo no caminho atual: base permanece ausência.
+        for (auto it=caminho.rbegin();it!=caminho.rend();++it) {
+            resposta[*it]=base; cor[*it]=2;
+        }
+    }
+    return resposta;
+}</code></pre><p><strong>Complexidade:</strong> O(N) de tempo e espaço após mapear os IDs. Cada pessoa é percorrida e finalizada no máximo uma vez.</p><details><summary>Critério de acerto</summary><ul><li>Resolver também o resultado, não só dizer se há ciclo.</li><li>Reutilizar nós de cor 2 e propagar a ausência de ciclos.</li><li>Herdar somente o intervalo, preservando o peso próprio de cada convidado.</li></ul></details>"	<ul><li>Porquinho da Índia · problemas · páginas 46, 47, 48</li></ul>	assunto::dependencias_resultado_memoizado cp_goodnotes lote::expansao_20261028 origem::problemas
+cp-note-000074	<p>Se os IDs chegam a 10^9 mas há só 10^5 pessoas cadastradas, como guardar as dependências sem um vetor de tamanho 10^9? Como distinguir um ID ausente do índice zero?</p>	"<p>Separe identidade externa e posição interna. Dê às N pessoas cadastradas os índices 0…N-1 e mantenha um dicionário ID→índice. Os vetores de resposta, cor e dependência terão tamanho N, independentemente do maior ID.</p><p>Monte primeiro o dicionário inteiro: alguém pode depender de uma pessoa declarada mais adiante. Só depois traduza as referências. Uma consulta sem resultado vira -1; use find, pois operator[] inseriria o ID desconhecido com índice padrão zero e criaria uma dependência falsa.</p><p>O map abaixo oferece custo O(log N) garantido por operação. unordered_map pode reduzir o custo médio, mas não fornece a mesma garantia de pior caso. A ordem numérica dos IDs não influencia as relações do grafo.</p><pre><code class=""language-cpp"">vector&lt;int&gt; traduzirDependencias(const vector&lt;long long&gt;&amp; ids,
+                                 const vector&lt;long long&gt;&amp; dependeDe) {
+    map&lt;long long,int&gt; indice;
+    for (int i=0;i&lt;(int)ids.size();++i) indice.emplace(ids[i],i);
+    vector&lt;int&gt; prox(ids.size(),-1);
+    for (int i=0;i&lt;(int)ids.size();++i) {
+        auto it=indice.find(dependeDe[i]);
+        if (it!=indice.end()) prox[i]=it-&gt;second;
+    }
+    return prox;
+}</code></pre><p><strong>Complexidade:</strong> O(N log N) de tempo e O(N) de espaço; IDs devem ser únicos e os vetores ter o mesmo tamanho.</p><details><summary>Critério de acerto</summary><ul><li>Construir o mapa de todos os convidados antes de traduzir referências.</li><li>Usar -1 para ausência, sem confundir com o índice zero.</li><li>Dimensionar vetores por N, não pelo maior ID.</li></ul></details>"	<ul><li>Porquinho da Índia · problemas · páginas 46, 47, 48</li></ul>	assunto::ids_esparsos_indices_compactos cp_goodnotes lote::expansao_20261028 origem::problemas
+cp-note-000075	<p>Como adaptar uma sweep line de ocupação para medir por quanto tempo uma capacidade é excedida? Por que a distância entre horários importa depois de ordenar ou comprimir coordenadas?</p>	"<p>Esta é uma extensão do padrão de Porquinho da Índia: em vez de guardar só o pico, conte a duração em que a ocupação é maior que um limite. Entre dois horários consecutivos de eventos nada muda; a ocupação anterior vale por todo o trecho [anterior,tempo). Some tempo-anterior quando ela exceder a capacidade e só então aplique o delta no horário atual.</p><p>Agrupe deltas de mesmo horário. Entradas e saídas simultâneas não criam duração intermediária. Se coordenadas 5 e 100 forem comprimidas para índices 0 e 1, o intervalo ainda dura 95, não 1: índices preservam ordem, mas não distâncias.</p><p>Assim a contagem depende de N eventos, mesmo que os horários cheguem a bilhões. O código assume quantidades e capacidade não negativas e intervalos semiabertos.</p><pre><code class=""language-cpp"">long long tempoAcima(
+    const vector&lt;tuple&lt;long long,long long,long long&gt;&gt;&amp; intervalos,
+    long long capacidade) {
+    map&lt;long long,long long&gt; delta;
+    for (auto [inicio,fim,qtd]:intervalos) {
+        if (inicio&gt;=fim) continue;
+        delta[inicio]+=qtd; delta[fim]-=qtd;
+    }
+    if (delta.empty()) return 0;
+    long long anterior=delta.begin()-&gt;first,atual=0,duracao=0;
+    for (auto [tempo,mudanca]:delta) {
+        if (atual&gt;capacidade) duracao+=tempo-anterior;
+        atual+=mudanca; anterior=tempo;
+    }
+    return duracao;
+}</code></pre><p><strong>Complexidade:</strong> O(N log N) de tempo e O(N) de espaço. Os horários originais e a ocupação acumulada devem caber em long long.</p><details><summary>Critério de acerto</summary><ul><li>Acumular a duração antes de aplicar o evento do limite direito.</li><li>Usar a diferença dos horários originais, não de seus índices comprimidos.</li><li>Tratar simultaneidade sem inventar um intervalo de duração positiva.</li></ul></details>"	<ul><li>Porquinho da Índia · problemas · páginas 46, 47, 48</li></ul>	assunto::sweep_line_duracao_entre_eventos cp_goodnotes lote::expansao_20261028 origem::problemas
+cp-note-000076	<p>Qual a diferença entre prefix sums para consultar intervalos e vetor de diferenças para atualizar intervalos? Como somar valores em muitos trechos e reconstruir o resultado em C++?</p>	"<p>Prefix sums respondem quanto há em [l,r] subtraindo duas somas. Um vetor de diferenças registra onde uma atualização começa e termina: para somar x em [l,r], base zero e inclusivo, faça delta[l]+=x e delta[r+1]-=x. Um prefixo de delta reconstrói a contribuição ativa em cada posição.</p><p>É a mesma ideia dos eventos +peso/-peso da sweep line, aplicada a um domínio pequeno e indexável. Reserve N+1 posições para registrar a saída depois da última posição. Só reconstrua depois de aplicar todas as atualizações; isso é um processamento offline. Para coordenadas enormes, use eventos ordenados, como no card de sweep line.</p><p>Este é um complemento didático: Odd Queries faz consultas hipotéticas independentes e não exige mutações permanentes no array. Não aplique suas substituições ao estado acumulado entre consultas.</p><pre><code class=""language-cpp"">vector&lt;long long&gt; aplicarIntervalos(
+    int n,const vector&lt;tuple&lt;int,int,long long&gt;&gt;&amp; atualizacoes) {
+    vector&lt;long long&gt; delta(n+1,0),resposta(n);
+    for (auto [l,r,x]:atualizacoes) {
+        delta[l]+=x;
+        delta[r+1]-=x;
+    }
+    long long ativo=0;
+    for (int i=0;i&lt;n;++i) {ativo+=delta[i];resposta[i]=ativo;}
+    return resposta;
+}</code></pre><p><strong>Complexidade:</strong> O(Q+N) de tempo e O(N) de espaço para Q atualizações válidas, com 0≤l≤r&lt;N. Resposta e deltas devem caber em long long.</p><details><summary>Critério de acerto</summary><ul><li>Distinguir consulta de intervalo de atualização em intervalo.</li><li>Cancelar em r+1 e reservar a posição sentinela N.</li><li>Reconhecer quando o domínio exige eventos esparsos em vez de vetor.</li></ul></details>"	"<ul><li>Porquinho da Índia · problemas · páginas 46, 47, 48</li><li><a href=""https://codeforces.com/problemset/problem/1807/D"">Odd Queries · problemas · páginas 58, 59</a></li></ul>"	assunto::diferencas_atualizacao_intervalos cp_goodnotes lote::expansao_20261028 origem::problemas
+cp-note-000077	<p>Quando vale trocar os buckets de Top K Frequent por um heap de tamanho k? Qual elemento deve ficar no topo e como manter os k melhores candidatos?</p>	"<p>Depois de contar frequências, mantenha um min-heap com no máximo k candidatos. O topo deve ser o pior dos escolhidos: a menor frequência. Insira cada candidato e, se o tamanho ultrapassar k, remova o topo. Ao final, nenhum candidato descartado é melhor que o pior mantido.</p><p>Buckets exploram que a frequência está entre 1 e N e gastam O(N) posições. O heap usa O(k) posições para a seleção e serve também para pontuações sem um intervalo pequeno de valores. A contagem por hash ainda ocupa O(U), onde U é o número de valores distintos; portanto a solução inteira não vira O(k) de memória.</p><p>O pair usa a chave do valor para desempatar. Quando o problema aceita qualquer ordem e há empate, qualquer seleção válida entre os empatados serve. A saída abaixo não promete ordem decrescente de frequência. Esta é uma alternativa didática ao bucket já anotado.</p><pre><code class=""language-cpp"">vector&lt;int&gt; topKHeap(const vector&lt;int&gt;&amp; a,int k) {
+    if (k&lt;=0) return {};
+    unordered_map&lt;int,int&gt; freq;
+    for (int x:a) ++freq[x];
+    using Item=pair&lt;int,int&gt;; // frequência, valor
+    priority_queue&lt;Item,vector&lt;Item&gt;,greater&lt;Item&gt;&gt; melhores;
+    for (auto [valor,qtd]:freq) {
+        melhores.push({qtd,valor});
+        if ((int)melhores.size()&gt;k) melhores.pop();
+    }
+    vector&lt;int&gt; resposta;
+    while (!melhores.empty()) {
+        resposta.push_back(melhores.top().second); melhores.pop();
+    }
+    return resposta;
+}</code></pre><p><strong>Complexidade:</strong> O(N+U log(k+1)) de tempo esperado e O(U+k) de espaço. Para k&gt;U, retorna todos os U valores.</p><details><summary>Critério de acerto</summary><ul><li>Manter o pior candidato no topo de um min-heap.</li><li>Limitar o heap após cada inserção.</li><li>Separar memória da seleção da memória necessária para contar frequências.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/top-k-frequent-elements/description/"">Top K Frequent Elements · big-tech-problems · páginas 5, 6</a></li></ul>"	assunto::topk_heap_tamanho_limitado cp_goodnotes lote::expansao_20261028 origem::big-tech-problems
+cp-note-000078	<p>Se uma codificação comprimento#conteúdo vier truncada ou malformada, o que o decoder precisa validar antes de ler a string? Como evitar overflow e resultados parciais?</p>	"<p>O decoder básico do exercício assume uma entrada produzida pelo encoder. Para reutilizar o formato com dados externos, valide: pelo menos um dígito no comprimento, somente dígitos até #, presença de #, comprimento representável e quantidade suficiente de bytes depois do cabeçalho.</p><p>Ao ler um dígito d, antes de fazer tamanho*10+d confira tamanho≤(MAX-d)/10. Depois compare tamanho com s.size()-i, evitando a soma i+tamanho que poderia estourar. Leia exatamente esses bytes; um # dentro do conteúdo não encerra a string.</p><p>Monte a lista em um temporário e só substitua a saída quando tudo for válido. Assim uma falha não deixa uma resposta parcialmente atualizada. size() mede bytes, e o código preserva também bytes nulos dentro de std::string. Esta é uma extensão de robustez; a versão original do exercício não exige tratar dados corrompidos.</p><pre><code class=""language-cpp"">bool decodeSeguro(const string&amp; s,vector&lt;string&gt;&amp; saida) {
+    vector&lt;string&gt; temporario;
+    size_t i=0;
+    while (i&lt;s.size()) {
+        size_t tamanho=0,inicio=i;
+        while (i&lt;s.size() &amp;&amp; s[i]!=&#x27;#&#x27;) {
+            if (s[i]&lt;&#x27;0&#x27; || s[i]&gt;&#x27;9&#x27;) return false;
+            size_t digito=s[i]-&#x27;0&#x27;;
+            if (tamanho&gt;(numeric_limits&lt;size_t&gt;::max()-digito)/10) return false;
+            tamanho=tamanho*10+digito; ++i;
+        }
+        if (i==inicio || i==s.size()) return false;
+        ++i; // pula #
+        if (tamanho&gt;s.size()-i) return false;
+        temporario.push_back(s.substr(i,tamanho)); i+=tamanho;
+    }
+    saida=std::move(temporario);
+    return true;
+}</code></pre><p><strong>Complexidade:</strong> O(B) de tempo e O(B) para a saída temporária, onde B é o tamanho em bytes da codificação.</p><details><summary>Critério de acerto</summary><ul><li>Verificar dígitos, delimitador, overflow e tamanho restante.</li><li>Ler o payload por comprimento, sem procurar delimitador dentro dele.</li><li>Manter a saída anterior intacta se a leitura falhar.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/encode-and-decode-strings/description/"">Encode and Decode Strings · big-tech-problems · páginas 10, 11</a></li></ul>"	assunto::decode_limites_e_validacao cp_goodnotes lote::expansao_20261028 origem::big-tech-problems
+cp-note-000079	<p>Como calcular MDC com Euclides e usar esse resultado para obter o MMC sem multiplicar a*b primeiro? Quais cuidados são necessários com zero e overflow?</p>	"<p>Euclides usa gcd(a,b)=gcd(b,a%b): um divisor comum de a e b também divide o resto, e o processo termina quando b é zero. O último a é o MDC.</p><p>Para números positivos, mmc(a,b)=(a/gcd(a,b))*b. Divida antes de multiplicar: a*b pode estourar mesmo quando o MMC final caberia no tipo. A divisão anterior reduz esse risco, mas não garante que o resultado final caiba. Teste q≤MAX/b antes de multiplicar.</p><p>Se algum argumento é zero, adote MMC igual a zero e evite dividir pelo MDC zero de (0,0). O código usa inteiros sem sinal e não converte números negativos: seu domínio são magnitudes não negativas. Isso evita o problema adicional de calcular abs(LLONG_MIN). O padrão é útil para testar cálculos de Minimum LCM e os invariantes de divisibilidade de Exciting Bets.</p><pre><code class=""language-cpp"">unsigned long long mdc(unsigned long long a,unsigned long long b) {
+    while (b!=0) {auto resto=a%b; a=b; b=resto;}
+    return a;
+}
+bool mmcSeguro(unsigned long long a,unsigned long long b,
+               unsigned long long&amp; resultado) {
+    if (a==0 || b==0) {resultado=0; return true;}
+    auto q=a/mdc(a,b);
+    if (q&gt;ULLONG_MAX/b) return false;
+    resultado=q*b;
+    return true;
+}</code></pre><p><strong>Complexidade:</strong> O(log(min(a,b))) de tempo para argumentos positivos e O(1) de espaço; os casos com zero são constantes.</p><details><summary>Critério de acerto</summary><ul><li>Explicar por que substituir pelo resto preserva os divisores comuns.</li><li>Dividir pelo MDC antes de multiplicar e testar o produto final.</li><li>Tratar zero antes de dividir e respeitar o domínio sem sinal.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1765/M"">Minimum LCM · problemas · páginas 88, 89, 90, 91</a></li><li><a href=""https://codeforces.com/problemset/problem/1543/A"">Exciting Bets · problemas · páginas 73, 74</a></li></ul>"	assunto::euclides_mdc_mmc_sem_overflow cp_goodnotes lote::expansao_20261028 origem::problemas
+cp-note-000080	<p>Como escrever um comparador de sort com ordem decrescente e desempate crescente? Por que usar &gt;= ou misturar critérios com OR pode quebrar a ordenação?</p>	"<p>O comparador responde se a deve vir estritamente antes de b. Portanto comp(a,a) deve ser false. Usar &gt;= quando as chaves são iguais faz um elemento vir antes de si mesmo e viola a ordenação estrita exigida pelo sort. A relação também deve ser transitiva: se a vem antes de b e b de c, a deve vir antes de c.</p><p>Compare primeiro o critério principal. Só quando ele empatar, compare o desempate. Em Monsters, usamos o resto efetivo decrescente e, no empate, o índice original crescente. Se todos os critérios empatarem, retorne false. Não combine indiscriminadamente a.resto&gt;b.resto || a.indice&lt;b.indice: o segundo critério poderia contradizer o primeiro.</p><p>Também prefira comparar diretamente a subtrair chaves: uma subtração pode estourar. sort não preserva automaticamente a ordem de entrada em empates; se a regra exige um índice, ele deve aparecer no comparador.</p><pre><code class=""language-cpp"">struct ItemOrdenacao { long long resto; int indice; };
+bool antes(const ItemOrdenacao&amp; a,const ItemOrdenacao&amp; b) {
+    if (a.resto!=b.resto) return a.resto&gt;b.resto;
+    return a.indice&lt;b.indice;
+}
+vector&lt;int&gt; ordemDosIndices(vector&lt;ItemOrdenacao&gt; itens) {
+    sort(itens.begin(),itens.end(),antes);
+    vector&lt;int&gt; resposta;
+    for (const auto&amp; item:itens) resposta.push_back(item.indice);
+    return resposta;
+}</code></pre><p><strong>Complexidade:</strong> O(N log N) comparações. Cada comparação custa O(1); o vetor de saída ocupa O(N).</p><details><summary>Critério de acerto</summary><ul><li>Retornar false ao comparar um item com ele mesmo.</li><li>Aplicar o desempate apenas quando o critério principal empatar.</li><li>Usar comparações diretas sem subtrair valores potencialmente grandes.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1849/B"">Monsters · problemas · páginas 84</a></li></ul>"	assunto::sort_comparador_estrito_desempate cp_goodnotes lote::expansao_20261028 origem::problemas
+cp-note-000081	<p>Como encontrar os dois menores elementos de um array em uma passada, contando valores repetidos como posições diferentes? Quando isso evita ordenar ou copiar o array?</p>	"<p>Mantenha primeiro e segundo, os dois menores valores das posições já processadas. Se x é menor que primeiro, o antigo primeiro vira segundo. Caso contrário, x pode melhorar segundo. A ordem dessas atualizações preserva o invariante.</p><p>O segundo menor elemento não significa o segundo valor distinto. Em [2,2,9], os dois menores são 2 e 2. O teste x&lt;segundo, no segundo ramo, permite que uma repetição do primeiro ocupe essa posição.</p><p>Em Olya and Game with Arrays, precisamos dos dois menores de cada array e não de todos os valores ordenados. Uma passada com referência constante evita copiar cada array e usa espaço auxiliar constante. O contrato exige pelo menos dois elementos; um array menor deve ser tratado pelo chamador.</p><pre><code class=""language-cpp"">pair&lt;long long,long long&gt; doisMenores(const vector&lt;long long&gt;&amp; a) {
+    assert(a.size()&gt;=2);
+    long long primeiro=LLONG_MAX,segundo=LLONG_MAX;
+    for (long long x:a) {
+        if (x&lt;primeiro) {segundo=primeiro; primeiro=x;}
+        else if (x&lt;segundo) segundo=x;
+    }
+    return {primeiro,segundo};
+}</code></pre><p><strong>Complexidade:</strong> O(N) de tempo e O(1) de espaço auxiliar; não altera nem copia o array de entrada.</p><details><summary>Critério de acerto</summary><ul><li>Deslocar o antigo primeiro antes de substituí-lo.</li><li>Contar ocorrências repetidas como posições distintas.</li><li>Reconhecer a precondição de pelo menos dois elementos.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1859/B"">Olya and Game with Arrays · problemas · páginas 83, 84</a></li></ul>"	assunto::dois_menores_posicoes_distintas cp_goodnotes lote::expansao_20261028 origem::problemas
+cp-note-000082	<p>Em C++, por que (destino-origem)%n pode ser negativo num ciclo? Como normalizar restos e calcular uma distância circular sem criar overflow desnecessário?</p>	"<p>Em C++, o resto de uma divisão pode ser negativo quando o dividendo é negativo. Se n=5, (1-4)%5 é -3, mas a distância circular para a frente é 2. Para módulo positivo, calcule r=x%n e acrescente n apenas se r&lt;0; o resultado fica em [0,n).</p><p>A forma (x%n+n)%n também é comum, mas acrescentar n quando o resto já é positivo pode estourar em valores próximos do limite do tipo. A condição evita essa soma desnecessária. Não use índice negativo para acessar vector ou string.</p><p>O exemplo calcula a distância entre dois índices válidos de um ciclo. Isso complementa a duplicação de strings de Traffic Light: o módulo resolve uma distância conhecida, enquanto a varredura ainda é necessária para achar o próximo evento em tempo total linear. Normalizar uma distância não elimina uma busca O(N) repetida.</p><pre><code class=""language-cpp"">long long moduloPositivo(long long x,long long n) {
+    assert(n&gt;0);
+    long long r=x%n;
+    return r&lt;0 ? r+n : r;
+}
+long long distanciaCircular(long long origem,long long destino,long long n) {
+    assert(n&gt;0 &amp;&amp; 0&lt;=origem &amp;&amp; origem&lt;n &amp;&amp; 0&lt;=destino &amp;&amp; destino&lt;n);
+    return moduloPositivo(destino-origem,n);
+}</code></pre><p><strong>Complexidade:</strong> O(1) de tempo e espaço por distância. Para localizar próximos eventos em todas as posições, ainda é preciso um algoritmo global eficiente.</p><details><summary>Critério de acerto</summary><ul><li>Normalizar restos para [0,n), com n positivo.</li><li>Não somar o módulo quando o resto já é não negativo.</li><li>Separar o cálculo de uma distância da busca do próximo evento.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1744/C"">Traffic Light · problemas · páginas 91, 92</a></li><li><a href=""https://codeforces.com/problemset/problem/1543/A"">Exciting Bets · problemas · páginas 73, 74</a></li></ul>"	assunto::modulo_negativo_indices_ciclicos cp_goodnotes lote::expansao_20261028 origem::problemas
+cp-note-000083	<p>Ao calcular quantidadeDeUns * 2^quantidadeDeZeros com 1ULL&lt;&lt;zeros, o que ainda precisa ser verificado? Por que trocar pow por shift não resolve qualquer limite?</p>	"<p>O tipo do operando esquerdo controla a largura do shift: 1 é int; 1ULL é unsigned long long. O número de posições precisa ser menor que a largura desse tipo e não pode ser negativo. Um shift pela largura inteira é comportamento indefinido, mesmo com operando sem sinal.</p><p>Depois de gerar 2^zeros, a multiplicação pela quantidade de uns também precisa caber. Antes de multiplicar, compare uns com MAX/potencia. Se não couber, o problema exige outro tratamento: inteiro maior, aritmética modular ou biblioteca de precisão arbitrária, conforme o enunciado. O código apenas sinaliza falha e não escolhe silenciosamente uma dessas alternativas.</p><p>Em Luntik, o limite anotado N≤60 já permite provar que a conta cabe; este card explicita os cuidados necessários quando o mesmo padrão é reutilizado com limites maiores. Se não há uns, a resposta é zero sem sequer executar o shift.</p><pre><code class=""language-cpp"">bool contarSeguro(unsigned long long uns,unsigned zeros,
+                  unsigned long long&amp; resultado) {
+    if (uns==0) {resultado=0; return true;}
+    unsigned largura=numeric_limits&lt;unsigned long long&gt;::digits;
+    if (zeros&gt;=largura) return false;
+    unsigned long long potencia=1ULL&lt;&lt;zeros;
+    if (uns&gt;ULLONG_MAX/potencia) return false;
+    resultado=uns*potencia;
+    return true;
+}</code></pre><p><strong>Complexidade:</strong> O(1) de tempo e espaço no modelo de inteiros da máquina; contagens arbitrariamente grandes exigem outra representação.</p><details><summary>Critério de acerto</summary><ul><li>Usar um operando esquerdo com o tipo correto.</li><li>Verificar a largura antes de deslocar.</li><li>Verificar também a multiplicação posterior.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1582/B"">Luntik and Subsequences · problemas · páginas 71, 72</a></li></ul>"	assunto::shift_largura_e_produto_inteiro cp_goodnotes lote::expansao_20261028 origem::problemas
+cp-note-000084	<p>Numa lista usada por um LRU, qual a diferença entre desligar um nó e destruí-lo? Como definir quem é dono da memória para evitar vazamentos, ponteiros pendurados e cópias perigosas?</p>	"<p>Desligar altera as ligações dos vizinhos; o nó continua vivo e pode ser reinserido para atualizar a recência. Expulsar definitivamente exige também destruir o nó e remover o índice que o localiza. Depois da destruição, não se pode acessar nem a chave por aquele ponteiro.</p><p>Uma forma de explicitar a propriedade é guardar unique_ptr&lt;No&gt; no mapa: o mapa é o único dono, e prev/next são observadores. Na expulsão, localize o nó, desligue-o enquanto ainda está vivo e então apague sua entrada no mapa. erase destrói o unique_ptr e, com ele, o nó. O mapa também libera todos os nós restantes ao sair de escopo.</p><p>As sentinelas abaixo pertencem ao próprio objeto e não entram no mapa. Como há ponteiros para membros desse objeto, a cópia e a movimentação foram proibidas; implementá-las exigiria reconstruir as ligações. O exemplo mostra só a lista e a propriedade da memória, não um LRU completo nem garantia de O(1) no pior caso do hash. É um complemento à implementação manual anotada.</p><pre><code class=""language-cpp"">struct ListaDona {
+    struct No {int chave; No* ant; No* prox;};
+    No head{-1,nullptr,nullptr},tail{-1,nullptr,nullptr};
+    unordered_map&lt;int,unique_ptr&lt;No&gt;&gt; donos;
+    ListaDona() {head.prox=&amp;tail; tail.ant=&amp;head;}
+    ListaDona(const ListaDona&amp;)=delete;
+    ListaDona&amp; operator=(const ListaDona&amp;)=delete;
+    ListaDona(ListaDona&amp;&amp;)=delete;
+    ListaDona&amp; operator=(ListaDona&amp;&amp;)=delete;
+    bool inserir(int chave) {
+        auto novo=make_unique&lt;No&gt;(No{chave,nullptr,nullptr});
+        auto [it,inserido]=donos.emplace(chave,std::move(novo));
+        if (!inserido) return false;
+        No* n=it-&gt;second.get();
+        n-&gt;ant=&amp;head; n-&gt;prox=head.prox;
+        head.prox-&gt;ant=n; head.prox=n;
+        return true;
+    }
+    bool excluir(int chave) {
+        auto it=donos.find(chave);
+        if (it==donos.end()) return false;
+        No* n=it-&gt;second.get();
+        n-&gt;ant-&gt;prox=n-&gt;prox; n-&gt;prox-&gt;ant=n-&gt;ant;
+        donos.erase(it); // destrói n; não acessar n daqui em diante
+        return true;
+    }
+};</code></pre><p><strong>Complexidade:</strong> O(1) médio por inserção/expulsão e O(N) de memória. A destruição do objeto libera os N nós restantes em O(N).</p><details><summary>Critério de acerto</summary><ul><li>Distinguir remoção das ligações de destruição da memória.</li><li>Manter um único dono e não acessar o nó depois de erase.</li><li>Tratar sentinelas e a semântica de cópia/movimentação do objeto.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/lru-cache/description/"">LRU Cache · big-tech-problems · páginas 2, 3, 4, 5</a></li></ul>"	assunto::lista_propriedade_memoria_e_remocao cp_goodnotes lote::expansao_20261028 origem::big-tech-problems
+cp-note-000085	<p>Ao percorrer vector&lt;vector&lt;int&gt;&gt; ou grupos de strings, quando auto copia os dados e quando auto&amp; ou const auto&amp; acessam o original? Como isso afeta custo e alterações?</p>	"<p>Em for(auto linha:matriz), linha é uma cópia de cada vetor interno. Alterar seus elementos não modifica a matriz original; além disso, cada iteração pode alocar e copiar todos os elementos daquela linha.</p><p>Use const auto&amp; quando só precisa ler e auto&amp; quando precisa alterar os objetos originais. A referência no laço não basta se a função recebeu a matriz por valor: nesse caso já houve uma cópia antes de entrar no corpo. Receba const vector&lt;vector&lt;int&gt;&gt;&amp; para leitura ou vector&lt;vector&lt;int&gt;&gt;&amp; para alteração.</p><p>Para int e outros tipos pequenos, copiar pode ser simples e adequado; o cuidado é especialmente relevante com strings e contêineres aninhados. Não conclua que referências mudam a complexidade de qualquer algoritmo: somar todos os valores continua O(total de elementos), mas evita cópias, alocações e memória temporária desnecessárias.</p><pre><code class=""language-cpp"">long long somarSemCopiar(const vector&lt;vector&lt;int&gt;&gt;&amp; matriz) {
+    long long soma=0;
+    for (const auto&amp; linha:matriz)
+        for (int valor:linha) soma+=valor;
+    return soma;
+}
+void zerarOriginal(vector&lt;vector&lt;int&gt;&gt;&amp; matriz) {
+    for (auto&amp; linha:matriz)
+        for (int&amp; valor:linha) valor=0;
+}</code></pre><p><strong>Complexidade:</strong> O(L+T) de tempo, com L linhas e T elementos, inclusive linhas vazias. O(1) de espaço auxiliar, sem copiar linhas.</p><details><summary>Critério de acerto</summary><ul><li>Reconhecer cópia tanto no parâmetro quanto no range-for.</li><li>Usar const referência para leitura e referência mutável para alterar.</li><li>Distinguir economia de memória/cópias de mudança da ordem assintótica.</li></ul></details>"	"<ul><li>Inicialização de contêineres compostos · big-tech-problems · páginas 12, 13</li><li><a href=""https://leetcode.com/problems/group-anagrams/description/"">Group Anagrams · big-tech-problems · páginas 5</a></li></ul>"	assunto::auto_copia_referencia_containers cp_goodnotes lote::expansao_20261028 origem::big-tech-problems
+cp-note-000086	<p>Quando posso usar busca binária na resposta? Na variante de dividir entregas em k cargas iguais sem misturar origens, como provar o predicado e evitar confundi-lo com maximizar qualquer função objetivo?</p>	"<p>Busca binária exige uma fronteira monotônica conhecida. Nesta variante didática, queremos o maior tamanho t para formar k cargas iguais; cada carga usa peças de uma única entrega e sobras podem ser descartadas. É viável se soma(floor(a[i]/t))≥k. Ao aumentar t, cada quociente só diminui; portanto as respostas têm a forma verdadeiro…verdadeiro, falso…falso.</p><p>Mantenha um limite inferior viável e procure o último verdadeiro. O valor zero representa que nenhuma carga positiva é possível e não é passado ao predicado, pois dividir por zero seria inválido. Some a quantidade de blocos só até atingir k para evitar overflow desnecessário.</p><p>Este subproblema não é o objetivo original de Security Delivery Logs, que maximiza a soma das cargas não comprometidas. Uma função objetivo ter um máximo não a torna monotônica; não substitua a varredura de limiares daquela solução por esta busca sem provar uma redução correta. O complemento ensina a condição de validade da técnica, com as regras desta variante explicitadas.</p><pre><code class=""language-cpp"">long long maiorCargaIgual(const vector&lt;long long&gt;&amp; entregas,long long k) {
+    assert(k&gt;0);
+    long long lo=0,hi=0;
+    for (long long x:entregas) {assert(x&gt;=0);hi=max(hi,x);}
+    auto possivel=[&amp;](long long t) {
+        long long blocos=0;
+        for (long long x:entregas) {
+            long long q=x/t;
+            if (q&gt;=k-blocos) return true;
+            blocos+=q;
+        }
+        return false;
+    };
+    while (lo&lt;hi) {
+        long long distancia=hi-lo;
+        long long mid=lo+distancia/2+distancia%2; // meio superior
+        if (possivel(mid)) lo=mid;
+        else hi=mid-1;
+    }
+    return lo;
+}</code></pre><p><strong>Complexidade:</strong> O(N log(M+1)) de tempo para M=max(a[i]) e O(1) de espaço auxiliar; o predicado usa contagem saturada em k.</p><details><summary>Critério de acerto</summary><ul><li>Provar que a viabilidade não aumenta quando t aumenta.</li><li>Não chamar o predicado com t=0 e evitar um meio que não avança.</li><li>Não confundir a variante monotônica com o objetivo original das entregas.</li></ul></details>"	<ul><li>Security Delivery Logs · big-tech-problems · páginas 6, 7, 8, 9</li></ul>	assunto::busca_binaria_predicado_monotono cp_goodnotes lote::expansao_20261028 origem::big-tech-problems

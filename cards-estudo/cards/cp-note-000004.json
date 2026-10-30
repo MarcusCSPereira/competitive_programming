@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000004",
+  "content_key": "dijkstra_fila_obsoleta",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como usar priority_queue como min-heap e descartar propostas obsoletas no Dijkstra? Por que isso evita reprocessamento sem perder caminhos válidos?",
+  "back": {
+    "answer": "A fila guarda propostas de distância, não a distância definitiva de cada nó. Depois de melhorar dist[u], propostas antigas podem continuar na fila. Ao retirar uma proposta cuja distância difere de dist[u], descarte-a. greater transforma a priority_queue em min-heap. Com pesos não negativos, a menor proposta atual pode ser expandida com segurança.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "vector<long long> dijkstra(const vector<vector<pair<int,int>>>& g, int s) {\n    vector<long long> d(g.size(),LLONG_MAX/4);\n    using Item=pair<long long,int>;\n    priority_queue<Item,vector<Item>,greater<Item>> pq;\n    d[s]=0; pq.push({0,s});\n    while(!pq.empty()) {\n        auto [c,u]=pq.top(); pq.pop();\n        if(c!=d[u]) continue;\n        for(auto [v,w]:g[u]) if(c+w<d[v]) {\n            d[v]=c+w; pq.push({d[v],v});\n        }\n    }\n    return d;\n}",
+    "complexity": "O((V+E) log V) para grafo simples; O(V+E) de armazenamento incluindo propostas.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::dijkstra_fila_obsoleta",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000008",
+      "title": "Microwaves",
+      "pages_1based": [
+        45,
+        46
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": null,
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210776",
+    "card_ids": [
+      "1793230210777"
+    ],
+    "fields_sha256": "62302e6673ae77371d3612ca6c0f67714e7ebb16db501f84770bd0b2c1b3d0fe",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

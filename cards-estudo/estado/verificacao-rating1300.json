@@ -1,0 +1,39 @@
+{
+  "total_notes": 91,
+  "new_notes": 5,
+  "updated_notes": 2,
+  "previous_note_and_card_ids_preserved": 86,
+  "unchanged_content_notes": 84,
+  "previous_scheduling_unchanged": true,
+  "sync": {
+    "collectionComplete": true,
+    "mediaComplete": true
+  },
+  "rendered": {
+    "cp-note-000089": {
+      "cardId": 13,
+      "questionHtml": 804,
+      "answerHtml": 3035,
+      "css": 585
+    },
+    "cp-note-000091": {
+      "cardId": 13,
+      "questionHtml": 790,
+      "answerHtml": 2961,
+      "css": 585
+    },
+    "cp-note-000051": {
+      "cardId": 13,
+      "questionHtml": 809,
+      "answerHtml": 2378,
+      "css": 585
+    }
+  },
+  "verified_at": "2026-10-28T21:14:44-03:00",
+  "batch_id": "2026-10-28-rating1300",
+  "idempotent_plan": {
+    "create": 0,
+    "update": 0,
+    "unchanged": 7
+  }
+}

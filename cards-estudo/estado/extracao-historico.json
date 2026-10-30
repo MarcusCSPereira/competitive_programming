@@ -1,0 +1,1045 @@
+{
+  "run_id": "2026-10-28-backfill-010",
+  "sync_run_id": "e7a260ec-99cb-4f89-9052-d1ac727383a7",
+  "reviewed_pages": {
+    "problemas": [
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99
+    ],
+    "big-tech-problems": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  "units": [
+    {
+      "id": "cp-problem-000008",
+      "notebook_id": "problemas",
+      "title": "Microwaves",
+      "pages": [
+        45,
+        46
+      ],
+      "platform_id": null,
+      "topics": [
+        "Dijkstra com estados (v, usados)",
+        "arestas não negativas",
+        "mínimo entre estados finais"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000009",
+      "notebook_id": "problemas",
+      "title": "Porquinho da Índia",
+      "pages": [
+        46,
+        47,
+        48
+      ],
+      "platform_id": null,
+      "topics": [
+        "grafo funcional",
+        "três estados",
+        "ciclos",
+        "sweep line com intervalos semiabertos"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000001",
+      "notebook_id": "problemas",
+      "title": "Forked!",
+      "pages": [
+        48,
+        49,
+        50
+      ],
+      "platform_id": "1904A",
+      "topics": [
+        "movimentos simétricos",
+        "set e interseção",
+        "deduplicação quando a=b"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000002",
+      "notebook_id": "problemas",
+      "title": "Chemistry",
+      "pages": [
+        50,
+        51
+      ],
+      "platform_id": "1883B",
+      "topics": [
+        "frequências ímpares",
+        "palíndromos após remoções"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000003",
+      "notebook_id": "problemas",
+      "title": "Vasilije in Cacak",
+      "pages": [
+        52
+      ],
+      "platform_id": "1878C",
+      "topics": [
+        "somas mínima e máxima",
+        "PA",
+        "long long"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000004",
+      "notebook_id": "problemas",
+      "title": "Jellyfish and Undertale",
+      "pages": [
+        53
+      ],
+      "platform_id": "1875A",
+      "topics": [
+        "limite a-1",
+        "min",
+        "adiar recarga"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000010",
+      "notebook_id": "problemas",
+      "title": "Make It Zero",
+      "pages": [
+        54
+      ],
+      "platform_id": "1869A",
+      "topics": [
+        "XOR",
+        "paridade do comprimento",
+        "construção em segmentos pares"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000011",
+      "notebook_id": "problemas",
+      "title": "Longest Divisors Interval",
+      "pages": [
+        55
+      ],
+      "platform_id": "1855B",
+      "topics": [
+        "intervalo de divisores",
+        "múltiplo em qualquer janela",
+        "LCM"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000012",
+      "notebook_id": "problemas",
+      "title": "Balanced Round",
+      "pages": [
+        55,
+        56
+      ],
+      "platform_id": "1850D",
+      "topics": [
+        "ordenação",
+        "maior bloco de diferenças pequenas"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000013",
+      "notebook_id": "problemas",
+      "title": "Comparison String",
+      "pages": [
+        56,
+        57
+      ],
+      "platform_id": "1837B",
+      "topics": [
+        "maior sequência de comparações iguais",
+        "limite inferior e construção"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000014",
+      "notebook_id": "problemas",
+      "title": "Permutation Swap",
+      "pages": [
+        57,
+        58
+      ],
+      "platform_id": "1828B",
+      "topics": [
+        "classes módulo k",
+        "gcd de deslocamentos"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000015",
+      "notebook_id": "problemas",
+      "title": "Odd Queries",
+      "pages": [
+        58,
+        59
+      ],
+      "platform_id": "1807D",
+      "topics": [
+        "prefix sum",
+        "consultas independentes",
+        "paridade"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000016",
+      "notebook_id": "problemas",
+      "title": "Not Dividing",
+      "pages": [
+        59,
+        60
+      ],
+      "platform_id": "1794B",
+      "topics": [
+        "invariante greedy esquerda-direita",
+        "retirar 1",
+        "divisibilidade"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000017",
+      "notebook_id": "problemas",
+      "title": "Mainak and Array",
+      "pages": [
+        60,
+        61
+      ],
+      "platform_id": "1726A",
+      "topics": [
+        "classificação de casos",
+        "extremos e pares adjacentes"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000018",
+      "notebook_id": "problemas",
+      "title": "NIT Destroys the Universe",
+      "pages": [
+        61,
+        62
+      ],
+      "platform_id": "1696B",
+      "topics": [
+        "MEX",
+        "blocos não nulos",
+        "resposta 0/1/2"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000019",
+      "notebook_id": "problemas",
+      "title": "AvtoBus",
+      "pages": [
+        62,
+        63
+      ],
+      "platform_id": "1679A",
+      "topics": [
+        "paridade",
+        "divisão com teto",
+        "quantidades mínima e máxima"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000020",
+      "notebook_id": "problemas",
+      "title": "Make It Increasing",
+      "pages": [
+        63,
+        64
+      ],
+      "platform_id": "1675B",
+      "topics": [
+        "greedy direita-esquerda",
+        "redução por 2",
+        "caso impossível zero"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000021",
+      "notebook_id": "problemas",
+      "title": "Deletive Editing",
+      "pages": [
+        64,
+        65
+      ],
+      "platform_id": "1666D",
+      "topics": [
+        "frequências",
+        "últimas ocorrências",
+        "ordem da subsequência"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000022",
+      "notebook_id": "problemas",
+      "title": "Array Cloning Technique",
+      "pages": [
+        65,
+        66
+      ],
+      "platform_id": "1665B",
+      "topics": [
+        "frequência máxima",
+        "dobramento",
+        "separar custo fixo e cópias"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000023",
+      "notebook_id": "problemas",
+      "title": "Make AP",
+      "pages": [
+        66,
+        67,
+        68
+      ],
+      "platform_id": "1624B",
+      "topics": [
+        "equação a+c=2b",
+        "divisibilidade e positividade"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000024",
+      "notebook_id": "problemas",
+      "title": "Odd Grasshopper",
+      "pages": [
+        68,
+        69
+      ],
+      "platform_id": "1607B",
+      "topics": [
+        "padrão periódico mod 4",
+        "paridade inicial",
+        "O(1)"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000025",
+      "notebook_id": "problemas",
+      "title": "AB Balance",
+      "pages": [
+        69,
+        70
+      ],
+      "platform_id": "1606A",
+      "topics": [
+        "cancelamento telescópico de transições",
+        "primeiro e último"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000026",
+      "notebook_id": "problemas",
+      "title": "Make It Divisible by 25",
+      "pages": [
+        70,
+        71
+      ],
+      "platform_id": "1593B",
+      "topics": [
+        "sufixos 00 25 50 75",
+        "busca reversa",
+        "dígitos versus valor"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000027",
+      "notebook_id": "problemas",
+      "title": "Luntik and Subsequences",
+      "pages": [
+        71,
+        72
+      ],
+      "platform_id": "1582B",
+      "topics": [
+        "subconjuntos de zeros",
+        "exatamente um 1",
+        "contagem inteira"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000028",
+      "notebook_id": "problemas",
+      "title": "Mocha and Math",
+      "pages": [
+        72
+      ],
+      "platform_id": "1559A",
+      "topics": [
+        "AND como remoção de bits",
+        "redução"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000029",
+      "notebook_id": "problemas",
+      "title": "Exciting Bets",
+      "pages": [
+        73,
+        74
+      ],
+      "platform_id": "1543A",
+      "topics": [
+        "diferença invariante",
+        "gcd",
+        "distância a múltiplo"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000030",
+      "notebook_id": "problemas",
+      "title": "Bad Boy",
+      "pages": [
+        74,
+        75
+      ],
+      "platform_id": "1537B",
+      "topics": [
+        "distância Manhattan",
+        "cantos opostos"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000031",
+      "notebook_id": "problemas",
+      "title": "Odd Divisor",
+      "pages": [
+        75
+      ],
+      "platform_id": "1475A",
+      "topics": [
+        "potência de dois",
+        "fatores ímpares",
+        "teste de bit"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000032",
+      "notebook_id": "problemas",
+      "title": "Strange Partition",
+      "pages": [
+        75,
+        76
+      ],
+      "platform_id": "1471A",
+      "topics": [
+        "teto da soma versus soma de tetos"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000033",
+      "notebook_id": "problemas",
+      "title": "Sum of Medians",
+      "pages": [
+        76,
+        77
+      ],
+      "platform_id": "1440B",
+      "topics": [
+        "mediana inferior",
+        "reserva de elementos maiores",
+        "greedy"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000034",
+      "notebook_id": "problemas",
+      "title": "Three Indices",
+      "pages": [
+        77,
+        78
+      ],
+      "platform_id": "1380A",
+      "topics": [
+        "pico local em permutação"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000035",
+      "notebook_id": "problemas",
+      "title": "01 Game",
+      "pages": [
+        78
+      ],
+      "platform_id": "1373B",
+      "topics": [
+        "invariante de contagens",
+        "paridade de jogadas"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000036",
+      "notebook_id": "problemas",
+      "title": "Multiply by 2, Divide by 6",
+      "pages": [
+        78,
+        79
+      ],
+      "platform_id": "1374B",
+      "topics": [
+        "expoentes primos",
+        "viabilidade e custo"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000037",
+      "notebook_id": "problemas",
+      "title": "Swap and Delete",
+      "pages": [
+        79,
+        80
+      ],
+      "platform_id": "1913B",
+      "topics": [
+        "frequências",
+        "prefixo viável",
+        "troca livre"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000038",
+      "notebook_id": "problemas",
+      "title": "Raspberries",
+      "pages": [
+        80,
+        81
+      ],
+      "platform_id": "1883C",
+      "topics": [
+        "primo versus composto",
+        "fatores do produto"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000039",
+      "notebook_id": "problemas",
+      "title": "Helmets in Night Light",
+      "pages": [
+        82,
+        83
+      ],
+      "platform_id": "1876A",
+      "topics": [
+        "greedy por custo",
+        "capacidade",
+        "participante ativado"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000040",
+      "notebook_id": "problemas",
+      "title": "Olya and Game with Arrays",
+      "pages": [
+        83,
+        84
+      ],
+      "platform_id": "1859B",
+      "topics": [
+        "menor e segundo menor",
+        "concentrar perdas"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000041",
+      "notebook_id": "problemas",
+      "title": "Monsters",
+      "pages": [
+        84
+      ],
+      "platform_id": "1849B",
+      "topics": [
+        "resto normalizado",
+        "desempate por índice"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000042",
+      "notebook_id": "problemas",
+      "title": "Ski Resort",
+      "pages": [
+        85,
+        86
+      ],
+      "platform_id": "1840C",
+      "topics": [
+        "blocos válidos",
+        "count and reset",
+        "soma triangular"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000043",
+      "notebook_id": "problemas",
+      "title": "Array Merging",
+      "pages": [
+        86,
+        87
+      ],
+      "platform_id": "1831B",
+      "topics": [
+        "runs por valor",
+        "soma dos máximos"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000044",
+      "notebook_id": "problemas",
+      "title": "Distinct Split",
+      "pages": [
+        87,
+        88
+      ],
+      "platform_id": "1791D",
+      "topics": [
+        "prefixos e sufixos de distintos"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000045",
+      "notebook_id": "problemas",
+      "title": "Minimum LCM",
+      "pages": [
+        88,
+        89,
+        90,
+        91
+      ],
+      "platform_id": "1765M",
+      "topics": [
+        "pares de fatores",
+        "menor divisor",
+        "prova via gcd"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000046",
+      "notebook_id": "problemas",
+      "title": "Traffic Light",
+      "pages": [
+        91,
+        92
+      ],
+      "platform_id": "1744C",
+      "topics": [
+        "duplicar ciclo",
+        "varrer ao contrário",
+        "próximo evento"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000047",
+      "notebook_id": "problemas",
+      "title": "Basketball Together",
+      "pages": [
+        92,
+        93
+      ],
+      "platform_id": "1725B",
+      "topics": [
+        "greedy dois ponteiros",
+        "máximo como força de todo time"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000048",
+      "notebook_id": "problemas",
+      "title": "Beautiful Array",
+      "pages": [
+        93,
+        94
+      ],
+      "platform_id": "1715B",
+      "topics": [
+        "quocientes e restos",
+        "capacidade e limites"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000049",
+      "notebook_id": "problemas",
+      "title": "Luke Is a Foodie",
+      "pages": [
+        94,
+        95
+      ],
+      "platform_id": "1704B",
+      "topics": [
+        "interseção incremental de intervalos",
+        "greedy"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000050",
+      "notebook_id": "problemas",
+      "title": "Shoe Shuffling",
+      "pages": [
+        95,
+        96
+      ],
+      "platform_id": "1691B",
+      "topics": [
+        "blocos iguais",
+        "rotação cíclica sem pontos fixos"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000051",
+      "notebook_id": "problemas",
+      "title": "Word Capitalization",
+      "pages": [
+        96,
+        97
+      ],
+      "platform_id": "281A",
+      "topics": [
+        "ASCII",
+        "conversão segura de char"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000052",
+      "notebook_id": "problemas",
+      "title": "Black and White Stripe",
+      "pages": [
+        97,
+        98
+      ],
+      "platform_id": "1690D",
+      "topics": [
+        "janela fixa",
+        "prefix sum de predicado"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000007",
+      "notebook_id": "problemas",
+      "title": "Red Versus Blue",
+      "pages": [
+        98,
+        99
+      ],
+      "platform_id": "1659A",
+      "topics": [
+        "casa dos pombos",
+        "distribuição de resto"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000053",
+      "notebook_id": "big-tech-problems",
+      "title": "LRU Cache",
+      "pages": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "platform_id": "146",
+      "topics": [
+        "hashmap e lista dupla",
+        "sentinelas",
+        "ponteiros e referências",
+        "remoção segura"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000054",
+      "notebook_id": "big-tech-problems",
+      "title": "Group Anagrams",
+      "pages": [
+        5
+      ],
+      "platform_id": "49",
+      "topics": [
+        "assinatura de frequências",
+        "delimitadores na chave"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000055",
+      "notebook_id": "big-tech-problems",
+      "title": "Top K Frequent Elements",
+      "pages": [
+        5,
+        6
+      ],
+      "platform_id": "347",
+      "topics": [
+        "frequências",
+        "buckets n+1",
+        "limite k"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000056",
+      "notebook_id": "big-tech-problems",
+      "title": "Security Delivery Logs",
+      "pages": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "platform_id": null,
+      "topics": [
+        "limiar t",
+        "quociente e resto",
+        "limite de armazéns",
+        "complexidade real"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000057",
+      "notebook_id": "big-tech-problems",
+      "title": "Product of Array Except Self",
+      "pages": [
+        9,
+        10
+      ],
+      "platform_id": "238",
+      "topics": [
+        "prefixo e sufixo exclusivos",
+        "produto sem divisão",
+        "saída como armazenamento"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000058",
+      "notebook_id": "big-tech-problems",
+      "title": "Encode and Decode Strings",
+      "pages": [
+        10,
+        11
+      ],
+      "platform_id": "271",
+      "topics": [
+        "serialização por comprimento",
+        "delimitador",
+        "strings vazias"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000059",
+      "notebook_id": "big-tech-problems",
+      "title": "Valid Sudoku",
+      "pages": [
+        11,
+        12
+      ],
+      "platform_id": "36",
+      "topics": [
+        "divisão em blocos",
+        "linearização",
+        "bitmask"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000060",
+      "notebook_id": "big-tech-problems",
+      "title": "Inicialização de contêineres compostos",
+      "pages": [
+        12,
+        13
+      ],
+      "platform_id": null,
+      "topics": [
+        "tipos aninhados",
+        "tamanho versus valor",
+        "parênteses versus chaves",
+        "fila e pilha"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    },
+    {
+      "id": "cp-problem-000005",
+      "notebook_id": "big-tech-problems",
+      "title": "Add Two Numbers",
+      "pages": [
+        14
+      ],
+      "platform_id": "2",
+      "topics": [
+        "sentinela",
+        "construir lista",
+        "carry",
+        "ternário e nullptr"
+      ],
+      "status": "visually_extracted_pending_card_validation"
+    }
+  ],
+  "open_units": [
+    {
+      "id": "cp-problem-000006",
+      "title": "Roof Construction",
+      "notebook_id": "problemas",
+      "pages": [
+        99
+      ],
+      "status": "title_only_waiting_for_content"
+    }
+  ],
+  "notes": [
+    "Página 45 começa por legenda de cores, seguida de Microwaves completo.",
+    "Não inferir aceite na plataforma pela solução anotada.",
+    "Microwaves e Porquinho: extrair padrões gerais de código, não inventar IDs oficiais."
+  ],
+  "non_content_pages": {
+    "big-tech-problems": {
+      "1": "capa",
+      "15": "página vazia"
+    }
+  },
+  "corrections": [
+    {
+      "problem_id": "cp-problem-000033",
+      "issue": "Screenshot repete Strange Partition; implementação de Sum of Medians será reconstruída e validada."
+    },
+    {
+      "problem_id": "cp-problem-000056",
+      "issue": "Código percorre todos os limiares e ordena restos por limiar: O(M*n*log n), não O(n*log n). A resposta seleciona k/2 menores cargas; não afirmar busca binária em uma função objetivo não provada monótona."
+    },
+    {
+      "problem_id": "cp-problem-000051",
+      "issue": "Em C++, intervalos não usam comparações encadeadas; alfanumérico exige OR entre faixas. Preferir cctype com unsigned char."
+    },
+    {
+      "problem_id": "cp-problem-000027",
+      "issue": "pow usa ponto flutuante; contagem de subconjuntos deve usar inteiros/shift sob limites válidos."
+    },
+    {
+      "problem_id": "cp-problem-000031",
+      "issue": "Parênteses obrigatórios no teste (n & (n-1)) == 0, com n>0."
+    }
+  ]
+}

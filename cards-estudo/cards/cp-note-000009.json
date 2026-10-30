@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000009",
+  "content_key": "somas_extremas_pa",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como decidir se a soma x pode ser formada por k inteiros distintos de 1 a n sem enumerar combinações? Derive os limites e implemente com tipos seguros.",
+  "back": {
+    "answer": "A soma mínima usa 1 até k: k(k+1)/2. A máxima usa n-k+1 até n: k(2n-k+1)/2. Para números consecutivos disponíveis, todas as somas entre os extremos são atingíveis: a partir da configuração mínima, distribua incrementos sem ultrapassar n nem repetir valores, um passo por vez. Assim basta testar o intervalo. A multiplicação precisa ocorrer em long long, não apenas ser atribuída a ele depois.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "bool somaPossivel(long long n,long long k,long long x) {\n    if(k<1 || k>n) return false;\n    long long minimo=k*(k+1)/2;\n    long long maximo=k*(2*n-k+1)/2;\n    return minimo<=x && x<=maximo;\n}",
+    "complexity": "O(1) de tempo e espaço, sob limites que cabem em 64 bits.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::somas_extremas_pa",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000003",
+      "title": "Vasilije in Cacak",
+      "pages_1based": [
+        52
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1878/C",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210781",
+    "card_ids": [
+      "1793230210782"
+    ],
+    "fields_sha256": "6f208aad7a0fe1b62295d11638614e5b253328f339fefda96dd904d5a2f6f720",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

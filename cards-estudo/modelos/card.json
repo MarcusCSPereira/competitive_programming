@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "template_only": true,
+  "id": "cp-note-<id-imutavel>",
+  "status": "draft",
+  "skill": "implementacao|justificativa|estrategia|complexidade|borda|transferencia",
+  "front": "Pergunta autocontida sobre conceito e aplicação, podendo abranger um padrão completo de implementação.",
+  "back": {
+    "answer": "Explicação teórica validada e aplicação prática, legíveis no celular.",
+    "why": "Justificativa e condição de validade.",
+    "success_criteria": ["O que precisa estar presente na resposta independente."],
+    "cpp17": "OBRIGATÓRIO: trecho C++17 que mostre como usar o conceito e as etapas essenciais do padrão."
+  },
+  "tags": ["origem::<caderno>", "tema::<assunto>"],
+  "sources": [
+    {
+      "notebook_id": "<id-do-caderno>",
+      "problem_id": "cp-problem-<id-imutavel>",
+      "pages_1based": [],
+      "region_normalized": null,
+      "source_snapshot_sha256": null,
+      "highlight_color": "purple|blue|green|red|black|mixed",
+      "original_note": "Trecho fiel, com dúvidas de leitura explícitas."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": false,
+    "technical_correctness_checked": false,
+    "official_statement_url": null,
+    "local_code_path": null,
+    "pending_questions": []
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "exported_batch_ids": [],
+    "import_confirmed": false
+  }
+}

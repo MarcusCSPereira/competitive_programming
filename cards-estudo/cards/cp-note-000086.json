@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000086",
+  "content_key": "busca_binaria_predicado_monotono",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Quando posso usar busca binária na resposta? Na variante de dividir entregas em k cargas iguais sem misturar origens, como provar o predicado e evitar confundi-lo com maximizar qualquer função objetivo?",
+  "back": {
+    "answer": "Busca binária exige uma fronteira monotônica conhecida. Nesta variante didática, queremos o maior tamanho t para formar k cargas iguais; cada carga usa peças de uma única entrega e sobras podem ser descartadas. É viável se soma(floor(a[i]/t))≥k. Ao aumentar t, cada quociente só diminui; portanto as respostas têm a forma verdadeiro…verdadeiro, falso…falso.\n\nMantenha um limite inferior viável e procure o último verdadeiro. O valor zero representa que nenhuma carga positiva é possível e não é passado ao predicado, pois dividir por zero seria inválido. Some a quantidade de blocos só até atingir k para evitar overflow desnecessário.\n\nEste subproblema não é o objetivo original de Security Delivery Logs, que maximiza a soma das cargas não comprometidas. Uma função objetivo ter um máximo não a torna monotônica; não substitua a varredura de limiares daquela solução por esta busca sem provar uma redução correta. O complemento ensina a condição de validade da técnica, com as regras desta variante explicitadas.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "long long maiorCargaIgual(const vector<long long>& entregas,long long k) {\n    assert(k>0);\n    long long lo=0,hi=0;\n    for (long long x:entregas) {assert(x>=0);hi=max(hi,x);}\n    auto possivel=[&](long long t) {\n        long long blocos=0;\n        for (long long x:entregas) {\n            long long q=x/t;\n            if (q>=k-blocos) return true;\n            blocos+=q;\n        }\n        return false;\n    };\n    while (lo<hi) {\n        long long distancia=hi-lo;\n        long long mid=lo+distancia/2+distancia%2; // meio superior\n        if (possivel(mid)) lo=mid;\n        else hi=mid-1;\n    }\n    return lo;\n}",
+    "complexity": "O(N log(M+1)) de tempo para M=max(a[i]) e O(1) de espaço auxiliar; o predicado usa contagem saturada em k.",
+    "success_criteria": [
+      "Provar que a viabilidade não aumenta quando t aumenta.",
+      "Não chamar o predicado com t=0 e evitar um meio que não avança.",
+      "Não confundir a variante monotônica com o objetivo original das entregas."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::expansao_20261028",
+    "assunto::busca_binaria_predicado_monotono",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000056",
+      "title": "Security Delivery Logs",
+      "pages_1based": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": null,
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-expansao-072",
+    "sync_run_id": "b9f78700-9140-42d3-9354-cee80c562b26",
+    "learning_origin": "didactic_extension",
+    "technical_references": []
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-expansao.json",
+    "validated_at": "2026-10-28T20:56:56-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793231826533",
+    "card_ids": [
+      "1793231826533"
+    ],
+    "fields_sha256": "dac8591d2e3044a86f6876288a1e21bd2a1bebdf3830da39618ce82132ebe03c",
+    "last_batch_id": "2026-10-28-expansao"
+  }
+}

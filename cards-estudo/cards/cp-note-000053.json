@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000053",
+  "content_key": "chars_ascii_conversao",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como converter caracteres e testar faixas com segurança em C++? Qual é a diferença entre comparar uma faixa e escrever comparações encadeadas?",
+  "back": {
+    "answer": "Para ASCII, a-z, A-Z e 0-9 são faixas contíguas, mas a<=c<=z não expressa uma faixa em C++: a primeira comparação vira bool. Use duas comparações com && e combine categorias com ||. Funções de cctype, como toupper e isalnum, devem receber unsigned char convertido para int para evitar comportamento indefinido com char negativo. Isso não implementa conversão Unicode geral. Alterar só a primeira letra custa O(1), mas ler/imprimir toda a string custa O(n).",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "string capitalizar(string s) {\n    if(!s.empty()) s[0]=(char)toupper((unsigned char)s[0]);\n    return s;\n}\nbool alfanumericoASCII(char c) {\n    return ('a'<=c && c<='z') || ('A'<=c && c<='Z')\n        || ('0'<=c && c<='9');\n}",
+    "complexity": "O(1) para a operação no primeiro caractere; O(n) incluindo cópia/saída.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::chars_ascii_conversao",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000051",
+      "title": "Word Capitalization",
+      "pages_1based": [
+        96,
+        97
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/281/A",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210825",
+    "card_ids": [
+      "1793230210826"
+    ],
+    "fields_sha256": "ae5cc6d7db57acddfa8e7a54b8ee1b9fd414df790ffdabb48f76aee425768df8",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

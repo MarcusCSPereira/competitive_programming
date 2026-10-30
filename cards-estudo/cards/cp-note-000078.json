@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000078",
+  "content_key": "decode_limites_e_validacao",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Se uma codificação comprimento#conteúdo vier truncada ou malformada, o que o decoder precisa validar antes de ler a string? Como evitar overflow e resultados parciais?",
+  "back": {
+    "answer": "O decoder básico do exercício assume uma entrada produzida pelo encoder. Para reutilizar o formato com dados externos, valide: pelo menos um dígito no comprimento, somente dígitos até #, presença de #, comprimento representável e quantidade suficiente de bytes depois do cabeçalho.\n\nAo ler um dígito d, antes de fazer tamanho*10+d confira tamanho≤(MAX-d)/10. Depois compare tamanho com s.size()-i, evitando a soma i+tamanho que poderia estourar. Leia exatamente esses bytes; um # dentro do conteúdo não encerra a string.\n\nMonte a lista em um temporário e só substitua a saída quando tudo for válido. Assim uma falha não deixa uma resposta parcialmente atualizada. size() mede bytes, e o código preserva também bytes nulos dentro de std::string. Esta é uma extensão de robustez; a versão original do exercício não exige tratar dados corrompidos.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "bool decodeSeguro(const string& s,vector<string>& saida) {\n    vector<string> temporario;\n    size_t i=0;\n    while (i<s.size()) {\n        size_t tamanho=0,inicio=i;\n        while (i<s.size() && s[i]!='#') {\n            if (s[i]<'0' || s[i]>'9') return false;\n            size_t digito=s[i]-'0';\n            if (tamanho>(numeric_limits<size_t>::max()-digito)/10) return false;\n            tamanho=tamanho*10+digito; ++i;\n        }\n        if (i==inicio || i==s.size()) return false;\n        ++i; // pula #\n        if (tamanho>s.size()-i) return false;\n        temporario.push_back(s.substr(i,tamanho)); i+=tamanho;\n    }\n    saida=std::move(temporario);\n    return true;\n}",
+    "complexity": "O(B) de tempo e O(B) para a saída temporária, onde B é o tamanho em bytes da codificação.",
+    "success_criteria": [
+      "Verificar dígitos, delimitador, overflow e tamanho restante.",
+      "Ler o payload por comprimento, sem procurar delimitador dentro dele.",
+      "Manter a saída anterior intacta se a leitura falhar."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::expansao_20261028",
+    "assunto::decode_limites_e_validacao",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000058",
+      "title": "Encode and Decode Strings",
+      "pages_1based": [
+        10,
+        11
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": "https://leetcode.com/problems/encode-and-decode-strings/description/",
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-expansao-072",
+    "sync_run_id": "b9f78700-9140-42d3-9354-cee80c562b26",
+    "learning_origin": "didactic_extension",
+    "technical_references": []
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-expansao.json",
+    "validated_at": "2026-10-28T20:56:56-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793231826525",
+    "card_ids": [
+      "1793231826525"
+    ],
+    "fields_sha256": "dfb5134df0bd425755589196d5cb42ea2b8c2dbe7a36b6f5e439e81c839ff8a6",
+    "last_batch_id": "2026-10-28-expansao"
+  }
+}

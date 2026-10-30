@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000091",
+  "content_key": "validar_construcao_por_propriedades",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Quando uma questão construtiva aceita qualquer solução ótima, como verificar a saída sem compará-la com uma string esperada? Aplique a Red Versus Blue.",
+  "back": {
+    "answer": "Verifique as propriedades exigidas: alfabeto permitido, quantidade de cada símbolo e valor do objetivo. Strings diferentes podem ser igualmente ótimas; compará-las literalmente com uma saída de exemplo rejeita soluções válidas.\n\nPara Red Versus Blue, sob r>b≥1, o limite inferior do maior bloco é ceil(r/(b+1)), e a construção equilibrada já conhecida atinge esse limite. Portanto uma saída é ótima se tem exatamente r letras R, b letras B e seu maior bloco de qualquer símbolo tem esse valor. Conte também os blocos de B: validar só os de R não verifica toda a condição do problema.\n\nEquilibrar todos os espaços é uma construção suficiente, mas não é necessário que toda solução ótima tenha seus tamanhos diferindo no máximo em 1. Com r=7 e b=2, os blocos 3,3,1 e 3,2,2 atingem o mesmo máximo ótimo 3. Este complemento separa provar a existência de uma construção de caracterizar todas as soluções possíveis.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "bool construcaoOtima(const string& s,int r,int b) {\n    assert(r>b && b>=1);\n    int reds=0,blues=0,pico=0,atual=0;\n    char anterior='?';\n    for (char c:s) {\n        if (c!='R' && c!='B') return false;\n        reds+=(c=='R'); blues+=(c=='B');\n        atual=(c==anterior ? atual+1 : 1);\n        pico=max(pico,atual); anterior=c;\n    }\n    int grupos=b+1;\n    int limite=r/grupos+(r%grupos!=0);\n    return reds==r && blues==b && pico==limite;\n}",
+    "complexity": "O(N) de tempo e O(1) de espaço; o limite inferior vem da prova matemática, não de uma busca pela saída exata.",
+    "success_criteria": [
+      "Verificar validade, quantidades e o objetivo ótimo.",
+      "Aceitar construções diferentes que atingem o mesmo limite.",
+      "Não confundir uma construção suficiente com uma condição necessária."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::rating1300_20261028",
+    "assunto::validar_construcao_por_propriedades",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000007",
+      "title": "Red Versus Blue",
+      "pages_1based": [
+        98,
+        99
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1659/A",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-rating1300-090",
+    "sync_run_id": "83323976-8b9b-4940-9f43-72f5b2bf8678",
+    "learning_origin": "didactic_extension"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-rating1300.json",
+    "validated_at": "2026-10-28T21:11:18-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793232707396",
+    "card_ids": [
+      "1793232707396"
+    ],
+    "fields_sha256": "703ce3d53555aa2b38c04f67b27142a84b6fb136c53418b6ee866434421a9e13",
+    "last_batch_id": "2026-10-28-rating1300"
+  }
+}

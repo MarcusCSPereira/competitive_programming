@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000023",
+  "content_key": "dobramento_custo_fixo",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como separar o custo de trocar elementos do custo de clonar arrays para uniformizar um array? Por que começar pelo valor mais frequente é ótimo?",
+  "back": {
+    "answer": "Se o valor escolhido aparece f vezes, no mínimo n-f posições precisam mudar. Clonar um array com c cópias desse valor oferece no máximo c novas cópias utilizáveis; após as trocas úteis, a quantidade dobra até n. Começar com a maior frequência minimiza tanto as trocas quanto as clonagens. Some separadamente n-f e o número de duplicações necessárias.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int custoUniformizar(const vector<int>& a) {\n    unordered_map<int,int> freq; int f=0;\n    for(int x:a) f=max(f,++freq[x]);\n    int n=a.size(),ops=n-f;\n    while(f<n){ ++ops; f=min(n,2*f); }\n    return ops;\n}",
+    "complexity": "O(n) esperado para frequências e O(log n) duplicações; O(n) de espaço; array não vazio.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::dobramento_custo_fixo",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000022",
+      "title": "Array Cloning Technique",
+      "pages_1based": [
+        65,
+        66
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1665/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210795",
+    "card_ids": [
+      "1793230210796"
+    ],
+    "fields_sha256": "6cfea5aeb34f2d872038a97135a1b66777875584f78c6f0cedcee0c8a547185a",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

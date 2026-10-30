@@ -1,0 +1,43 @@
+{
+  "total_notes": 86,
+  "new_notes": 17,
+  "previous_notes_preserved": 69,
+  "previous_card_scheduling_unchanged": true,
+  "sync": {
+    "collectionComplete": true,
+    "mediaComplete": true
+  },
+  "rendered_examples": {
+    "cp-note-000073": {
+      "cardId": 13,
+      "questionHtml": 816,
+      "answerHtml": 3512,
+      "css": 585
+    },
+    "cp-note-000075": {
+      "cardId": 13,
+      "questionHtml": 820,
+      "answerHtml": 2835,
+      "css": 585
+    },
+    "cp-note-000084": {
+      "cardId": 13,
+      "questionHtml": 820,
+      "answerHtml": 3649,
+      "css": 585
+    }
+  },
+  "verified_at": "2026-10-28T21:00:10-03:00",
+  "batch_id": "2026-10-28-expansao",
+  "source_sync_run_id": "b9f78700-9140-42d3-9354-cee80c562b26",
+  "idempotent_rerun": {
+    "create": 0,
+    "update": 0,
+    "unchanged": 17
+  },
+  "historical_rerun": {
+    "create": 0,
+    "update": 0,
+    "unchanged": 69
+  }
+}

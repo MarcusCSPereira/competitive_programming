@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000060",
+  "content_key": "topk_buckets",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como obter os k elementos mais frequentes em tempo linear esperado usando buckets? O que representa o índice e por que são n+1 posições?",
+  "back": {
+    "answer": "Conte cada valor com hashmap. Uma frequência está entre 1 e n; crie n+1 buckets, onde bucket[f] guarda os valores que aparecem f vezes. Percorra as frequências do maior para o menor e pare ao obter k valores. O índice é frequência, não o próprio valor. O bucket n precisa existir. A ordem entre elementos empatados é irrelevante quando o problema permite qualquer ordem.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "vector<int> topK(const vector<int>& a,int k){\n    unordered_map<int,int> f;for(int x:a)++f[x];\n    int n=a.size();vector<vector<int>> buckets(n+1);\n    for(auto [x,qtd]:f) buckets[qtd].push_back(x);\n    vector<int> ans;\n    for(int qtd=n;qtd>=1;--qtd) for(int x:buckets[qtd]){\n        ans.push_back(x);if((int)ans.size()==k)return ans;\n    }\n    return ans;\n}",
+    "complexity": "O(n) esperado de tempo e O(n) de espaço; 1<=k<=número de distintos.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::topk_buckets",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000055",
+      "title": "Top K Frequent Elements",
+      "pages_1based": [
+        5,
+        6
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": "https://leetcode.com/problems/top-k-frequent-elements/description/",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210832",
+    "card_ids": [
+      "1793230210833"
+    ],
+    "fields_sha256": "c94d82762a673c5b9292aaaaa6283625accd954a3dc1f99583811b9cd27066cb",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

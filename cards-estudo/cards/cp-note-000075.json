@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000075",
+  "content_key": "sweep_line_duracao_entre_eventos",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como adaptar uma sweep line de ocupação para medir por quanto tempo uma capacidade é excedida? Por que a distância entre horários importa depois de ordenar ou comprimir coordenadas?",
+  "back": {
+    "answer": "Esta é uma extensão do padrão de Porquinho da Índia: em vez de guardar só o pico, conte a duração em que a ocupação é maior que um limite. Entre dois horários consecutivos de eventos nada muda; a ocupação anterior vale por todo o trecho [anterior,tempo). Some tempo-anterior quando ela exceder a capacidade e só então aplique o delta no horário atual.\n\nAgrupe deltas de mesmo horário. Entradas e saídas simultâneas não criam duração intermediária. Se coordenadas 5 e 100 forem comprimidas para índices 0 e 1, o intervalo ainda dura 95, não 1: índices preservam ordem, mas não distâncias.\n\nAssim a contagem depende de N eventos, mesmo que os horários cheguem a bilhões. O código assume quantidades e capacidade não negativas e intervalos semiabertos.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "long long tempoAcima(\n    const vector<tuple<long long,long long,long long>>& intervalos,\n    long long capacidade) {\n    map<long long,long long> delta;\n    for (auto [inicio,fim,qtd]:intervalos) {\n        if (inicio>=fim) continue;\n        delta[inicio]+=qtd; delta[fim]-=qtd;\n    }\n    if (delta.empty()) return 0;\n    long long anterior=delta.begin()->first,atual=0,duracao=0;\n    for (auto [tempo,mudanca]:delta) {\n        if (atual>capacidade) duracao+=tempo-anterior;\n        atual+=mudanca; anterior=tempo;\n    }\n    return duracao;\n}",
+    "complexity": "O(N log N) de tempo e O(N) de espaço. Os horários originais e a ocupação acumulada devem caber em long long.",
+    "success_criteria": [
+      "Acumular a duração antes de aplicar o evento do limite direito.",
+      "Usar a diferença dos horários originais, não de seus índices comprimidos.",
+      "Tratar simultaneidade sem inventar um intervalo de duração positiva."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::expansao_20261028",
+    "assunto::sweep_line_duracao_entre_eventos",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000009",
+      "title": "Porquinho da Índia",
+      "pages_1based": [
+        46,
+        47,
+        48
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": null,
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-expansao-072",
+    "sync_run_id": "b9f78700-9140-42d3-9354-cee80c562b26",
+    "learning_origin": "didactic_extension",
+    "technical_references": []
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-expansao.json",
+    "validated_at": "2026-10-28T20:56:56-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793231826522",
+    "card_ids": [
+      "1793231826522"
+    ],
+    "fields_sha256": "d42b235b5c6e1185620ef153bfe55d968e4ddc25af0fbae3ee4646afe6ac689b",
+    "last_batch_id": "2026-10-28-expansao"
+  }
+}

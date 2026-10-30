@@ -1,0 +1,1471 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-28T21:11:18-03:00",
+  "units": [
+    {
+      "id": "cp-problem-000001",
+      "notebook_id": "problemas",
+      "pages": [
+        48,
+        49,
+        50
+      ],
+      "title": "Forked!",
+      "candidate_title": "Forked!",
+      "platform_id_candidate": "cf-1904A",
+      "association_basis": "diagramas, construção de conjuntos e correspondência com código local",
+      "local_code": "codeforces/rating_900/forked-1904A.cpp",
+      "status": "selected_topics_generated_validated",
+      "official_statement_verified": false,
+      "cards_generated": [
+        "cp-note-000007"
+      ],
+      "notes": "Início de Forked reconciliado nas páginas 48–50; ID preservado. A região de Chemistry na página 50 não pertence a esta unidade. Páginas 1–44 continuam excluídas.",
+      "platform_id": "1904A",
+      "topics": [
+        "movimentos simétricos",
+        "set e interseção",
+        "deduplicação quando a=b"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000002",
+      "notebook_id": "problemas",
+      "pages": [
+        50,
+        51
+      ],
+      "title": "Chemistry",
+      "platform_id_observed": "cf-1883B",
+      "local_code": "codeforces/rating_900/chemistry-1883B.cpp",
+      "status": "selected_topics_generated_validated",
+      "official_statement_verified": false,
+      "cards_generated": [
+        "cp-note-000008"
+      ],
+      "topics_observed": [
+        "palíndromo",
+        "frequência",
+        "string",
+        "paridade"
+      ],
+      "platform_id": "1883B",
+      "topics": [
+        "frequências ímpares",
+        "palíndromos após remoções"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000003",
+      "notebook_id": "problemas",
+      "pages": [
+        52
+      ],
+      "title_observed": "Vasilije in Cajt",
+      "platform_id_observed": "cf-1878C",
+      "status": "selected_topics_generated_validated",
+      "official_statement_verified": false,
+      "cards_generated": [
+        "cp-note-000009",
+        "cp-note-000072"
+      ],
+      "topics_observed": [
+        "progressão aritmética",
+        "somas mínima e máxima"
+      ],
+      "pending": [
+        "Confirmar a condição de números distintos no enunciado oficial."
+      ],
+      "title": "Vasilije in Cacak",
+      "platform_id": "1878C",
+      "topics": [
+        "somas mínima e máxima",
+        "PA",
+        "long long"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "coverage_review": {
+        "at": "2026-10-28T20:56:56-03:00",
+        "run_id": "2026-10-28-expansao-072",
+        "added_card_ids": [
+          "cp-note-000072"
+        ],
+        "batch_id": "2026-10-28-expansao"
+      }
+    },
+    {
+      "id": "cp-problem-000004",
+      "notebook_id": "problemas",
+      "pages": [
+        53
+      ],
+      "title": "Jellyfish and Undertale",
+      "platform_id_observed": "cf-1875A",
+      "status": "selected_topics_generated_validated",
+      "official_statement_verified": false,
+      "cards_generated": [
+        "cp-note-000010"
+      ],
+      "topics_observed": [
+        "limite",
+        "min",
+        "acúmulo de tempo"
+      ],
+      "platform_id": "1875A",
+      "topics": [
+        "limite a-1",
+        "min",
+        "adiar recarga"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000005",
+      "notebook_id": "big-tech-problems",
+      "pages": [
+        14
+      ],
+      "title": "Add Two Numbers",
+      "platform_id_observed": "leetcode-2",
+      "status": "selected_topics_generated_validated",
+      "official_statement_verified": true,
+      "cards_generated": [
+        "cp-note-000002",
+        "cp-note-000057",
+        "cp-note-000069"
+      ],
+      "topics_observed": [
+        "ListNode",
+        "ponteiros",
+        "sentinela",
+        "carry",
+        "ternário",
+        "criação de nós",
+        "retorno da lista"
+      ],
+      "complexity_original": {
+        "time": "O(n + m)",
+        "space": "O(n + m)"
+      },
+      "pending": [
+        "Conferir a imagem de código em resolução suficiente antes de transcrever.",
+        "Separar espaço auxiliar do espaço da saída."
+      ],
+      "official_statement_url": "https://leetcode.com/problems/add-two-numbers/description/",
+      "platform_id": "2",
+      "topics": [
+        "sentinela",
+        "construir lista",
+        "carry",
+        "ternário e nullptr"
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9"
+    },
+    {
+      "id": "cp-problem-000006",
+      "notebook_id": "problemas",
+      "pages": [
+        99
+      ],
+      "title": "Roof Construction",
+      "platform_id_observed": "cf-1632B",
+      "status": "title_only_waiting_for_content",
+      "official_statement_verified": false,
+      "cards_generated": [],
+      "notes": "Só título no final da fonte atual. Retomar se a questão ganhar conteúdo."
+    },
+    {
+      "id": "cp-problem-000007",
+      "notebook_id": "problemas",
+      "pages": [
+        98,
+        99
+      ],
+      "title": "Red Versus Blue",
+      "platform_id_observed": "cf-1659A",
+      "local_code": "codeforces/rating_1000/red_vs_blue-1659A.cpp",
+      "status": "selected_topics_generated_validated",
+      "official_statement_verified": true,
+      "official_statement_url": "https://codeforces.com/problemset/problem/1659/A",
+      "cards_generated": [
+        "cp-note-000001",
+        "cp-note-000091"
+      ],
+      "topics_observed": [
+        "princípio da casa dos pombos",
+        "distribuição uniforme",
+        "quociente e resto"
+      ],
+      "platform_id": "1659A",
+      "topics": [
+        "casa dos pombos",
+        "distribuição de resto"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "recent_review": {
+        "at": "2026-10-28T21:11:18-03:00",
+        "batch_id": "2026-10-28-rating1300",
+        "selected_cards": [
+          "cp-note-000091"
+        ]
+      },
+      "rating_verified": 1000,
+      "rating_source": "https://codeforces.com/problemset/problem/1659/A"
+    },
+    {
+      "id": "cp-problem-000008",
+      "notebook_id": "problemas",
+      "title": "Microwaves",
+      "pages": [
+        45,
+        46
+      ],
+      "platform_id": null,
+      "topics": [
+        "Dijkstra com estados (v, usados)",
+        "arestas não negativas",
+        "mínimo entre estados finais"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000003",
+        "cp-note-000004",
+        "cp-note-000070",
+        "cp-note-000071",
+        "cp-note-000072"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "coverage_review": {
+        "at": "2026-10-28T20:56:56-03:00",
+        "run_id": "2026-10-28-expansao-072",
+        "added_card_ids": [
+          "cp-note-000070",
+          "cp-note-000071",
+          "cp-note-000072"
+        ],
+        "batch_id": "2026-10-28-expansao"
+      }
+    },
+    {
+      "id": "cp-problem-000009",
+      "notebook_id": "problemas",
+      "title": "Porquinho da Índia",
+      "pages": [
+        46,
+        47,
+        48
+      ],
+      "platform_id": null,
+      "topics": [
+        "grafo funcional",
+        "três estados",
+        "ciclos",
+        "sweep line com intervalos semiabertos"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000005",
+        "cp-note-000006",
+        "cp-note-000073",
+        "cp-note-000074",
+        "cp-note-000075",
+        "cp-note-000076"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "coverage_review": {
+        "at": "2026-10-28T20:56:56-03:00",
+        "run_id": "2026-10-28-expansao-072",
+        "added_card_ids": [
+          "cp-note-000073",
+          "cp-note-000074",
+          "cp-note-000075",
+          "cp-note-000076"
+        ],
+        "batch_id": "2026-10-28-expansao"
+      }
+    },
+    {
+      "id": "cp-problem-000010",
+      "notebook_id": "problemas",
+      "title": "Make It Zero",
+      "pages": [
+        54
+      ],
+      "platform_id": "1869A",
+      "topics": [
+        "XOR",
+        "paridade do comprimento",
+        "construção em segmentos pares"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000011"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000011",
+      "notebook_id": "problemas",
+      "title": "Longest Divisors Interval",
+      "pages": [
+        55
+      ],
+      "platform_id": "1855B",
+      "topics": [
+        "intervalo de divisores",
+        "múltiplo em qualquer janela",
+        "LCM"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000012"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000012",
+      "notebook_id": "problemas",
+      "title": "Balanced Round",
+      "pages": [
+        55,
+        56
+      ],
+      "platform_id": "1850D",
+      "topics": [
+        "ordenação",
+        "maior bloco de diferenças pequenas"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000013"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000013",
+      "notebook_id": "problemas",
+      "title": "Comparison String",
+      "pages": [
+        56,
+        57
+      ],
+      "platform_id": "1837B",
+      "topics": [
+        "maior sequência de comparações iguais",
+        "limite inferior e construção"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000014"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000014",
+      "notebook_id": "problemas",
+      "title": "Permutation Swap",
+      "pages": [
+        57,
+        58
+      ],
+      "platform_id": "1828B",
+      "topics": [
+        "classes módulo k",
+        "gcd de deslocamentos"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000015"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000015",
+      "notebook_id": "problemas",
+      "title": "Odd Queries",
+      "pages": [
+        58,
+        59
+      ],
+      "platform_id": "1807D",
+      "topics": [
+        "prefix sum",
+        "consultas independentes",
+        "paridade"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000016",
+        "cp-note-000076"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "coverage_review": {
+        "at": "2026-10-28T20:56:56-03:00",
+        "run_id": "2026-10-28-expansao-072",
+        "added_card_ids": [
+          "cp-note-000076"
+        ],
+        "batch_id": "2026-10-28-expansao"
+      }
+    },
+    {
+      "id": "cp-problem-000016",
+      "notebook_id": "problemas",
+      "title": "Not Dividing",
+      "pages": [
+        59,
+        60
+      ],
+      "platform_id": "1794B",
+      "topics": [
+        "invariante greedy esquerda-direita",
+        "retirar 1",
+        "divisibilidade"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000017"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000017",
+      "notebook_id": "problemas",
+      "title": "Mainak and Array",
+      "pages": [
+        60,
+        61
+      ],
+      "platform_id": "1726A",
+      "topics": [
+        "classificação de casos",
+        "extremos e pares adjacentes"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000018"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000018",
+      "notebook_id": "problemas",
+      "title": "NIT Destroys the Universe",
+      "pages": [
+        61,
+        62
+      ],
+      "platform_id": "1696B",
+      "topics": [
+        "MEX",
+        "blocos não nulos",
+        "resposta 0/1/2"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000019"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000019",
+      "notebook_id": "problemas",
+      "title": "AvtoBus",
+      "pages": [
+        62,
+        63
+      ],
+      "platform_id": "1679A",
+      "topics": [
+        "paridade",
+        "divisão com teto",
+        "quantidades mínima e máxima"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000020"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000020",
+      "notebook_id": "problemas",
+      "title": "Make It Increasing",
+      "pages": [
+        63,
+        64
+      ],
+      "platform_id": "1675B",
+      "topics": [
+        "greedy direita-esquerda",
+        "redução por 2",
+        "caso impossível zero"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000021"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000021",
+      "notebook_id": "problemas",
+      "title": "Deletive Editing",
+      "pages": [
+        64,
+        65
+      ],
+      "platform_id": "1666D",
+      "topics": [
+        "frequências",
+        "últimas ocorrências",
+        "ordem da subsequência"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000022"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000022",
+      "notebook_id": "problemas",
+      "title": "Array Cloning Technique",
+      "pages": [
+        65,
+        66
+      ],
+      "platform_id": "1665B",
+      "topics": [
+        "frequência máxima",
+        "dobramento",
+        "separar custo fixo e cópias"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000023"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000023",
+      "notebook_id": "problemas",
+      "title": "Make AP",
+      "pages": [
+        66,
+        67,
+        68
+      ],
+      "platform_id": "1624B",
+      "topics": [
+        "equação a+c=2b",
+        "divisibilidade e positividade"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000024"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000024",
+      "notebook_id": "problemas",
+      "title": "Odd Grasshopper",
+      "pages": [
+        68,
+        69
+      ],
+      "platform_id": "1607B",
+      "topics": [
+        "padrão periódico mod 4",
+        "paridade inicial",
+        "O(1)"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000025"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000025",
+      "notebook_id": "problemas",
+      "title": "AB Balance",
+      "pages": [
+        69,
+        70
+      ],
+      "platform_id": "1606A",
+      "topics": [
+        "cancelamento telescópico de transições",
+        "primeiro e último"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000026"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000026",
+      "notebook_id": "problemas",
+      "title": "Make It Divisible by 25",
+      "pages": [
+        70,
+        71
+      ],
+      "platform_id": "1593B",
+      "topics": [
+        "sufixos 00 25 50 75",
+        "busca reversa",
+        "dígitos versus valor"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000027"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000027",
+      "notebook_id": "problemas",
+      "title": "Luntik and Subsequences",
+      "pages": [
+        71,
+        72
+      ],
+      "platform_id": "1582B",
+      "topics": [
+        "subconjuntos de zeros",
+        "exatamente um 1",
+        "contagem inteira"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000028",
+        "cp-note-000083"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "coverage_review": {
+        "at": "2026-10-28T20:56:56-03:00",
+        "run_id": "2026-10-28-expansao-072",
+        "added_card_ids": [
+          "cp-note-000083"
+        ],
+        "batch_id": "2026-10-28-expansao"
+      }
+    },
+    {
+      "id": "cp-problem-000028",
+      "notebook_id": "problemas",
+      "title": "Mocha and Math",
+      "pages": [
+        72
+      ],
+      "platform_id": "1559A",
+      "topics": [
+        "AND como remoção de bits",
+        "redução"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000029"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000029",
+      "notebook_id": "problemas",
+      "title": "Exciting Bets",
+      "pages": [
+        73,
+        74
+      ],
+      "platform_id": "1543A",
+      "topics": [
+        "diferença invariante",
+        "gcd",
+        "distância a múltiplo"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000030",
+        "cp-note-000079",
+        "cp-note-000082"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "coverage_review": {
+        "at": "2026-10-28T20:56:56-03:00",
+        "run_id": "2026-10-28-expansao-072",
+        "added_card_ids": [
+          "cp-note-000079",
+          "cp-note-000082"
+        ],
+        "batch_id": "2026-10-28-expansao"
+      }
+    },
+    {
+      "id": "cp-problem-000030",
+      "notebook_id": "problemas",
+      "title": "Bad Boy",
+      "pages": [
+        74,
+        75
+      ],
+      "platform_id": "1537B",
+      "topics": [
+        "distância Manhattan",
+        "cantos opostos"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000031"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000031",
+      "notebook_id": "problemas",
+      "title": "Odd Divisor",
+      "pages": [
+        75
+      ],
+      "platform_id": "1475A",
+      "topics": [
+        "potência de dois",
+        "fatores ímpares",
+        "teste de bit"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000032"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000032",
+      "notebook_id": "problemas",
+      "title": "Strange Partition",
+      "pages": [
+        75,
+        76
+      ],
+      "platform_id": "1471A",
+      "topics": [
+        "teto da soma versus soma de tetos"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000020",
+        "cp-note-000033"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000033",
+      "notebook_id": "problemas",
+      "title": "Sum of Medians",
+      "pages": [
+        76,
+        77
+      ],
+      "platform_id": "1440B",
+      "topics": [
+        "mediana inferior",
+        "reserva de elementos maiores",
+        "greedy"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000034"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000034",
+      "notebook_id": "problemas",
+      "title": "Three Indices",
+      "pages": [
+        77,
+        78
+      ],
+      "platform_id": "1380A",
+      "topics": [
+        "pico local em permutação"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000035"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000035",
+      "notebook_id": "problemas",
+      "title": "01 Game",
+      "pages": [
+        78
+      ],
+      "platform_id": "1373B",
+      "topics": [
+        "invariante de contagens",
+        "paridade de jogadas"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000036"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000036",
+      "notebook_id": "problemas",
+      "title": "Multiply by 2, Divide by 6",
+      "pages": [
+        78,
+        79
+      ],
+      "platform_id": "1374B",
+      "topics": [
+        "expoentes primos",
+        "viabilidade e custo"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000037"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000037",
+      "notebook_id": "problemas",
+      "title": "Swap and Delete",
+      "pages": [
+        79,
+        80
+      ],
+      "platform_id": "1913B",
+      "topics": [
+        "frequências",
+        "prefixo viável",
+        "troca livre"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000038"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000038",
+      "notebook_id": "problemas",
+      "title": "Raspberries",
+      "pages": [
+        80,
+        81
+      ],
+      "platform_id": "1883C",
+      "topics": [
+        "primo versus composto",
+        "fatores do produto"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000039"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000039",
+      "notebook_id": "problemas",
+      "title": "Helmets in Night Light",
+      "pages": [
+        82,
+        83
+      ],
+      "platform_id": "1876A",
+      "topics": [
+        "greedy por custo",
+        "capacidade",
+        "participante ativado"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000040"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000040",
+      "notebook_id": "problemas",
+      "title": "Olya and Game with Arrays",
+      "pages": [
+        83,
+        84
+      ],
+      "platform_id": "1859B",
+      "topics": [
+        "menor e segundo menor",
+        "concentrar perdas"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000041",
+        "cp-note-000081"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "coverage_review": {
+        "at": "2026-10-28T20:56:56-03:00",
+        "run_id": "2026-10-28-expansao-072",
+        "added_card_ids": [
+          "cp-note-000081"
+        ],
+        "batch_id": "2026-10-28-expansao"
+      }
+    },
+    {
+      "id": "cp-problem-000041",
+      "notebook_id": "problemas",
+      "title": "Monsters",
+      "pages": [
+        84
+      ],
+      "platform_id": "1849B",
+      "topics": [
+        "resto normalizado",
+        "desempate por índice"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000042",
+        "cp-note-000080"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "coverage_review": {
+        "at": "2026-10-28T20:56:56-03:00",
+        "run_id": "2026-10-28-expansao-072",
+        "added_card_ids": [
+          "cp-note-000080"
+        ],
+        "batch_id": "2026-10-28-expansao"
+      }
+    },
+    {
+      "id": "cp-problem-000042",
+      "notebook_id": "problemas",
+      "title": "Ski Resort",
+      "pages": [
+        85,
+        86
+      ],
+      "platform_id": "1840C",
+      "topics": [
+        "blocos válidos",
+        "count and reset",
+        "soma triangular"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000043"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000043",
+      "notebook_id": "problemas",
+      "title": "Array Merging",
+      "pages": [
+        86,
+        87
+      ],
+      "platform_id": "1831B",
+      "topics": [
+        "runs por valor",
+        "soma dos máximos"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000044"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000044",
+      "notebook_id": "problemas",
+      "title": "Distinct Split",
+      "pages": [
+        87,
+        88
+      ],
+      "platform_id": "1791D",
+      "topics": [
+        "prefixos e sufixos de distintos"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000045"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000045",
+      "notebook_id": "problemas",
+      "title": "Minimum LCM",
+      "pages": [
+        88,
+        89,
+        90,
+        91
+      ],
+      "platform_id": "1765M",
+      "topics": [
+        "pares de fatores",
+        "menor divisor",
+        "prova via gcd"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000046",
+        "cp-note-000047",
+        "cp-note-000079"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "coverage_review": {
+        "at": "2026-10-28T20:56:56-03:00",
+        "run_id": "2026-10-28-expansao-072",
+        "added_card_ids": [
+          "cp-note-000079"
+        ],
+        "batch_id": "2026-10-28-expansao"
+      }
+    },
+    {
+      "id": "cp-problem-000046",
+      "notebook_id": "problemas",
+      "title": "Traffic Light",
+      "pages": [
+        91,
+        92
+      ],
+      "platform_id": "1744C",
+      "topics": [
+        "duplicar ciclo",
+        "varrer ao contrário",
+        "próximo evento"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000048",
+        "cp-note-000082"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "coverage_review": {
+        "at": "2026-10-28T20:56:56-03:00",
+        "run_id": "2026-10-28-expansao-072",
+        "added_card_ids": [
+          "cp-note-000082"
+        ],
+        "batch_id": "2026-10-28-expansao"
+      }
+    },
+    {
+      "id": "cp-problem-000047",
+      "notebook_id": "problemas",
+      "title": "Basketball Together",
+      "pages": [
+        92,
+        93
+      ],
+      "platform_id": "1725B",
+      "topics": [
+        "greedy dois ponteiros",
+        "máximo como força de todo time"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000049"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000048",
+      "notebook_id": "problemas",
+      "title": "Beautiful Array",
+      "pages": [
+        93,
+        94
+      ],
+      "platform_id": "1715B",
+      "topics": [
+        "quocientes e restos",
+        "capacidade e limites"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000050"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000049",
+      "notebook_id": "problemas",
+      "title": "Luke Is a Foodie",
+      "pages": [
+        94,
+        95
+      ],
+      "platform_id": "1704B",
+      "topics": [
+        "interseção incremental de intervalos",
+        "greedy"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000051"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "recent_review": {
+        "at": "2026-10-28T21:11:18-03:00",
+        "batch_id": "2026-10-28-rating1300",
+        "selected_cards": [
+          "cp-note-000051"
+        ]
+      }
+    },
+    {
+      "id": "cp-problem-000050",
+      "notebook_id": "problemas",
+      "title": "Shoe Shuffling",
+      "pages": [
+        95,
+        96
+      ],
+      "platform_id": "1691B",
+      "topics": [
+        "blocos iguais",
+        "rotação cíclica sem pontos fixos"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000052"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "recent_review": {
+        "at": "2026-10-28T21:11:18-03:00",
+        "batch_id": "2026-10-28-rating1300",
+        "selected_cards": [
+          "cp-note-000052"
+        ]
+      }
+    },
+    {
+      "id": "cp-problem-000051",
+      "notebook_id": "problemas",
+      "title": "Word Capitalization",
+      "pages": [
+        96,
+        97
+      ],
+      "platform_id": "281A",
+      "topics": [
+        "ASCII",
+        "conversão segura de char"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000053"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000052",
+      "notebook_id": "problemas",
+      "title": "Black and White Stripe",
+      "pages": [
+        97,
+        98
+      ],
+      "platform_id": "1690D",
+      "topics": [
+        "janela fixa",
+        "prefix sum de predicado"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000016",
+        "cp-note-000054"
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    },
+    {
+      "id": "cp-problem-000053",
+      "notebook_id": "big-tech-problems",
+      "title": "LRU Cache",
+      "pages": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "platform_id": "146",
+      "topics": [
+        "hashmap e lista dupla",
+        "sentinelas",
+        "ponteiros e referências",
+        "remoção segura"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000055",
+        "cp-note-000056",
+        "cp-note-000057",
+        "cp-note-000058",
+        "cp-note-000084"
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "coverage_review": {
+        "at": "2026-10-28T20:56:56-03:00",
+        "run_id": "2026-10-28-expansao-072",
+        "added_card_ids": [
+          "cp-note-000084"
+        ],
+        "batch_id": "2026-10-28-expansao"
+      }
+    },
+    {
+      "id": "cp-problem-000054",
+      "notebook_id": "big-tech-problems",
+      "title": "Group Anagrams",
+      "pages": [
+        5
+      ],
+      "platform_id": "49",
+      "topics": [
+        "assinatura de frequências",
+        "delimitadores na chave"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000058",
+        "cp-note-000059",
+        "cp-note-000085"
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "coverage_review": {
+        "at": "2026-10-28T20:56:56-03:00",
+        "run_id": "2026-10-28-expansao-072",
+        "added_card_ids": [
+          "cp-note-000085"
+        ],
+        "batch_id": "2026-10-28-expansao"
+      }
+    },
+    {
+      "id": "cp-problem-000055",
+      "notebook_id": "big-tech-problems",
+      "title": "Top K Frequent Elements",
+      "pages": [
+        5,
+        6
+      ],
+      "platform_id": "347",
+      "topics": [
+        "frequências",
+        "buckets n+1",
+        "limite k"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000058",
+        "cp-note-000060",
+        "cp-note-000077"
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "coverage_review": {
+        "at": "2026-10-28T20:56:56-03:00",
+        "run_id": "2026-10-28-expansao-072",
+        "added_card_ids": [
+          "cp-note-000077"
+        ],
+        "batch_id": "2026-10-28-expansao"
+      }
+    },
+    {
+      "id": "cp-problem-000056",
+      "notebook_id": "big-tech-problems",
+      "title": "Security Delivery Logs",
+      "pages": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "platform_id": null,
+      "topics": [
+        "limiar t",
+        "quociente e resto",
+        "limite de armazéns",
+        "complexidade real"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000061",
+        "cp-note-000086"
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "note": "Card de modelo didático com hipótese explícita; enunciado e limites completos da entrevista ausentes.",
+      "coverage_review": {
+        "at": "2026-10-28T20:56:56-03:00",
+        "run_id": "2026-10-28-expansao-072",
+        "added_card_ids": [
+          "cp-note-000086"
+        ],
+        "batch_id": "2026-10-28-expansao"
+      }
+    },
+    {
+      "id": "cp-problem-000057",
+      "notebook_id": "big-tech-problems",
+      "title": "Product of Array Except Self",
+      "pages": [
+        9,
+        10
+      ],
+      "platform_id": "238",
+      "topics": [
+        "prefixo e sufixo exclusivos",
+        "produto sem divisão",
+        "saída como armazenamento"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000062",
+        "cp-note-000063"
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9"
+    },
+    {
+      "id": "cp-problem-000058",
+      "notebook_id": "big-tech-problems",
+      "title": "Encode and Decode Strings",
+      "pages": [
+        10,
+        11
+      ],
+      "platform_id": "271",
+      "topics": [
+        "serialização por comprimento",
+        "delimitador",
+        "strings vazias"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000064",
+        "cp-note-000078"
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "coverage_review": {
+        "at": "2026-10-28T20:56:56-03:00",
+        "run_id": "2026-10-28-expansao-072",
+        "added_card_ids": [
+          "cp-note-000078"
+        ],
+        "batch_id": "2026-10-28-expansao"
+      }
+    },
+    {
+      "id": "cp-problem-000059",
+      "notebook_id": "big-tech-problems",
+      "title": "Valid Sudoku",
+      "pages": [
+        11,
+        12
+      ],
+      "platform_id": "36",
+      "topics": [
+        "divisão em blocos",
+        "linearização",
+        "bitmask"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000065",
+        "cp-note-000066"
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9"
+    },
+    {
+      "id": "cp-problem-000060",
+      "notebook_id": "big-tech-problems",
+      "title": "Inicialização de contêineres compostos",
+      "pages": [
+        12,
+        13
+      ],
+      "platform_id": null,
+      "topics": [
+        "tipos aninhados",
+        "tamanho versus valor",
+        "parênteses versus chaves",
+        "fila e pilha"
+      ],
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000067",
+        "cp-note-000068",
+        "cp-note-000085"
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "coverage_review": {
+        "at": "2026-10-28T20:56:56-03:00",
+        "run_id": "2026-10-28-expansao-072",
+        "added_card_ids": [
+          "cp-note-000085"
+        ],
+        "batch_id": "2026-10-28-expansao"
+      }
+    },
+    {
+      "id": "cp-problem-000061",
+      "notebook_id": "repositorio-cpp",
+      "source_kind": "repository_solution_and_official_statement",
+      "title": "Make it Alternating",
+      "pages": [],
+      "platform_id": "1879C",
+      "rating_verified": 1300,
+      "official_statement_verified": true,
+      "official_statement_url": "https://codeforces.com/problemset/problem/1879/C",
+      "local_code": "codeforces/rating_1300/make_it_alternating-1879C.cpp",
+      "local_code_sha256": "19ddd033294733cd86da76d12570b47b6e6c7070122cbfa3a20b9f447a130c68",
+      "manuscript_mapping_status": "not_located_in_authorized_pdf_snapshot",
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000087",
+        "cp-note-000088",
+        "cp-note-000089",
+        "cp-note-000090"
+      ],
+      "topics": [
+        "blocos consecutivos",
+        "remoções mínimas",
+        "princípio multiplicativo",
+        "fatorial e intercalações",
+        "aritmética modular"
+      ],
+      "notes": "Identificado no commit 067a781, de 26/10/2026. Sem página associada no snapshot autorizado; ao surgir no PDF, remapear este ID e estes cards, sem duplicá-los.",
+      "recent_review": {
+        "at": "2026-10-28T21:11:18-03:00",
+        "batch_id": "2026-10-28-rating1300",
+        "selected_cards": [
+          "cp-note-000087",
+          "cp-note-000088",
+          "cp-note-000089",
+          "cp-note-000090"
+        ]
+      }
+    }
+  ],
+  "note": "Faixas autorizadas lidas integralmente; melhores assuntos selecionados em 69 cards. Roof Construction permanece sem conteúdo."
+}

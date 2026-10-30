@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000088",
+  "content_key": "principio_multiplicativo_sobreviventes",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Em Make it Alternating, por que as escolhas ótimas de posições que permanecem são o produto dos tamanhos dos blocos? Por que caracteres iguais não tornam essas escolhas uma só?",
+  "back": {
+    "answer": "Após fixar o número mínimo de remoções, exatamente uma posição de cada bloco original deve sobreviver. Um bloco de tamanho L oferece L escolhas de posição. As escolhas de blocos diferentes são independentes; pelo princípio multiplicativo, existem L1*L2*…*LB escolhas de sobreviventes. Somar os tamanhos contaria escolher uma posição de apenas um bloco, em vez de escolher uma em cada bloco.\n\nEm 00111, há 2*3=6 escolhas de posições, embora todas produzam a mesma string final 01. O problema distingue operações pelos índices escolhidos, não só pelo texto final. Escolher sobreviventes determina quais posições originais serão removidas.\n\nEste produto conta apenas os conjuntos de posições removidas; ainda falta contar a ordem das remoções, tratada no card do fatorial. Aplique o módulo após cada multiplicação para que o acumulador continue limitado.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "long long escolhasDeSobreviventes(const string& s) {\n    const long long MOD=998244353;\n    long long escolhas=1;\n    for (int i=0;i<(int)s.size();) {\n        int j=i;\n        while (j<(int)s.size() && s[j]==s[i]) ++j;\n        escolhas=escolhas*(j-i)%MOD;\n        i=j;\n    }\n    return escolhas;\n}",
+    "complexity": "O(N) de tempo e O(1) de espaço auxiliar. O produto intermediário cabe em long long sob N≤200.000 e acumulador reduzido pelo módulo.",
+    "success_criteria": [
+      "Usar multiplicação para escolhas independentes em todos os blocos.",
+      "Distinguir posições originais de strings finais iguais.",
+      "Reconhecer que este produto ainda não conta as ordens de remoção."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::rating1300_20261028",
+    "assunto::principio_multiplicativo_sobreviventes",
+    "origem::repositorio-cpp"
+  ],
+  "sources": [
+    {
+      "notebook_id": "repositorio-cpp",
+      "problem_id": "cp-problem-000061",
+      "title": "Make it Alternating",
+      "platform_id": "1879C",
+      "rating_verified": 1300,
+      "pages_1based": [],
+      "source_snapshot_sha256": null,
+      "drive_file_id": null,
+      "official_statement_url": "https://codeforces.com/problemset/problem/1879/C",
+      "local_code_path": "codeforces/rating_1300/make_it_alternating-1879C.cpp",
+      "local_code_sha256": "19ddd033294733cd86da76d12570b47b6e6c7070122cbfa3a20b9f447a130c68",
+      "manuscript_mapping_status": "not_located_in_authorized_pdf_snapshot",
+      "highlight_color": null,
+      "provenance": "Solução local do usuário e enunciado oficial; não atribuir página ou observação manuscrita."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-rating1300-090",
+    "sync_run_id": "83323976-8b9b-4940-9f43-72f5b2bf8678",
+    "learning_origin": "local_solution_and_official_statement"
+  },
+  "validation": {
+    "handwriting_checked": false,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-rating1300.json",
+    "validated_at": "2026-10-28T21:11:18-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793232707393",
+    "card_ids": [
+      "1793232707393"
+    ],
+    "fields_sha256": "0348f12fad2e81deb7e5e8e20ff2e750a0981eaa661bc4a70d138a11257b4ec3",
+    "last_batch_id": "2026-10-28-rating1300"
+  }
+}

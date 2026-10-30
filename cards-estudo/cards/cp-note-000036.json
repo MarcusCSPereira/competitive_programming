@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000036",
+  "content_key": "jogo_invariante_jogadas",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Num jogo que remove dois bits adjacentes diferentes de uma string, por que basta contar zeros e uns para saber quem vence?",
+  "back": {
+    "answer": "Cada jogada remove exatamente um zero e um um. Enquanto ambos existem, há uma fronteira entre caracteres diferentes e alguma jogada é possível. Portanto toda partida tem exatamente min(zeros,uns) jogadas, independentemente das escolhas. Quem começa vence se esse número é ímpar. A estratégia ótima deixa de importar depois que o invariante fixa a duração do jogo.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "bool primeiroVence(const string& s) {\n    int z=count(s.begin(),s.end(),'0');\n    int u=(int)s.size()-z;\n    return min(z,u)%2==1;\n}",
+    "complexity": "O(n) de tempo e O(1) de espaço; string binária.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::jogo_invariante_jogadas",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000035",
+      "title": "01 Game",
+      "pages_1based": [
+        78
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1373/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210808",
+    "card_ids": [
+      "1793230210809"
+    ],
+    "fields_sha256": "83661d1da790e5d887114d3c9b878b8110f5261c581201fea55841a562fa974d",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

@@ -1,0 +1,107 @@
+[
+  {
+    "id": "cp-note-000087",
+    "fields": {
+      "ID": "cp-note-000087",
+      "Frente": "<p>Como usar blocos consecutivos de caracteres iguais para tornar uma string binária alternada com o mínimo de remoções? Por que contar zeros e uns globalmente não resolve?</p>",
+      "Verso": "<p>Divida a string em blocos máximos de caracteres iguais. Dentro de um bloco de tamanho L, no máximo um caractere pode permanecer numa subsequência alternada: entre dois caracteres daquele bloco não há um símbolo diferente que possa separá-los. Portanto são necessárias pelo menos L-1 remoções.</p><p>Manter exatamente um caractere de cada bloco atinge esse limite, pois os blocos vizinhos têm símbolos diferentes por definição. Se há B blocos e N caracteres, a resposta é N-B, ou a soma de L-1. Por exemplo, 00111 tem blocos 00 e 111: são 1+2=3 remoções, e a subsequência 01 é ótima.</p><p>As strings 0011 e 0101 têm as mesmas frequências, mas exigem respectivamente 2 e 0 remoções. A informação relevante é a posição dos blocos, não só a frequência total. O laço com intervalo [i,j) processa também o último bloco sem precisar de um flush separado.</p><pre><code class=\"language-cpp\">vector&lt;int&gt; comprimentosDosBlocos(const string&amp; s) {\n    vector&lt;int&gt; blocos;\n    for (int i=0;i&lt;(int)s.size();) {\n        int j=i;\n        while (j&lt;(int)s.size() &amp;&amp; s[j]==s[i]) ++j;\n        blocos.push_back(j-i); i=j;\n    }\n    return blocos;\n}\nint minimoRemocoes(const string&amp; s) {\n    int total=0;\n    for (int tamanho:comprimentosDosBlocos(s)) total+=tamanho-1;\n    return total;\n}</code></pre><p><strong>Complexidade:</strong> O(N) de tempo e O(B) de espaço para explicitar os blocos. É possível acumular sem guardar o vetor, usando O(1) auxiliar.</p><details><summary>Critério de acerto</summary><ul><li>Provar o limite de um sobrevivente por bloco original.</li><li>Mostrar uma construção que mantém um por bloco e atinge o limite.</li><li>Processar o bloco final e distinguir frequência de consecutividade.</li></ul></details>",
+      "Fonte": "<ul><li><a href=\"https://codeforces.com/problemset/problem/1879/C\">Make it Alternating · repositorio-cpp · arquivo codeforces/rating_1300/make_it_alternating-1879C.cpp</a></li></ul>"
+    },
+    "tags": [
+      "assunto::runs_minimo_remocoes_alternancia",
+      "cp_goodnotes",
+      "lote::rating1300_20261028",
+      "origem::repositorio-cpp"
+    ]
+  },
+  {
+    "id": "cp-note-000088",
+    "fields": {
+      "ID": "cp-note-000088",
+      "Frente": "<p>Em Make it Alternating, por que as escolhas ótimas de posições que permanecem são o produto dos tamanhos dos blocos? Por que caracteres iguais não tornam essas escolhas uma só?</p>",
+      "Verso": "<p>Após fixar o número mínimo de remoções, exatamente uma posição de cada bloco original deve sobreviver. Um bloco de tamanho L oferece L escolhas de posição. As escolhas de blocos diferentes são independentes; pelo princípio multiplicativo, existem L1*L2*…*LB escolhas de sobreviventes. Somar os tamanhos contaria escolher uma posição de apenas um bloco, em vez de escolher uma em cada bloco.</p><p>Em 00111, há 2*3=6 escolhas de posições, embora todas produzam a mesma string final 01. O problema distingue operações pelos índices escolhidos, não só pelo texto final. Escolher sobreviventes determina quais posições originais serão removidas.</p><p>Este produto conta apenas os conjuntos de posições removidas; ainda falta contar a ordem das remoções, tratada no card do fatorial. Aplique o módulo após cada multiplicação para que o acumulador continue limitado.</p><pre><code class=\"language-cpp\">long long escolhasDeSobreviventes(const string&amp; s) {\n    const long long MOD=998244353;\n    long long escolhas=1;\n    for (int i=0;i&lt;(int)s.size();) {\n        int j=i;\n        while (j&lt;(int)s.size() &amp;&amp; s[j]==s[i]) ++j;\n        escolhas=escolhas*(j-i)%MOD;\n        i=j;\n    }\n    return escolhas;\n}</code></pre><p><strong>Complexidade:</strong> O(N) de tempo e O(1) de espaço auxiliar. O produto intermediário cabe em long long sob N≤200.000 e acumulador reduzido pelo módulo.</p><details><summary>Critério de acerto</summary><ul><li>Usar multiplicação para escolhas independentes em todos os blocos.</li><li>Distinguir posições originais de strings finais iguais.</li><li>Reconhecer que este produto ainda não conta as ordens de remoção.</li></ul></details>",
+      "Fonte": "<ul><li><a href=\"https://codeforces.com/problemset/problem/1879/C\">Make it Alternating · repositorio-cpp · arquivo codeforces/rating_1300/make_it_alternating-1879C.cpp</a></li></ul>"
+    },
+    "tags": [
+      "assunto::principio_multiplicativo_sobreviventes",
+      "cp_goodnotes",
+      "lote::rating1300_20261028",
+      "origem::repositorio-cpp"
+    ]
+  },
+  {
+    "id": "cp-note-000089",
+    "fields": {
+      "ID": "cp-note-000089",
+      "Frente": "<p>Por que o número de sequências mínimas de remoção é (produto dos tamanhos dos blocos) × D!, com D remoções? Por que não basta multiplicar os fatoriais de cada bloco?</p>",
+      "Verso": "<p>Primeiro escolha qual posição original permanece em cada bloco: há produto(L) escolhas. Para cada escolha, há D posições originais distintas a remover. Elas podem ser removidas em qualquer uma das D! ordens, porque apenas a string final precisa ser alternada.</p><p>Os índices mudam durante as remoções, mas isso não invalida a contagem: cada ordem de posições originais determina uma sequência única de índices atuais. Reciprocamente, acompanhando os índices atuais a partir da string original, reconstruímos exatamente quais posições foram removidas e em qual ordem. Essa correspondência evita tanto perder sequências quanto contar a mesma sequência duas vezes.</p><p>Usar só produto((L-1)!) contaria ordens internas aos blocos, mas perderia as intercalações de remoções entre blocos diferentes. Em 0011, escolhemos sobreviventes de 2*2 formas e podemos ordenar as 2 remoções de 2! formas: são 8 sequências. Se D=0, há uma sequência vazia; 0!=1, não zero.</p><pre><code class=\"language-cpp\">pair&lt;int,long long&gt; alternarComContagem(const string&amp; s) {\n    const long long MOD=998244353;\n    int remocoes=0;\n    long long escolhas=1;\n    for (int i=0;i&lt;(int)s.size();) {\n        int j=i;\n        while (j&lt;(int)s.size() &amp;&amp; s[j]==s[i]) ++j;\n        int tamanho=j-i;\n        remocoes+=tamanho-1;\n        escolhas=escolhas*tamanho%MOD;\n        i=j;\n    }\n    long long fatorial=1;\n    for (int i=2;i&lt;=remocoes;++i) fatorial=fatorial*i%MOD;\n    return {remocoes,escolhas*fatorial%MOD};\n}</code></pre><p><strong>Complexidade:</strong> O(N+D)=O(N) de tempo e O(1) de espaço auxiliar. Em todos os testes, a soma dos comprimentos é no máximo 200.000.</p><details><summary>Critério de acerto</summary><ul><li>Separar a escolha das posições da ordem das operações.</li><li>Justificar a correspondência apesar da mudança dos índices.</li><li>Contar intercalações entre blocos e preservar 0!=1.</li></ul></details>",
+      "Fonte": "<ul><li><a href=\"https://codeforces.com/problemset/problem/1879/C\">Make it Alternating · repositorio-cpp · arquivo codeforces/rating_1300/make_it_alternating-1879C.cpp</a></li></ul>"
+    },
+    "tags": [
+      "assunto::ordem_remocoes_fatorial_intercalacoes",
+      "cp_goodnotes",
+      "lote::rating1300_20261028",
+      "origem::repositorio-cpp"
+    ]
+  },
+  {
+    "id": "cp-note-000090",
+    "fields": {
+      "ID": "cp-note-000090",
+      "Frente": "<p>Como calcular e reutilizar fatoriais módulo M em problemas de contagem? Por que reduzir só no final estoura, e por que f[0] deve começar em 1?</p>",
+      "Verso": "<p>Para módulo positivo, vale (a*b)%M=((a%M)*(b%M))%M. Calcule f[i]=f[i-1]*i%M a cada passo, mantendo o acumulador limitado. Calcular primeiro o fatorial inteiro e aplicar %M depois falha porque o inteiro pode estourar muito antes da operação de módulo.</p><p>O produto vazio vale 1: por isso f[0]=1 representa a única ordem de um conjunto sem operações. Em Make it Alternating, uma string já alternada tem D=0 e exatamente uma sequência ótima, a sequência vazia.</p><p>Promova a multiplicação antes de avaliá-la. O código usa long long no acumulador e pressupõe módulo 998244353 e limite de 200.000: nessas condições f[i-1]*i cabe em 64 bits. Para vários testes, a tabela permite consultas O(1), mas não muda magicamente a complexidade total deste problema: como soma(N)≤200.000, calcular cada fatorial necessário separadamente também é linear na soma dos tamanhos. A tabela é uma opção de reutilização. Não há necessidade de o módulo ser primo para apenas multiplicar e tomar restos.</p><pre><code class=\"language-cpp\">vector&lt;long long&gt; fatoriaisModulo(int limite) {\n    const long long MOD=998244353;\n    assert(0&lt;=limite &amp;&amp; limite&lt;=200000);\n    vector&lt;long long&gt; f(limite+1,1);\n    for (int i=2;i&lt;=limite;++i) f[i]=f[i-1]*i%MOD;\n    return f;\n}\nlong long combinarEscolhasEOrdens(long long escolhas,int remocoes,\n                                 const vector&lt;long long&gt;&amp; fat) {\n    const long long MOD=998244353;\n    return (escolhas%MOD)*fat[remocoes]%MOD;\n}</code></pre><p><strong>Complexidade:</strong> O(L) de tempo e espaço para pré-calcular até L; O(1) por consulta, além do tempo de analisar cada string.</p><details><summary>Critério de acerto</summary><ul><li>Inicializar o produto vazio com 1.</li><li>Reduzir depois de cada multiplicação e provar o limite do intermediário.</li><li>Distinguir reutilização de tabela de uma melhora assintótica inexistente.</li></ul></details>",
+      "Fonte": "<ul><li><a href=\"https://codeforces.com/problemset/problem/1879/C\">Make it Alternating · repositorio-cpp · arquivo codeforces/rating_1300/make_it_alternating-1879C.cpp</a></li></ul>"
+    },
+    "tags": [
+      "assunto::fatorial_modulo_reutilizavel",
+      "cp_goodnotes",
+      "lote::rating1300_20261028",
+      "origem::repositorio-cpp"
+    ]
+  },
+  {
+    "id": "cp-note-000091",
+    "fields": {
+      "ID": "cp-note-000091",
+      "Frente": "<p>Quando uma questão construtiva aceita qualquer solução ótima, como verificar a saída sem compará-la com uma string esperada? Aplique a Red Versus Blue.</p>",
+      "Verso": "<p>Verifique as propriedades exigidas: alfabeto permitido, quantidade de cada símbolo e valor do objetivo. Strings diferentes podem ser igualmente ótimas; compará-las literalmente com uma saída de exemplo rejeita soluções válidas.</p><p>Para Red Versus Blue, sob r&gt;b≥1, o limite inferior do maior bloco é ceil(r/(b+1)), e a construção equilibrada já conhecida atinge esse limite. Portanto uma saída é ótima se tem exatamente r letras R, b letras B e seu maior bloco de qualquer símbolo tem esse valor. Conte também os blocos de B: validar só os de R não verifica toda a condição do problema.</p><p>Equilibrar todos os espaços é uma construção suficiente, mas não é necessário que toda solução ótima tenha seus tamanhos diferindo no máximo em 1. Com r=7 e b=2, os blocos 3,3,1 e 3,2,2 atingem o mesmo máximo ótimo 3. Este complemento separa provar a existência de uma construção de caracterizar todas as soluções possíveis.</p><pre><code class=\"language-cpp\">bool construcaoOtima(const string&amp; s,int r,int b) {\n    assert(r&gt;b &amp;&amp; b&gt;=1);\n    int reds=0,blues=0,pico=0,atual=0;\n    char anterior=&#x27;?&#x27;;\n    for (char c:s) {\n        if (c!=&#x27;R&#x27; &amp;&amp; c!=&#x27;B&#x27;) return false;\n        reds+=(c==&#x27;R&#x27;); blues+=(c==&#x27;B&#x27;);\n        atual=(c==anterior ? atual+1 : 1);\n        pico=max(pico,atual); anterior=c;\n    }\n    int grupos=b+1;\n    int limite=r/grupos+(r%grupos!=0);\n    return reds==r &amp;&amp; blues==b &amp;&amp; pico==limite;\n}</code></pre><p><strong>Complexidade:</strong> O(N) de tempo e O(1) de espaço; o limite inferior vem da prova matemática, não de uma busca pela saída exata.</p><details><summary>Critério de acerto</summary><ul><li>Verificar validade, quantidades e o objetivo ótimo.</li><li>Aceitar construções diferentes que atingem o mesmo limite.</li><li>Não confundir uma construção suficiente com uma condição necessária.</li></ul></details>",
+      "Fonte": "<ul><li><a href=\"https://codeforces.com/problemset/problem/1659/A\">Red Versus Blue · problemas · páginas 98, 99</a></li></ul>"
+    },
+    "tags": [
+      "assunto::validar_construcao_por_propriedades",
+      "cp_goodnotes",
+      "lote::rating1300_20261028",
+      "origem::problemas"
+    ]
+  },
+  {
+    "id": "cp-note-000051",
+    "fields": {
+      "ID": "cp-note-000051",
+      "Frente": "<p>Como minimizar mudanças de um valor v quando cada elemento a[i] exige |v-a[i]|&lt;=x? Por que manter a interseção de possibilidades é melhor que escolher v imediatamente?</p>",
+      "Verso": "<p>Cada elemento permite v no intervalo [a[i]-x,a[i]+x]. Enquanto a interseção dos intervalos do bloco é não vazia, algum mesmo v atende todos. Atualize o limite inferior pelo máximo e o superior pelo mínimo. Ao esvaziar, uma mudança é inevitável: nenhum v atende o bloco inteiro. Adiar a mudança até esse ponto maximiza o primeiro bloco e deixa o sufixo com o mesmo subproblema. A escolha inicial de v não conta como mudança.</p><p>Comparar só vizinhos não basta: com x=1 e a=[1,3,5], cada par adjacente permite algum v, mas os intervalos [0,2], [2,4] e [4,6] não têm interseção comum. O v=2 atende aos dois primeiros e v=4 aos dois últimos; não existe um único v para os três. Mantenha a interseção de todo o bloco.</p><pre><code class=\"language-cpp\">int mudancas(const vector&lt;long long&gt;&amp; a,long long x) {\n    long long L=a[0]-x,R=a[0]+x; int ans=0;\n    for(long long v:a){\n        long long l=v-x,r=v+x;\n        if(max(L,l)&gt;min(R,r)){++ans;L=l;R=r;}\n        else {L=max(L,l);R=min(R,r);}\n    }\n    return ans;\n}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(1) de espaço; array não vazio.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>",
+      "Fonte": "<ul><li><a href=\"https://codeforces.com/problemset/problem/1704/B\">Luke Is a Foodie · problemas · páginas 94, 95</a></li></ul>"
+    },
+    "tags": [
+      "assunto::intersecao_intervalos_greedy",
+      "cp_goodnotes",
+      "lote::historico_20261028",
+      "origem::problemas"
+    ]
+  },
+  {
+    "id": "cp-note-000052",
+    "fields": {
+      "ID": "cp-note-000052",
+      "Frente": "<p>Como reorganizar índices dentro de grupos de valores iguais para que ninguém receba o próprio item? Quando a construção é impossível?</p>",
+      "Verso": "<p>Na entrada ordenada, valores iguais formam blocos. Um bloco de tamanho 1 não tem outro índice compatível: é impossível. Para cada bloco com pelo menos dois elementos, uma rotação cíclica dos índices cria uma permutação sem pontos fixos e mantém os valores iguais. No problema dos sapatos, todos precisam receber tamanho &gt;=ao próprio; a soma dos tamanhos é preservada, então ninguém pode aumentar estritamente sem alguém diminuir. Portanto as trocas ficam entre tamanhos iguais.</p><p>Não substitua a rotação por trocas de pares disjuntos: um bloco de tamanho ímpar pode deixar alguém no próprio lugar. Em [5,5,5], trocar só os dois primeiros deixa o terceiro fixo; a rotação de índices [2,3,1] movimenta os três. Isso reforça por que a construção usa o bloco inteiro.</p><pre><code class=\"language-cpp\">vector&lt;int&gt; embaralhar(const vector&lt;int&gt;&amp; a) {\n    vector&lt;int&gt; p(a.size());\n    for(int l=0;l&lt;(int)a.size();){\n        int r=l; while(r&lt;(int)a.size() &amp;&amp; a[r]==a[l]) ++r;\n        if(r-l==1) return {};\n        for(int i=l;i&lt;r;++i) p[i]=(i+1&lt;r ? i+2 : l+1);\n        l=r;\n    }\n    return p;\n}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(n) de espaço da permutação.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>",
+      "Fonte": "<ul><li><a href=\"https://codeforces.com/problemset/problem/1691/B\">Shoe Shuffling · problemas · páginas 95, 96</a></li></ul>"
+    },
+    "tags": [
+      "assunto::rotacao_blocos_sem_fixos",
+      "cp_goodnotes",
+      "lote::historico_20261028",
+      "origem::problemas"
+    ]
+  }
+]

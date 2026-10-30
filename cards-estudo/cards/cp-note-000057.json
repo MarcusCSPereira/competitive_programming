@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000057",
+  "content_key": "ponteiro_copia_referencia",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Qual a diferença entre passar um nó por valor, um ponteiro por valor e uma referência a ponteiro? Como isso afeta alterar o nó ou avançar o ponteiro de quem chamou?",
+  "back": {
+    "answer": "Passar ListNode por valor copia o objeto. Passar ListNode* por valor copia o endereço, mas permite alterar o objeto original com ->. Reatribuir esse ponteiro local não muda a variável do chamador. Para mudar o ponteiro do chamador, receba ListNode*& ou retorne o novo ponteiro. Declare o ponteiro com *, mas acesse membros com ->; a->val equivale a (*a).val. Sempre confira nullptr antes de desreferenciar.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "void alterarValor(ListNode* p,int x){\n    if(p) p->val=x;\n}\nvoid avancarLocal(ListNode* p){\n    if(p) p=p->next; // não altera o ponteiro do chamador\n}\nvoid avancarChamador(ListNode*& p){\n    if(p) p=p->next;\n}",
+    "complexity": "O(1) de tempo e espaço para essas operações.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::ponteiro_copia_referencia",
+    "origem::big-tech-problems",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000053",
+      "title": "LRU Cache",
+      "pages_1based": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": "https://leetcode.com/problems/lru-cache/description/",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    },
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000005",
+      "title": "Add Two Numbers",
+      "pages_1based": [
+        14
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": "https://leetcode.com/problems/add-two-numbers/description/",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210829",
+    "card_ids": [
+      "1793230210830"
+    ],
+    "fields_sha256": "2e94f82a617c3b204869c4146f200e2aec37b992ba5427ce15e87304621a30da",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

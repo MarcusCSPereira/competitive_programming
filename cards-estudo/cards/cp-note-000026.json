@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000026",
+  "content_key": "transicoes_extremidades",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Por que a diferença entre o número de substrings adjacentes ab e ba depende só do primeiro e último caracteres? Como equilibrar uma string binária com o mínimo de mudanças?",
+  "back": {
+    "answer": "Associe a=0 e b=1. Cada transição ab soma +1 e cada ba soma -1; aa e bb somam zero. A soma das diferenças consecutivas cancela os valores internos e resulta no último menos o primeiro. Logo ab=ba exatamente quando as extremidades são iguais. Se diferem, uma mudança numa extremidade é suficiente e necessária.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "string equilibrar(string s) {\n    if(!s.empty()) s.back()=s.front();\n    return s;\n}",
+    "complexity": "O(1) para alterar a extremidade; receber e retornar uma string por valor custa O(n).",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::transicoes_extremidades",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000025",
+      "title": "AB Balance",
+      "pages_1based": [
+        69,
+        70
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1606/A",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210798",
+    "card_ids": [
+      "1793230210799"
+    ],
+    "fields_sha256": "c13e1e84f2ccae29a9f5774b48eecdc5ef4f315603941dc8c138973c665269a4",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

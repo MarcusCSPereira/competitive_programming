@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000008",
+  "content_key": "palindromo_paridade",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Qual propriedade das frequências permite reorganizar uma string em palíndromo? Como decidir se isso é possível após remover exatamente k caracteres?",
+  "back": {
+    "answer": "Os caracteres das duas metades formam pares; só o centro pode ter frequência ímpar. Portanto, sem remoções, há no máximo uma frequência ímpar. Cada remoção pode corrigir uma frequência ímpar. Para 0 <= k < n, a condição é impares <= k+1. O excedente de remoções pode ser absorvido por pares e pelo centro respeitando a paridade do tamanho final. Não é necessário construir todas as permutações.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "bool podePalindromo(const string& s,int k) {\n    array<int,26> freq{};\n    for(char c:s) ++freq[c-'a'];\n    int impares=0;\n    for(int f:freq) impares+=f%2;\n    return impares<=k+1;\n}",
+    "complexity": "O(n+26) de tempo e O(26) de espaço; assume letras a-z e 0<=k<n.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::palindromo_paridade",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000002",
+      "title": "Chemistry",
+      "pages_1based": [
+        50,
+        51
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1883/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210780",
+    "card_ids": [
+      "1793230210781"
+    ],
+    "fields_sha256": "167434b5e70ab33ca368f995759b438b1cc97ab98c4d3c8ff42a288c730bbc66",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

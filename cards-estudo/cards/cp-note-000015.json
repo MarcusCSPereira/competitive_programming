@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000015",
+  "content_key": "gcd_classes_de_indices",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Se só podemos trocar posições cuja distância é exatamente k, quais posições continuam conectadas? Como usar isso para achar o maior k que ordena uma permutação?",
+  "back": {
+    "answer": "Trocas de distância k mantêm cada elemento na mesma classe de índice módulo k. Em cada classe, trocas adjacentes no caminho permitem qualquer permutação. Portanto k deve dividir todos os deslocamentos entre posição atual e posição final. O maior k válido é o gcd desses deslocamentos. Zeros não atrapalham: gcd(0,d)=d. O problema garante permutação inicialmente não ordenada.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int maiorPasso(const vector<int>& p) {\n    int g=0;\n    for(int i=0;i<(int)p.size();++i)\n        g=gcd(g,abs(p[i]-(i+1)));\n    return g;\n}",
+    "complexity": "O(n log n) como limite seguro para os gcds; O(1) de espaço.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::gcd_classes_de_indices",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000014",
+      "title": "Permutation Swap",
+      "pages_1based": [
+        57,
+        58
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1828/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210787",
+    "card_ids": [
+      "1793230210788"
+    ],
+    "fields_sha256": "799e036acbc6bafc18a7ba327cad7f3be8d8f65ee3e729a8af278af3873ddd18",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

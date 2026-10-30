@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000050",
+  "content_key": "quocientes_restos_capacidade",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como construir n inteiros não negativos com soma s e soma dos pisos a[i]/k igual a b? Como obter os limites de viabilidade antes de distribuir?",
+  "back": {
+    "answer": "Escreva a[i]=k*q[i]+r[i], com 0<=r[i]<k. Como a soma dos quocientes é b, a parte fixa da soma é k*b. Os n restos conseguem acrescentar entre 0 e n*(k-1). Logo k*b<=s<=k*b+n*(k-1). Coloque todo o quociente no primeiro elemento e distribua s-k*b como restos limitados a k-1. A verificação por limites evita uma tentativa de construção que falharia no final.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "vector<long long> construirBonito(int n,long long k,long long b,long long s) {\n    long long base=k*b;\n    if(s<base || s-base>1LL*n*(k-1)) return {};\n    vector<long long> a(n,0); a[0]=base; long long falta=s-base;\n    for(auto& x:a){long long dar=min(falta,k-1);x+=dar;falta-=dar;}\n    return a;\n}",
+    "complexity": "O(n) de tempo e espaço da saída; n>=1, k>=1 e produtos cabem em 64 bits.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::quocientes_restos_capacidade",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000048",
+      "title": "Beautiful Array",
+      "pages_1based": [
+        93,
+        94
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1715/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210822",
+    "card_ids": [
+      "1793230210823"
+    ],
+    "fields_sha256": "3684067240ab7229795d4c498e3f78ba2ea2b0b3c03a3dacccaef0d938b2e763",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

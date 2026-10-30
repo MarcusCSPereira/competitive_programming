@@ -1,0 +1,66 @@
+{
+  "batch_id": "2026-10-28-rating1300",
+  "plan": {
+    "batch_id": "2026-10-28-rating1300",
+    "create": 5,
+    "update": 2,
+    "unchanged": 0,
+    "total": 7
+  },
+  "status": "synced",
+  "notes": {
+    "cp-note-000087": {
+      "note_id": "1793232707392",
+      "card_ids": [
+        "1793232707392"
+      ],
+      "fields_sha256": "9517875b371e1fe12c2a6d2f1e1859e7a420f3531416dc84d5fab95eb87ed1f0"
+    },
+    "cp-note-000088": {
+      "note_id": "1793232707393",
+      "card_ids": [
+        "1793232707393"
+      ],
+      "fields_sha256": "0348f12fad2e81deb7e5e8e20ff2e750a0981eaa661bc4a70d138a11257b4ec3"
+    },
+    "cp-note-000089": {
+      "note_id": "1793232707394",
+      "card_ids": [
+        "1793232707394"
+      ],
+      "fields_sha256": "e60315039e9ff9d693cf32d7d3facd2cca88020ebc7e4f7bf283036a396a5f13"
+    },
+    "cp-note-000090": {
+      "note_id": "1793232707395",
+      "card_ids": [
+        "1793232707395"
+      ],
+      "fields_sha256": "6ef1913e082dd9d87d8a0d778babaeb60624c7cb0cf785a984673f16590f130c"
+    },
+    "cp-note-000091": {
+      "note_id": "1793232707396",
+      "card_ids": [
+        "1793232707396"
+      ],
+      "fields_sha256": "703ce3d53555aa2b38c04f67b27142a84b6fb136c53418b6ee866434421a9e13"
+    },
+    "cp-note-000051": {
+      "note_id": "1793230210823",
+      "card_ids": [
+        "1793230210824"
+      ],
+      "fields_sha256": "7b86ff20c71c655d8b7a0c54d5d254cbe8cedd2a5235463fe17461e3dbd68817"
+    },
+    "cp-note-000052": {
+      "note_id": "1793230210824",
+      "card_ids": [
+        "1793230210825"
+      ],
+      "fields_sha256": "b28f255d2df9fd7e262959b2dc59fc1a3e09f5631a1d7f16afbd46d763603f23"
+    }
+  },
+  "sync": {
+    "collectionComplete": true,
+    "mediaComplete": true
+  }
+}

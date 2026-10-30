@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000051",
+  "content_key": "intersecao_intervalos_greedy",
+  "revision": 2,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como minimizar mudanças de um valor v quando cada elemento a[i] exige |v-a[i]|<=x? Por que manter a interseção de possibilidades é melhor que escolher v imediatamente?",
+  "back": {
+    "answer": "Cada elemento permite v no intervalo [a[i]-x,a[i]+x]. Enquanto a interseção dos intervalos do bloco é não vazia, algum mesmo v atende todos. Atualize o limite inferior pelo máximo e o superior pelo mínimo. Ao esvaziar, uma mudança é inevitável: nenhum v atende o bloco inteiro. Adiar a mudança até esse ponto maximiza o primeiro bloco e deixa o sufixo com o mesmo subproblema. A escolha inicial de v não conta como mudança.\n\nComparar só vizinhos não basta: com x=1 e a=[1,3,5], cada par adjacente permite algum v, mas os intervalos [0,2], [2,4] e [4,6] não têm interseção comum. O v=2 atende aos dois primeiros e v=4 aos dois últimos; não existe um único v para os três. Mantenha a interseção de todo o bloco.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int mudancas(const vector<long long>& a,long long x) {\n    long long L=a[0]-x,R=a[0]+x; int ans=0;\n    for(long long v:a){\n        long long l=v-x,r=v+x;\n        if(max(L,l)>min(R,r)){++ans;L=l;R=r;}\n        else {L=max(L,l);R=min(R,r);}\n    }\n    return ans;\n}",
+    "complexity": "O(n) de tempo e O(1) de espaço; array não vazio.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::intersecao_intervalos_greedy",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000049",
+      "title": "Luke Is a Foodie",
+      "pages_1based": [
+        94,
+        95
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1704/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-rating1300.json",
+    "validated_at": "2026-10-28T21:11:18-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210823",
+    "card_ids": [
+      "1793230210824"
+    ],
+    "fields_sha256": "7b86ff20c71c655d8b7a0c54d5d254cbe8cedd2a5235463fe17461e3dbd68817",
+    "last_batch_id": "2026-10-28-rating1300"
+  },
+  "coverage_review": {
+    "run_id": "2026-10-28-rating1300-090",
+    "sync_run_id": "83323976-8b9b-4940-9f43-72f5b2bf8678",
+    "learning_origin": "clarifying_counterexample"
+  }
+}

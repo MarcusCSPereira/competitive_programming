@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000037",
+  "content_key": "expoentes_primos_operacoes",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como analisar operações multiplicar por 2 e dividir por 6 usando expoentes primos? Quando é impossível chegar a 1 e qual o número mínimo de operações?",
+  "back": {
+    "answer": "Escreva n=2^a*3^b*resto. Dividir por 6 remove um fator 2 e um 3; multiplicar por 2 acrescenta apenas um fator 2. Um primo diferente de 2 ou 3 nunca desaparece. Também é impossível quando a>b, pois faltam fatores 3 para remover todos os fatores 2. Se a<=b, use b-a multiplicações por 2 e b divisões por 6: total 2b-a. Conte os fatores, não simule escolhas.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int reduzirUm(long long n) {\n    int a=0,b=0;\n    while(n%2==0){ n/=2; ++a; }\n    while(n%3==0){ n/=3; ++b; }\n    if(n!=1 || a>b) return -1;\n    return 2*b-a;\n}",
+    "complexity": "O(log n) de tempo e O(1) de espaço; n>=1.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::expoentes_primos_operacoes",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000036",
+      "title": "Multiply by 2, Divide by 6",
+      "pages_1based": [
+        78,
+        79
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1374/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210809",
+    "card_ids": [
+      "1793230210810"
+    ],
+    "fields_sha256": "63100ba21b42035ff4c9aaf7cab7c7e30b23f8db5d1e3b3e9cb68d6a4308dca1",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

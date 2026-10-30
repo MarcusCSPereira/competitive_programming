@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000035",
+  "content_key": "pico_local_permutacao",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Por que, numa permutação, basta procurar um pico local adjacente para encontrar i<j<k com a[i]<a[j]>a[k]? Como implementar sem três laços?",
+  "back": {
+    "answer": "Se uma tripla assim existe, em algum ponto o percurso de valores precisa subir e depois descer. Como os elementos da permutação são distintos, uma mudança de subida para descida produz um pico estrito adjacente. Se não há pico, não há esse padrão. A propriedade depende de os valores serem distintos; platôs em arrays gerais exigem outra análise.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "vector<int> picoLocal(const vector<int>& a) {\n    for(int j=1;j+1<(int)a.size();++j)\n        if(a[j-1]<a[j] && a[j]>a[j+1]) return {j,j+1,j+2};\n    return {};\n}",
+    "complexity": "O(n) de tempo e O(1) de espaço auxiliar; índices de saída base 1.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::pico_local_permutacao",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000034",
+      "title": "Three Indices",
+      "pages_1based": [
+        77,
+        78
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1380/A",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210807",
+    "card_ids": [
+      "1793230210808"
+    ],
+    "fields_sha256": "b4d48e99e86af9a99c2a9b3a4d43a9d698ff6fb6936a85b500edc32ff20e1d06",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

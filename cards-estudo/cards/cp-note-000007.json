@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000007",
+  "content_key": "coordenadas_e_conjuntos",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como gerar movimentos simétricos no plano e contar posições que alcançam dois alvos? Por que usar set quando os deslocamentos podem coincidir?",
+  "back": {
+    "answer": "Para cada alvo, gere as posições obtidas por (±a,±b) e (±b,±a). Como os movimentos são reversíveis, são também possíveis posições de origem. A resposta é a interseção dos conjuntos. Quando a=b, várias fórmulas produzem a mesma posição; set remove a duplicidade. Coordenadas podem ser negativas e devem usar tipo suficiente para a soma.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "using P=pair<long long,long long>;\nset<P> origens(long long x,long long y,long long a,long long b) {\n    set<P> s;\n    for(int dx:{-1,1}) for(int dy:{-1,1}) {\n        s.insert({x+dx*a,y+dy*b});\n        s.insert({x+dx*b,y+dy*a});\n    }\n    return s;\n}\nint comuns(P rei,P rainha,long long a,long long b) {\n    auto A=origens(rei.first,rei.second,a,b);\n    auto B=origens(rainha.first,rainha.second,a,b);\n    int total=0; for(auto p:A) total+=B.count(p);\n    return total;\n}",
+    "complexity": "O(1) por caso: no máximo 8 posições por conjunto; espaço O(1).",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::coordenadas_e_conjuntos",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000001",
+      "title": "Forked!",
+      "pages_1based": [
+        48,
+        49,
+        50
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1904/A",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210779",
+    "card_ids": [
+      "1793230210780"
+    ],
+    "fields_sha256": "753af8eae2ece921e04cf99295a10abc83995b5d100d77ce752948143585d0b8",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

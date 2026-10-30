@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000001",
+  "revision": 2,
+  "status": "draft_awaiting_format_feedback",
+  "skill": "teoria_e_implementacao",
+  "front": "Como o princípio da casa dos pombos ajuda a distribuir r letras R entre b letras B, minimizando o maior bloco consecutivo de R? Explique como tratar o resto da divisão e implementar em C++.",
+  "back": {
+    "answer": "Os b separadores criam k = b + 1 espaços. Os R são os pombos e esses espaços são as casas.\n\nPelo princípio da casa dos pombos, algum espaço terá pelo menos ceil(r / k) elementos: se todos tivessem menos, não caberiam os r elementos. Esse é um limite inferior para o maior bloco.\n\nPara atingir esse limite, cada espaço recebe r / k elementos, usando divisão inteira. Os r % k elementos restantes são distribuídos um por espaço. Assim, os tamanhos diferem em no máximo 1, e o maior bloco atinge exatamente o limite inferior.\n\nExemplo: r = 10, b = 3. Temos 4 espaços, base 2 e resto 2; os blocos ficam 3, 3, 2, 2. Uma saída é RRRBRRRBRRBRR; o maior bloco é 3. No problema original r > b, e os B podem ficar isolados nessa construção.",
+    "why": "Justificativa integrada à resposta teórica.",
+    "cpp17": "string distribuir(int r, int b) {\n    int grupos = b + 1;\n    int base = r / grupos;\n    int extras = r % grupos;\n\n    string resposta;\n    for (int i = 0; i < grupos; ++i) {\n        int quantidade = base + (i < extras ? 1 : 0);\n        resposta.append(quantidade, 'R');\n        if (i < b) resposta += 'B';\n    }\n    return resposta;\n}",
+    "complexity": "O(r + b) de tempo, pois escreve cada caractere da saída; O(1) de espaço auxiliar além da string de saída, que ocupa O(r + b).",
+    "success_criteria": [
+      "Explicar os b + 1 espaços e o limite inferior pela casa dos pombos.",
+      "Distribuir quociente e resto e explicar o código."
+    ]
+  },
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000007",
+      "pages_1based": [
+        98,
+        99
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250"
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": false,
+    "official_statement_url": "https://codeforces.com/problemset/problem/1659/A",
+    "code_validation": "C++17, -Wall -Wextra -Werror, ASan/UBSan; distribuição comparada com busca exaustiva e listas vazia/unitária/múltipla independentes."
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": false
+  }
+}

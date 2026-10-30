@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000077",
+  "content_key": "topk_heap_tamanho_limitado",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Quando vale trocar os buckets de Top K Frequent por um heap de tamanho k? Qual elemento deve ficar no topo e como manter os k melhores candidatos?",
+  "back": {
+    "answer": "Depois de contar frequências, mantenha um min-heap com no máximo k candidatos. O topo deve ser o pior dos escolhidos: a menor frequência. Insira cada candidato e, se o tamanho ultrapassar k, remova o topo. Ao final, nenhum candidato descartado é melhor que o pior mantido.\n\nBuckets exploram que a frequência está entre 1 e N e gastam O(N) posições. O heap usa O(k) posições para a seleção e serve também para pontuações sem um intervalo pequeno de valores. A contagem por hash ainda ocupa O(U), onde U é o número de valores distintos; portanto a solução inteira não vira O(k) de memória.\n\nO pair usa a chave do valor para desempatar. Quando o problema aceita qualquer ordem e há empate, qualquer seleção válida entre os empatados serve. A saída abaixo não promete ordem decrescente de frequência. Esta é uma alternativa didática ao bucket já anotado.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "vector<int> topKHeap(const vector<int>& a,int k) {\n    if (k<=0) return {};\n    unordered_map<int,int> freq;\n    for (int x:a) ++freq[x];\n    using Item=pair<int,int>; // frequência, valor\n    priority_queue<Item,vector<Item>,greater<Item>> melhores;\n    for (auto [valor,qtd]:freq) {\n        melhores.push({qtd,valor});\n        if ((int)melhores.size()>k) melhores.pop();\n    }\n    vector<int> resposta;\n    while (!melhores.empty()) {\n        resposta.push_back(melhores.top().second); melhores.pop();\n    }\n    return resposta;\n}",
+    "complexity": "O(N+U log(k+1)) de tempo esperado e O(U+k) de espaço. Para k>U, retorna todos os U valores.",
+    "success_criteria": [
+      "Manter o pior candidato no topo de um min-heap.",
+      "Limitar o heap após cada inserção.",
+      "Separar memória da seleção da memória necessária para contar frequências."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::expansao_20261028",
+    "assunto::topk_heap_tamanho_limitado",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000055",
+      "title": "Top K Frequent Elements",
+      "pages_1based": [
+        5,
+        6
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": "https://leetcode.com/problems/top-k-frequent-elements/description/",
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-expansao-072",
+    "sync_run_id": "b9f78700-9140-42d3-9354-cee80c562b26",
+    "learning_origin": "didactic_extension",
+    "technical_references": []
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-expansao.json",
+    "validated_at": "2026-10-28T20:56:56-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793231826524",
+    "card_ids": [
+      "1793231826524"
+    ],
+    "fields_sha256": "fbd6ee18f54a3822263f8cd66f3f3646a2a9be806b2f27a2692d1dab3d357dd6",
+    "last_batch_id": "2026-10-28-expansao"
+  }
+}

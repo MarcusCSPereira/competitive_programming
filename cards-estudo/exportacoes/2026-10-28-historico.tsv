@@ -1,0 +1,633 @@
+#separator:Tab
+#html:true
+#notetype:CP Goodnotes
+#deck:Programação competitiva
+#tags column:5
+cp-note-000001	<p>Como o princípio da casa dos pombos ajuda a distribuir r letras R entre b letras B, minimizando o maior bloco consecutivo de R? Explique como tratar o resto da divisão e implementar em C++.</p>	"<p>Os b separadores criam k = b + 1 espaços. Os R são os pombos e esses espaços são as casas.</p><p>Pelo princípio da casa dos pombos, algum espaço terá pelo menos ceil(r / k) elementos: se todos tivessem menos, não caberiam os r elementos. Esse é um limite inferior para o maior bloco.</p><p>Para atingir esse limite, cada espaço recebe r / k elementos, usando divisão inteira. Os r % k elementos restantes são distribuídos um por espaço. Assim, os tamanhos diferem em no máximo 1, e o maior bloco atinge exatamente o limite inferior.</p><p>Exemplo: r = 10, b = 3. Temos 4 espaços, base 2 e resto 2; os blocos ficam 3, 3, 2, 2. Uma saída é RRRBRRRBRRBRR; o maior bloco é 3. No problema original r &gt; b, e os B podem ficar isolados nessa construção.</p><pre><code class=""language-cpp"">string distribuir(int r, int b) {
+    int grupos = b + 1;
+    int base = r / grupos;
+    int extras = r % grupos;
+
+    string resposta;
+    for (int i = 0; i &lt; grupos; ++i) {
+        int quantidade = base + (i &lt; extras ? 1 : 0);
+        resposta.append(quantidade, &#x27;R&#x27;);
+        if (i &lt; b) resposta += &#x27;B&#x27;;
+    }
+    return resposta;
+}</code></pre><p><strong>Complexidade:</strong> O(r + b) de tempo, pois escreve cada caractere da saída; O(1) de espaço auxiliar além da string de saída, que ocupa O(r + b).</p><details><summary>Critério de acerto</summary><ul><li>Explicar os b + 1 espaços e o limite inferior pela casa dos pombos.</li><li>Distribuir quociente e resto e explicar o código.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1659/A"">Red Versus Blue · problemas · páginas 98, 99</a></li></ul>"	assunto::casa_dos_pombos cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000002	<p>Como percorrer uma linked list e construir outra com os mesmos valores, sem alterar a original? Explique o papel de head e actual, o avanço dos ponteiros e o retorno da lista em C++.</p>	"<p>Mantenha um ponteiro para percorrer a entrada e dois para construir a saída:</p><ul><li>head permanece fixo em um nó sentinela, antes do primeiro elemento real.</li><li>actual aponta para o fim da lista criada; começa no sentinela.</li><li>origem percorre os nós da lista original.</li></ul><p>Para cada nó da entrada, crie um novo nó, conecte-o em actual-&gt;next e avance actual. Depois avance origem. Ao terminar, head-&gt;next é o início da nova lista. Salve esse ponteiro, libere o sentinela e retorne a lista.</p><p>Percorrer a entrada não cria a saída automaticamente: os dois avanços têm funções diferentes. O sentinela permite usar a mesma inserção inclusive para o primeiro nó. Se a entrada for vazia, head-&gt;next será nullptr.</p><p>Considere o ListNode simples do LeetCode, cujo construtor inicializa next como nullptr e cujo destrutor não apaga a cadeia. Copiar os valores é uma aplicação didática do padrão presente em Add Two Numbers. Na soma, cada valor criado é o dígito calculado; as entradas e o carry determinam a condição do laço.</p><pre><code class=""language-cpp"">ListNode* copiarLista(const ListNode* origem) {
+    ListNode* head = new ListNode(0); // sentinela fixo
+    ListNode* actual = head;         // fim da nova lista
+
+    while (origem != nullptr) {
+        actual-&gt;next = new ListNode(origem-&gt;val);
+        actual = actual-&gt;next;  // avança na lista criada
+        origem = origem-&gt;next;  // avança na lista original
+    }
+
+    ListNode* resultado = head-&gt;next;
+    delete head; // libera apenas o sentinela
+    return resultado;
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(1) de espaço auxiliar; os novos nós da saída ocupam O(n).</p><details><summary>Critério de acerto</summary><ul><li>Manter head fixo e actual no fim da saída.</li><li>Criar e conectar um novo nó a cada passo.</li><li>Avançar separadamente entrada e saída e retornar head-&gt;next.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/add-two-numbers/description/"">Add Two Numbers · big-tech-problems · páginas 14</a></li></ul>"	assunto::construir_linked_list cp_goodnotes lote::historico_20261028 origem::big-tech-problems
+cp-note-000003	<p>Quando a possibilidade de usar uma aresta depende de quantos recursos já foram usados, por que dist[v] não basta? Como implementar Dijkstra com até K usos de uma alternativa?</p>	"<p>Duas chegadas ao mesmo vértice podem ter futuros diferentes: uma gastou o recurso e a outra ainda o possui. O estado deve guardar (v, usados), e a distância é dist[v][usados]. Uma aresta normal preserva usados; a alternativa consome mais um. Todos os pesos precisam ser não negativos. Como o limite é até K, a resposta é o mínimo entre todos os estados finais, não apenas dist[destino][K].</p><pre><code class=""language-cpp"">struct Aresta { int v; long long normal, extra; };
+long long menorCaminho(const vector&lt;vector&lt;Aresta&gt;&gt;&amp; g, int K) {
+    const long long INF = LLONG_MAX / 4;
+    int n = g.size();
+    vector&lt;vector&lt;long long&gt;&gt; d(n, vector&lt;long long&gt;(K+1, INF));
+    using Estado = tuple&lt;long long,int,int&gt;;
+    priority_queue&lt;Estado, vector&lt;Estado&gt;, greater&lt;Estado&gt;&gt; pq;
+    d[0][0]=0; pq.push({0,0,0});
+    while (!pq.empty()) {
+        auto estado=pq.top(); pq.pop();
+        long long c=get&lt;0&gt;(estado);
+        int u=get&lt;1&gt;(estado),k=get&lt;2&gt;(estado);
+        if (c!=d[u][k]) continue;
+        for (auto e:g[u]) {
+            auto relaxar = [&amp;](int nk, long long peso) {
+                if (c+peso&lt;d[e.v][nk]) {
+                    d[e.v][nk]=c+peso; pq.push({d[e.v][nk],e.v,nk});
+                }
+            };
+            relaxar(k,e.normal);
+            if (e.extra&gt;=0 &amp;&amp; k&lt;K) relaxar(k+1,e.extra);
+        }
+    }
+    return *min_element(d.back().begin(),d.back().end());
+}</code></pre><p><strong>Complexidade:</strong> O((K+1)(V+E) log((K+1)V)) de tempo; dist ocupa O((K+1)V), além do grafo e da fila.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	<ul><li>Microwaves · problemas · páginas 45, 46</li></ul>	assunto::dijkstra_estados cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000004	<p>Como usar priority_queue como min-heap e descartar propostas obsoletas no Dijkstra? Por que isso evita reprocessamento sem perder caminhos válidos?</p>	"<p>A fila guarda propostas de distância, não a distância definitiva de cada nó. Depois de melhorar dist[u], propostas antigas podem continuar na fila. Ao retirar uma proposta cuja distância difere de dist[u], descarte-a. greater transforma a priority_queue em min-heap. Com pesos não negativos, a menor proposta atual pode ser expandida com segurança.</p><pre><code class=""language-cpp"">vector&lt;long long&gt; dijkstra(const vector&lt;vector&lt;pair&lt;int,int&gt;&gt;&gt;&amp; g, int s) {
+    vector&lt;long long&gt; d(g.size(),LLONG_MAX/4);
+    using Item=pair&lt;long long,int&gt;;
+    priority_queue&lt;Item,vector&lt;Item&gt;,greater&lt;Item&gt;&gt; pq;
+    d[s]=0; pq.push({0,s});
+    while(!pq.empty()) {
+        auto [c,u]=pq.top(); pq.pop();
+        if(c!=d[u]) continue;
+        for(auto [v,w]:g[u]) if(c+w&lt;d[v]) {
+            d[v]=c+w; pq.push({d[v],v});
+        }
+    }
+    return d;
+}</code></pre><p><strong>Complexidade:</strong> O((V+E) log V) para grafo simples; O(V+E) de armazenamento incluindo propostas.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	<ul><li>Microwaves · problemas · páginas 45, 46</li></ul>	assunto::dijkstra_fila_obsoleta cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000005	<p>Como detectar ciclos num grafo funcional usando três estados? Qual a diferença entre encontrar um nó em processamento e um nó já finalizado?</p>	"<p>Cada nó aponta para no máximo uma dependência; use -1 para término. Estado 0 significa não visto, 1 significa no caminho atual e 2 significa finalizado. Reencontrar estado 1 fecha um ciclo; chegar ao estado 2 apenas reutiliza uma cadeia já resolvida. A versão iterativa evita estourar a pilha em cadeias longas. Para propagar respostas de dependências, processe o caminho em ordem reversa depois de resolver seu fim.</p><pre><code class=""language-cpp"">bool temCiclo(const vector&lt;int&gt;&amp; prox) {
+    vector&lt;int&gt; cor(prox.size(),0);
+    for(int s=0;s&lt;(int)prox.size();++s) {
+        if(cor[s]) continue;
+        vector&lt;int&gt; caminho; int u=s;
+        while(u!=-1 &amp;&amp; cor[u]==0) {
+            cor[u]=1; caminho.push_back(u); u=prox[u];
+        }
+        if(u!=-1 &amp;&amp; cor[u]==1) return true;
+        for(int v:caminho) cor[v]=2;
+    }
+    return false;
+}</code></pre><p><strong>Complexidade:</strong> O(V) de tempo e espaço, pois cada nó entra em um caminho uma vez.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	<ul><li>Porquinho da Índia · problemas · páginas 46, 47, 48</li></ul>	assunto::grafo_funcional_ciclos cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000006	<p>Como encontrar o máximo de pessoas simultâneas em intervalos de presença sem percorrer cada minuto? Como tratar saída e entrada no mesmo instante?</p>	"<p>Converta cada intervalo semiaberto [chegada, saída) em dois eventos: +quantidade na chegada e -quantidade na saída. Ordene e acumule os deltas. Agrupar todos os deltas do mesmo instante aplica corretamente a convenção de que quem sai nesse instante já não ocupa espaço. Se a entrada fornece duração t, a saída é chegada+t. Não aloquem um vetor pelo maior horário: o custo depende da quantidade de eventos.</p><pre><code class=""language-cpp"">long long pico(const vector&lt;tuple&lt;long long,long long,long long&gt;&gt;&amp; presencas) {
+    map&lt;long long,long long&gt; delta;
+    for(auto [inicio,fim,qtd]:presencas) {
+        if(inicio&gt;=fim) continue;
+        delta[inicio]+=qtd; delta[fim]-=qtd;
+    }
+    long long atual=0,maior=0;
+    for(auto [tempo,mudanca]:delta) {
+        (void)tempo; atual+=mudanca; maior=max(maior,atual);
+    }
+    return maior;
+}</code></pre><p><strong>Complexidade:</strong> O(N log N) de tempo e O(N) de espaço.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	<ul><li>Porquinho da Índia · problemas · páginas 46, 47, 48</li></ul>	assunto::sweep_line_intervalos cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000007	<p>Como gerar movimentos simétricos no plano e contar posições que alcançam dois alvos? Por que usar set quando os deslocamentos podem coincidir?</p>	"<p>Para cada alvo, gere as posições obtidas por (±a,±b) e (±b,±a). Como os movimentos são reversíveis, são também possíveis posições de origem. A resposta é a interseção dos conjuntos. Quando a=b, várias fórmulas produzem a mesma posição; set remove a duplicidade. Coordenadas podem ser negativas e devem usar tipo suficiente para a soma.</p><pre><code class=""language-cpp"">using P=pair&lt;long long,long long&gt;;
+set&lt;P&gt; origens(long long x,long long y,long long a,long long b) {
+    set&lt;P&gt; s;
+    for(int dx:{-1,1}) for(int dy:{-1,1}) {
+        s.insert({x+dx*a,y+dy*b});
+        s.insert({x+dx*b,y+dy*a});
+    }
+    return s;
+}
+int comuns(P rei,P rainha,long long a,long long b) {
+    auto A=origens(rei.first,rei.second,a,b);
+    auto B=origens(rainha.first,rainha.second,a,b);
+    int total=0; for(auto p:A) total+=B.count(p);
+    return total;
+}</code></pre><p><strong>Complexidade:</strong> O(1) por caso: no máximo 8 posições por conjunto; espaço O(1).</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1904/A"">Forked! · problemas · páginas 48, 49, 50</a></li></ul>"	assunto::coordenadas_e_conjuntos cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000008	<p>Qual propriedade das frequências permite reorganizar uma string em palíndromo? Como decidir se isso é possível após remover exatamente k caracteres?</p>	"<p>Os caracteres das duas metades formam pares; só o centro pode ter frequência ímpar. Portanto, sem remoções, há no máximo uma frequência ímpar. Cada remoção pode corrigir uma frequência ímpar. Para 0 &lt;= k &lt; n, a condição é impares &lt;= k+1. O excedente de remoções pode ser absorvido por pares e pelo centro respeitando a paridade do tamanho final. Não é necessário construir todas as permutações.</p><pre><code class=""language-cpp"">bool podePalindromo(const string&amp; s,int k) {
+    array&lt;int,26&gt; freq{};
+    for(char c:s) ++freq[c-&#x27;a&#x27;];
+    int impares=0;
+    for(int f:freq) impares+=f%2;
+    return impares&lt;=k+1;
+}</code></pre><p><strong>Complexidade:</strong> O(n+26) de tempo e O(26) de espaço; assume letras a-z e 0&lt;=k&lt;n.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1883/B"">Chemistry · problemas · páginas 50, 51</a></li></ul>"	assunto::palindromo_paridade cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000009	<p>Como decidir se a soma x pode ser formada por k inteiros distintos de 1 a n sem enumerar combinações? Derive os limites e implemente com tipos seguros.</p>	"<p>A soma mínima usa 1 até k: k(k+1)/2. A máxima usa n-k+1 até n: k(2n-k+1)/2. Para números consecutivos disponíveis, todas as somas entre os extremos são atingíveis: a partir da configuração mínima, distribua incrementos sem ultrapassar n nem repetir valores, um passo por vez. Assim basta testar o intervalo. A multiplicação precisa ocorrer em long long, não apenas ser atribuída a ele depois.</p><pre><code class=""language-cpp"">bool somaPossivel(long long n,long long k,long long x) {
+    if(k&lt;1 || k&gt;n) return false;
+    long long minimo=k*(k+1)/2;
+    long long maximo=k*(2*n-k+1)/2;
+    return minimo&lt;=x &amp;&amp; x&lt;=maximo;
+}</code></pre><p><strong>Complexidade:</strong> O(1) de tempo e espaço, sob limites que cabem em 64 bits.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1878/C"">Vasilije in Cacak · problemas · páginas 52</a></li></ul>"	assunto::somas_extremas_pa cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000010	<p>Num contador que explode em zero e tem capacidade a, por que uma recarga x contribui no máximo min(x,a-1)? Como maximizar o tempo total sem simular cada segundo?</p>	"<p>Espere o contador chegar a 1 antes de usar cada recarga. Não pode esperar zero, pois a explosão já ocorreu. A capacidade disponível é a-1, portanto o ganho é min(x,a-1). Usar antes só reduz a capacidade disponível e não melhora o resultado. Some os ganhos ao valor inicial b; o contador pode ter duração enorme, mas só precisamos percorrer a lista de recargas.</p><pre><code class=""language-cpp"">long long tempoMaximo(long long a,long long b,const vector&lt;long long&gt;&amp; cargas) {
+    long long total=b;
+    for(long long x:cargas) total+=min(x,a-1);
+    return total;
+}</code></pre><p><strong>Complexidade:</strong> O(N) de tempo e O(1) de espaço auxiliar.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1875/A"">Jellyfish and Undertale · problemas · páginas 53</a></li></ul>"	assunto::ganho_limitado_min cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000011	<p>Por que aplicar duas vezes a operação de substituir um segmento pelo XOR de seus valores zera um segmento de comprimento par? Como lidar com comprimento ímpar?</p>	"<p>Na primeira operação, todos os elementos viram o mesmo XOR x. Na segunda, o XOR de uma quantidade par de cópias de x é zero, porque x^x=0. Para n ímpar, zere [1,n-1] com duas operações e depois [n-1,n], também de comprimento par. A sobreposição não desfaz o prefixo já zerado. Essa construção usa no máximo quatro operações.</p><pre><code class=""language-cpp"">vector&lt;pair&lt;int,int&gt;&gt; operacoesZero(int n) {
+    if(n%2==0) return {{1,n},{1,n}};
+    return {{1,n-1},{1,n-1},{n-1,n},{n-1,n}};
+}</code></pre><p><strong>Complexidade:</strong> O(1) para emitir os intervalos; simular as operações custa O(n). Assume n&gt;=2.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1869/A"">Make It Zero · problemas · páginas 54</a></li></ul>"	assunto::xor_paridade_segmento cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000012	<p>Por que procurar divisores consecutivos começando em 1 resolve o maior intervalo de divisores de n? Qual argumento evita testar todos os intervalos?</p>	"<p>Em qualquer intervalo de comprimento L existe um múltiplo de cada d entre 1 e L. Se todos os números desse intervalo dividem n, então cada d também divide n. Logo [1,L] também é válido. Assim, encontre o primeiro inteiro que não divide n e devolva o anterior. O laço termina cedo para n limitado: n precisa ser múltiplo de lcm(1,...,L). Não é correto justificar o limite usando apenas produto de primos ou decorar 43.</p><pre><code class=""language-cpp"">int maiorIntervalo(long long n) {
+    int d=1;
+    while(n%d==0) ++d;
+    return d-1;
+}</code></pre><p><strong>Complexidade:</strong> O(L), onde L é o tamanho da resposta; O(1) de espaço. Para n&lt;=1e18, L&lt;=42.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1855/B"">Longest Divisors Interval · problemas · páginas 55</a></li></ul>"	assunto::intervalo_divisores cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000013	<p>Como minimizar remoções quando podemos reordenar um array e exigimos diferença de no máximo k entre vizinhos? Por que ordenar e manter o maior bloco funciona?</p>	"<p>Ordene os valores. Uma diferença maior que k separa componentes que não podem ser conectadas: não há elemento intermediário disponível. Dentro de cada bloco com diferenças adjacentes &lt;=k, a ordem crescente já satisfaz a regra. Mantenha o maior bloco e remova o restante. A condição é sobre vizinhos, não sobre máximo-mínimo do bloco.</p><pre><code class=""language-cpp"">int remocoes(vector&lt;long long&gt; a,long long k) {
+    if(a.empty()) return 0;
+    sort(a.begin(),a.end());
+    int atual=1,melhor=1;
+    for(int i=1;i&lt;(int)a.size();++i){
+        atual=(a[i]-a[i-1]&lt;=k ? atual+1 : 1);
+        melhor=max(melhor,atual);
+    }
+    return (int)a.size()-melhor;
+}</code></pre><p><strong>Complexidade:</strong> O(n log n) de tempo; o trecho recebe cópia O(n), varredura usa O(1) auxiliar.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1850/D"">Balanced Round · problemas · páginas 55, 56</a></li></ul>"	assunto::ordenar_maior_bloco cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000014	<p>Como a maior sequência de sinais iguais numa string de &lt; e &gt; determina o mínimo de valores distintos necessários para satisfazer as comparações?</p>	"<p>Uma sequência de L sinais iguais impõe uma cadeia estritamente crescente ou decrescente com L+1 valores distintos. Isso dá um limite inferior. Ele é suficiente: ao mudar a direção, podemos reutilizar níveis, atribuindo a cada posição um nível compatível com as cadeias monotônicas incidentes. Portanto a resposta é a maior sequência de sinais iguais mais 1. Não é preciso tentar valores do array.</p><pre><code class=""language-cpp"">int niveis(const string&amp; s) {
+    int atual=0,melhor=0; char anterior=0;
+    for(char c:s){
+        atual=(c==anterior ? atual+1 : 1);
+        melhor=max(melhor,atual); anterior=c;
+    }
+    return melhor+1;
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(1) de espaço.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1837/B"">Comparison String · problemas · páginas 56, 57</a></li></ul>"	assunto::comparacoes_monotonas cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000015	<p>Se só podemos trocar posições cuja distância é exatamente k, quais posições continuam conectadas? Como usar isso para achar o maior k que ordena uma permutação?</p>	"<p>Trocas de distância k mantêm cada elemento na mesma classe de índice módulo k. Em cada classe, trocas adjacentes no caminho permitem qualquer permutação. Portanto k deve dividir todos os deslocamentos entre posição atual e posição final. O maior k válido é o gcd desses deslocamentos. Zeros não atrapalham: gcd(0,d)=d. O problema garante permutação inicialmente não ordenada.</p><pre><code class=""language-cpp"">int maiorPasso(const vector&lt;int&gt;&amp; p) {
+    int g=0;
+    for(int i=0;i&lt;(int)p.size();++i)
+        g=gcd(g,abs(p[i]-(i+1)));
+    return g;
+}</code></pre><p><strong>Complexidade:</strong> O(n log n) como limite seguro para os gcds; O(1) de espaço.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1828/B"">Permutation Swap · problemas · páginas 57, 58</a></li></ul>"	assunto::gcd_classes_de_indices cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000016	<p>Como pré-computar somas ou contagens de um intervalo e responder consultas em O(1)? Como avaliar substituir [l,r] por k sem modificar o array a cada consulta?</p>	"<p>Defina pref[i] como a soma dos primeiros i elementos; pref[0]=0. Em índices base 1, a soma de [l,r] é pref[r]-pref[l-1]. A soma após a substituição é total-somaAntiga+(r-l+1)*k. Cada consulta usa o array original, portanto não atualize os prefixos. Para contar um predicado, some 1 quando ele é verdadeiro: o mesmo padrão conta W em cada janela de Black and White Stripe.</p><pre><code class=""language-cpp"">vector&lt;long long&gt; prefixos(const vector&lt;long long&gt;&amp; a) {
+    vector&lt;long long&gt; p(a.size()+1,0);
+    for(int i=0;i&lt;(int)a.size();++i) p[i+1]=p[i]+a[i];
+    return p;
+}
+long long substituir(const vector&lt;long long&gt;&amp; p,int l,int r,long long k) {
+    return p.back()-(p[r]-p[l-1])+1LL*(r-l+1)*k;
+}</code></pre><p><strong>Complexidade:</strong> O(n) de pré-processamento, O(1) por consulta e O(n) de espaço.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1807/D"">Odd Queries · problemas · páginas 58, 59</a></li><li><a href=""https://codeforces.com/problemset/problem/1690/D"">Black and White Stripe · problemas · páginas 97, 98</a></li></ul>"	assunto::prefix_sum_consultas cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000017	<p>Como construir um array com a[i+1] não divisível por a[i], usando apenas incrementos? Por que percorrer da esquerda para a direita preserva o que já foi corrigido?</p>	"<p>Primeiro elimine o valor 1, pois ele divide todos os inteiros. Depois percorra da esquerda para a direita. Se o próximo valor for múltiplo do atual, incremente o próximo uma vez. Como o divisor é pelo menos 2, dois inteiros consecutivos não podem ser ambos múltiplos dele. Cada passo fixa o par à esquerda e nunca volta a mudar esse prefixo. São no máximo n incrementos para eliminar 1 e n-1 para ajustar pares.</p><pre><code class=""language-cpp"">vector&lt;int&gt; ajustar(vector&lt;int&gt; a) {
+    for(int&amp; x:a) if(x==1) ++x;
+    for(int i=0;i+1&lt;(int)a.size();++i)
+        if(a[i+1]%a[i]==0) ++a[i+1];
+    return a;
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(1) auxiliar além do array retornado; valores positivos.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1794/B"">Not Dividing · problemas · páginas 59, 60</a></li></ul>"	assunto::greedy_invariante_prefixo cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000018	<p>Como reduzir a maximização de último-primeiro após uma rotação cíclica de um segmento a três casos lineares?</p>	"<p>Se a rotação não envolve a primeira posição, o primeiro valor continua a[0], e escolhemos o melhor valor para o fim. Se não envolve a última, preservamos a[n-1] e escolhemos o menor primeiro. Se envolve as duas extremidades, o segmento é o array inteiro: o novo fim e o novo início eram vizinhos, e o candidato é a[i]-a[i+1]. Esses casos cobrem todas as posições do segmento; para n=1 a resposta é zero.</p><pre><code class=""language-cpp"">long long melhorDiferenca(const vector&lt;long long&gt;&amp; a) {
+    int n=a.size(); long long ans=a.back()-a.front();
+    for(int i=1;i&lt;n;++i) ans=max(ans,a[i]-a.front());
+    for(int i=0;i+1&lt;n;++i){
+        ans=max(ans,a.back()-a[i]);
+        ans=max(ans,a[i]-a[i+1]);
+    }
+    return ans;
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(1) de espaço; array não vazio.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1726/A"">Mainak and Array · problemas · páginas 60, 61</a></li></ul>"	assunto::classificar_rotacao cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000019	<p>Como usar os blocos de valores não nulos para zerar um array com operações de substituir um intervalo pelo seu MEX? Por que a resposta nunca precisa exceder 2?</p>	"<p>Sem valores não nulos, nada é necessário. Um único bloco não nulo não contém zero, então seu MEX é zero e uma operação basta. Com vários blocos, qualquer intervalo que cubra todos inclui zero; seu MEX será positivo, formando um único bloco não nulo. A segunda operação o transforma em zero. Logo a resposta é min(2, quantidade de blocos).</p><pre><code class=""language-cpp"">int zerarComMex(const vector&lt;int&gt;&amp; a) {
+    int blocos=0; bool dentro=false;
+    for(int x:a){
+        if(x==0) dentro=false;
+        else if(!dentro){ ++blocos; dentro=true; }
+    }
+    return min(2,blocos);
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(1) de espaço.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1696/B"">NIT Destroys the Universe · problemas · páginas 61, 62</a></li></ul>"	assunto::mex_blocos_nao_nulos cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000020	<p>Como calcular divisão inteira com teto sem ponto flutuante e usar limites de capacidade para obter quantidades mínimas e máximas?</p>	"<p>Para a&gt;=0 e b&gt;0, ceil(a/b)=a/b+(a%b!=0). Essa forma evita overflow de a+b-1. Com ônibus de 4 ou 6 rodas, um total n é possível se n é par e n&gt;=4. O mínimo é ceil(n/6) e o máximo floor(n/4); a mistura de 4 e 6 permite ajustar as sobras. Em agrupamentos gerais, somar antes de aplicar teto nunca aumenta o resultado: ceil((x+y)/d)&lt;=ceil(x/d)+ceil(y/d).</p><pre><code class=""language-cpp"">long long ceilDiv(long long a,long long b) {
+    return a/b+(a%b!=0);
+}
+pair&lt;long long,long long&gt; onibus(long long n) {
+    if(n&lt;4 || n%2) return {-1,-1};
+    return {ceilDiv(n,6),n/4};
+}</code></pre><p><strong>Complexidade:</strong> O(1) de tempo e espaço; a&gt;=0 e b&gt;0.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1679/A"">AvtoBus · problemas · páginas 62, 63</a></li><li><a href=""https://codeforces.com/problemset/problem/1471/A"">Strange Partition · problemas · páginas 75, 76</a></li></ul>"	assunto::divisao_teto_limites cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000021	<p>Por que, ao tornar um array estritamente crescente usando divisões por 2, devemos decidir da direita para a esquerda? Como reconhecer impossibilidade?</p>	"<p>A operação só reduz valores. Preserve o elemento à direita tão grande quanto possível para não restringir desnecessariamente os anteriores. Para cada posição, reduza apenas até ficar menor que a seguinte. Isso usa o mínimo de divisões necessário com o sufixo já fixo. Se o valor à direita é zero, nenhum valor não negativo à esquerda pode ser menor: é impossível. O primeiro elemento pode ser zero sem problema.</p><pre><code class=""language-cpp"">int tornarCrescente(vector&lt;long long&gt; a) {
+    int ops=0;
+    for(int i=(int)a.size()-2;i&gt;=0;--i){
+        if(a[i+1]==0) return -1;
+        while(a[i]&gt;=a[i+1]){ a[i]/=2; ++ops; }
+    }
+    return ops;
+}</code></pre><p><strong>Complexidade:</strong> O(n log(A+1)) de tempo; cópia do array O(n).</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1675/B"">Make It Increasing · problemas · páginas 63, 64</a></li></ul>"	assunto::greedy_direita_esquerda cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000022	<p>Se só podemos apagar a primeira ocorrência de uma letra, quais ocorrências podem permanecer? Como verificar um alvo sem simular todas as remoções?</p>	"<p>Para cada letra, as ocorrências que sobrevivem devem ser as últimas: não é possível apagar uma ocorrência posterior mantendo uma anterior da mesma letra. Conte quantas de cada letra o alvo precisa. Varra a origem da direita para a esquerda e preserve só as últimas quantidades necessárias. Depois compare a ordem obtida com o alvo: frequências corretas sozinhas não garantem a ordem correta.</p><pre><code class=""language-cpp"">bool editar(const string&amp; s,const string&amp; t) {
+    array&lt;int,26&gt; falta{};
+    for(char c:t) ++falta[c-&#x27;A&#x27;];
+    string mantida;
+    for(int i=(int)s.size()-1;i&gt;=0;--i){
+        int c=s[i]-&#x27;A&#x27;;
+        if(falta[c]&gt;0){ mantida+=s[i]; --falta[c]; }
+    }
+    reverse(mantida.begin(),mantida.end());
+    return mantida==t;
+}</code></pre><p><strong>Complexidade:</strong> O(|s|+|t|) de tempo; O(|t|+26) de espaço; letras A-Z.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1666/D"">Deletive Editing · problemas · páginas 64, 65</a></li></ul>"	assunto::ultimas_ocorrencias cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000023	<p>Como separar o custo de trocar elementos do custo de clonar arrays para uniformizar um array? Por que começar pelo valor mais frequente é ótimo?</p>	"<p>Se o valor escolhido aparece f vezes, no mínimo n-f posições precisam mudar. Clonar um array com c cópias desse valor oferece no máximo c novas cópias utilizáveis; após as trocas úteis, a quantidade dobra até n. Começar com a maior frequência minimiza tanto as trocas quanto as clonagens. Some separadamente n-f e o número de duplicações necessárias.</p><pre><code class=""language-cpp"">int custoUniformizar(const vector&lt;int&gt;&amp; a) {
+    unordered_map&lt;int,int&gt; freq; int f=0;
+    for(int x:a) f=max(f,++freq[x]);
+    int n=a.size(),ops=n-f;
+    while(f&lt;n){ ++ops; f=min(n,2*f); }
+    return ops;
+}</code></pre><p><strong>Complexidade:</strong> O(n) esperado para frequências e O(log n) duplicações; O(n) de espaço; array não vazio.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1665/B"">Array Cloning Technique · problemas · páginas 65, 66</a></li></ul>"	assunto::dobramento_custo_fixo cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000024	<p>Como transformar a condição de três números em progressão aritmética numa checagem O(1) ao multiplicar exatamente um deles por um inteiro positivo?</p>	"<p>Uma PA satisfaz a+c=2b. Isole o valor novo para cada escolha: aNovo=2b-c, bNovo=(a+c)/2, cNovo=2b-a. O valor novo deve ser positivo e múltiplo inteiro do valor original. Para o termo central, a+c também precisa ser par. Testar as três possibilidades evita escolher um caso por intuição sem cobrir os outros.</p><pre><code class=""language-cpp"">bool fazerPA(long long a,long long b,long long c) {
+    auto multiplo=[](long long novo,long long antigo){
+        return novo&gt;0 &amp;&amp; novo%antigo==0;
+    };
+    return multiplo(2*b-c,a)
+        || ((a+c)%2==0 &amp;&amp; multiplo((a+c)/2,b))
+        || multiplo(2*b-a,c);
+}</code></pre><p><strong>Complexidade:</strong> O(1) de tempo e espaço; a,b,c positivos e intermediários cabem em long long.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1624/B"">Make AP · problemas · páginas 66, 67, 68</a></li></ul>"	assunto::equacao_pa_multiplo cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000025	<p>Como reconhecer um padrão periódico para evitar simular até 10^14 passos? Aplique ao movimento: passo i vai à esquerda se a posição é par, à direita se é ímpar.</p>	"<p>Simule poucos passos simbolicamente a partir de uma posição par: os deslocamentos para n mod 4 iguais a 0,1,2,3 são 0,-n,1,n+1. Quatro passos restauram o deslocamento zero; isso permite agrupar ciclos. Começar numa posição ímpar inverte os sinais. Em C++, para números negativos, use x%2==0 para detectar paridade; não suponha que o resto ímpar seja sempre 1.</p><pre><code class=""language-cpp"">long long posicao(long long x,long long n) {
+    long long d=0;
+    if(n%4==1) d=-n;
+    if(n%4==2) d=1;
+    if(n%4==3) d=n+1;
+    return x+(x%2==0 ? d : -d);
+}</code></pre><p><strong>Complexidade:</strong> O(1) de tempo e espaço; valores finais devem caber em 64 bits.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1607/B"">Odd Grasshopper · problemas · páginas 68, 69</a></li></ul>"	assunto::periodicidade_modulo cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000026	<p>Por que a diferença entre o número de substrings adjacentes ab e ba depende só do primeiro e último caracteres? Como equilibrar uma string binária com o mínimo de mudanças?</p>	"<p>Associe a=0 e b=1. Cada transição ab soma +1 e cada ba soma -1; aa e bb somam zero. A soma das diferenças consecutivas cancela os valores internos e resulta no último menos o primeiro. Logo ab=ba exatamente quando as extremidades são iguais. Se diferem, uma mudança numa extremidade é suficiente e necessária.</p><pre><code class=""language-cpp"">string equilibrar(string s) {
+    if(!s.empty()) s.back()=s.front();
+    return s;
+}</code></pre><p><strong>Complexidade:</strong> O(1) para alterar a extremidade; receber e retornar uma string por valor custa O(n).</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1606/A"">AB Balance · problemas · páginas 69, 70</a></li></ul>"	assunto::transicoes_extremidades cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000027	<p>Como minimizar remoções de dígitos para tornar um número divisível por 25 sem testar todas as subsequências?</p>	"<p>Um número positivo divisível por 25 termina em 00,25,50 ou 75. Para cada sufixo, procure o último dígito da direita para a esquerda e depois o penúltimo antes dele. Preserve todo o prefixo anterior: apenas o que está entre os dois dígitos e depois deles precisa sair. Pegar a ocorrência mais à direita deixa o máximo de posições disponíveis e minimiza remoções. A fonte garante existir uma solução positiva; não generalize para entrada sem solução silenciosamente.</p><pre><code class=""language-cpp"">int remover25(const string&amp; s) {
+    int n=s.size(),ans=n;
+    for(string fim:{&quot;00&quot;,&quot;25&quot;,&quot;50&quot;,&quot;75&quot;}){
+        int j=n-1; while(j&gt;=0 &amp;&amp; s[j]!=fim[1]) --j;
+        if(j&lt;0) continue;
+        int i=j-1; while(i&gt;=0 &amp;&amp; s[i]!=fim[0]) --i;
+        if(i&gt;=0) ans=min(ans,n-i-2);
+    }
+    return ans;
+}</code></pre><p><strong>Complexidade:</strong> O(4D)=O(D) de tempo, D é o número de dígitos; O(1) auxiliar.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1593/B"">Make It Divisible by 25 · problemas · páginas 70, 71</a></li></ul>"	assunto::sufixo_divisivel_25 cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000028	<p>Quando um array tem soma S, como contar subsequências por índices cuja soma é S-1? Por que zeros multiplicam possibilidades e como evitar pow com ponto flutuante?</p>	"<p>Considere os elementos que ficam de fora: sua soma precisa ser 1. Como todos os valores são não negativos, devemos excluir exatamente um 1, qualquer subconjunto de zeros e nenhum valor maior. São quantidadeDeUns * 2^quantidadeDeZeros escolhas. Subsequências são contadas pelas posições, mesmo com valores repetidos. Use aritmética inteira; sob n&lt;=60 o resultado cabe em unsigned long long e o shift é válido.</p><pre><code class=""language-cpp"">unsigned long long contarSubsequencias(const vector&lt;int&gt;&amp; a) {
+    int zeros=0,uns=0;
+    for(int x:a){ zeros+=(x==0); uns+=(x==1); }
+    return (unsigned long long)uns*(1ULL&lt;&lt;zeros);
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(1) de espaço; n&lt;=60, valores não negativos.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1582/B"">Luntik and Subsequences · problemas · páginas 71, 72</a></li></ul>"	assunto::subconjuntos_zeros_uns cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000029	<p>Por que combinar valores com AND nunca cria bits e como isso ajuda a encontrar o menor valor atingível por operações de AND em um array?</p>	"<p>Um bit só fica 1 no AND se todos os operandos tiverem esse bit. Portanto x&amp;y&lt;=x e x&amp;y&lt;=y para inteiros não negativos. Associatividade e comutatividade permitem acumular o AND de todos os elementos. No problema, uma operação pode espalhar esse AND ao array inteiro; nenhum resultado pode perder um bit que já era 1 em todos os elementos. Assim o AND global é o limite atingível.</p><pre><code class=""language-cpp"">int andGlobal(const vector&lt;int&gt;&amp; a) {
+    int ans=a.front();
+    for(int x:a) ans&amp;=x;
+    return ans;
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(1) de espaço; array não vazio de inteiros não negativos.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1559/A"">Mocha and Math · problemas · páginas 72</a></li></ul>"	assunto::and_remocao_bits cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000030	<p>Se uma operação soma 1 aos dois números ou subtrai 1 dos dois, qual invariante limita o maior gcd? Como obter o mínimo de passos para alcançá-lo?</p>	"<p>A diferença d=|a-b| não muda. Todo divisor comum divide a diferença, então o gcd não excede d. Se a!=b, é possível tornar ambos múltiplos de d. O resto r=a%d mede a distância ao múltiplo inferior; d-r mede a distância ao superior. Escolha min(r,d-r). Se a=b, o gcd pode crescer sem limite e a convenção do problema é retornar 0,0.</p><pre><code class=""language-cpp"">pair&lt;long long,long long&gt; aposta(long long a,long long b) {
+    long long d=llabs(a-b);
+    if(d==0) return {0,0};
+    long long r=a%d;
+    return {d,min(r,d-r)};
+}</code></pre><p><strong>Complexidade:</strong> O(1) de tempo e espaço; entradas não negativas.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1543/A"">Exciting Bets · problemas · páginas 73, 74</a></li></ul>"	assunto::gcd_diferenca_invariante cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000031	<p>Como usar a distância Manhattan para escolher duas posições numa grade e maximizar o menor passeio que sai de uma posição, visita as duas e retorna?</p>	"<p>Na grade sem obstáculos, d((x,y),(u,v))=|x-u|+|y-v|. Escolha cantos opostos (1,1) e (n,m). Para qualquer início dentro da grade, a soma das distâncias aos dois cantos é n+m-2; a distância entre eles também é n+m-2. O passeio total vale 2(n+m-2). Qualquer triângulo de pontos da grade tem perímetro Manhattan no máximo esse valor, separando as contribuições de linhas e colunas.</p><pre><code class=""language-cpp"">array&lt;long long,4&gt; cantos(long long n,long long m) {
+    return {1,1,n,m};
+}
+long long manhattan(long long x,long long y,long long u,long long v){
+    return llabs(x-u)+llabs(y-v);
+}</code></pre><p><strong>Complexidade:</strong> O(1) de tempo e espaço.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1537/B"">Bad Boy · problemas · páginas 74, 75</a></li></ul>"	assunto::manhattan_cantos_opostos cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000032	<p>Como reconhecer uma potência de dois com bits e relacionar isso à existência de divisor ímpar maior que 1? Quais cuidados de sintaxe são necessários?</p>	"<p>Para n positivo, uma potência de dois tem exatamente um bit 1. Ao subtrair 1, esse bit vira zero e os inferiores viram 1; logo n&amp;(n-1)==0 somente nesse caso. Um n positivo possui divisor ímpar &gt;1 se, ao retirar todos os fatores 2, sobrar algo maior que 1; equivale a não ser potência de dois. Verifique n&gt;0 e use parênteses, pois a precedência de == em C++ muda a interpretação sem eles.</p><pre><code class=""language-cpp"">bool potenciaDeDois(unsigned long long n) {
+    return n&gt;0 &amp;&amp; ((n &amp; (n-1))==0);
+}
+bool divisorImpar(unsigned long long n) {
+    return n&gt;1 &amp;&amp; !potenciaDeDois(n);
+}</code></pre><p><strong>Complexidade:</strong> O(1) para inteiros de tamanho fixo; O(1) de espaço.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1475/A"">Odd Divisor · problemas · páginas 75</a></li></ul>"	assunto::potencia_dois_bits cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000033	<p>Por que agrupar valores antes de aplicar ceil(soma/x) minimiza o resultado, enquanto mantê-los separados maximiza? Como calcular os dois extremos?</p>	"<p>Para valores não negativos, ceil((a+b)/x)&lt;=ceil(a/x)+ceil(b/x): arredondar separadamente pode pagar duas sobras que juntas caberiam no mesmo grupo. Repetindo a desigualdade, unir tudo dá o mínimo e manter todos separados dá o máximo. Some em 64 bits e use divisão inteira com teto, sem converter para double.</p><pre><code class=""language-cpp"">pair&lt;long long,long long&gt; extremos(const vector&lt;long long&gt;&amp; a,long long x) {
+    long long soma=0,maior=0;
+    for(long long v:a){ soma+=v; maior+=v/x+(v%x!=0); }
+    long long menor=soma/x+(soma%x!=0);
+    return {menor,maior};
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(1) de espaço.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1471/A"">Strange Partition · problemas · páginas 75, 76</a></li></ul>"	assunto::soma_tetos_agrupar cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000034	<p>Como maximizar a soma das medianas ao dividir nk valores já ordenados em k grupos de tamanho n? Como descobrir o salto do ponteiro a partir da definição da mediana?</p>	"<p>A mediana está na posição ceil(n/2), base 1: para n par é a mediana inferior. Cada mediana precisa de floor(n/2) elementos maiores ou iguais à sua direita no grupo. Reserve esses elementos a partir do fim e escolha o próximo como mediana. Repita com salto floor(n/2)+1. Os menores elementos restantes preenchem a parte esquerda dos grupos. O argumento greedy evita gastar um candidato grande na parte inferior de um grupo.</p><pre><code class=""language-cpp"">long long somarMedianas(const vector&lt;long long&gt;&amp; a,int n,int k) {
+    int pos=a.size(),salto=n/2+1;
+    long long soma=0;
+    for(int grupo=0;grupo&lt;k;++grupo){ pos-=salto; soma+=a[pos]; }
+    return soma;
+}</code></pre><p><strong>Complexidade:</strong> O(k) após ler os nk valores; O(nk) incluindo leitura e armazenamento. Array previamente ordenado.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1440/B"">Sum of Medians · problemas · páginas 76, 77</a></li></ul>"	assunto::maximizar_medianas cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000035	<p>Por que, numa permutação, basta procurar um pico local adjacente para encontrar i&lt;j&lt;k com a[i]&lt;a[j]&gt;a[k]? Como implementar sem três laços?</p>	"<p>Se uma tripla assim existe, em algum ponto o percurso de valores precisa subir e depois descer. Como os elementos da permutação são distintos, uma mudança de subida para descida produz um pico estrito adjacente. Se não há pico, não há esse padrão. A propriedade depende de os valores serem distintos; platôs em arrays gerais exigem outra análise.</p><pre><code class=""language-cpp"">vector&lt;int&gt; picoLocal(const vector&lt;int&gt;&amp; a) {
+    for(int j=1;j+1&lt;(int)a.size();++j)
+        if(a[j-1]&lt;a[j] &amp;&amp; a[j]&gt;a[j+1]) return {j,j+1,j+2};
+    return {};
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(1) de espaço auxiliar; índices de saída base 1.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1380/A"">Three Indices · problemas · páginas 77, 78</a></li></ul>"	assunto::pico_local_permutacao cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000036	<p>Num jogo que remove dois bits adjacentes diferentes de uma string, por que basta contar zeros e uns para saber quem vence?</p>	"<p>Cada jogada remove exatamente um zero e um um. Enquanto ambos existem, há uma fronteira entre caracteres diferentes e alguma jogada é possível. Portanto toda partida tem exatamente min(zeros,uns) jogadas, independentemente das escolhas. Quem começa vence se esse número é ímpar. A estratégia ótima deixa de importar depois que o invariante fixa a duração do jogo.</p><pre><code class=""language-cpp"">bool primeiroVence(const string&amp; s) {
+    int z=count(s.begin(),s.end(),&#x27;0&#x27;);
+    int u=(int)s.size()-z;
+    return min(z,u)%2==1;
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(1) de espaço; string binária.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1373/B"">01 Game · problemas · páginas 78</a></li></ul>"	assunto::jogo_invariante_jogadas cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000037	<p>Como analisar operações multiplicar por 2 e dividir por 6 usando expoentes primos? Quando é impossível chegar a 1 e qual o número mínimo de operações?</p>	"<p>Escreva n=2^a*3^b*resto. Dividir por 6 remove um fator 2 e um 3; multiplicar por 2 acrescenta apenas um fator 2. Um primo diferente de 2 ou 3 nunca desaparece. Também é impossível quando a&gt;b, pois faltam fatores 3 para remover todos os fatores 2. Se a&lt;=b, use b-a multiplicações por 2 e b divisões por 6: total 2b-a. Conte os fatores, não simule escolhas.</p><pre><code class=""language-cpp"">int reduzirUm(long long n) {
+    int a=0,b=0;
+    while(n%2==0){ n/=2; ++a; }
+    while(n%3==0){ n/=3; ++b; }
+    if(n!=1 || a&gt;b) return -1;
+    return 2*b-a;
+}</code></pre><p><strong>Complexidade:</strong> O(log n) de tempo e O(1) de espaço; n&gt;=1.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1374/B"">Multiply by 2, Divide by 6 · problemas · páginas 78, 79</a></li></ul>"	assunto::expoentes_primos_operacoes cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000038	<p>Quando podemos trocar bits livremente e apagar cada caractere por custo 1, como obter o maior prefixo que pode ser substituído por bits opostos aos da string original?</p>	"<p>Trocas gratuitas tornam relevante apenas o estoque de zeros e uns. Varra a referência original da esquerda para a direita e consuma um bit oposto para cada posição. Quando o estoque necessário acabar, nenhum resultado mais longo poderá satisfazer esse prefixo. Apague o restante; o custo mínimo é n-comprimentoViável. Frequências permitem simular a disponibilidade sem executar trocas.</p><pre><code class=""language-cpp"">int custoApagar(const string&amp; s) {
+    array&lt;int,2&gt; qtd{}; for(char c:s) ++qtd[c-&#x27;0&#x27;];
+    int usados=0;
+    for(char c:s){
+        int precisa=1-(c-&#x27;0&#x27;);
+        if(qtd[precisa]==0) break;
+        --qtd[precisa]; ++usados;
+    }
+    return (int)s.size()-usados;
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(1) de espaço.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1913/B"">Swap and Delete · problemas · páginas 79, 80</a></li></ul>"	assunto::estoque_prefixo_binario cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000039	<p>Por que tornar um produto divisível por um primo é diferente de torná-lo divisível por 4? Como minimizar incrementos para k entre 2 e 5?</p>	"<p>Para k primo, basta que algum fator se torne múltiplo de k: o custo é o mínimo de (k-a[i]%k)%k. Para k=4, o produto também pode ganhar os dois fatores 2 em elementos diferentes. Além de tornar um elemento múltiplo de 4, considere obter dois pares: se já há dois, custo 0; um, custo 1; nenhum, custo 2. Compare as alternativas e não multiplique todo o array, pois pode estourar.</p><pre><code class=""language-cpp"">int incrementosProduto(const vector&lt;int&gt;&amp; a,int k) {
+    int melhor=k,pares=0;
+    for(int x:a){
+        melhor=min(melhor,(k-x%k)%k);
+        pares+=(x%2==0);
+    }
+    if(k==4) melhor=min(melhor,max(0,2-pares));
+    return melhor;
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(1) de espaço; 2&lt;=k&lt;=5 e n&gt;=2.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1883/C"">Raspberries · problemas · páginas 80, 81</a></li></ul>"	assunto::divisibilidade_produto cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000040	<p>Como minimizar o custo de espalhar informação quando uma fonte cobra p por pessoa e cada pessoa informada pode compartilhar por custo e capacidade próprios?</p>	"<p>É preciso ativar pelo menos uma pessoa pelo custo p. Ordene as opções por custo de compartilhamento e use primeiro as mais baratas que p, limitando cada uma pela capacidade e pelo número ainda não informado. Podemos escolher a primeira pessoa e a ordem de ativações para disponibilizar cada próximo compartilhador barato: informar alguém já dá acesso à capacidade dessa pessoa. Custos &gt;=p não oferecem vantagem sobre a fonte original. O argumento de troca substitui um compartilhamento caro por um barato disponível sem reduzir capacidade útil.</p><pre><code class=""language-cpp"">long long informar(int n,long long p,vector&lt;pair&lt;long long,long long&gt;&gt; opcoes) {
+    sort(opcoes.begin(),opcoes.end()); // {custo, capacidade}
+    long long total=p; int faltam=n-1;
+    for(auto [custo,cap]:opcoes){
+        if(custo&gt;=p || faltam==0) break;
+        int usar=(int)min&lt;long long&gt;(cap,faltam);
+        total+=usar*custo; faltam-=usar;
+    }
+    return total+faltam*p;
+}</code></pre><p><strong>Complexidade:</strong> O(n log n) de tempo; o vetor de opções ocupa O(n). Assume n&gt;=1 e capacidades positivas.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1876/A"">Helmets in Night Light · problemas · páginas 82, 83</a></li></ul>"	assunto::greedy_custo_capacidade cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000041	<p>Como maximizar a soma dos mínimos de vários arrays quando cada array pode enviar no máximo um elemento para outro? Por que os dois menores de cada array são suficientes?</p>	"<p>Se um array envia seu menor elemento, seu novo mínimo no máximo chega ao segundo menor. Um array receptor pode concentrar todos os menores enviados; ele paga a perda correspondente ao menor global, em vez de desperdiçar melhorias em vários receptores. Escolha como receptor o array com o menor segundo mínimo. A soma ótima é soma(segundos)-min(segundos)+menorGlobal. Cada array deve ter pelo menos dois elementos; repetições contam como posições distintas.</p><pre><code class=""language-cpp"">long long somaMinimos(const vector&lt;vector&lt;long long&gt;&gt;&amp; arrays) {
+    long long soma=0,menor=LLONG_MAX,segundoMenor=LLONG_MAX;
+    for(auto a:arrays){
+        nth_element(a.begin(),a.begin()+1,a.end());
+        long long primeiro=min(a[0],a[1]),segundo=a[1];
+        menor=min(menor,primeiro); segundoMenor=min(segundoMenor,segundo);
+        soma+=segundo;
+    }
+    return soma-segundoMenor+menor;
+}</code></pre><p><strong>Complexidade:</strong> O(total de elementos) esperado com nth_element; cópias usam O(maior array) auxiliar.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1859/B"">Olya and Game with Arrays · problemas · páginas 83, 84</a></li></ul>"	assunto::concentrar_menores_valores cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000042	<p>Como evitar simular golpes repetidos no monstro de maior vida? Como normalizar o resto e ordenar com desempate correto?</p>	"<p>Enquanto algum monstro tem vida &gt;k, um golpe não o mata e reduz sua vida pelo mesmo k. Podemos antecipar essas reduções. A vida imediatamente antes do golpe final é ((vida-1)%k)+1: um múltiplo de k deve representar k, não zero. Todos ficam entre 1 e k e morrem em um golpe. Ordene pela vida normalizada decrescente e, em empate, pelo índice crescente.</p><pre><code class=""language-cpp"">vector&lt;int&gt; ordemMortes(const vector&lt;long long&gt;&amp; vida,long long k) {
+    vector&lt;pair&lt;long long,int&gt;&gt; itens;
+    for(int i=0;i&lt;(int)vida.size();++i)
+        itens.push_back({(vida[i]-1)%k+1,i+1});
+    sort(itens.begin(),itens.end(),[](auto a,auto b){
+        return a.first!=b.first ? a.first&gt;b.first : a.second&lt;b.second;
+    });
+    vector&lt;int&gt; ans; for(auto [resto,id]:itens){(void)resto;ans.push_back(id);}
+    return ans;
+}</code></pre><p><strong>Complexidade:</strong> O(n log n) de tempo e O(n) de espaço; vida&gt;=1 e k&gt;=1.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1849/B"">Monsters · problemas · páginas 84</a></li></ul>"	assunto::resto_ordenacao_desempate cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000043	<p>Como contar subarrays de comprimento pelo menos k em que todos os elementos satisfazem um predicado? Como evitar perder o último bloco?</p>	"<p>Um bloco válido de tamanho L contribui (L-k+1)(L-k+2)/2 quando L&gt;=k: há L-k+1 escolhas para comprimento k, uma a menos para k+1 e assim por diante. Também podemos acumular online: a cada posição válida, se o bloco atual tem tamanho c&gt;=k, surgem c-k+1 subarrays terminando ali. Ao encontrar inválido, zere c. Essa forma já inclui o último bloco e evita esquecer o processamento após o laço.</p><pre><code class=""language-cpp"">long long ferias(const vector&lt;int&gt;&amp; temperatura,int k,int limite) {
+    long long atual=0,total=0;
+    for(int x:temperatura){
+        atual=(x&lt;=limite ? atual+1 : 0);
+        if(atual&gt;=k) total+=atual-k+1;
+    }
+    return total;
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(1) de espaço; k&gt;=1.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1840/C"">Ski Resort · problemas · páginas 85, 86</a></li></ul>"	assunto::contar_subarrays_blocos cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000044	<p>Num merge que preserva a ordem interna de dois arrays, como obter a maior sequência consecutiva de um mesmo valor sem testar todas as intercalações?</p>	"<p>Para um valor x, só podemos juntar um bloco contínuo de x de cada array: separar dois blocos do mesmo array exige emitir os valores diferentes que ficam entre eles. Portanto o melhor para x é maiorRunA[x]+maiorRunB[x]. Essa soma é atingível alinhando os dois blocos no merge. Conte runs, não frequência total, e atualize também o bloco final. Use um vetor por valor apenas quando o domínio for pequeno; map serve para domínio geral.</p><pre><code class=""language-cpp"">map&lt;int,int&gt; maioresRuns(const vector&lt;int&gt;&amp; a) {
+    map&lt;int,int&gt; melhor;
+    for(int i=0;i&lt;(int)a.size();){
+        int j=i; while(j&lt;(int)a.size() &amp;&amp; a[j]==a[i]) ++j;
+        melhor[a[i]]=max(melhor[a[i]],j-i); i=j;
+    }
+    return melhor;
+}
+int maiorMerge(const vector&lt;int&gt;&amp; a,const vector&lt;int&gt;&amp; b) {
+    auto A=maioresRuns(a),B=maioresRuns(b); int ans=0;
+    for(auto [x,v]:A) ans=max(ans,v+B[x]);
+    for(auto [x,v]:B) ans=max(ans,v+A[x]);
+    return ans;
+}</code></pre><p><strong>Complexidade:</strong> O((n+m) log U) com map; O(n+m+U) se usar vetores para domínio limitado.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1831/B"">Array Merging · problemas · páginas 86, 87</a></li></ul>"	assunto::runs_por_valor_merge cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000045	<p>Como escolher um corte de string que maximize a soma de caracteres distintos nas duas partes? Por que contar distintos globalmente não basta?</p>	"<p>Um caractere presente dos dois lados contribui duas vezes, então o total global de distintos não responde à pergunta. Faça pref[i] contar distintos em s[0,i) e suf[i] contar em s[i,n). Para cada corte entre 1 e n-1, avalie pref[corte]+suf[corte]. Dois conjuntos de presença ou arrays de 26 posições bastam. Definir intervalos semiabertos evita duplicar ou esquecer o caractere na fronteira.</p><pre><code class=""language-cpp"">int melhorCorte(const string&amp; s) {
+    int n=s.size(); vector&lt;int&gt; p(n+1),q(n+1);
+    array&lt;bool,26&gt; visto{};
+    for(int i=0;i&lt;n;++i){int c=s[i]-&#x27;a&#x27;;p[i+1]=p[i]+!visto[c];visto[c]=true;}
+    visto.fill(false);
+    for(int i=n-1;i&gt;=0;--i){int c=s[i]-&#x27;a&#x27;;q[i]=q[i+1]+!visto[c];visto[c]=true;}
+    int ans=0;
+    for(int i=1;i&lt;n;++i) ans=max(ans,p[i]+q[i]);
+    return ans;
+}</code></pre><p><strong>Complexidade:</strong> O(n+26) de tempo e O(n+26) de espaço; n&gt;=2 e letras a-z.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1791/D"">Distinct Split · problemas · páginas 87, 88</a></li></ul>"	assunto::prefixo_sufixo_distintos cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000046	<p>Por que basta procurar divisores até a raiz de n? Como gerar os dois fatores de cada par sem duplicar a raiz quadrada e sem overflow em i*i?</p>	"<p>Se n=a*b e ambos fossem maiores que sqrt(n), o produto excederia n. Logo pelo menos um fator está até a raiz. Ao achar d, o outro é n/d. Para quadrado perfeito, esses fatores são iguais e devem ser adicionados uma vez. A condição d&lt;=n/d evita overflow de d*d. Essa redução também encontra o menor divisor não trivial para Minimum LCM.</p><pre><code class=""language-cpp"">vector&lt;long long&gt; divisores(long long n) {
+    vector&lt;long long&gt; ds;
+    for(long long d=1;d&lt;=n/d;++d) if(n%d==0){
+        ds.push_back(d);
+        if(d!=n/d) ds.push_back(n/d);
+    }
+    sort(ds.begin(),ds.end()); return ds;
+}</code></pre><p><strong>Complexidade:</strong> O(sqrt(n)+D log D) incluindo ordenação dos D divisores; O(D) de espaço; n&gt;=1.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1765/M"">Minimum LCM · problemas · páginas 88, 89, 90, 91</a></li></ul>"	assunto::divisores_em_pares cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000047	<p>Como minimizar lcm(a,b) com a+b=n e a,b positivos? Qual é a relação com o menor divisor não trivial de n?</p>	"<p>Se p é o menor divisor de n maior que 1, escolha a=n/p e b=n-a. Como b=(p-1)a, lcm(a,b)=b. Para justificar a otimalidade, escreva a=g*x, b=g*y, gcd(x,y)=1. Então x+y divide n e é pelo menos p. O lcm é n*x*y/(x+y), e x*y&gt;=(x+y)-1. Logo não pode ser menor que n*(p-1)/p, atingido pela construção. Se n é primo, p=n e a=1.</p><pre><code class=""language-cpp"">pair&lt;long long,long long&gt; menorLCM(long long n) {
+    long long p=n;
+    for(long long d=2;d&lt;=n/d;++d)
+        if(n%d==0){ p=d; break; }
+    long long a=n/p;
+    return {a,n-a};
+}</code></pre><p><strong>Complexidade:</strong> O(sqrt(n)) de tempo e O(1) de espaço; n&gt;=2.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1765/M"">Minimum LCM · problemas · páginas 88, 89, 90, 91</a></li></ul>"	assunto::minimo_lcm_soma_fixa cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000048	<p>Como calcular, para cada posição de um ciclo, a distância até o próximo evento-alvo em O(n)? Por que duplicar e varrer ao contrário ajuda?</p>	"<p>Duplicar a sequência transforma o cruzamento do fim para o início em um trecho linear. Na varredura da direita para a esquerda, guarde o índice do verde mais próximo já visto: ele é o próximo verde de qualquer posição à esquerda. Avalie somente posições da primeira cópia. Isso troca buscas repetidas pelo uso de memória de um próximo evento. A existência de pelo menos um verde é condição do problema.</p><pre><code class=""language-cpp"">int espera(const string&amp; s,char cor) {
+    if(cor==&#x27;g&#x27;) return 0;
+    int n=s.size(),proximo=-1,ans=0; string ciclo=s+s;
+    for(int i=2*n-1;i&gt;=0;--i){
+        if(ciclo[i]==&#x27;g&#x27;) proximo=i;
+        if(i&lt;n &amp;&amp; ciclo[i]==cor &amp;&amp; proximo!=-1) ans=max(ans,proximo-i);
+    }
+    return ans;
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(n) para a cópia duplicada.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1744/C"">Traffic Light · problemas · páginas 91, 92</a></li></ul>"	assunto::proximo_evento_ciclo cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000049	<p>Como formar o máximo de times quando a força de um time é tamanho*maiorForça e precisa ser estritamente maior que D?</p>	"<p>Ordene as forças. Use o mais forte restante como líder. Ele precisa de floor(D/força)+1 pessoas no total; a desigualdade é estrita. Complete com os mais fracos restantes, pois a força individual deles não altera o máximo do time. Consumir os mais fracos preserva os fortes como líderes futuros. Se nem todos os jogadores restantes completam o time com esse líder, nenhum líder menor conseguirá.</p><pre><code class=""language-cpp"">int times(vector&lt;long long&gt; a,long long D) {
+    sort(a.begin(),a.end()); int l=0,r=(int)a.size()-1,ans=0;
+    while(l&lt;=r){
+        long long precisa=D/a[r]+1;
+        if(precisa&gt;r-l+1) break;
+        l+=(int)precisa-1; --r; ++ans;
+    }
+    return ans;
+}</code></pre><p><strong>Complexidade:</strong> O(n log n) de tempo e O(1) auxiliar além da cópia; forças positivas.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1725/B"">Basketball Together · problemas · páginas 92, 93</a></li></ul>"	assunto::times_dois_ponteiros cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000050	<p>Como construir n inteiros não negativos com soma s e soma dos pisos a[i]/k igual a b? Como obter os limites de viabilidade antes de distribuir?</p>	"<p>Escreva a[i]=k*q[i]+r[i], com 0&lt;=r[i]&lt;k. Como a soma dos quocientes é b, a parte fixa da soma é k*b. Os n restos conseguem acrescentar entre 0 e n*(k-1). Logo k*b&lt;=s&lt;=k*b+n*(k-1). Coloque todo o quociente no primeiro elemento e distribua s-k*b como restos limitados a k-1. A verificação por limites evita uma tentativa de construção que falharia no final.</p><pre><code class=""language-cpp"">vector&lt;long long&gt; construirBonito(int n,long long k,long long b,long long s) {
+    long long base=k*b;
+    if(s&lt;base || s-base&gt;1LL*n*(k-1)) return {};
+    vector&lt;long long&gt; a(n,0); a[0]=base; long long falta=s-base;
+    for(auto&amp; x:a){long long dar=min(falta,k-1);x+=dar;falta-=dar;}
+    return a;
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e espaço da saída; n&gt;=1, k&gt;=1 e produtos cabem em 64 bits.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1715/B"">Beautiful Array · problemas · páginas 93, 94</a></li></ul>"	assunto::quocientes_restos_capacidade cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000051	<p>Como minimizar mudanças de um valor v quando cada elemento a[i] exige |v-a[i]|&lt;=x? Por que manter a interseção de possibilidades é melhor que escolher v imediatamente?</p>	"<p>Cada elemento permite v no intervalo [a[i]-x,a[i]+x]. Enquanto a interseção dos intervalos do bloco é não vazia, algum mesmo v atende todos. Atualize o limite inferior pelo máximo e o superior pelo mínimo. Ao esvaziar, uma mudança é inevitável: nenhum v atende o bloco inteiro. Adiar a mudança até esse ponto maximiza o primeiro bloco e deixa o sufixo com o mesmo subproblema. A escolha inicial de v não conta como mudança.</p><pre><code class=""language-cpp"">int mudancas(const vector&lt;long long&gt;&amp; a,long long x) {
+    long long L=a[0]-x,R=a[0]+x; int ans=0;
+    for(long long v:a){
+        long long l=v-x,r=v+x;
+        if(max(L,l)&gt;min(R,r)){++ans;L=l;R=r;}
+        else {L=max(L,l);R=min(R,r);}
+    }
+    return ans;
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(1) de espaço; array não vazio.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1704/B"">Luke Is a Foodie · problemas · páginas 94, 95</a></li></ul>"	assunto::intersecao_intervalos_greedy cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000052	<p>Como reorganizar índices dentro de grupos de valores iguais para que ninguém receba o próprio item? Quando a construção é impossível?</p>	"<p>Na entrada ordenada, valores iguais formam blocos. Um bloco de tamanho 1 não tem outro índice compatível: é impossível. Para cada bloco com pelo menos dois elementos, uma rotação cíclica dos índices cria uma permutação sem pontos fixos e mantém os valores iguais. No problema dos sapatos, todos precisam receber tamanho &gt;=ao próprio; a soma dos tamanhos é preservada, então ninguém pode aumentar estritamente sem alguém diminuir. Portanto as trocas ficam entre tamanhos iguais.</p><pre><code class=""language-cpp"">vector&lt;int&gt; embaralhar(const vector&lt;int&gt;&amp; a) {
+    vector&lt;int&gt; p(a.size());
+    for(int l=0;l&lt;(int)a.size();){
+        int r=l; while(r&lt;(int)a.size() &amp;&amp; a[r]==a[l]) ++r;
+        if(r-l==1) return {};
+        for(int i=l;i&lt;r;++i) p[i]=(i+1&lt;r ? i+2 : l+1);
+        l=r;
+    }
+    return p;
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(n) de espaço da permutação.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1691/B"">Shoe Shuffling · problemas · páginas 95, 96</a></li></ul>"	assunto::rotacao_blocos_sem_fixos cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000053	<p>Como converter caracteres e testar faixas com segurança em C++? Qual é a diferença entre comparar uma faixa e escrever comparações encadeadas?</p>	"<p>Para ASCII, a-z, A-Z e 0-9 são faixas contíguas, mas a&lt;=c&lt;=z não expressa uma faixa em C++: a primeira comparação vira bool. Use duas comparações com &amp;&amp; e combine categorias com ||. Funções de cctype, como toupper e isalnum, devem receber unsigned char convertido para int para evitar comportamento indefinido com char negativo. Isso não implementa conversão Unicode geral. Alterar só a primeira letra custa O(1), mas ler/imprimir toda a string custa O(n).</p><pre><code class=""language-cpp"">string capitalizar(string s) {
+    if(!s.empty()) s[0]=(char)toupper((unsigned char)s[0]);
+    return s;
+}
+bool alfanumericoASCII(char c) {
+    return (&#x27;a&#x27;&lt;=c &amp;&amp; c&lt;=&#x27;z&#x27;) || (&#x27;A&#x27;&lt;=c &amp;&amp; c&lt;=&#x27;Z&#x27;)
+        || (&#x27;0&#x27;&lt;=c &amp;&amp; c&lt;=&#x27;9&#x27;);
+}</code></pre><p><strong>Complexidade:</strong> O(1) para a operação no primeiro caractere; O(n) incluindo cópia/saída.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/281/A"">Word Capitalization · problemas · páginas 96, 97</a></li></ul>"	assunto::chars_ascii_conversao cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000054	<p>Como achar o mínimo de mudanças para tornar um segmento de tamanho k inteiramente B? Como atualizar uma janela sem recontar todos os seus elementos?</p>	"<p>O custo de uma janela é o número de W dentro dela. Conte a primeira janela e deslize: acrescente o caractere que entra e retire o que sai. Isso mantém o invariante de que o contador representa exatamente a janela atual. Avalie todas as janelas válidas e guarde o menor custo. Um prefix sum do predicado s[i]==W é outra solução linear; não é necessário implementar as duas ao mesmo tempo.</p><pre><code class=""language-cpp"">int pintar(const string&amp; s,int k) {
+    int brancos=0,melhor=k;
+    for(int i=0;i&lt;(int)s.size();++i){
+        brancos+=(s[i]==&#x27;W&#x27;);
+        if(i&gt;=k) brancos-=(s[i-k]==&#x27;W&#x27;);
+        if(i&gt;=k-1) melhor=min(melhor,brancos);
+    }
+    return melhor;
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(1) de espaço; 1&lt;=k&lt;=n.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1690/D"">Black and White Stripe · problemas · páginas 97, 98</a></li></ul>"	assunto::janela_fixa_contagem cp_goodnotes lote::historico_20261028 origem::problemas
+cp-note-000055	<p>Como combinar busca por chave e ordem de uso para implementar um LRU Cache com get e put em O(1) médio? Mostre como atualizar recência e remover o menos recente.</p>	"<p>Um unordered_map localiza a entrada pela chave, mas não mantém a ordem de recência. Uma lista duplamente encadeada permite mover um nó conhecido em O(1). Guarde no mapa um iterador para o nó; a frente é o mais recente e o fim o menos recente. get e put de chave existente movem a entrada para a frente. Ao exceder a capacidade, remova a chave do mapa e o último nó da lista. std::list gerencia a memória; splice mantém válidos os iteradores dos nós movidos. O custo do hash é médio, não garantia de pior caso.</p><pre><code class=""language-cpp"">class LRU {
+    int cap;
+    list&lt;pair&lt;int,int&gt;&gt; ordem; // {chave,valor}, recente na frente
+    unordered_map&lt;int,list&lt;pair&lt;int,int&gt;&gt;::iterator&gt; pos;
+public:
+    explicit LRU(int capacidade):cap(capacidade){}
+    int get(int chave){
+        auto it=pos.find(chave); if(it==pos.end()) return -1;
+        ordem.splice(ordem.begin(),ordem,it-&gt;second);
+        return it-&gt;second-&gt;second;
+    }
+    void put(int chave,int valor){
+        if(cap==0) return;
+        auto it=pos.find(chave);
+        if(it!=pos.end()){
+            it-&gt;second-&gt;second=valor;
+            ordem.splice(ordem.begin(),ordem,it-&gt;second); return;
+        }
+        ordem.push_front({chave,valor}); pos[chave]=ordem.begin();
+        if((int)pos.size()&gt;cap){
+            int antiga=ordem.back().first;
+            pos.erase(antiga); ordem.pop_back();
+        }
+    }
+};</code></pre><p><strong>Complexidade:</strong> O(1) médio por operação e O(capacidade) de espaço.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/lru-cache/description/"">LRU Cache · big-tech-problems · páginas 2, 3, 4, 5</a></li></ul>"	assunto::lru_arquitetura cp_goodnotes lote::historico_20261028 origem::big-tech-problems
+cp-note-000056	<p>Como remover um nó e inseri-lo depois de head numa lista duplamente encadeada? Por que sentinelas e ordem de atualização dos ponteiros importam?</p>	"<p>Com head e tail sentinelas, cada nó real tem vizinho anterior e próximo. Para desligar n, faça os vizinhos apontarem um para o outro. Para inserir após head, salve a ligação com o antigo primeiro, ajuste seu anterior e só então atualize head-&gt;prox. Mudar head-&gt;prox cedo demais perde o antigo primeiro. Desligar não destrói: use essa operação para mover um nó de LRU; só use delete ao expulsá-lo definitivamente, depois de apagar referências do mapa.</p><pre><code class=""language-cpp"">struct No { int chave,valor; No* ant; No* prox; };
+void retirar(No* n){
+    n-&gt;ant-&gt;prox=n-&gt;prox;
+    n-&gt;prox-&gt;ant=n-&gt;ant;
+}
+void inserirAposHead(No* head,No* n){
+    n-&gt;prox=head-&gt;prox; n-&gt;ant=head;
+    head-&gt;prox-&gt;ant=n;
+    head-&gt;prox=n;
+}</code></pre><p><strong>Complexidade:</strong> O(1) de tempo e espaço; n deve ser nó real conectado ao retirar, e desconectado ao inserir.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/lru-cache/description/"">LRU Cache · big-tech-problems · páginas 2, 3, 4, 5</a></li></ul>"	assunto::lista_dupla_sentinelas cp_goodnotes lote::historico_20261028 origem::big-tech-problems
+cp-note-000057	<p>Qual a diferença entre passar um nó por valor, um ponteiro por valor e uma referência a ponteiro? Como isso afeta alterar o nó ou avançar o ponteiro de quem chamou?</p>	"<p>Passar ListNode por valor copia o objeto. Passar ListNode* por valor copia o endereço, mas permite alterar o objeto original com -&gt;. Reatribuir esse ponteiro local não muda a variável do chamador. Para mudar o ponteiro do chamador, receba ListNode*&amp; ou retorne o novo ponteiro. Declare o ponteiro com *, mas acesse membros com -&gt;; a-&gt;val equivale a (*a).val. Sempre confira nullptr antes de desreferenciar.</p><pre><code class=""language-cpp"">void alterarValor(ListNode* p,int x){
+    if(p) p-&gt;val=x;
+}
+void avancarLocal(ListNode* p){
+    if(p) p=p-&gt;next; // não altera o ponteiro do chamador
+}
+void avancarChamador(ListNode*&amp; p){
+    if(p) p=p-&gt;next;
+}</code></pre><p><strong>Complexidade:</strong> O(1) de tempo e espaço para essas operações.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/lru-cache/description/"">LRU Cache · big-tech-problems · páginas 2, 3, 4, 5</a></li><li><a href=""https://leetcode.com/problems/add-two-numbers/description/"">Add Two Numbers · big-tech-problems · páginas 14</a></li></ul>"	assunto::ponteiro_copia_referencia cp_goodnotes lote::historico_20261028 origem::big-tech-problems
+cp-note-000058	<p>Quando usar find, count e operator[] em um map ou unordered_map? Por que uma consulta com [] pode alterar a estrutura?</p>	"<p>operator[] insere uma chave ausente com valor padrão. Isso é útil para contar frequências e agrupar, mas perigoso para uma consulta que deveria apenas verificar existência, especialmente num cache com limite de capacidade. find retorna um iterador e permite ler o valor sem inserir; count retorna 0 ou 1 para mapas de chave única. Em C++17, use find em vez de contains, que chegou no C++20.</p><pre><code class=""language-cpp"">int buscar(const unordered_map&lt;int,int&gt;&amp; mp,int chave) {
+    auto it=mp.find(chave);
+    return it==mp.end() ? -1 : it-&gt;second;
+}
+unordered_map&lt;int,int&gt; frequencias(const vector&lt;int&gt;&amp; a){
+    unordered_map&lt;int,int&gt; f;
+    for(int x:a) ++f[x]; // inserção intencional, valor inicial 0
+    return f;
+}</code></pre><p><strong>Complexidade:</strong> unordered_map: O(1) médio por acesso; map: O(log U). Frequências usam O(U) espaço.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/lru-cache/description/"">LRU Cache · big-tech-problems · páginas 2, 3, 4, 5</a></li><li><a href=""https://leetcode.com/problems/group-anagrams/description/"">Group Anagrams · big-tech-problems · páginas 5</a></li><li><a href=""https://leetcode.com/problems/top-k-frequent-elements/description/"">Top K Frequent Elements · big-tech-problems · páginas 5, 6</a></li></ul>"	assunto::map_lookup_sem_inserir cp_goodnotes lote::historico_20261028 origem::big-tech-problems
+cp-note-000059	<p>Como agrupar anagramas sem ordenar cada palavra? Como construir uma chave de frequências que não tenha colisões por concatenação ambígua?</p>	"<p>Para letras a-z, duas palavras são anagramas exatamente quando têm o mesmo vetor de 26 frequências. Serialize os números com separadores: concatenar apenas dígitos confundiria, por exemplo, [1,11] e [11,1]. Use a assinatura como chave de unordered_map e anexe a palavra ao grupo. A chave descreve contagem, não ordem das letras. Hashes podem colidir internamente, mas o mapa também compara a igualdade das strings; isso é diferente de uma chave semanticamente ambígua.</p><pre><code class=""language-cpp"">string assinatura(const string&amp; palavra){
+    array&lt;int,26&gt; f{};for(char c:palavra)++f[c-&#x27;a&#x27;];
+    string chave;
+    for(int qtd:f) chave+=to_string(qtd)+&quot;#&quot;;
+    return chave;
+}
+vector&lt;vector&lt;string&gt;&gt; agrupar(const vector&lt;string&gt;&amp; palavras){
+    unordered_map&lt;string,vector&lt;string&gt;&gt; grupos;
+    for(const auto&amp; s:palavras) grupos[assinatura(s)].push_back(s);
+    vector&lt;vector&lt;string&gt;&gt; ans;
+    for(auto&amp; entrada:grupos) ans.push_back(std::move(entrada.second));
+    return ans;
+}</code></pre><p><strong>Complexidade:</strong> O(total de caracteres + 26N) esperado, incluindo construir chaves; espaço proporcional às palavras e assinaturas.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/group-anagrams/description/"">Group Anagrams · big-tech-problems · páginas 5</a></li></ul>"	assunto::assinatura_anagramas cp_goodnotes lote::historico_20261028 origem::big-tech-problems
+cp-note-000060	<p>Como obter os k elementos mais frequentes em tempo linear esperado usando buckets? O que representa o índice e por que são n+1 posições?</p>	"<p>Conte cada valor com hashmap. Uma frequência está entre 1 e n; crie n+1 buckets, onde bucket[f] guarda os valores que aparecem f vezes. Percorra as frequências do maior para o menor e pare ao obter k valores. O índice é frequência, não o próprio valor. O bucket n precisa existir. A ordem entre elementos empatados é irrelevante quando o problema permite qualquer ordem.</p><pre><code class=""language-cpp"">vector&lt;int&gt; topK(const vector&lt;int&gt;&amp; a,int k){
+    unordered_map&lt;int,int&gt; f;for(int x:a)++f[x];
+    int n=a.size();vector&lt;vector&lt;int&gt;&gt; buckets(n+1);
+    for(auto [x,qtd]:f) buckets[qtd].push_back(x);
+    vector&lt;int&gt; ans;
+    for(int qtd=n;qtd&gt;=1;--qtd) for(int x:buckets[qtd]){
+        ans.push_back(x);if((int)ans.size()==k)return ans;
+    }
+    return ans;
+}</code></pre><p><strong>Complexidade:</strong> O(n) esperado de tempo e O(n) de espaço; 1&lt;=k&lt;=número de distintos.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/top-k-frequent-elements/description/"">Top K Frequent Elements · big-tech-problems · páginas 5, 6</a></li></ul>"	assunto::topk_buckets cp_goodnotes lote::historico_20261028 origem::big-tech-problems
+cp-note-000061	<p>Suponha k armazéns, com k par: cada armazém recebe peças de uma única entrega e os k/2 mais cheios são comprometidos. Podemos escolher quantas peças guardar. Como usar um limiar de carga t, blocos completos e restos para maximizar a soma nos armazéns seguros?</p>	"<p>Cada armazém só aceita peças de uma única entrega, embora uma entrega possa ser dividida. Fixe t&gt;=1: cada entrega a forma a/t blocos completos de tamanho t e um resto a%t. Reserve m=k/2 blocos completos aos comprometidos. Se q&lt;m, o limiar é inviável; se q&gt;=k, m armazéns seguros também podem ter t. Se m&lt;=q&lt;k, existem q-m blocos seguros completos e faltam k-q posições, preenchidas pelos maiores restos disponíveis. Varrer os limiares é o método da anotação; a quantidade de blocos é monótona, mas isso não prova que a função objetivo permita busca binária. A aplicação depende destas regras e de k par. Nesta formulação, peças podem ficar sem alocação; se a obrigação fosse guardar todas, seria necessário conferir a viabilidade adicional. Trata-se da regra explicitada neste card, não de uma inferência sobre o enunciado ausente da entrevista.</p><pre><code class=""language-cpp"">long long seguros(const vector&lt;int&gt;&amp; entregas,int k){
+    int M=*max_element(entregas.begin(),entregas.end()),m=k/2;
+    long long ans=0;
+    for(int t=1;t&lt;=M;++t){
+        long long q=0;vector&lt;int&gt; restos;
+        for(int x:entregas){q+=x/t;restos.push_back(x%t);}
+        if(q&lt;m) break;
+        if(q&gt;=k){ans=max(ans,1LL*m*t);continue;}
+        long long valor=(q-m)*t;
+        sort(restos.rbegin(),restos.rend());
+        int usar=min((int)restos.size(),(int)(k-q));
+        for(int i=0;i&lt;usar;++i) valor+=restos[i];
+        ans=max(ans,valor);
+    }
+    return ans;
+}</code></pre><p><strong>Complexidade:</strong> O(M*N log N) de tempo no pior caso e O(N) de espaço; só usar se o limite M permitir.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	<ul><li>Security Delivery Logs · big-tech-problems · páginas 6, 7, 8, 9</li></ul>	assunto::limiar_blocos_restos cp_goodnotes lote::historico_20261028 origem::big-tech-problems
+cp-note-000062	<p>Como calcular o produto de todos os elementos exceto a[i], sem divisão e em O(n)? Por que os prefixos e sufixos devem excluir o elemento atual?</p>	"<p>Defina esquerda[i] como produto antes de i e direita[i] como produto depois de i. Então resposta[i]=esquerda[i]*direita[i]. O produto vazio é 1, inicializando as extremidades. Essa definição exclui a[i] por construção e funciona mesmo com zeros, ao contrário de dividir o produto total. Em inteiros, confira se todos os produtos intermediários cabem no tipo usado.</p><pre><code class=""language-cpp"">vector&lt;long long&gt; produtoExceto(const vector&lt;int&gt;&amp; a){
+    int n=a.size();vector&lt;long long&gt;L(n,1),R(n,1),ans(n);
+    for(int i=1;i&lt;n;++i)L[i]=L[i-1]*a[i-1];
+    for(int i=n-2;i&gt;=0;--i)R[i]=R[i+1]*a[i+1];
+    for(int i=0;i&lt;n;++i)ans[i]=L[i]*R[i];
+    return ans;
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(n) de espaço auxiliar.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/product-of-array-except-self/description/"">Product of Array Except Self · big-tech-problems · páginas 9, 10</a></li></ul>"	assunto::prefixo_sufixo_exclusivos cp_goodnotes lote::historico_20261028 origem::big-tech-problems
+cp-note-000063	<p>Como reduzir o espaço auxiliar de prefixo/sufixo no produto exceto o elemento atual? Qual invariante deve valer antes de atualizar o acumulador?</p>	"<p>Use a própria saída para guardar os produtos à esquerda na primeira passada. Na passada inversa, mantenha apenas um acumulador do produto à direita. Primeiro multiplique a saída pelo acumulador; só depois inclua o elemento atual nele. Atualizar na ordem inversa incluiria a[i], quebrando a exclusão. O espaço auxiliar é O(1), mas a saída continua ocupando O(n).</p><pre><code class=""language-cpp"">vector&lt;long long&gt; produtoCompacto(const vector&lt;int&gt;&amp; a){
+    int n=a.size();vector&lt;long long&gt;ans(n,1);long long acum=1;
+    for(int i=0;i&lt;n;++i){ans[i]=acum;acum*=a[i];}
+    acum=1;
+    for(int i=n-1;i&gt;=0;--i){ans[i]*=acum;acum*=a[i];}
+    return ans;
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo, O(1) auxiliar além dos O(n) da saída; produtos devem caber em long long.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/product-of-array-except-self/description/"">Product of Array Except Self · big-tech-problems · páginas 9, 10</a></li></ul>"	assunto::reusar_saida_prefixo cp_goodnotes lote::historico_20261028 origem::big-tech-problems
+cp-note-000064	<p>Como codificar uma lista de strings de modo reversível mesmo quando elas contêm dígitos, delimitadores e strings vazias? Como decodificar sem ambiguidades?</p>	"<p>Para cada string, escreva comprimento#conteúdo. O # encerra o número do comprimento; em seguida, leia exatamente esse número de bytes, sem procurar delimitadores dentro do conteúdo. Assim um # ou dígito no conteúdo não causa conflito. A string vazia é 0#, enquanto uma lista vazia é a codificação vazia. std::string::size conta bytes; encode e decode devem usar a mesma unidade. O código abaixo assume uma codificação válida produzida pelo encoder.</p><pre><code class=""language-cpp"">string encode(const vector&lt;string&gt;&amp; lista){
+    string s;
+    for(const auto&amp; x:lista)s+=to_string(x.size())+&quot;#&quot;+x;
+    return s;
+}
+vector&lt;string&gt; decode(const string&amp; s){
+    vector&lt;string&gt; ans;size_t i=0;
+    while(i&lt;s.size()){
+        size_t j=s.find(&#x27;#&#x27;,i);
+        size_t tamanho=stoull(s.substr(i,j-i));
+        i=j+1;ans.push_back(s.substr(i,tamanho));i+=tamanho;
+    }
+    return ans;
+}</code></pre><p><strong>Complexidade:</strong> O(T+N+H) de tempo e espaço da saída, T bytes de conteúdo e H dígitos dos cabeçalhos.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/encode-and-decode-strings/description/"">Encode and Decode Strings · big-tech-problems · páginas 10, 11</a></li></ul>"	assunto::serializacao_comprimento cp_goodnotes lote::historico_20261028 origem::big-tech-problems
+cp-note-000065	<p>Como mapear uma posição (linha,coluna) e um bloco 3x3 do Sudoku para um índice linear? Quando usar divisão inteira e quando usar módulo?</p>	"<p>Uma grade com C colunas usa id=linha*C+coluna, em base zero; a inversão é linha=id/C e coluna=id%C. Para descobrir o bloco do Sudoku, primeiro agrupe: linha/3 e coluna/3 dizem em qual linha e coluna de blocos a célula está. Depois linearize a grade 3x3 de blocos: (linha/3)*3+coluna/3. A divisão identifica o grupo; o módulo identifica a posição dentro do grupo.</p><pre><code class=""language-cpp"">int indice(int linha,int coluna,int largura){
+    return linha*largura+coluna;
+}
+pair&lt;int,int&gt; coordenadas(int id,int largura){
+    return {id/largura,id%largura};
+}
+int caixaSudoku(int linha,int coluna){
+    return (linha/3)*3+coluna/3;
+}</code></pre><p><strong>Complexidade:</strong> O(1) de tempo e espaço; índices base zero e largura positiva.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/valid-sudoku/description/"">Valid Sudoku · big-tech-problems · páginas 11, 12</a></li></ul>"	assunto::linearizar_coordenadas cp_goodnotes lote::historico_20261028 origem::big-tech-problems
+cp-note-000066	<p>Como usar uma máscara de bits para detectar dígitos repetidos em linhas, colunas e caixas do Sudoku? Qual a ordem de verificar e marcar?</p>	"<p>Associe cada dígito 1..9 ao bit 0..8. Para uma célula, calcule sua caixa e teste se o bit já está em qualquer uma das três máscaras. Se estiver, há repetição; caso contrário, marque-o nas três. Ignore pontos. Isso valida apenas as restrições presentes, não garante que o tabuleiro tenha solução. Fazer OR antes de verificar tornaria todo dígito aparentemente repetido.</p><pre><code class=""language-cpp"">bool sudokuValido(const vector&lt;string&gt;&amp; tab){
+    array&lt;int,9&gt; linhas{},colunas{},caixas{};
+    for(int r=0;r&lt;9;++r)for(int c=0;c&lt;9;++c){
+        if(tab[r][c]==&#x27;.&#x27;)continue;
+        int bit=1&lt;&lt;(tab[r][c]-&#x27;1&#x27;),b=(r/3)*3+c/3;
+        if((linhas[r]&amp;bit)||(colunas[c]&amp;bit)||(caixas[b]&amp;bit))return false;
+        linhas[r]|=bit;colunas[c]|=bit;caixas[b]|=bit;
+    }
+    return true;
+}</code></pre><p><strong>Complexidade:</strong> O(81) e O(27) para o Sudoku fixo 9x9, portanto O(1).</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/valid-sudoku/description/"">Valid Sudoku · big-tech-problems · páginas 11, 12</a></li></ul>"	assunto::bitmask_presenca_sudoku cp_goodnotes lote::historico_20261028 origem::big-tech-problems
+cp-note-000067	<p>Como ler e inicializar contêineres aninhados em C++17? Qual a diferença entre tamanho/valor com parênteses e lista de elementos com chaves?</p>	"<p>Separe tipo, nome e inicialização. vector&lt;vector&lt;int&gt;&gt; é um vetor cujos elementos são vetores; o construtor externo recebe quantidade de linhas e um vetor padrão de colunas. vector&lt;set&lt;int&gt;&gt; recebe quantidade e um set padrão, copiado em cada posição. vector&lt;int&gt;(3,7) cria três valores 7, enquanto vector&lt;int&gt;{3,7} cria dois elementos, 3 e 7. Os vetores internos são objetos independentes, não referências à mesma linha.</p><pre><code class=""language-cpp"">vector&lt;vector&lt;int&gt;&gt; matrizZerada(int linhas,int colunas){
+    return vector&lt;vector&lt;int&gt;&gt;(linhas,vector&lt;int&gt;(colunas,0));
+}
+vector&lt;set&lt;int&gt;&gt; tresConjuntos(){
+    return vector&lt;set&lt;int&gt;&gt;(3,set&lt;int&gt;{1,2,3});
+}</code></pre><p><strong>Complexidade:</strong> O(linhas*colunas) para a matriz; cópias do conteúdo de cada contêiner têm custo próprio.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	<ul><li>Inicialização de contêineres compostos · big-tech-problems · páginas 12, 13</li></ul>	assunto::inicializar_tipos_compostos cp_goodnotes lote::historico_20261028 origem::big-tech-problems
+cp-note-000068	<p>Qual a diferença entre queue e stack e como usar suas interfaces em C++17? O que pop retorna e quando front/top é válido?</p>	"<p>queue segue FIFO: o primeiro a entrar é o primeiro a sair; consulte front e insira com push. stack segue LIFO: o último a entrar sai primeiro; consulte top. Em ambos, pop remove e retorna void: leia o elemento antes de removê-lo. front e top exigem contêiner não vazio. Esses adaptadores não oferecem iteração comum como vector.</p><pre><code class=""language-cpp"">pair&lt;vector&lt;int&gt;,vector&lt;int&gt;&gt; ordens(const vector&lt;int&gt;&amp; a){
+    queue&lt;int&gt; fila;stack&lt;int&gt; pilha;
+    for(int x:a){fila.push(x);pilha.push(x);}
+    vector&lt;int&gt; fifo,lifo;
+    while(!fila.empty()){fifo.push_back(fila.front());fila.pop();}
+    while(!pilha.empty()){lifo.push_back(pilha.top());pilha.pop();}
+    return {fifo,lifo};
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e espaço para armazenar e consumir n elementos.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	<ul><li>Inicialização de contêineres compostos · big-tech-problems · páginas 12, 13</li></ul>	assunto::fila_pilha_interfaces cp_goodnotes lote::historico_20261028 origem::big-tech-problems
+cp-note-000069	<p>Como somar duas linked lists de dígitos em ordem inversa, construindo uma nova lista? Como tratar tamanhos diferentes e o carry final?</p>	"<p>Percorra enquanto houver um nó em qualquer entrada OU carry. Uma lista terminada contribui zero. Some os dois dígitos e o carry anterior; o novo dígito é soma%10 e o próximo carry é soma/10. Conecte um nó à lista de saída e avance cada entrada somente se ela existir. O carry deve participar da condição do laço: 9+1 precisa produzir 0-&gt;1, mesmo depois de ambas as entradas terminarem. Um sentinela local simplifica a construção sem precisar de delete para ele.</p><pre><code class=""language-cpp"">ListNode* somar(const ListNode* a,const ListNode* b){
+    ListNode head(0);ListNode* actual=&amp;head;int carry=0;
+    while(a || b || carry){
+        int soma=carry+(a?a-&gt;val:0)+(b?b-&gt;val:0);
+        carry=soma/10;
+        actual-&gt;next=new ListNode(soma%10);actual=actual-&gt;next;
+        if(a)a=a-&gt;next;
+        if(b)b=b-&gt;next;
+    }
+    return head.next;
+}</code></pre><p><strong>Complexidade:</strong> O(max(n,m)) de tempo, O(1) auxiliar e O(max(n,m)) para a saída; dígitos entre 0 e 9.</p><details><summary>Critério de acerto</summary><ul><li>Explicar o invariante ou a justificativa do padrão.</li><li>Reconstruir o uso em C++ e reconhecer as condições de validade.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/add-two-numbers/description/"">Add Two Numbers · big-tech-problems · páginas 14</a></li></ul>"	assunto::soma_listas_carry cp_goodnotes lote::historico_20261028 origem::big-tech-problems

@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000079",
+  "content_key": "euclides_mdc_mmc_sem_overflow",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como calcular MDC com Euclides e usar esse resultado para obter o MMC sem multiplicar a*b primeiro? Quais cuidados são necessários com zero e overflow?",
+  "back": {
+    "answer": "Euclides usa gcd(a,b)=gcd(b,a%b): um divisor comum de a e b também divide o resto, e o processo termina quando b é zero. O último a é o MDC.\n\nPara números positivos, mmc(a,b)=(a/gcd(a,b))*b. Divida antes de multiplicar: a*b pode estourar mesmo quando o MMC final caberia no tipo. A divisão anterior reduz esse risco, mas não garante que o resultado final caiba. Teste q≤MAX/b antes de multiplicar.\n\nSe algum argumento é zero, adote MMC igual a zero e evite dividir pelo MDC zero de (0,0). O código usa inteiros sem sinal e não converte números negativos: seu domínio são magnitudes não negativas. Isso evita o problema adicional de calcular abs(LLONG_MIN). O padrão é útil para testar cálculos de Minimum LCM e os invariantes de divisibilidade de Exciting Bets.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "unsigned long long mdc(unsigned long long a,unsigned long long b) {\n    while (b!=0) {auto resto=a%b; a=b; b=resto;}\n    return a;\n}\nbool mmcSeguro(unsigned long long a,unsigned long long b,\n               unsigned long long& resultado) {\n    if (a==0 || b==0) {resultado=0; return true;}\n    auto q=a/mdc(a,b);\n    if (q>ULLONG_MAX/b) return false;\n    resultado=q*b;\n    return true;\n}",
+    "complexity": "O(log(min(a,b))) de tempo para argumentos positivos e O(1) de espaço; os casos com zero são constantes.",
+    "success_criteria": [
+      "Explicar por que substituir pelo resto preserva os divisores comuns.",
+      "Dividir pelo MDC antes de multiplicar e testar o produto final.",
+      "Tratar zero antes de dividir e respeitar o domínio sem sinal."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::expansao_20261028",
+    "assunto::euclides_mdc_mmc_sem_overflow",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000045",
+      "title": "Minimum LCM",
+      "pages_1based": [
+        88,
+        89,
+        90,
+        91
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1765/M",
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    },
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000029",
+      "title": "Exciting Bets",
+      "pages_1based": [
+        73,
+        74
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1543/A",
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-expansao-072",
+    "sync_run_id": "b9f78700-9140-42d3-9354-cee80c562b26",
+    "learning_origin": "didactic_extension",
+    "technical_references": []
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-expansao.json",
+    "validated_at": "2026-10-28T20:56:56-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793231826526",
+    "card_ids": [
+      "1793231826526"
+    ],
+    "fields_sha256": "60f7d7e036af1ee3d127890697b9ff453cccf98b87dcf44c0350985b866b3ae7",
+    "last_batch_id": "2026-10-28-expansao"
+  }
+}

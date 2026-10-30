@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000054",
+  "content_key": "janela_fixa_contagem",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como achar o mínimo de mudanças para tornar um segmento de tamanho k inteiramente B? Como atualizar uma janela sem recontar todos os seus elementos?",
+  "back": {
+    "answer": "O custo de uma janela é o número de W dentro dela. Conte a primeira janela e deslize: acrescente o caractere que entra e retire o que sai. Isso mantém o invariante de que o contador representa exatamente a janela atual. Avalie todas as janelas válidas e guarde o menor custo. Um prefix sum do predicado s[i]==W é outra solução linear; não é necessário implementar as duas ao mesmo tempo.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int pintar(const string& s,int k) {\n    int brancos=0,melhor=k;\n    for(int i=0;i<(int)s.size();++i){\n        brancos+=(s[i]=='W');\n        if(i>=k) brancos-=(s[i-k]=='W');\n        if(i>=k-1) melhor=min(melhor,brancos);\n    }\n    return melhor;\n}",
+    "complexity": "O(n) de tempo e O(1) de espaço; 1<=k<=n.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::janela_fixa_contagem",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000052",
+      "title": "Black and White Stripe",
+      "pages_1based": [
+        97,
+        98
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1690/D",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210826",
+    "card_ids": [
+      "1793230210827"
+    ],
+    "fields_sha256": "73f2f57a3a7489f6c590adc2e8f1c9a1ec7e11cc688fa31c0f923994136b6c0d",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

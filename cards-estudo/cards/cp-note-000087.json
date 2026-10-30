@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000087",
+  "content_key": "runs_minimo_remocoes_alternancia",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como usar blocos consecutivos de caracteres iguais para tornar uma string binária alternada com o mínimo de remoções? Por que contar zeros e uns globalmente não resolve?",
+  "back": {
+    "answer": "Divida a string em blocos máximos de caracteres iguais. Dentro de um bloco de tamanho L, no máximo um caractere pode permanecer numa subsequência alternada: entre dois caracteres daquele bloco não há um símbolo diferente que possa separá-los. Portanto são necessárias pelo menos L-1 remoções.\n\nManter exatamente um caractere de cada bloco atinge esse limite, pois os blocos vizinhos têm símbolos diferentes por definição. Se há B blocos e N caracteres, a resposta é N-B, ou a soma de L-1. Por exemplo, 00111 tem blocos 00 e 111: são 1+2=3 remoções, e a subsequência 01 é ótima.\n\nAs strings 0011 e 0101 têm as mesmas frequências, mas exigem respectivamente 2 e 0 remoções. A informação relevante é a posição dos blocos, não só a frequência total. O laço com intervalo [i,j) processa também o último bloco sem precisar de um flush separado.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "vector<int> comprimentosDosBlocos(const string& s) {\n    vector<int> blocos;\n    for (int i=0;i<(int)s.size();) {\n        int j=i;\n        while (j<(int)s.size() && s[j]==s[i]) ++j;\n        blocos.push_back(j-i); i=j;\n    }\n    return blocos;\n}\nint minimoRemocoes(const string& s) {\n    int total=0;\n    for (int tamanho:comprimentosDosBlocos(s)) total+=tamanho-1;\n    return total;\n}",
+    "complexity": "O(N) de tempo e O(B) de espaço para explicitar os blocos. É possível acumular sem guardar o vetor, usando O(1) auxiliar.",
+    "success_criteria": [
+      "Provar o limite de um sobrevivente por bloco original.",
+      "Mostrar uma construção que mantém um por bloco e atinge o limite.",
+      "Processar o bloco final e distinguir frequência de consecutividade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::rating1300_20261028",
+    "assunto::runs_minimo_remocoes_alternancia",
+    "origem::repositorio-cpp"
+  ],
+  "sources": [
+    {
+      "notebook_id": "repositorio-cpp",
+      "problem_id": "cp-problem-000061",
+      "title": "Make it Alternating",
+      "platform_id": "1879C",
+      "rating_verified": 1300,
+      "pages_1based": [],
+      "source_snapshot_sha256": null,
+      "drive_file_id": null,
+      "official_statement_url": "https://codeforces.com/problemset/problem/1879/C",
+      "local_code_path": "codeforces/rating_1300/make_it_alternating-1879C.cpp",
+      "local_code_sha256": "19ddd033294733cd86da76d12570b47b6e6c7070122cbfa3a20b9f447a130c68",
+      "manuscript_mapping_status": "not_located_in_authorized_pdf_snapshot",
+      "highlight_color": null,
+      "provenance": "Solução local do usuário e enunciado oficial; não atribuir página ou observação manuscrita."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-rating1300-090",
+    "sync_run_id": "83323976-8b9b-4940-9f43-72f5b2bf8678",
+    "learning_origin": "local_solution_and_official_statement"
+  },
+  "validation": {
+    "handwriting_checked": false,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-rating1300.json",
+    "validated_at": "2026-10-28T21:11:18-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793232707392",
+    "card_ids": [
+      "1793232707392"
+    ],
+    "fields_sha256": "9517875b371e1fe12c2a6d2f1e1859e7a420f3531416dc84d5fab95eb87ed1f0",
+    "last_batch_id": "2026-10-28-rating1300"
+  }
+}

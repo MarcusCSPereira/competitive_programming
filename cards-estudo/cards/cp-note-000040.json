@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000040",
+  "content_key": "greedy_custo_capacidade",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como minimizar o custo de espalhar informação quando uma fonte cobra p por pessoa e cada pessoa informada pode compartilhar por custo e capacidade próprios?",
+  "back": {
+    "answer": "É preciso ativar pelo menos uma pessoa pelo custo p. Ordene as opções por custo de compartilhamento e use primeiro as mais baratas que p, limitando cada uma pela capacidade e pelo número ainda não informado. Podemos escolher a primeira pessoa e a ordem de ativações para disponibilizar cada próximo compartilhador barato: informar alguém já dá acesso à capacidade dessa pessoa. Custos >=p não oferecem vantagem sobre a fonte original. O argumento de troca substitui um compartilhamento caro por um barato disponível sem reduzir capacidade útil.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "long long informar(int n,long long p,vector<pair<long long,long long>> opcoes) {\n    sort(opcoes.begin(),opcoes.end()); // {custo, capacidade}\n    long long total=p; int faltam=n-1;\n    for(auto [custo,cap]:opcoes){\n        if(custo>=p || faltam==0) break;\n        int usar=(int)min<long long>(cap,faltam);\n        total+=usar*custo; faltam-=usar;\n    }\n    return total+faltam*p;\n}",
+    "complexity": "O(n log n) de tempo; o vetor de opções ocupa O(n). Assume n>=1 e capacidades positivas.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::greedy_custo_capacidade",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000039",
+      "title": "Helmets in Night Light",
+      "pages_1based": [
+        82,
+        83
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1876/A",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210812",
+    "card_ids": [
+      "1793230210813"
+    ],
+    "fields_sha256": "68dfd7ec8a17216bbad3fbe9983ce76bfc4f1664fd6bf0fbbfcb312daa05b903",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

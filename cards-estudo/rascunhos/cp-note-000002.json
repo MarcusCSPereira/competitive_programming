@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000002",
+  "revision": 2,
+  "status": "draft_awaiting_format_feedback",
+  "skill": "teoria_e_implementacao",
+  "front": "Como percorrer uma linked list e construir outra com os mesmos valores, sem alterar a original? Explique o papel de head e actual, o avanço dos ponteiros e o retorno da lista em C++.",
+  "back": {
+    "answer": "Mantenha um ponteiro para percorrer a entrada e dois para construir a saída:\n\n- head permanece fixo em um nó sentinela, antes do primeiro elemento real.\n- actual aponta para o fim da lista criada; começa no sentinela.\n- origem percorre os nós da lista original.\n\nPara cada nó da entrada, crie um novo nó, conecte-o em actual->next e avance actual. Depois avance origem. Ao terminar, head->next é o início da nova lista. Salve esse ponteiro, libere o sentinela e retorne a lista.\n\nPercorrer a entrada não cria a saída automaticamente: os dois avanços têm funções diferentes. O sentinela permite usar a mesma inserção inclusive para o primeiro nó. Se a entrada for vazia, head->next será nullptr.\n\nConsidere o ListNode simples do LeetCode, cujo construtor inicializa next como nullptr e cujo destrutor não apaga a cadeia. Copiar os valores é uma aplicação didática do padrão presente em Add Two Numbers. Na soma, cada valor criado é o dígito calculado; as entradas e o carry determinam a condição do laço.",
+    "why": "Justificativa integrada à resposta teórica.",
+    "cpp17": "ListNode* copiarLista(const ListNode* origem) {\n    ListNode* head = new ListNode(0); // sentinela fixo\n    ListNode* actual = head;         // fim da nova lista\n\n    while (origem != nullptr) {\n        actual->next = new ListNode(origem->val);\n        actual = actual->next;  // avança na lista criada\n        origem = origem->next;  // avança na lista original\n    }\n\n    ListNode* resultado = head->next;\n    delete head; // libera apenas o sentinela\n    return resultado;\n}",
+    "complexity": "O(n) de tempo e O(1) de espaço auxiliar; os novos nós da saída ocupam O(n).",
+    "success_criteria": [
+      "Manter head fixo e actual no fim da saída.",
+      "Criar e conectar um novo nó a cada passo.",
+      "Avançar separadamente entrada e saída e retornar head->next."
+    ]
+  },
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000005",
+      "pages_1based": [
+        14
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9"
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": false,
+    "official_statement_url": "https://leetcode.com/problems/add-two-numbers/description/",
+    "code_validation": "C++17, -Wall -Wextra -Werror, ASan/UBSan; distribuição comparada com busca exaustiva e listas vazia/unitária/múltipla independentes."
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": false
+  }
+}

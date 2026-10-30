@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000067",
+  "content_key": "inicializar_tipos_compostos",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como ler e inicializar contêineres aninhados em C++17? Qual a diferença entre tamanho/valor com parênteses e lista de elementos com chaves?",
+  "back": {
+    "answer": "Separe tipo, nome e inicialização. vector<vector<int>> é um vetor cujos elementos são vetores; o construtor externo recebe quantidade de linhas e um vetor padrão de colunas. vector<set<int>> recebe quantidade e um set padrão, copiado em cada posição. vector<int>(3,7) cria três valores 7, enquanto vector<int>{3,7} cria dois elementos, 3 e 7. Os vetores internos são objetos independentes, não referências à mesma linha.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "vector<vector<int>> matrizZerada(int linhas,int colunas){\n    return vector<vector<int>>(linhas,vector<int>(colunas,0));\n}\nvector<set<int>> tresConjuntos(){\n    return vector<set<int>>(3,set<int>{1,2,3});\n}",
+    "complexity": "O(linhas*colunas) para a matriz; cópias do conteúdo de cada contêiner têm custo próprio.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::inicializar_tipos_compostos",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000060",
+      "title": "Inicialização de contêineres compostos",
+      "pages_1based": [
+        12,
+        13
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": null,
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210839",
+    "card_ids": [
+      "1793230210840"
+    ],
+    "fields_sha256": "a19d8d490a4acc4eca33c9be13eb7802a614f7c88ab487b45aef96a991c66496",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

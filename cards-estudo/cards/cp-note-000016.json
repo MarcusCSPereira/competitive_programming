@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000016",
+  "content_key": "prefix_sum_consultas",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como pré-computar somas ou contagens de um intervalo e responder consultas em O(1)? Como avaliar substituir [l,r] por k sem modificar o array a cada consulta?",
+  "back": {
+    "answer": "Defina pref[i] como a soma dos primeiros i elementos; pref[0]=0. Em índices base 1, a soma de [l,r] é pref[r]-pref[l-1]. A soma após a substituição é total-somaAntiga+(r-l+1)*k. Cada consulta usa o array original, portanto não atualize os prefixos. Para contar um predicado, some 1 quando ele é verdadeiro: o mesmo padrão conta W em cada janela de Black and White Stripe.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "vector<long long> prefixos(const vector<long long>& a) {\n    vector<long long> p(a.size()+1,0);\n    for(int i=0;i<(int)a.size();++i) p[i+1]=p[i]+a[i];\n    return p;\n}\nlong long substituir(const vector<long long>& p,int l,int r,long long k) {\n    return p.back()-(p[r]-p[l-1])+1LL*(r-l+1)*k;\n}",
+    "complexity": "O(n) de pré-processamento, O(1) por consulta e O(n) de espaço.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::prefix_sum_consultas",
+    "origem::problemas",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000015",
+      "title": "Odd Queries",
+      "pages_1based": [
+        58,
+        59
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1807/D",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    },
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000052",
+      "title": "Black and White Stripe",
+      "pages_1based": [
+        97,
+        98
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1690/D",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210788",
+    "card_ids": [
+      "1793230210789"
+    ],
+    "fields_sha256": "3469e5a5195af5bb234a7374c711c96003b27eac1b9fea47e7720c0440aee099",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

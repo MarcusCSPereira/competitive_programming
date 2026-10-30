@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000010",
+  "content_key": "ganho_limitado_min",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Num contador que explode em zero e tem capacidade a, por que uma recarga x contribui no máximo min(x,a-1)? Como maximizar o tempo total sem simular cada segundo?",
+  "back": {
+    "answer": "Espere o contador chegar a 1 antes de usar cada recarga. Não pode esperar zero, pois a explosão já ocorreu. A capacidade disponível é a-1, portanto o ganho é min(x,a-1). Usar antes só reduz a capacidade disponível e não melhora o resultado. Some os ganhos ao valor inicial b; o contador pode ter duração enorme, mas só precisamos percorrer a lista de recargas.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "long long tempoMaximo(long long a,long long b,const vector<long long>& cargas) {\n    long long total=b;\n    for(long long x:cargas) total+=min(x,a-1);\n    return total;\n}",
+    "complexity": "O(N) de tempo e O(1) de espaço auxiliar.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::ganho_limitado_min",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000004",
+      "title": "Jellyfish and Undertale",
+      "pages_1based": [
+        53
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1875/A",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210782",
+    "card_ids": [
+      "1793230210783"
+    ],
+    "fields_sha256": "7f13d7c5e0b0747612af08b805b157c62093064d867d54776bc930a1212222d2",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000041",
+  "content_key": "concentrar_menores_valores",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como maximizar a soma dos mínimos de vários arrays quando cada array pode enviar no máximo um elemento para outro? Por que os dois menores de cada array são suficientes?",
+  "back": {
+    "answer": "Se um array envia seu menor elemento, seu novo mínimo no máximo chega ao segundo menor. Um array receptor pode concentrar todos os menores enviados; ele paga a perda correspondente ao menor global, em vez de desperdiçar melhorias em vários receptores. Escolha como receptor o array com o menor segundo mínimo. A soma ótima é soma(segundos)-min(segundos)+menorGlobal. Cada array deve ter pelo menos dois elementos; repetições contam como posições distintas.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "long long somaMinimos(const vector<vector<long long>>& arrays) {\n    long long soma=0,menor=LLONG_MAX,segundoMenor=LLONG_MAX;\n    for(auto a:arrays){\n        nth_element(a.begin(),a.begin()+1,a.end());\n        long long primeiro=min(a[0],a[1]),segundo=a[1];\n        menor=min(menor,primeiro); segundoMenor=min(segundoMenor,segundo);\n        soma+=segundo;\n    }\n    return soma-segundoMenor+menor;\n}",
+    "complexity": "O(total de elementos) esperado com nth_element; cópias usam O(maior array) auxiliar.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::concentrar_menores_valores",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000040",
+      "title": "Olya and Game with Arrays",
+      "pages_1based": [
+        83,
+        84
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1859/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210813",
+    "card_ids": [
+      "1793230210814"
+    ],
+    "fields_sha256": "325b9c612adfac62975e0fc81b559f8f32d1a0aa1c68265b83f6948d4e3149e6",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

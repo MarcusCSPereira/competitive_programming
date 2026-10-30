@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000027",
+  "content_key": "sufixo_divisivel_25",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como minimizar remoções de dígitos para tornar um número divisível por 25 sem testar todas as subsequências?",
+  "back": {
+    "answer": "Um número positivo divisível por 25 termina em 00,25,50 ou 75. Para cada sufixo, procure o último dígito da direita para a esquerda e depois o penúltimo antes dele. Preserve todo o prefixo anterior: apenas o que está entre os dois dígitos e depois deles precisa sair. Pegar a ocorrência mais à direita deixa o máximo de posições disponíveis e minimiza remoções. A fonte garante existir uma solução positiva; não generalize para entrada sem solução silenciosamente.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int remover25(const string& s) {\n    int n=s.size(),ans=n;\n    for(string fim:{\"00\",\"25\",\"50\",\"75\"}){\n        int j=n-1; while(j>=0 && s[j]!=fim[1]) --j;\n        if(j<0) continue;\n        int i=j-1; while(i>=0 && s[i]!=fim[0]) --i;\n        if(i>=0) ans=min(ans,n-i-2);\n    }\n    return ans;\n}",
+    "complexity": "O(4D)=O(D) de tempo, D é o número de dígitos; O(1) auxiliar.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::sufixo_divisivel_25",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000026",
+      "title": "Make It Divisible by 25",
+      "pages_1based": [
+        70,
+        71
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1593/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210799",
+    "card_ids": [
+      "1793230210800"
+    ],
+    "fields_sha256": "32e46fcad6414349269dad39716eab14e84d63d362b367f8e393af38f78bfe24",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

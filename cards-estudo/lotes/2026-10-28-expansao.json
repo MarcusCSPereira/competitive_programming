@@ -1,0 +1,26 @@
+{
+  "id": "2026-10-28-expansao",
+  "card_ids": [
+    "cp-note-000070",
+    "cp-note-000071",
+    "cp-note-000072",
+    "cp-note-000073",
+    "cp-note-000074",
+    "cp-note-000075",
+    "cp-note-000076",
+    "cp-note-000077",
+    "cp-note-000078",
+    "cp-note-000079",
+    "cp-note-000080",
+    "cp-note-000081",
+    "cp-note-000082",
+    "cp-note-000083",
+    "cp-note-000084",
+    "cp-note-000085",
+    "cp-note-000086"
+  ],
+  "validation_report": "estado/validacao-expansao.json",
+  "source_sync_run_id": "b9f78700-9140-42d3-9354-cee80c562b26",
+  "source_hashes_unchanged": true,
+  "purpose": "Cobrir lacunas reais após a primeira seleção histórica."
+}

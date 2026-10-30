@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000055",
+  "content_key": "lru_arquitetura",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como combinar busca por chave e ordem de uso para implementar um LRU Cache com get e put em O(1) médio? Mostre como atualizar recência e remover o menos recente.",
+  "back": {
+    "answer": "Um unordered_map localiza a entrada pela chave, mas não mantém a ordem de recência. Uma lista duplamente encadeada permite mover um nó conhecido em O(1). Guarde no mapa um iterador para o nó; a frente é o mais recente e o fim o menos recente. get e put de chave existente movem a entrada para a frente. Ao exceder a capacidade, remova a chave do mapa e o último nó da lista. std::list gerencia a memória; splice mantém válidos os iteradores dos nós movidos. O custo do hash é médio, não garantia de pior caso.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "class LRU {\n    int cap;\n    list<pair<int,int>> ordem; // {chave,valor}, recente na frente\n    unordered_map<int,list<pair<int,int>>::iterator> pos;\npublic:\n    explicit LRU(int capacidade):cap(capacidade){}\n    int get(int chave){\n        auto it=pos.find(chave); if(it==pos.end()) return -1;\n        ordem.splice(ordem.begin(),ordem,it->second);\n        return it->second->second;\n    }\n    void put(int chave,int valor){\n        if(cap==0) return;\n        auto it=pos.find(chave);\n        if(it!=pos.end()){\n            it->second->second=valor;\n            ordem.splice(ordem.begin(),ordem,it->second); return;\n        }\n        ordem.push_front({chave,valor}); pos[chave]=ordem.begin();\n        if((int)pos.size()>cap){\n            int antiga=ordem.back().first;\n            pos.erase(antiga); ordem.pop_back();\n        }\n    }\n};",
+    "complexity": "O(1) médio por operação e O(capacidade) de espaço.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::lru_arquitetura",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000053",
+      "title": "LRU Cache",
+      "pages_1based": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": "https://leetcode.com/problems/lru-cache/description/",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210827",
+    "card_ids": [
+      "1793230210828"
+    ],
+    "fields_sha256": "641e1c953e30664e01f736b9e60e7bc4e50a9a95645042fe479319b959dbc0e2",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

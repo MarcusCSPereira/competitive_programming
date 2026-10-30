@@ -1,0 +1,44 @@
+{
+  "run_id": "2026-10-28-rating1300-090",
+  "sync_run_id": "83323976-8b9b-4940-9f43-72f5b2bf8678",
+  "status": "synced",
+  "at": "2026-10-28T21:11:18-03:00",
+  "priority": "Recentes, especialmente rating 1300",
+  "new_problem": "cp-problem-000061",
+  "new_card_ids": [
+    "cp-note-000087",
+    "cp-note-000088",
+    "cp-note-000089",
+    "cp-note-000090",
+    "cp-note-000091"
+  ],
+  "updated_card_ids": [
+    "cp-note-000051",
+    "cp-note-000052"
+  ],
+  "existing_cards_before": 86,
+  "expected_total_cards": 91,
+  "reviewed_existing_cards": [
+    "cp-note-000001",
+    "cp-note-000034",
+    "cp-note-000043",
+    "cp-note-000044",
+    "cp-note-000048",
+    "cp-note-000049",
+    "cp-note-000050",
+    "cp-note-000051",
+    "cp-note-000052",
+    "cp-note-000054"
+  ],
+  "decisions": {
+    "Make it Alternating": "4 novos objetivos distintos; fonte local e oficial sem página atribuída.",
+    "Red Versus Blue": "Conceito principal já coberto; novo verificador de construções por propriedades.",
+    "Luke Is a Foodie": "Contraexemplo à comparação apenas de vizinhos; mesmo card/ID.",
+    "Shoe Shuffling": "Contraexemplo a trocas de pares disjuntos em blocos ímpares; mesmo card/ID.",
+    "Demais cards revistos": "Sem novo objetivo distinto selecionado; manter cobertura atual."
+  },
+  "verified_at": "2026-10-28T21:14:44-03:00",
+  "total_cards": 91,
+  "manifest": "exportacoes/2026-10-28-rating1300-manifest.json",
+  "report": "analises/2026-10-28-rating1300.md"
+}

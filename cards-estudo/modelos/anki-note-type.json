@@ -1,0 +1,19 @@
+{
+  "name": "CP Goodnotes",
+  "kind": "normal",
+  "fields": [
+    {"name": "ID"},
+    {"name": "Frente"},
+    {"name": "Verso"},
+    {"name": "Fonte"}
+  ],
+  "sortField": "Frente",
+  "templates": [
+    {
+      "name": "Revisão",
+      "questionHtml": "<main class=\"study-card\">{{Frente}}</main>",
+      "answerHtml": "{{FrontSide}}<hr id=\"answer\"><section class=\"study-answer\">{{Verso}}</section>{{#Fonte}}<details class=\"study-source\"><summary>Fonte</summary>{{Fonte}}</details>{{/Fonte}}"
+    }
+  ],
+  "css": ".card { font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif; font-size: 20px; line-height: 1.5; text-align: left; padding: 16px; overflow-wrap: anywhere; } .study-card, .study-answer, .study-source { max-width: 720px; margin: 0 auto; } pre { overflow-x: auto; white-space: pre; overflow-wrap: normal; padding: 12px; border: 1px solid #8885; border-radius: 8px; } code { font-family: ui-monospace, Menlo, monospace; font-size: 0.85em; } img { max-width: 100%; height: auto; } .study-source { font-size: 0.75em; margin-top: 24px; opacity: 0.8; } #answer { margin: 20px 0; }"
+}

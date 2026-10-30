@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000032",
+  "content_key": "potencia_dois_bits",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como reconhecer uma potência de dois com bits e relacionar isso à existência de divisor ímpar maior que 1? Quais cuidados de sintaxe são necessários?",
+  "back": {
+    "answer": "Para n positivo, uma potência de dois tem exatamente um bit 1. Ao subtrair 1, esse bit vira zero e os inferiores viram 1; logo n&(n-1)==0 somente nesse caso. Um n positivo possui divisor ímpar >1 se, ao retirar todos os fatores 2, sobrar algo maior que 1; equivale a não ser potência de dois. Verifique n>0 e use parênteses, pois a precedência de == em C++ muda a interpretação sem eles.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "bool potenciaDeDois(unsigned long long n) {\n    return n>0 && ((n & (n-1))==0);\n}\nbool divisorImpar(unsigned long long n) {\n    return n>1 && !potenciaDeDois(n);\n}",
+    "complexity": "O(1) para inteiros de tamanho fixo; O(1) de espaço.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::potencia_dois_bits",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000031",
+      "title": "Odd Divisor",
+      "pages_1based": [
+        75
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1475/A",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210804",
+    "card_ids": [
+      "1793230210805"
+    ],
+    "fields_sha256": "02dadedd86ef45f2f18cefcc048469dc3961938bca0960ff4b2b648912c7d5b2",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000030",
+  "content_key": "gcd_diferenca_invariante",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Se uma operação soma 1 aos dois números ou subtrai 1 dos dois, qual invariante limita o maior gcd? Como obter o mínimo de passos para alcançá-lo?",
+  "back": {
+    "answer": "A diferença d=|a-b| não muda. Todo divisor comum divide a diferença, então o gcd não excede d. Se a!=b, é possível tornar ambos múltiplos de d. O resto r=a%d mede a distância ao múltiplo inferior; d-r mede a distância ao superior. Escolha min(r,d-r). Se a=b, o gcd pode crescer sem limite e a convenção do problema é retornar 0,0.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "pair<long long,long long> aposta(long long a,long long b) {\n    long long d=llabs(a-b);\n    if(d==0) return {0,0};\n    long long r=a%d;\n    return {d,min(r,d-r)};\n}",
+    "complexity": "O(1) de tempo e espaço; entradas não negativas.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::gcd_diferenca_invariante",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000029",
+      "title": "Exciting Bets",
+      "pages_1based": [
+        73,
+        74
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1543/A",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210802",
+    "card_ids": [
+      "1793230210803"
+    ],
+    "fields_sha256": "4ed89dfe763c910962943395acb0ebedfd41a3c814f81ef7c1c1fa940134841d",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

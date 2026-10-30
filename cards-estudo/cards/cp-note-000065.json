@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000065",
+  "content_key": "linearizar_coordenadas",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como mapear uma posição (linha,coluna) e um bloco 3x3 do Sudoku para um índice linear? Quando usar divisão inteira e quando usar módulo?",
+  "back": {
+    "answer": "Uma grade com C colunas usa id=linha*C+coluna, em base zero; a inversão é linha=id/C e coluna=id%C. Para descobrir o bloco do Sudoku, primeiro agrupe: linha/3 e coluna/3 dizem em qual linha e coluna de blocos a célula está. Depois linearize a grade 3x3 de blocos: (linha/3)*3+coluna/3. A divisão identifica o grupo; o módulo identifica a posição dentro do grupo.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int indice(int linha,int coluna,int largura){\n    return linha*largura+coluna;\n}\npair<int,int> coordenadas(int id,int largura){\n    return {id/largura,id%largura};\n}\nint caixaSudoku(int linha,int coluna){\n    return (linha/3)*3+coluna/3;\n}",
+    "complexity": "O(1) de tempo e espaço; índices base zero e largura positiva.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::linearizar_coordenadas",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000059",
+      "title": "Valid Sudoku",
+      "pages_1based": [
+        11,
+        12
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": "https://leetcode.com/problems/valid-sudoku/description/",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210837",
+    "card_ids": [
+      "1793230210838"
+    ],
+    "fields_sha256": "921641afbc5df3ed924b88eeeec8c961c9b9a3cc5998ca872f101fec8031d6cb",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

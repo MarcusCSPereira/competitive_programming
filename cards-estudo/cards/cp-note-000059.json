@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000059",
+  "content_key": "assinatura_anagramas",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como agrupar anagramas sem ordenar cada palavra? Como construir uma chave de frequências que não tenha colisões por concatenação ambígua?",
+  "back": {
+    "answer": "Para letras a-z, duas palavras são anagramas exatamente quando têm o mesmo vetor de 26 frequências. Serialize os números com separadores: concatenar apenas dígitos confundiria, por exemplo, [1,11] e [11,1]. Use a assinatura como chave de unordered_map e anexe a palavra ao grupo. A chave descreve contagem, não ordem das letras. Hashes podem colidir internamente, mas o mapa também compara a igualdade das strings; isso é diferente de uma chave semanticamente ambígua.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "string assinatura(const string& palavra){\n    array<int,26> f{};for(char c:palavra)++f[c-'a'];\n    string chave;\n    for(int qtd:f) chave+=to_string(qtd)+\"#\";\n    return chave;\n}\nvector<vector<string>> agrupar(const vector<string>& palavras){\n    unordered_map<string,vector<string>> grupos;\n    for(const auto& s:palavras) grupos[assinatura(s)].push_back(s);\n    vector<vector<string>> ans;\n    for(auto& entrada:grupos) ans.push_back(std::move(entrada.second));\n    return ans;\n}",
+    "complexity": "O(total de caracteres + 26N) esperado, incluindo construir chaves; espaço proporcional às palavras e assinaturas.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::assinatura_anagramas",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000054",
+      "title": "Group Anagrams",
+      "pages_1based": [
+        5
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": "https://leetcode.com/problems/group-anagrams/description/",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210831",
+    "card_ids": [
+      "1793230210832"
+    ],
+    "fields_sha256": "8b32d92ef399a3a72ded5ac8fdd47be32ae8000f8ce649dcf9945a4a29d6e89f",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000056",
+  "content_key": "lista_dupla_sentinelas",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como remover um nó e inseri-lo depois de head numa lista duplamente encadeada? Por que sentinelas e ordem de atualização dos ponteiros importam?",
+  "back": {
+    "answer": "Com head e tail sentinelas, cada nó real tem vizinho anterior e próximo. Para desligar n, faça os vizinhos apontarem um para o outro. Para inserir após head, salve a ligação com o antigo primeiro, ajuste seu anterior e só então atualize head->prox. Mudar head->prox cedo demais perde o antigo primeiro. Desligar não destrói: use essa operação para mover um nó de LRU; só use delete ao expulsá-lo definitivamente, depois de apagar referências do mapa.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "struct No { int chave,valor; No* ant; No* prox; };\nvoid retirar(No* n){\n    n->ant->prox=n->prox;\n    n->prox->ant=n->ant;\n}\nvoid inserirAposHead(No* head,No* n){\n    n->prox=head->prox; n->ant=head;\n    head->prox->ant=n;\n    head->prox=n;\n}",
+    "complexity": "O(1) de tempo e espaço; n deve ser nó real conectado ao retirar, e desconectado ao inserir.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::lista_dupla_sentinelas",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000053",
+      "title": "LRU Cache",
+      "pages_1based": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": "https://leetcode.com/problems/lru-cache/description/",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210828",
+    "card_ids": [
+      "1793230210829"
+    ],
+    "fields_sha256": "8776b515fea0fff9d738dd22399196e9770b00d21535d15d0500b4618fdc03f6",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000061",
+  "content_key": "limiar_blocos_restos",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Suponha k armazéns, com k par: cada armazém recebe peças de uma única entrega e os k/2 mais cheios são comprometidos. Podemos escolher quantas peças guardar. Como usar um limiar de carga t, blocos completos e restos para maximizar a soma nos armazéns seguros?",
+  "back": {
+    "answer": "Cada armazém só aceita peças de uma única entrega, embora uma entrega possa ser dividida. Fixe t>=1: cada entrega a forma a/t blocos completos de tamanho t e um resto a%t. Reserve m=k/2 blocos completos aos comprometidos. Se q<m, o limiar é inviável; se q>=k, m armazéns seguros também podem ter t. Se m<=q<k, existem q-m blocos seguros completos e faltam k-q posições, preenchidas pelos maiores restos disponíveis. Varrer os limiares é o método da anotação; a quantidade de blocos é monótona, mas isso não prova que a função objetivo permita busca binária. A aplicação depende destas regras e de k par. Nesta formulação, peças podem ficar sem alocação; se a obrigação fosse guardar todas, seria necessário conferir a viabilidade adicional. Trata-se da regra explicitada neste card, não de uma inferência sobre o enunciado ausente da entrevista.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "long long seguros(const vector<int>& entregas,int k){\n    int M=*max_element(entregas.begin(),entregas.end()),m=k/2;\n    long long ans=0;\n    for(int t=1;t<=M;++t){\n        long long q=0;vector<int> restos;\n        for(int x:entregas){q+=x/t;restos.push_back(x%t);}\n        if(q<m) break;\n        if(q>=k){ans=max(ans,1LL*m*t);continue;}\n        long long valor=(q-m)*t;\n        sort(restos.rbegin(),restos.rend());\n        int usar=min((int)restos.size(),(int)(k-q));\n        for(int i=0;i<usar;++i) valor+=restos[i];\n        ans=max(ans,valor);\n    }\n    return ans;\n}",
+    "complexity": "O(M*N log N) de tempo no pior caso e O(N) de espaço; só usar se o limite M permitir.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::limiar_blocos_restos",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000056",
+      "title": "Security Delivery Logs",
+      "pages_1based": [
+        6,
+        7,
+        8,
+        9
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": null,
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "clarification": "Aplicação didática com hipótese explícita de poder deixar peças sem alocar. O enunciado completo e limites da entrevista não estão disponíveis. Código validado contra enumeração independente de 78 instâncias pequenas sob esse modelo; não afirmar submissão aceita.",
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210833",
+    "card_ids": [
+      "1793230210834"
+    ],
+    "fields_sha256": "651edfa2fb81ee712712f0d280a0bdd1dc975fd6a6482453688249f5f2e742fe",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

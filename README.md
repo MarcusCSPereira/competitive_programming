@@ -71,3 +71,9 @@ Compilação no estilo de contest:
 g++ -O2 -std=c++17 solution.cpp -o solution
 ```
 
+## Cards de estudo
+
+O método de leitura dos cadernos Goodnotes, o cursor de retomada e a preparação
+dos cards para Anki ficam em [cards-estudo/README.md](cards-estudo/README.md).
+Os cards autorais serão guardados nessa pasta; o histórico de revisão fica no Anki.
+

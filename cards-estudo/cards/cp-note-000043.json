@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000043",
+  "content_key": "contar_subarrays_blocos",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como contar subarrays de comprimento pelo menos k em que todos os elementos satisfazem um predicado? Como evitar perder o último bloco?",
+  "back": {
+    "answer": "Um bloco válido de tamanho L contribui (L-k+1)(L-k+2)/2 quando L>=k: há L-k+1 escolhas para comprimento k, uma a menos para k+1 e assim por diante. Também podemos acumular online: a cada posição válida, se o bloco atual tem tamanho c>=k, surgem c-k+1 subarrays terminando ali. Ao encontrar inválido, zere c. Essa forma já inclui o último bloco e evita esquecer o processamento após o laço.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "long long ferias(const vector<int>& temperatura,int k,int limite) {\n    long long atual=0,total=0;\n    for(int x:temperatura){\n        atual=(x<=limite ? atual+1 : 0);\n        if(atual>=k) total+=atual-k+1;\n    }\n    return total;\n}",
+    "complexity": "O(n) de tempo e O(1) de espaço; k>=1.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::contar_subarrays_blocos",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000042",
+      "title": "Ski Resort",
+      "pages_1based": [
+        85,
+        86
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1840/C",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210815",
+    "card_ids": [
+      "1793230210816"
+    ],
+    "fields_sha256": "8feb5454be91435bcbe1578bcd846d206ac69e1f9d4b935974263484025c938a",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

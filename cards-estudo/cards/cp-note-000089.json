@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000089",
+  "content_key": "ordem_remocoes_fatorial_intercalacoes",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Por que o número de sequências mínimas de remoção é (produto dos tamanhos dos blocos) × D!, com D remoções? Por que não basta multiplicar os fatoriais de cada bloco?",
+  "back": {
+    "answer": "Primeiro escolha qual posição original permanece em cada bloco: há produto(L) escolhas. Para cada escolha, há D posições originais distintas a remover. Elas podem ser removidas em qualquer uma das D! ordens, porque apenas a string final precisa ser alternada.\n\nOs índices mudam durante as remoções, mas isso não invalida a contagem: cada ordem de posições originais determina uma sequência única de índices atuais. Reciprocamente, acompanhando os índices atuais a partir da string original, reconstruímos exatamente quais posições foram removidas e em qual ordem. Essa correspondência evita tanto perder sequências quanto contar a mesma sequência duas vezes.\n\nUsar só produto((L-1)!) contaria ordens internas aos blocos, mas perderia as intercalações de remoções entre blocos diferentes. Em 0011, escolhemos sobreviventes de 2*2 formas e podemos ordenar as 2 remoções de 2! formas: são 8 sequências. Se D=0, há uma sequência vazia; 0!=1, não zero.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "pair<int,long long> alternarComContagem(const string& s) {\n    const long long MOD=998244353;\n    int remocoes=0;\n    long long escolhas=1;\n    for (int i=0;i<(int)s.size();) {\n        int j=i;\n        while (j<(int)s.size() && s[j]==s[i]) ++j;\n        int tamanho=j-i;\n        remocoes+=tamanho-1;\n        escolhas=escolhas*tamanho%MOD;\n        i=j;\n    }\n    long long fatorial=1;\n    for (int i=2;i<=remocoes;++i) fatorial=fatorial*i%MOD;\n    return {remocoes,escolhas*fatorial%MOD};\n}",
+    "complexity": "O(N+D)=O(N) de tempo e O(1) de espaço auxiliar. Em todos os testes, a soma dos comprimentos é no máximo 200.000.",
+    "success_criteria": [
+      "Separar a escolha das posições da ordem das operações.",
+      "Justificar a correspondência apesar da mudança dos índices.",
+      "Contar intercalações entre blocos e preservar 0!=1."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::rating1300_20261028",
+    "assunto::ordem_remocoes_fatorial_intercalacoes",
+    "origem::repositorio-cpp"
+  ],
+  "sources": [
+    {
+      "notebook_id": "repositorio-cpp",
+      "problem_id": "cp-problem-000061",
+      "title": "Make it Alternating",
+      "platform_id": "1879C",
+      "rating_verified": 1300,
+      "pages_1based": [],
+      "source_snapshot_sha256": null,
+      "drive_file_id": null,
+      "official_statement_url": "https://codeforces.com/problemset/problem/1879/C",
+      "local_code_path": "codeforces/rating_1300/make_it_alternating-1879C.cpp",
+      "local_code_sha256": "19ddd033294733cd86da76d12570b47b6e6c7070122cbfa3a20b9f447a130c68",
+      "manuscript_mapping_status": "not_located_in_authorized_pdf_snapshot",
+      "highlight_color": null,
+      "provenance": "Solução local do usuário e enunciado oficial; não atribuir página ou observação manuscrita."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-rating1300-090",
+    "sync_run_id": "83323976-8b9b-4940-9f43-72f5b2bf8678",
+    "learning_origin": "local_solution_and_official_statement"
+  },
+  "validation": {
+    "handwriting_checked": false,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-rating1300.json",
+    "validated_at": "2026-10-28T21:11:18-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793232707394",
+    "card_ids": [
+      "1793232707394"
+    ],
+    "fields_sha256": "e60315039e9ff9d693cf32d7d3facd2cca88020ebc7e4f7bf283036a396a5f13",
+    "last_batch_id": "2026-10-28-rating1300"
+  }
+}

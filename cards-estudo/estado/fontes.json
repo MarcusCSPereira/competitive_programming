@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-10-28T21:29:34.899827+00:00",
+  "preferred_transport": "drive_desktop_local",
+  "read_only_sources": true,
+  "account": "marcus.cesar.sp@gmail.com",
+  "local_root": "/Users/marcus_cs_pereira/Library/CloudStorage/GoogleDrive-marcus.cesar.sp@gmail.com/Meu Drive/GoodNotes/César/Programação Competitiva",
+  "drive_folder_id": "14BAvQwVD7kuo90RbTmYZgLkFtLGJpyhc",
+  "connector": {
+    "link_id": "link_6ae2401ec928819194106501618d2291",
+    "link_name": "Pessoal - Prog Competitiva",
+    "metadata_lookup_verified": true,
+    "text_fetch_verified_for": [
+      "big-tech-problems"
+    ],
+    "raw_remote_pdf_download_verified": false
+  },
+  "notebooks": {
+    "problemas": {
+      "file_name": "Problemas.pdf",
+      "local_path": "/Users/marcus_cs_pereira/Library/CloudStorage/GoogleDrive-marcus.cesar.sp@gmail.com/Meu Drive/GoodNotes/César/Programação Competitiva/Problemas.pdf",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "drive_url": "https://drive.google.com/file/d/1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy/view",
+      "page_count": 99,
+      "size_bytes": 68343204,
+      "sha256_local": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "stable_during_read": true,
+      "matches_cloud_metadata_size": true,
+      "text_probe_page": 45,
+      "text_probe_chars": 1370,
+      "mtime_ns": 1793214854006000041
+    },
+    "big-tech-problems": {
+      "file_name": "Big Tech Problems.pdf",
+      "local_path": "/Users/marcus_cs_pereira/Library/CloudStorage/GoogleDrive-marcus.cesar.sp@gmail.com/Meu Drive/GoodNotes/César/Programação Competitiva/Big Tech Problems.pdf",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "drive_url": "https://drive.google.com/file/d/1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN/view",
+      "page_count": 15,
+      "size_bytes": 10072014,
+      "sha256_local": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "stable_during_read": true,
+      "matches_cloud_metadata_size": true,
+      "text_probe_page": 14,
+      "text_probe_chars": 1186,
+      "mtime_ns": 1793214925582000017
+    },
+    "anotacoes": {
+      "file_name": "Anotações.pdf",
+      "local_path": "/Users/marcus_cs_pereira/Library/CloudStorage/GoogleDrive-marcus.cesar.sp@gmail.com/Meu Drive/GoodNotes/César/Programação Competitiva/Anotações.pdf",
+      "drive_file_id": "1FfsTP1Ru0ZC6i_FgcXkLb0pXgLM7hfrc",
+      "drive_url": "https://drive.google.com/file/d/1FfsTP1Ru0ZC6i_FgcXkLb0pXgLM7hfrc/view",
+      "page_count": 40,
+      "size_bytes": 24476332,
+      "sha256_local": "82b0f5c71ac1389d9adeae848802d3d9b88b283a0bfd874915276c3c3ccbde52",
+      "stable_during_read": true,
+      "matches_cloud_metadata_size": true,
+      "text_probe_page": null,
+      "text_probe_chars": null,
+      "mtime_ns": 1793212863730999946
+    }
+  },
+  "guardrails": {
+    "sources_are_not_outputs": true,
+    "require_pdf_header_and_page_count": true,
+    "check_size_and_mtime_before_and_after_read": true,
+    "recheck_cloud_modified_time_and_size": true,
+    "reject_missing_or_ambiguous_sources": true,
+    "never_advance_generation_for_transport_probe": true
+  },
+  "limitations": [
+    "Disponibilidade offline não comprova que o PDF recebeu a última versão do Drive.",
+    "Nova execução exige consulta remota atual; falta de rede, conector ou sync bloqueia o lote.",
+    "Drive depende do Mac ligado, sessão/serviço ativos e conectividade.",
+    "O conector não expõe checksum remoto; tamanho e data não são prova criptográfica de igualdade com o servidor."
+  ],
+  "sync_policy": {
+    "owner_drive_to_mac": "agent",
+    "owner_goodnotes_to_drive": "user",
+    "protocol": "sincronizacao.md",
+    "script": "scripts/sync_guard.py",
+    "status_file": "estado/sincronizacao.json",
+    "required_before_every_run": true,
+    "require_fresh_remote_before_and_after": true,
+    "max_evidence_age_seconds": 300,
+    "block_on_failure_without_advancing_cursor": true,
+    "offline_folder_configured": true,
+    "offline_confirmation": "Finder: Available offline; inverse menu: Disponibilizar apenas on-line",
+    "drive_launch_at_login_verified_enabled": true,
+    "remote_checksums_exposed_by_connector": false,
+    "last_verified_run_id": "83323976-8b9b-4940-9f43-72f5b2bf8678",
+    "last_verified_at": "2026-10-29T00:03:38.937605+00:00"
+  }
+}

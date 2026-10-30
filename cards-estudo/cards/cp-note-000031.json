@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000031",
+  "content_key": "manhattan_cantos_opostos",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como usar a distância Manhattan para escolher duas posições numa grade e maximizar o menor passeio que sai de uma posição, visita as duas e retorna?",
+  "back": {
+    "answer": "Na grade sem obstáculos, d((x,y),(u,v))=|x-u|+|y-v|. Escolha cantos opostos (1,1) e (n,m). Para qualquer início dentro da grade, a soma das distâncias aos dois cantos é n+m-2; a distância entre eles também é n+m-2. O passeio total vale 2(n+m-2). Qualquer triângulo de pontos da grade tem perímetro Manhattan no máximo esse valor, separando as contribuições de linhas e colunas.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "array<long long,4> cantos(long long n,long long m) {\n    return {1,1,n,m};\n}\nlong long manhattan(long long x,long long y,long long u,long long v){\n    return llabs(x-u)+llabs(y-v);\n}",
+    "complexity": "O(1) de tempo e espaço.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::manhattan_cantos_opostos",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000030",
+      "title": "Bad Boy",
+      "pages_1based": [
+        74,
+        75
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1537/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210803",
+    "card_ids": [
+      "1793230210804"
+    ],
+    "fields_sha256": "9c72ba80353444b800bb17aad7be5e9e25333c27f775ab4a72c3c709616a18ff",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

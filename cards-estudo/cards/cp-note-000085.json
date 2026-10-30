@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000085",
+  "content_key": "auto_copia_referencia_containers",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Ao percorrer vector<vector<int>> ou grupos de strings, quando auto copia os dados e quando auto& ou const auto& acessam o original? Como isso afeta custo e alterações?",
+  "back": {
+    "answer": "Em for(auto linha:matriz), linha é uma cópia de cada vetor interno. Alterar seus elementos não modifica a matriz original; além disso, cada iteração pode alocar e copiar todos os elementos daquela linha.\n\nUse const auto& quando só precisa ler e auto& quando precisa alterar os objetos originais. A referência no laço não basta se a função recebeu a matriz por valor: nesse caso já houve uma cópia antes de entrar no corpo. Receba const vector<vector<int>>& para leitura ou vector<vector<int>>& para alteração.\n\nPara int e outros tipos pequenos, copiar pode ser simples e adequado; o cuidado é especialmente relevante com strings e contêineres aninhados. Não conclua que referências mudam a complexidade de qualquer algoritmo: somar todos os valores continua O(total de elementos), mas evita cópias, alocações e memória temporária desnecessárias.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "long long somarSemCopiar(const vector<vector<int>>& matriz) {\n    long long soma=0;\n    for (const auto& linha:matriz)\n        for (int valor:linha) soma+=valor;\n    return soma;\n}\nvoid zerarOriginal(vector<vector<int>>& matriz) {\n    for (auto& linha:matriz)\n        for (int& valor:linha) valor=0;\n}",
+    "complexity": "O(L+T) de tempo, com L linhas e T elementos, inclusive linhas vazias. O(1) de espaço auxiliar, sem copiar linhas.",
+    "success_criteria": [
+      "Reconhecer cópia tanto no parâmetro quanto no range-for.",
+      "Usar const referência para leitura e referência mutável para alterar.",
+      "Distinguir economia de memória/cópias de mudança da ordem assintótica."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::expansao_20261028",
+    "assunto::auto_copia_referencia_containers",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000060",
+      "title": "Inicialização de contêineres compostos",
+      "pages_1based": [
+        12,
+        13
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": null,
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    },
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000054",
+      "title": "Group Anagrams",
+      "pages_1based": [
+        5
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": "https://leetcode.com/problems/group-anagrams/description/",
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-expansao-072",
+    "sync_run_id": "b9f78700-9140-42d3-9354-cee80c562b26",
+    "learning_origin": "implementation_detail_from_notes",
+    "technical_references": []
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-expansao.json",
+    "validated_at": "2026-10-28T20:56:56-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793231826532",
+    "card_ids": [
+      "1793231826532"
+    ],
+    "fields_sha256": "7d34364a62bfe31cb3885367b8716c14792a7646300a9d20b42e761f90f90cfc",
+    "last_batch_id": "2026-10-28-expansao"
+  }
+}

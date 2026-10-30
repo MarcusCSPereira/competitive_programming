@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000038",
+  "content_key": "estoque_prefixo_binario",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Quando podemos trocar bits livremente e apagar cada caractere por custo 1, como obter o maior prefixo que pode ser substituído por bits opostos aos da string original?",
+  "back": {
+    "answer": "Trocas gratuitas tornam relevante apenas o estoque de zeros e uns. Varra a referência original da esquerda para a direita e consuma um bit oposto para cada posição. Quando o estoque necessário acabar, nenhum resultado mais longo poderá satisfazer esse prefixo. Apague o restante; o custo mínimo é n-comprimentoViável. Frequências permitem simular a disponibilidade sem executar trocas.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int custoApagar(const string& s) {\n    array<int,2> qtd{}; for(char c:s) ++qtd[c-'0'];\n    int usados=0;\n    for(char c:s){\n        int precisa=1-(c-'0');\n        if(qtd[precisa]==0) break;\n        --qtd[precisa]; ++usados;\n    }\n    return (int)s.size()-usados;\n}",
+    "complexity": "O(n) de tempo e O(1) de espaço.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::estoque_prefixo_binario",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000037",
+      "title": "Swap and Delete",
+      "pages_1based": [
+        79,
+        80
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1913/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210810",
+    "card_ids": [
+      "1793230210811"
+    ],
+    "fields_sha256": "b9fe1587b4583b1d8d95dd3261374264a723cb3239c9b65e117a42ea32c8b536",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

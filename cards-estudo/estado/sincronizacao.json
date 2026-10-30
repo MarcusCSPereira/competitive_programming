@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-29T00:03:38.937605+00:00",
+  "status": "verified",
+  "generation_allowed": true,
+  "run_id": "83323976-8b9b-4940-9f43-72f5b2bf8678",
+  "valid_until": "2026-10-29T00:08:39.014907+00:00",
+  "files": {
+    "problemas": {
+      "source": "/Users/marcus_cs_pereira/Library/CloudStorage/GoogleDrive-marcus.cesar.sp@gmail.com/Meu Drive/GoodNotes/César/Programação Competitiva/Problemas.pdf",
+      "snapshot": "/Users/marcus_cs_pereira/Programacao/prog_competitiva/C++/cards-estudo/.cache/sync/snapshots/2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250.pdf",
+      "size": 68343204,
+      "mtime_ns": 1793214854006000041,
+      "page_count": 99,
+      "sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "md5": "05642dafd7c895c6e59cda97999d3e27"
+    },
+    "big-tech-problems": {
+      "source": "/Users/marcus_cs_pereira/Library/CloudStorage/GoogleDrive-marcus.cesar.sp@gmail.com/Meu Drive/GoodNotes/César/Programação Competitiva/Big Tech Problems.pdf",
+      "snapshot": "/Users/marcus_cs_pereira/Programacao/prog_competitiva/C++/cards-estudo/.cache/sync/snapshots/5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9.pdf",
+      "size": 10072014,
+      "mtime_ns": 1793214925582000017,
+      "page_count": 15,
+      "sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "md5": "1f5b4e0be6623e469a20d1bf1139cbae"
+    },
+    "anotacoes": {
+      "source": "/Users/marcus_cs_pereira/Library/CloudStorage/GoogleDrive-marcus.cesar.sp@gmail.com/Meu Drive/GoodNotes/César/Programação Competitiva/Anotações.pdf",
+      "snapshot": "/Users/marcus_cs_pereira/Programacao/prog_competitiva/C++/cards-estudo/.cache/sync/snapshots/82b0f5c71ac1389d9adeae848802d3d9b88b283a0bfd874915276c3c3ccbde52.pdf",
+      "size": 24476332,
+      "mtime_ns": 1793212863730999946,
+      "page_count": 40,
+      "sha256": "82b0f5c71ac1389d9adeae848802d3d9b88b283a0bfd874915276c3c3ccbde52",
+      "md5": "64844858b20082722e5c595eed747652"
+    }
+  },
+  "remote": {
+    "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy": {
+      "id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "name": "Problemas.pdf",
+      "size": 68343204,
+      "modified_time": "2026-10-28T19:14:14.006Z",
+      "mime_type": "application/pdf",
+      "md5": null,
+      "sha256": null
+    },
+    "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN": {
+      "id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "name": "Big Tech Problems.pdf",
+      "size": 10072014,
+      "modified_time": "2026-10-28T19:15:25.582Z",
+      "mime_type": "application/pdf",
+      "md5": null,
+      "sha256": null
+    },
+    "1FfsTP1Ru0ZC6i_FgcXkLb0pXgLM7hfrc": {
+      "id": "1FfsTP1Ru0ZC6i_FgcXkLb0pXgLM7hfrc",
+      "name": "Anotações.pdf",
+      "size": 24476332,
+      "modified_time": "2026-10-28T18:41:03.731Z",
+      "mime_type": "application/pdf",
+      "md5": null,
+      "sha256": null
+    }
+  },
+  "verification": "fresh_remote_size_mtime_and_stable_local_snapshot",
+  "remote_checksum_available": false
+}

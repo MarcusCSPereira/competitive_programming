@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000082",
+  "content_key": "modulo_negativo_indices_ciclicos",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Em C++, por que (destino-origem)%n pode ser negativo num ciclo? Como normalizar restos e calcular uma distância circular sem criar overflow desnecessário?",
+  "back": {
+    "answer": "Em C++, o resto de uma divisão pode ser negativo quando o dividendo é negativo. Se n=5, (1-4)%5 é -3, mas a distância circular para a frente é 2. Para módulo positivo, calcule r=x%n e acrescente n apenas se r<0; o resultado fica em [0,n).\n\nA forma (x%n+n)%n também é comum, mas acrescentar n quando o resto já é positivo pode estourar em valores próximos do limite do tipo. A condição evita essa soma desnecessária. Não use índice negativo para acessar vector ou string.\n\nO exemplo calcula a distância entre dois índices válidos de um ciclo. Isso complementa a duplicação de strings de Traffic Light: o módulo resolve uma distância conhecida, enquanto a varredura ainda é necessária para achar o próximo evento em tempo total linear. Normalizar uma distância não elimina uma busca O(N) repetida.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "long long moduloPositivo(long long x,long long n) {\n    assert(n>0);\n    long long r=x%n;\n    return r<0 ? r+n : r;\n}\nlong long distanciaCircular(long long origem,long long destino,long long n) {\n    assert(n>0 && 0<=origem && origem<n && 0<=destino && destino<n);\n    return moduloPositivo(destino-origem,n);\n}",
+    "complexity": "O(1) de tempo e espaço por distância. Para localizar próximos eventos em todas as posições, ainda é preciso um algoritmo global eficiente.",
+    "success_criteria": [
+      "Normalizar restos para [0,n), com n positivo.",
+      "Não somar o módulo quando o resto já é não negativo.",
+      "Separar o cálculo de uma distância da busca do próximo evento."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::expansao_20261028",
+    "assunto::modulo_negativo_indices_ciclicos",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000046",
+      "title": "Traffic Light",
+      "pages_1based": [
+        91,
+        92
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1744/C",
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    },
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000029",
+      "title": "Exciting Bets",
+      "pages_1based": [
+        73,
+        74
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1543/A",
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-expansao-072",
+    "sync_run_id": "b9f78700-9140-42d3-9354-cee80c562b26",
+    "learning_origin": "didactic_extension",
+    "technical_references": []
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-expansao.json",
+    "validated_at": "2026-10-28T20:56:56-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793231826529",
+    "card_ids": [
+      "1793231826529"
+    ],
+    "fields_sha256": "9f346b08583a7ae9cb280c354f0c00039202cce08aed7644be815c7ecb29a58a",
+    "last_batch_id": "2026-10-28-expansao"
+  }
+}

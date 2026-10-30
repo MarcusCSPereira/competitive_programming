@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000029",
+  "content_key": "and_remocao_bits",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Por que combinar valores com AND nunca cria bits e como isso ajuda a encontrar o menor valor atingível por operações de AND em um array?",
+  "back": {
+    "answer": "Um bit só fica 1 no AND se todos os operandos tiverem esse bit. Portanto x&y<=x e x&y<=y para inteiros não negativos. Associatividade e comutatividade permitem acumular o AND de todos os elementos. No problema, uma operação pode espalhar esse AND ao array inteiro; nenhum resultado pode perder um bit que já era 1 em todos os elementos. Assim o AND global é o limite atingível.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int andGlobal(const vector<int>& a) {\n    int ans=a.front();\n    for(int x:a) ans&=x;\n    return ans;\n}",
+    "complexity": "O(n) de tempo e O(1) de espaço; array não vazio de inteiros não negativos.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::and_remocao_bits",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000028",
+      "title": "Mocha and Math",
+      "pages_1based": [
+        72
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1559/A",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210801",
+    "card_ids": [
+      "1793230210802"
+    ],
+    "fields_sha256": "ae67ec410d3bcd3d6e28d20671fbeff1f66747ad07eccd6129a9bed6e57f18e1",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

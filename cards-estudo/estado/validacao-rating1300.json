@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "compiler": "clang++ C++17",
+  "sanitizers": [
+    "address",
+    "undefined"
+  ],
+  "tested_cards": {
+    "cp-note-000051": {
+      "code_sha256": "3eb43777a42ed63979f2f29e0025821c3023cb067efbf232cf8532b9fad6cdd2",
+      "case_sha256": "c8f43a07410c33f62167f3d3c3883e4317229af4a69a25549b6160b93a51ee78"
+    },
+    "cp-note-000052": {
+      "code_sha256": "832aed26cffd1feb84305b01e9b8295466e989e01601681fbf2eae0cd87eab7e",
+      "case_sha256": "0e2baf79cd3de9734ecdeb55a23033b788133db83db35ce30f9aa35a912cfa2d"
+    },
+    "cp-note-000087": {
+      "code_sha256": "ff1c3c7bfa85ddd5488e67dfb385c8d64cb1f062e91e4f6cb9b50c2b26e13db3",
+      "case_sha256": "b962882826be4a926d692923562e862167532bfc06e76985d6b69a8f0601a4ce"
+    },
+    "cp-note-000088": {
+      "code_sha256": "c89f67a05a4717ff2a6e41450ed4bb1056828894bbcf6db15811334437d112c8",
+      "case_sha256": "0a5266b679f7c51ed743ff45f5b4efbe1e5886fe95f1499b12d6cdaa83114dc8"
+    },
+    "cp-note-000089": {
+      "code_sha256": "5280c1d2e94af72b2b3538ec7cb99bdafab906f0034f4b37745451d799535192",
+      "case_sha256": "5b1be4d92f6183646c0d659e1e21173abc88b7153f0bea826b799295fe992062"
+    },
+    "cp-note-000090": {
+      "code_sha256": "341ac937759443b6307842abb02b0ae17d21fc8afe4f4f3ebed589093b21eddd",
+      "case_sha256": "6cb49e99b33be42678b972139564ef755fcef5cf682a1db663d3374d165de0c6"
+    },
+    "cp-note-000091": {
+      "code_sha256": "c2d9eae7839fd4537179c178d7bfc9149f1f04c06a652c98e1cc68e725f0d779",
+      "case_sha256": "8f6b017f50ea17e9fd55b7d9548305601fd7f526945876286e0d42b6b4137810"
+    }
+  }
+}

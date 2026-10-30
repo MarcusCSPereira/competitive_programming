@@ -1,0 +1,786 @@
+{
+  "run_id": "2026-10-28-expansao-072",
+  "sync_run_id": "b9f78700-9140-42d3-9354-cee80c562b26",
+  "at": "2026-10-28T20:56:56-03:00",
+  "existing_cards": 69,
+  "added_cards": 17,
+  "total_unique_cards": 86,
+  "reviewed_content_units": [
+    {
+      "problem_id": "cp-problem-000008",
+      "title": "Microwaves",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000003",
+        "cp-note-000004"
+      ],
+      "added_card_ids": [
+        "cp-note-000070",
+        "cp-note-000071",
+        "cp-note-000072"
+      ],
+      "total_associated_cards": 5,
+      "decision": "expanded_distinct_learning_objectives",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000009",
+      "title": "Porquinho da Índia",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000005",
+        "cp-note-000006"
+      ],
+      "added_card_ids": [
+        "cp-note-000073",
+        "cp-note-000074",
+        "cp-note-000075",
+        "cp-note-000076"
+      ],
+      "total_associated_cards": 6,
+      "decision": "expanded_distinct_learning_objectives",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000001",
+      "title": "Forked!",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000007"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000002",
+      "title": "Chemistry",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000008"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000003",
+      "title": "Vasilije in Cacak",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000009"
+      ],
+      "added_card_ids": [
+        "cp-note-000072"
+      ],
+      "total_associated_cards": 2,
+      "decision": "expanded_distinct_learning_objectives",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000004",
+      "title": "Jellyfish and Undertale",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000010"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000010",
+      "title": "Make It Zero",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000011"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000011",
+      "title": "Longest Divisors Interval",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000012"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000012",
+      "title": "Balanced Round",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000013"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000013",
+      "title": "Comparison String",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000014"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000014",
+      "title": "Permutation Swap",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000015"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000015",
+      "title": "Odd Queries",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000016"
+      ],
+      "added_card_ids": [
+        "cp-note-000076"
+      ],
+      "total_associated_cards": 2,
+      "decision": "expanded_distinct_learning_objectives",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000016",
+      "title": "Not Dividing",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000017"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000017",
+      "title": "Mainak and Array",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000018"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000018",
+      "title": "NIT Destroys the Universe",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000019"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000019",
+      "title": "AvtoBus",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000020"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000020",
+      "title": "Make It Increasing",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000021"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000021",
+      "title": "Deletive Editing",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000022"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000022",
+      "title": "Array Cloning Technique",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000023"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000023",
+      "title": "Make AP",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000024"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000024",
+      "title": "Odd Grasshopper",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000025"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000025",
+      "title": "AB Balance",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000026"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000026",
+      "title": "Make It Divisible by 25",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000027"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000027",
+      "title": "Luntik and Subsequences",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000028"
+      ],
+      "added_card_ids": [
+        "cp-note-000083"
+      ],
+      "total_associated_cards": 2,
+      "decision": "expanded_distinct_learning_objectives",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000028",
+      "title": "Mocha and Math",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000029"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000029",
+      "title": "Exciting Bets",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000030"
+      ],
+      "added_card_ids": [
+        "cp-note-000079",
+        "cp-note-000082"
+      ],
+      "total_associated_cards": 3,
+      "decision": "expanded_distinct_learning_objectives",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000030",
+      "title": "Bad Boy",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000031"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000031",
+      "title": "Odd Divisor",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000032"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000032",
+      "title": "Strange Partition",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000020",
+        "cp-note-000033"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 2,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000033",
+      "title": "Sum of Medians",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000034"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000034",
+      "title": "Three Indices",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000035"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000035",
+      "title": "01 Game",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000036"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000036",
+      "title": "Multiply by 2, Divide by 6",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000037"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000037",
+      "title": "Swap and Delete",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000038"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000038",
+      "title": "Raspberries",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000039"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000039",
+      "title": "Helmets in Night Light",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000040"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000040",
+      "title": "Olya and Game with Arrays",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000041"
+      ],
+      "added_card_ids": [
+        "cp-note-000081"
+      ],
+      "total_associated_cards": 2,
+      "decision": "expanded_distinct_learning_objectives",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000041",
+      "title": "Monsters",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000042"
+      ],
+      "added_card_ids": [
+        "cp-note-000080"
+      ],
+      "total_associated_cards": 2,
+      "decision": "expanded_distinct_learning_objectives",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000042",
+      "title": "Ski Resort",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000043"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000043",
+      "title": "Array Merging",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000044"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000044",
+      "title": "Distinct Split",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000045"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000045",
+      "title": "Minimum LCM",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000046",
+        "cp-note-000047"
+      ],
+      "added_card_ids": [
+        "cp-note-000079"
+      ],
+      "total_associated_cards": 3,
+      "decision": "expanded_distinct_learning_objectives",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000046",
+      "title": "Traffic Light",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000048"
+      ],
+      "added_card_ids": [
+        "cp-note-000082"
+      ],
+      "total_associated_cards": 2,
+      "decision": "expanded_distinct_learning_objectives",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000047",
+      "title": "Basketball Together",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000049"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000048",
+      "title": "Beautiful Array",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000050"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000049",
+      "title": "Luke Is a Foodie",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000051"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000050",
+      "title": "Shoe Shuffling",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000052"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000051",
+      "title": "Word Capitalization",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000053"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000052",
+      "title": "Black and White Stripe",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000016",
+        "cp-note-000054"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 2,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000007",
+      "title": "Red Versus Blue",
+      "notebook_id": "problemas",
+      "previous_card_ids": [
+        "cp-note-000001"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 1,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000053",
+      "title": "LRU Cache",
+      "notebook_id": "big-tech-problems",
+      "previous_card_ids": [
+        "cp-note-000055",
+        "cp-note-000056",
+        "cp-note-000057",
+        "cp-note-000058"
+      ],
+      "added_card_ids": [
+        "cp-note-000084"
+      ],
+      "total_associated_cards": 5,
+      "decision": "expanded_distinct_learning_objectives",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000054",
+      "title": "Group Anagrams",
+      "notebook_id": "big-tech-problems",
+      "previous_card_ids": [
+        "cp-note-000058",
+        "cp-note-000059"
+      ],
+      "added_card_ids": [
+        "cp-note-000085"
+      ],
+      "total_associated_cards": 3,
+      "decision": "expanded_distinct_learning_objectives",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000055",
+      "title": "Top K Frequent Elements",
+      "notebook_id": "big-tech-problems",
+      "previous_card_ids": [
+        "cp-note-000058",
+        "cp-note-000060"
+      ],
+      "added_card_ids": [
+        "cp-note-000077"
+      ],
+      "total_associated_cards": 3,
+      "decision": "expanded_distinct_learning_objectives",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000056",
+      "title": "Security Delivery Logs",
+      "notebook_id": "big-tech-problems",
+      "previous_card_ids": [
+        "cp-note-000061"
+      ],
+      "added_card_ids": [
+        "cp-note-000086"
+      ],
+      "total_associated_cards": 2,
+      "decision": "expanded_distinct_learning_objectives",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000057",
+      "title": "Product of Array Except Self",
+      "notebook_id": "big-tech-problems",
+      "previous_card_ids": [
+        "cp-note-000062",
+        "cp-note-000063"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 2,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000058",
+      "title": "Encode and Decode Strings",
+      "notebook_id": "big-tech-problems",
+      "previous_card_ids": [
+        "cp-note-000064"
+      ],
+      "added_card_ids": [
+        "cp-note-000078"
+      ],
+      "total_associated_cards": 2,
+      "decision": "expanded_distinct_learning_objectives",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000059",
+      "title": "Valid Sudoku",
+      "notebook_id": "big-tech-problems",
+      "previous_card_ids": [
+        "cp-note-000065",
+        "cp-note-000066"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 2,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000060",
+      "title": "Inicialização de contêineres compostos",
+      "notebook_id": "big-tech-problems",
+      "previous_card_ids": [
+        "cp-note-000067",
+        "cp-note-000068"
+      ],
+      "added_card_ids": [
+        "cp-note-000085"
+      ],
+      "total_associated_cards": 3,
+      "decision": "expanded_distinct_learning_objectives",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    },
+    {
+      "problem_id": "cp-problem-000005",
+      "title": "Add Two Numbers",
+      "notebook_id": "big-tech-problems",
+      "previous_card_ids": [
+        "cp-note-000002",
+        "cp-note-000057",
+        "cp-note-000069"
+      ],
+      "added_card_ids": [],
+      "total_associated_cards": 3,
+      "decision": "existing_cards_cover_selected_core_no_distinct_gap_selected",
+      "review_basis": "Existing cards, prior full color extraction and contextual reread of expansion targets."
+    }
+  ],
+  "pending_units": [
+    {
+      "id": "cp-problem-000006",
+      "title": "Roof Construction",
+      "notebook_id": "problemas",
+      "pages": [
+        99
+      ],
+      "status": "title_only_waiting_for_content"
+    }
+  ],
+  "selection_policy": "Sem meta de quantidade; separar objetivos distintos e preservar conceitos compartilhados sem duplicá-los.",
+  "status": "synced",
+  "manifest": "exportacoes/2026-10-28-expansao-manifest.json",
+  "verified_at": "2026-10-28T21:00:10-03:00"
+}

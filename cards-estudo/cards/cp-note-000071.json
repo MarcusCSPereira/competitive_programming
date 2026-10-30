@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000071",
+  "content_key": "dijkstra_finalizacao_na_retirada",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "No Dijkstra, por que descobrir um vértice não significa finalizar sua distância? Quando posso parar ao alcançar o destino, inclusive se o estado guarda recursos usados?",
+  "back": {
+    "answer": "Descobrir significa ter encontrado alguma proposta; outra rota ainda pode melhorá-la. Por exemplo, 0→1 custa 10, mas 0→2→1 custa 1+1. Marcar 1 como definitivo ao inseri-lo na fila descartaria a rota de custo 2.\n\nCom pesos não negativos, a menor proposta atual retirada do min-heap pode ser finalizada. Primeiro descarte propostas obsoletas; depois é seguro retornar quando retirar o destino. Se o problema aceita até K usos, o primeiro estado atual do destino retirado é o menor entre todos os números de usos. A identidade do estado continua sendo (v, usados): não use um único visited[v] para bloquear as outras camadas.\n\nBFS com fila comum minimiza número de arestas e só serve diretamente quando todas têm o mesmo custo. Havendo custos negativos, esta garantia do Dijkstra deixa de valer. O código assume custos não negativos e somas finitas dentro do intervalo escolhido para INF.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "struct ArestaFim { int v; long long normal, extra; };\nlong long ateDestino(const vector<vector<ArestaFim>>& g, int K) {\n    const long long INF=LLONG_MAX/4;\n    vector<vector<long long>> d(g.size(),vector<long long>(K+1,INF));\n    using Estado=tuple<long long,int,int>;\n    priority_queue<Estado,vector<Estado>,greater<Estado>> fila;\n    d[0][0]=0; fila.push({0,0,0});\n    while (!fila.empty()) {\n        auto estado=fila.top(); fila.pop();\n        long long c=get<0>(estado);\n        int u=get<1>(estado),k=get<2>(estado);\n        if (c!=d[u][k]) continue;\n        if (u==(int)g.size()-1) return c; // após retirar, não ao descobrir\n        for (auto e:g[u]) {\n            auto relaxar=[&](int nk,long long peso) {\n                if (c+peso<d[e.v][nk]) {\n                    d[e.v][nk]=c+peso;\n                    fila.push({d[e.v][nk],e.v,nk});\n                }\n            };\n            relaxar(k,e.normal);\n            if (e.extra>=0 && k<K) relaxar(k+1,e.extra);\n        }\n    }\n    return -1; // nenhum estado do destino é alcançável\n}",
+    "complexity": "Para grafo simples: O((K+1)(V+E) log((K+1)V)) no pior caso. Distâncias ocupam O((K+1)V), além do grafo e das propostas da fila.",
+    "success_criteria": [
+      "Distinguir descoberta de retirada da menor proposta atual.",
+      "Descartar propostas obsoletas antes do retorno antecipado.",
+      "Preservar o número de recursos usados na identidade de cada estado."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::expansao_20261028",
+    "assunto::dijkstra_finalizacao_na_retirada",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000008",
+      "title": "Microwaves",
+      "pages_1based": [
+        45,
+        46
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": null,
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-expansao-072",
+    "sync_run_id": "b9f78700-9140-42d3-9354-cee80c562b26",
+    "learning_origin": "implementation_detail_from_notes",
+    "technical_references": []
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-expansao.json",
+    "validated_at": "2026-10-28T20:56:56-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793231826518",
+    "card_ids": [
+      "1793231826518"
+    ],
+    "fields_sha256": "7721921b32354e0000a9d369ea86db4fbc6c8bbcce23ccfe4f4b1c3345d468c9",
+    "last_batch_id": "2026-10-28-expansao"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000044",
+  "content_key": "runs_por_valor_merge",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Num merge que preserva a ordem interna de dois arrays, como obter a maior sequência consecutiva de um mesmo valor sem testar todas as intercalações?",
+  "back": {
+    "answer": "Para um valor x, só podemos juntar um bloco contínuo de x de cada array: separar dois blocos do mesmo array exige emitir os valores diferentes que ficam entre eles. Portanto o melhor para x é maiorRunA[x]+maiorRunB[x]. Essa soma é atingível alinhando os dois blocos no merge. Conte runs, não frequência total, e atualize também o bloco final. Use um vetor por valor apenas quando o domínio for pequeno; map serve para domínio geral.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "map<int,int> maioresRuns(const vector<int>& a) {\n    map<int,int> melhor;\n    for(int i=0;i<(int)a.size();){\n        int j=i; while(j<(int)a.size() && a[j]==a[i]) ++j;\n        melhor[a[i]]=max(melhor[a[i]],j-i); i=j;\n    }\n    return melhor;\n}\nint maiorMerge(const vector<int>& a,const vector<int>& b) {\n    auto A=maioresRuns(a),B=maioresRuns(b); int ans=0;\n    for(auto [x,v]:A) ans=max(ans,v+B[x]);\n    for(auto [x,v]:B) ans=max(ans,v+A[x]);\n    return ans;\n}",
+    "complexity": "O((n+m) log U) com map; O(n+m+U) se usar vetores para domínio limitado.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::runs_por_valor_merge",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000043",
+      "title": "Array Merging",
+      "pages_1based": [
+        86,
+        87
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1831/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210816",
+    "card_ids": [
+      "1793230210817"
+    ],
+    "fields_sha256": "466ae4a984a5fde90df006a338eb45adba704a84e79d18ced18555095533648f",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

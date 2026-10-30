@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000047",
+  "content_key": "minimo_lcm_soma_fixa",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como minimizar lcm(a,b) com a+b=n e a,b positivos? Qual é a relação com o menor divisor não trivial de n?",
+  "back": {
+    "answer": "Se p é o menor divisor de n maior que 1, escolha a=n/p e b=n-a. Como b=(p-1)a, lcm(a,b)=b. Para justificar a otimalidade, escreva a=g*x, b=g*y, gcd(x,y)=1. Então x+y divide n e é pelo menos p. O lcm é n*x*y/(x+y), e x*y>=(x+y)-1. Logo não pode ser menor que n*(p-1)/p, atingido pela construção. Se n é primo, p=n e a=1.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "pair<long long,long long> menorLCM(long long n) {\n    long long p=n;\n    for(long long d=2;d<=n/d;++d)\n        if(n%d==0){ p=d; break; }\n    long long a=n/p;\n    return {a,n-a};\n}",
+    "complexity": "O(sqrt(n)) de tempo e O(1) de espaço; n>=2.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::minimo_lcm_soma_fixa",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000045",
+      "title": "Minimum LCM",
+      "pages_1based": [
+        88,
+        89,
+        90,
+        91
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1765/M",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210819",
+    "card_ids": [
+      "1793230210820"
+    ],
+    "fields_sha256": "203dd4013124d1ce61ffb4d2fbb75c491c4d51e1167a19b1f0feac4e80198292",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000005",
+  "content_key": "grafo_funcional_ciclos",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como detectar ciclos num grafo funcional usando três estados? Qual a diferença entre encontrar um nó em processamento e um nó já finalizado?",
+  "back": {
+    "answer": "Cada nó aponta para no máximo uma dependência; use -1 para término. Estado 0 significa não visto, 1 significa no caminho atual e 2 significa finalizado. Reencontrar estado 1 fecha um ciclo; chegar ao estado 2 apenas reutiliza uma cadeia já resolvida. A versão iterativa evita estourar a pilha em cadeias longas. Para propagar respostas de dependências, processe o caminho em ordem reversa depois de resolver seu fim.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "bool temCiclo(const vector<int>& prox) {\n    vector<int> cor(prox.size(),0);\n    for(int s=0;s<(int)prox.size();++s) {\n        if(cor[s]) continue;\n        vector<int> caminho; int u=s;\n        while(u!=-1 && cor[u]==0) {\n            cor[u]=1; caminho.push_back(u); u=prox[u];\n        }\n        if(u!=-1 && cor[u]==1) return true;\n        for(int v:caminho) cor[v]=2;\n    }\n    return false;\n}",
+    "complexity": "O(V) de tempo e espaço, pois cada nó entra em um caminho uma vez.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::grafo_funcional_ciclos",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000009",
+      "title": "Porquinho da Índia",
+      "pages_1based": [
+        46,
+        47,
+        48
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": null,
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210777",
+    "card_ids": [
+      "1793230210778"
+    ],
+    "fields_sha256": "f981db1b684dc61a090c7e99b2c79b5b70f598e7f25fb55225aaa1d97271837c",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

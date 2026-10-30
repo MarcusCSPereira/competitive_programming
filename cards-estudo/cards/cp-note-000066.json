@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000066",
+  "content_key": "bitmask_presenca_sudoku",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como usar uma máscara de bits para detectar dígitos repetidos em linhas, colunas e caixas do Sudoku? Qual a ordem de verificar e marcar?",
+  "back": {
+    "answer": "Associe cada dígito 1..9 ao bit 0..8. Para uma célula, calcule sua caixa e teste se o bit já está em qualquer uma das três máscaras. Se estiver, há repetição; caso contrário, marque-o nas três. Ignore pontos. Isso valida apenas as restrições presentes, não garante que o tabuleiro tenha solução. Fazer OR antes de verificar tornaria todo dígito aparentemente repetido.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "bool sudokuValido(const vector<string>& tab){\n    array<int,9> linhas{},colunas{},caixas{};\n    for(int r=0;r<9;++r)for(int c=0;c<9;++c){\n        if(tab[r][c]=='.')continue;\n        int bit=1<<(tab[r][c]-'1'),b=(r/3)*3+c/3;\n        if((linhas[r]&bit)||(colunas[c]&bit)||(caixas[b]&bit))return false;\n        linhas[r]|=bit;colunas[c]|=bit;caixas[b]|=bit;\n    }\n    return true;\n}",
+    "complexity": "O(81) e O(27) para o Sudoku fixo 9x9, portanto O(1).",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::bitmask_presenca_sudoku",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000059",
+      "title": "Valid Sudoku",
+      "pages_1based": [
+        11,
+        12
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": "https://leetcode.com/problems/valid-sudoku/description/",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210838",
+    "card_ids": [
+      "1793230210839"
+    ],
+    "fields_sha256": "1edba1b61579058014d28fc0dac9a9e3fe357ef89c14edeb6e6337667d367a43",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

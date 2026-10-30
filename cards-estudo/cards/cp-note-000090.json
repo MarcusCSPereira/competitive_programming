@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000090",
+  "content_key": "fatorial_modulo_reutilizavel",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como calcular e reutilizar fatoriais módulo M em problemas de contagem? Por que reduzir só no final estoura, e por que f[0] deve começar em 1?",
+  "back": {
+    "answer": "Para módulo positivo, vale (a*b)%M=((a%M)*(b%M))%M. Calcule f[i]=f[i-1]*i%M a cada passo, mantendo o acumulador limitado. Calcular primeiro o fatorial inteiro e aplicar %M depois falha porque o inteiro pode estourar muito antes da operação de módulo.\n\nO produto vazio vale 1: por isso f[0]=1 representa a única ordem de um conjunto sem operações. Em Make it Alternating, uma string já alternada tem D=0 e exatamente uma sequência ótima, a sequência vazia.\n\nPromova a multiplicação antes de avaliá-la. O código usa long long no acumulador e pressupõe módulo 998244353 e limite de 200.000: nessas condições f[i-1]*i cabe em 64 bits. Para vários testes, a tabela permite consultas O(1), mas não muda magicamente a complexidade total deste problema: como soma(N)≤200.000, calcular cada fatorial necessário separadamente também é linear na soma dos tamanhos. A tabela é uma opção de reutilização. Não há necessidade de o módulo ser primo para apenas multiplicar e tomar restos.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "vector<long long> fatoriaisModulo(int limite) {\n    const long long MOD=998244353;\n    assert(0<=limite && limite<=200000);\n    vector<long long> f(limite+1,1);\n    for (int i=2;i<=limite;++i) f[i]=f[i-1]*i%MOD;\n    return f;\n}\nlong long combinarEscolhasEOrdens(long long escolhas,int remocoes,\n                                 const vector<long long>& fat) {\n    const long long MOD=998244353;\n    return (escolhas%MOD)*fat[remocoes]%MOD;\n}",
+    "complexity": "O(L) de tempo e espaço para pré-calcular até L; O(1) por consulta, além do tempo de analisar cada string.",
+    "success_criteria": [
+      "Inicializar o produto vazio com 1.",
+      "Reduzir depois de cada multiplicação e provar o limite do intermediário.",
+      "Distinguir reutilização de tabela de uma melhora assintótica inexistente."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::rating1300_20261028",
+    "assunto::fatorial_modulo_reutilizavel",
+    "origem::repositorio-cpp"
+  ],
+  "sources": [
+    {
+      "notebook_id": "repositorio-cpp",
+      "problem_id": "cp-problem-000061",
+      "title": "Make it Alternating",
+      "platform_id": "1879C",
+      "rating_verified": 1300,
+      "pages_1based": [],
+      "source_snapshot_sha256": null,
+      "drive_file_id": null,
+      "official_statement_url": "https://codeforces.com/problemset/problem/1879/C",
+      "local_code_path": "codeforces/rating_1300/make_it_alternating-1879C.cpp",
+      "local_code_sha256": "19ddd033294733cd86da76d12570b47b6e6c7070122cbfa3a20b9f447a130c68",
+      "manuscript_mapping_status": "not_located_in_authorized_pdf_snapshot",
+      "highlight_color": null,
+      "provenance": "Solução local do usuário e enunciado oficial; não atribuir página ou observação manuscrita."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-rating1300-090",
+    "sync_run_id": "83323976-8b9b-4940-9f43-72f5b2bf8678",
+    "learning_origin": "local_solution_and_official_statement"
+  },
+  "validation": {
+    "handwriting_checked": false,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-rating1300.json",
+    "validated_at": "2026-10-28T21:11:18-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793232707395",
+    "card_ids": [
+      "1793232707395"
+    ],
+    "fields_sha256": "6ef1913e082dd9d87d8a0d778babaeb60624c7cb0cf785a984673f16590f130c",
+    "last_batch_id": "2026-10-28-rating1300"
+  }
+}

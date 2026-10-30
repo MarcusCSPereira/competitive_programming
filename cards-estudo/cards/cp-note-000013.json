@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000013",
+  "content_key": "ordenar_maior_bloco",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como minimizar remoções quando podemos reordenar um array e exigimos diferença de no máximo k entre vizinhos? Por que ordenar e manter o maior bloco funciona?",
+  "back": {
+    "answer": "Ordene os valores. Uma diferença maior que k separa componentes que não podem ser conectadas: não há elemento intermediário disponível. Dentro de cada bloco com diferenças adjacentes <=k, a ordem crescente já satisfaz a regra. Mantenha o maior bloco e remova o restante. A condição é sobre vizinhos, não sobre máximo-mínimo do bloco.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int remocoes(vector<long long> a,long long k) {\n    if(a.empty()) return 0;\n    sort(a.begin(),a.end());\n    int atual=1,melhor=1;\n    for(int i=1;i<(int)a.size();++i){\n        atual=(a[i]-a[i-1]<=k ? atual+1 : 1);\n        melhor=max(melhor,atual);\n    }\n    return (int)a.size()-melhor;\n}",
+    "complexity": "O(n log n) de tempo; o trecho recebe cópia O(n), varredura usa O(1) auxiliar.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::ordenar_maior_bloco",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000012",
+      "title": "Balanced Round",
+      "pages_1based": [
+        55,
+        56
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1850/D",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210785",
+    "card_ids": [
+      "1793230210786"
+    ],
+    "fields_sha256": "d2b53cac0a2e7fcaf5c2d34999e96a224c58fc239b104238e5139ebdcdd399cc",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

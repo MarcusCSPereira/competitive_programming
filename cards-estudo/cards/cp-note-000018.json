@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000018",
+  "content_key": "classificar_rotacao",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como reduzir a maximização de último-primeiro após uma rotação cíclica de um segmento a três casos lineares?",
+  "back": {
+    "answer": "Se a rotação não envolve a primeira posição, o primeiro valor continua a[0], e escolhemos o melhor valor para o fim. Se não envolve a última, preservamos a[n-1] e escolhemos o menor primeiro. Se envolve as duas extremidades, o segmento é o array inteiro: o novo fim e o novo início eram vizinhos, e o candidato é a[i]-a[i+1]. Esses casos cobrem todas as posições do segmento; para n=1 a resposta é zero.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "long long melhorDiferenca(const vector<long long>& a) {\n    int n=a.size(); long long ans=a.back()-a.front();\n    for(int i=1;i<n;++i) ans=max(ans,a[i]-a.front());\n    for(int i=0;i+1<n;++i){\n        ans=max(ans,a.back()-a[i]);\n        ans=max(ans,a[i]-a[i+1]);\n    }\n    return ans;\n}",
+    "complexity": "O(n) de tempo e O(1) de espaço; array não vazio.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::classificar_rotacao",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000017",
+      "title": "Mainak and Array",
+      "pages_1based": [
+        60,
+        61
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1726/A",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210790",
+    "card_ids": [
+      "1793230210791"
+    ],
+    "fields_sha256": "c48eb5f911aa6046c4a7daa211228d2de2ec5042df73f83aa562627b97390b8b",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

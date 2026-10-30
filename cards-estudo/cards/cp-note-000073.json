@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000073",
+  "content_key": "dependencias_resultado_memoizado",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como resolver um grafo funcional em que uma pessoa vai, recusa ou depende de outra? Como propagar o intervalo de presença e impedir que ciclos e cadeias longas causem problemas?",
+  "back": {
+    "answer": "Não basta detectar um ciclo: cada pessoa precisa receber uma resposta final reutilizável. Um aceite fornece o intervalo [chegada, chegada+duração); uma recusa ou dependência de não convidado fornece ausência. Uma cadeia herda a resposta do seu fim. Um ciclo sem resposta independente não leva ninguém à festa; quem depende dele também fica ausente.\n\nUse cor 0 para não visto, 1 para o caminho atual e 2 para resultado pronto. Siga os ponteiros guardando o caminho. Ao encontrar um aceite, recusa ou resultado pronto, resolva a base; ao reencontrar cor 1, a base é ausência. Volte pelo caminho em ordem reversa e marque todos como resolvidos.\n\nIsso substitui recursão por um vetor e evita estouro da pilha em 10^5 dependências. Pessoas que convergem para a mesma cadeia reutilizam a resposta. Copie o intervalo, mas mantenha a quantidade de pessoas de cada convidado: essa quantidade própria será o peso dos eventos na sweep line.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "struct Presenca { bool vai=false; long long inicio=0,fim=0; };\nvector<Presenca> resolver(const vector<char>& tipo,const vector<int>& prox,\n                         const vector<pair<long long,long long>>& intervalo) {\n    int n=tipo.size(); vector<int> cor(n,0); vector<Presenca> resposta(n);\n    for (int s=0;s<n;++s) {\n        if (cor[s]==2) continue;\n        vector<int> caminho; int u=s;\n        while (u!=-1 && cor[u]==0) {\n            if (tipo[u]=='A') {\n                resposta[u]={true,intervalo[u].first,intervalo[u].second};\n                cor[u]=2; break;\n            }\n            if (tipo[u]=='D' || prox[u]==-1) {cor[u]=2; break;}\n            cor[u]=1; caminho.push_back(u); u=prox[u];\n        }\n        Presenca base;\n        if (u!=-1 && cor[u]==2) base=resposta[u];\n        // Cor 1 indica ciclo no caminho atual: base permanece ausência.\n        for (auto it=caminho.rbegin();it!=caminho.rend();++it) {\n            resposta[*it]=base; cor[*it]=2;\n        }\n    }\n    return resposta;\n}",
+    "complexity": "O(N) de tempo e espaço após mapear os IDs. Cada pessoa é percorrida e finalizada no máximo uma vez.",
+    "success_criteria": [
+      "Resolver também o resultado, não só dizer se há ciclo.",
+      "Reutilizar nós de cor 2 e propagar a ausência de ciclos.",
+      "Herdar somente o intervalo, preservando o peso próprio de cada convidado."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::expansao_20261028",
+    "assunto::dependencias_resultado_memoizado",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000009",
+      "title": "Porquinho da Índia",
+      "pages_1based": [
+        46,
+        47,
+        48
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": null,
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-expansao-072",
+    "sync_run_id": "b9f78700-9140-42d3-9354-cee80c562b26",
+    "learning_origin": "implementation_detail_from_notes",
+    "technical_references": []
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-expansao.json",
+    "validated_at": "2026-10-28T20:56:56-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793231826520",
+    "card_ids": [
+      "1793231826520"
+    ],
+    "fields_sha256": "25d509a3076051846e5822eeb58e6ef2414c3e958e7cc297fd4baa68fcecec6f",
+    "last_batch_id": "2026-10-28-expansao"
+  }
+}

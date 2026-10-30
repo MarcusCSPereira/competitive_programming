@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000081",
+  "content_key": "dois_menores_posicoes_distintas",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como encontrar os dois menores elementos de um array em uma passada, contando valores repetidos como posições diferentes? Quando isso evita ordenar ou copiar o array?",
+  "back": {
+    "answer": "Mantenha primeiro e segundo, os dois menores valores das posições já processadas. Se x é menor que primeiro, o antigo primeiro vira segundo. Caso contrário, x pode melhorar segundo. A ordem dessas atualizações preserva o invariante.\n\nO segundo menor elemento não significa o segundo valor distinto. Em [2,2,9], os dois menores são 2 e 2. O teste x<segundo, no segundo ramo, permite que uma repetição do primeiro ocupe essa posição.\n\nEm Olya and Game with Arrays, precisamos dos dois menores de cada array e não de todos os valores ordenados. Uma passada com referência constante evita copiar cada array e usa espaço auxiliar constante. O contrato exige pelo menos dois elementos; um array menor deve ser tratado pelo chamador.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "pair<long long,long long> doisMenores(const vector<long long>& a) {\n    assert(a.size()>=2);\n    long long primeiro=LLONG_MAX,segundo=LLONG_MAX;\n    for (long long x:a) {\n        if (x<primeiro) {segundo=primeiro; primeiro=x;}\n        else if (x<segundo) segundo=x;\n    }\n    return {primeiro,segundo};\n}",
+    "complexity": "O(N) de tempo e O(1) de espaço auxiliar; não altera nem copia o array de entrada.",
+    "success_criteria": [
+      "Deslocar o antigo primeiro antes de substituí-lo.",
+      "Contar ocorrências repetidas como posições distintas.",
+      "Reconhecer a precondição de pelo menos dois elementos."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::expansao_20261028",
+    "assunto::dois_menores_posicoes_distintas",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000040",
+      "title": "Olya and Game with Arrays",
+      "pages_1based": [
+        83,
+        84
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1859/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-expansao-072",
+    "sync_run_id": "b9f78700-9140-42d3-9354-cee80c562b26",
+    "learning_origin": "implementation_detail_from_notes",
+    "technical_references": []
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-expansao.json",
+    "validated_at": "2026-10-28T20:56:56-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793231826528",
+    "card_ids": [
+      "1793231826528"
+    ],
+    "fields_sha256": "b58a03545971c56583e0baffd13adc1a27ba94bebc76814e0e8dfb773455c639",
+    "last_batch_id": "2026-10-28-expansao"
+  }
+}

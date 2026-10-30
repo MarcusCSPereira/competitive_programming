@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000084",
+  "content_key": "lista_propriedade_memoria_e_remocao",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Numa lista usada por um LRU, qual a diferença entre desligar um nó e destruí-lo? Como definir quem é dono da memória para evitar vazamentos, ponteiros pendurados e cópias perigosas?",
+  "back": {
+    "answer": "Desligar altera as ligações dos vizinhos; o nó continua vivo e pode ser reinserido para atualizar a recência. Expulsar definitivamente exige também destruir o nó e remover o índice que o localiza. Depois da destruição, não se pode acessar nem a chave por aquele ponteiro.\n\nUma forma de explicitar a propriedade é guardar unique_ptr<No> no mapa: o mapa é o único dono, e prev/next são observadores. Na expulsão, localize o nó, desligue-o enquanto ainda está vivo e então apague sua entrada no mapa. erase destrói o unique_ptr e, com ele, o nó. O mapa também libera todos os nós restantes ao sair de escopo.\n\nAs sentinelas abaixo pertencem ao próprio objeto e não entram no mapa. Como há ponteiros para membros desse objeto, a cópia e a movimentação foram proibidas; implementá-las exigiria reconstruir as ligações. O exemplo mostra só a lista e a propriedade da memória, não um LRU completo nem garantia de O(1) no pior caso do hash. É um complemento à implementação manual anotada.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "struct ListaDona {\n    struct No {int chave; No* ant; No* prox;};\n    No head{-1,nullptr,nullptr},tail{-1,nullptr,nullptr};\n    unordered_map<int,unique_ptr<No>> donos;\n    ListaDona() {head.prox=&tail; tail.ant=&head;}\n    ListaDona(const ListaDona&)=delete;\n    ListaDona& operator=(const ListaDona&)=delete;\n    ListaDona(ListaDona&&)=delete;\n    ListaDona& operator=(ListaDona&&)=delete;\n    bool inserir(int chave) {\n        auto novo=make_unique<No>(No{chave,nullptr,nullptr});\n        auto [it,inserido]=donos.emplace(chave,std::move(novo));\n        if (!inserido) return false;\n        No* n=it->second.get();\n        n->ant=&head; n->prox=head.prox;\n        head.prox->ant=n; head.prox=n;\n        return true;\n    }\n    bool excluir(int chave) {\n        auto it=donos.find(chave);\n        if (it==donos.end()) return false;\n        No* n=it->second.get();\n        n->ant->prox=n->prox; n->prox->ant=n->ant;\n        donos.erase(it); // destrói n; não acessar n daqui em diante\n        return true;\n    }\n};",
+    "complexity": "O(1) médio por inserção/expulsão e O(N) de memória. A destruição do objeto libera os N nós restantes em O(N).",
+    "success_criteria": [
+      "Distinguir remoção das ligações de destruição da memória.",
+      "Manter um único dono e não acessar o nó depois de erase.",
+      "Tratar sentinelas e a semântica de cópia/movimentação do objeto."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::expansao_20261028",
+    "assunto::lista_propriedade_memoria_e_remocao",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000053",
+      "title": "LRU Cache",
+      "pages_1based": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": "https://leetcode.com/problems/lru-cache/description/",
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-expansao-072",
+    "sync_run_id": "b9f78700-9140-42d3-9354-cee80c562b26",
+    "learning_origin": "didactic_extension",
+    "technical_references": []
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-expansao.json",
+    "validated_at": "2026-10-28T20:56:56-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793231826531",
+    "card_ids": [
+      "1793231826531"
+    ],
+    "fields_sha256": "f06bf2e5c8fec0ed40d2fe95222a91a0defd84eee2c77124a25b438f65b38fc3",
+    "last_batch_id": "2026-10-28-expansao"
+  }
+}

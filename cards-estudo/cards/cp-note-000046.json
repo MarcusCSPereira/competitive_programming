@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000046",
+  "content_key": "divisores_em_pares",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Por que basta procurar divisores até a raiz de n? Como gerar os dois fatores de cada par sem duplicar a raiz quadrada e sem overflow em i*i?",
+  "back": {
+    "answer": "Se n=a*b e ambos fossem maiores que sqrt(n), o produto excederia n. Logo pelo menos um fator está até a raiz. Ao achar d, o outro é n/d. Para quadrado perfeito, esses fatores são iguais e devem ser adicionados uma vez. A condição d<=n/d evita overflow de d*d. Essa redução também encontra o menor divisor não trivial para Minimum LCM.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "vector<long long> divisores(long long n) {\n    vector<long long> ds;\n    for(long long d=1;d<=n/d;++d) if(n%d==0){\n        ds.push_back(d);\n        if(d!=n/d) ds.push_back(n/d);\n    }\n    sort(ds.begin(),ds.end()); return ds;\n}",
+    "complexity": "O(sqrt(n)+D log D) incluindo ordenação dos D divisores; O(D) de espaço; n>=1.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::divisores_em_pares",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000045",
+      "title": "Minimum LCM",
+      "pages_1based": [
+        88,
+        89,
+        90,
+        91
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1765/M",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210818",
+    "card_ids": [
+      "1793230210819"
+    ],
+    "fields_sha256": "a29ad6117081fd0bfa3381a6c5010eb8bb34d439b7dee4daa0993d6e1bc6d13a",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

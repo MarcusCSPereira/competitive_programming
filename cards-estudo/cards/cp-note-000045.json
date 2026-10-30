@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000045",
+  "content_key": "prefixo_sufixo_distintos",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como escolher um corte de string que maximize a soma de caracteres distintos nas duas partes? Por que contar distintos globalmente não basta?",
+  "back": {
+    "answer": "Um caractere presente dos dois lados contribui duas vezes, então o total global de distintos não responde à pergunta. Faça pref[i] contar distintos em s[0,i) e suf[i] contar em s[i,n). Para cada corte entre 1 e n-1, avalie pref[corte]+suf[corte]. Dois conjuntos de presença ou arrays de 26 posições bastam. Definir intervalos semiabertos evita duplicar ou esquecer o caractere na fronteira.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int melhorCorte(const string& s) {\n    int n=s.size(); vector<int> p(n+1),q(n+1);\n    array<bool,26> visto{};\n    for(int i=0;i<n;++i){int c=s[i]-'a';p[i+1]=p[i]+!visto[c];visto[c]=true;}\n    visto.fill(false);\n    for(int i=n-1;i>=0;--i){int c=s[i]-'a';q[i]=q[i+1]+!visto[c];visto[c]=true;}\n    int ans=0;\n    for(int i=1;i<n;++i) ans=max(ans,p[i]+q[i]);\n    return ans;\n}",
+    "complexity": "O(n+26) de tempo e O(n+26) de espaço; n>=2 e letras a-z.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::prefixo_sufixo_distintos",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000044",
+      "title": "Distinct Split",
+      "pages_1based": [
+        87,
+        88
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1791/D",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210817",
+    "card_ids": [
+      "1793230210818"
+    ],
+    "fields_sha256": "079ea57c613dc6a6b1ce19540e0380e8c3562c5aab76dae195d7f653817c97c3",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

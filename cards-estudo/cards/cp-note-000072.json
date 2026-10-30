@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000072",
+  "content_key": "distancias_overflow_e_infinito",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como escolher o tipo e o valor INF para somas de caminhos ou fórmulas? Por que guardar o resultado em long long não corrige uma multiplicação feita antes em int?",
+  "back": {
+    "answer": "O tipo do destino não muda retroativamente o tipo da expressão: long long x=n*p pode multiplicar dois ints e estourar antes da atribuição. Promova antes: 1LL*n*p, desde que o resultado também caiba em long long.\n\nEm caminhos com pesos não negativos, um menor caminho pode ser escolhido simples no grafo de estados. Com S estados e peso máximo W, (S-1)*W limita o custo de um caminho simples. Esse limite precisa ser estritamente menor que INF. Em Microwaves, S=(K+1)*V; considere K no orçamento de tempo e memória, e não apenas V.\n\nINF=LLONG_MAX/4 oferece margem, mas não é uma licença para somar qualquer valor. Não relaxe uma distância inalcançável. Para evitar overflow na própria soma, compare peso com INF-atual antes de somar. O código rejeita custos fora do domínio representável; o chamador deve comprovar que as restrições do problema cabem nesse domínio.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "constexpr long long INF_DIST=LLONG_MAX/4;\nbool limiteCabe(long long estados,long long pesoMaximo) {\n    if (estados<1 || pesoMaximo<0) return false;\n    return pesoMaximo==0 || estados-1<=(INF_DIST-1)/pesoMaximo;\n}\nbool relaxarSeguro(long long atual,long long peso,long long& destino) {\n    if (atual<0 || atual>=INF_DIST || peso<0) return false;\n    if (peso>=INF_DIST-atual) return false;\n    long long candidato=atual+peso;\n    if (candidato>=destino) return false;\n    destino=candidato;\n    return true;\n}",
+    "complexity": "O(1) por verificação/relaxamento. S representa todos os estados, incluindo as camadas do recurso.",
+    "success_criteria": [
+      "Promover os operandos antes da multiplicação.",
+      "Comprovar o limite finito abaixo de INF e considerar o grafo expandido.",
+      "Não somar INF nem avaliar uma soma que poderia estourar."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::expansao_20261028",
+    "assunto::distancias_overflow_e_infinito",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000008",
+      "title": "Microwaves",
+      "pages_1based": [
+        45,
+        46
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": null,
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    },
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000003",
+      "title": "Vasilije in Cacak",
+      "pages_1based": [
+        52
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1878/C",
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-expansao-072",
+    "sync_run_id": "b9f78700-9140-42d3-9354-cee80c562b26",
+    "learning_origin": "implementation_detail_from_notes",
+    "technical_references": []
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-expansao.json",
+    "validated_at": "2026-10-28T20:56:56-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793231826519",
+    "card_ids": [
+      "1793231826519"
+    ],
+    "fields_sha256": "3498ff9c948d559aa922902562c13ab5d7f52c1f69677ecc72ec1171c461ecf6",
+    "last_batch_id": "2026-10-28-expansao"
+  }
+}

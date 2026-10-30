@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000049",
+  "content_key": "times_dois_ponteiros",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como formar o máximo de times quando a força de um time é tamanho*maiorForça e precisa ser estritamente maior que D?",
+  "back": {
+    "answer": "Ordene as forças. Use o mais forte restante como líder. Ele precisa de floor(D/força)+1 pessoas no total; a desigualdade é estrita. Complete com os mais fracos restantes, pois a força individual deles não altera o máximo do time. Consumir os mais fracos preserva os fortes como líderes futuros. Se nem todos os jogadores restantes completam o time com esse líder, nenhum líder menor conseguirá.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int times(vector<long long> a,long long D) {\n    sort(a.begin(),a.end()); int l=0,r=(int)a.size()-1,ans=0;\n    while(l<=r){\n        long long precisa=D/a[r]+1;\n        if(precisa>r-l+1) break;\n        l+=(int)precisa-1; --r; ++ans;\n    }\n    return ans;\n}",
+    "complexity": "O(n log n) de tempo e O(1) auxiliar além da cópia; forças positivas.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::times_dois_ponteiros",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000047",
+      "title": "Basketball Together",
+      "pages_1based": [
+        92,
+        93
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1725/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210821",
+    "card_ids": [
+      "1793230210822"
+    ],
+    "fields_sha256": "92daca0169a4f7e4bfeea94b23d7492e3e9e2743561722134eefe282a29a14d2",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

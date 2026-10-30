@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000019",
+  "content_key": "mex_blocos_nao_nulos",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como usar os blocos de valores não nulos para zerar um array com operações de substituir um intervalo pelo seu MEX? Por que a resposta nunca precisa exceder 2?",
+  "back": {
+    "answer": "Sem valores não nulos, nada é necessário. Um único bloco não nulo não contém zero, então seu MEX é zero e uma operação basta. Com vários blocos, qualquer intervalo que cubra todos inclui zero; seu MEX será positivo, formando um único bloco não nulo. A segunda operação o transforma em zero. Logo a resposta é min(2, quantidade de blocos).",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int zerarComMex(const vector<int>& a) {\n    int blocos=0; bool dentro=false;\n    for(int x:a){\n        if(x==0) dentro=false;\n        else if(!dentro){ ++blocos; dentro=true; }\n    }\n    return min(2,blocos);\n}",
+    "complexity": "O(n) de tempo e O(1) de espaço.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::mex_blocos_nao_nulos",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000018",
+      "title": "NIT Destroys the Universe",
+      "pages_1based": [
+        61,
+        62
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1696/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210791",
+    "card_ids": [
+      "1793230210792"
+    ],
+    "fields_sha256": "ac4064afb3e8b80e3078e785b055a1b4e1b2b3477e7427662fa8a902b905a6a2",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

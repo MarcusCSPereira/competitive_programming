@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000034",
+  "content_key": "maximizar_medianas",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como maximizar a soma das medianas ao dividir nk valores já ordenados em k grupos de tamanho n? Como descobrir o salto do ponteiro a partir da definição da mediana?",
+  "back": {
+    "answer": "A mediana está na posição ceil(n/2), base 1: para n par é a mediana inferior. Cada mediana precisa de floor(n/2) elementos maiores ou iguais à sua direita no grupo. Reserve esses elementos a partir do fim e escolha o próximo como mediana. Repita com salto floor(n/2)+1. Os menores elementos restantes preenchem a parte esquerda dos grupos. O argumento greedy evita gastar um candidato grande na parte inferior de um grupo.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "long long somarMedianas(const vector<long long>& a,int n,int k) {\n    int pos=a.size(),salto=n/2+1;\n    long long soma=0;\n    for(int grupo=0;grupo<k;++grupo){ pos-=salto; soma+=a[pos]; }\n    return soma;\n}",
+    "complexity": "O(k) após ler os nk valores; O(nk) incluindo leitura e armazenamento. Array previamente ordenado.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::maximizar_medianas",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000033",
+      "title": "Sum of Medians",
+      "pages_1based": [
+        76,
+        77
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1440/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "clarification": "A imagem colada no caderno é de Strange Partition. O código foi reconstruído, comparado ao arquivo local correto e ao enunciado oficial de Sum of Medians.",
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210806",
+    "card_ids": [
+      "1793230210807"
+    ],
+    "fields_sha256": "ee7968b978eea5857fa584814fdc360f6f77631122519d80f78862590d189b2c",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

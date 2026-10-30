@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000070",
+  "content_key": "grafo_esparso_bidirecional",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como representar um grafo ponderado e bidirecional com até 10^5 vértices sem uma matriz N×N? Como guardar custo normal e custo alternativo ausente?",
+  "back": {
+    "answer": "Use uma lista de adjacência: g[u] guarda só as conexões que realmente saem de u. Uma conexão bidirecional precisa aparecer em g[u] e g[v]. Os dois registros representam a mesma ligação física, com os mesmos custos.\n\nO índice externo 1…N pode ser convertido para 0…N-1 na leitura. Em Microwaves, cada registro guarda destino, custo de fibra e custo de micro-ondas. O valor -1 significa que a alternativa não existe; não é um peso negativo a ser relaxado. O Dijkstra expande cada registro preservando o recurso ou consumindo um uso quando a alternativa existe.\n\nUma matriz teria N² posições mesmo com poucas arestas. A lista ocupa O(V+E), guardando 2E registros no caso bidirecional. Os custos e as distâncias não precisam ter o mesmo limite: a soma de muitos custos pode exigir long long.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "struct Ligacao { int destino; long long fibra, micro; };\nvector<vector<Ligacao>> montarGrafo(\n    int n, const vector<tuple<int,int,long long,long long>>& linhas) {\n    vector<vector<Ligacao>> g(n);\n    for (auto [u,v,fibra,micro] : linhas) {\n        --u; --v; // entrada em base 1\n        g[u].push_back({v,fibra,micro});\n        g[v].push_back({u,fibra,micro});\n    }\n    return g;\n}",
+    "complexity": "O(V+E) de tempo e memória para montar o grafo; 2E registros continuam sendo O(E).",
+    "success_criteria": [
+      "Inserir cada ligação nos dois sentidos e converter a base dos índices.",
+      "Guardar -1 como ausência da alternativa, sem usar isso como peso.",
+      "Comparar O(V+E) da lista com O(V²) da matriz."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::expansao_20261028",
+    "assunto::grafo_esparso_bidirecional",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000008",
+      "title": "Microwaves",
+      "pages_1based": [
+        45,
+        46
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": null,
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-expansao-072",
+    "sync_run_id": "b9f78700-9140-42d3-9354-cee80c562b26",
+    "learning_origin": "implementation_detail_from_notes",
+    "technical_references": []
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-expansao.json",
+    "validated_at": "2026-10-28T20:56:56-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793231826517",
+    "card_ids": [
+      "1793231826517"
+    ],
+    "fields_sha256": "c6253efc6153a65d5197b53683764bdb6dfdaae0d904b40760cf4143b2b18dc4",
+    "last_batch_id": "2026-10-28-expansao"
+  }
+}

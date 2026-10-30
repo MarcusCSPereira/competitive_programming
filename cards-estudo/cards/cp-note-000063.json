@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000063",
+  "content_key": "reusar_saida_prefixo",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como reduzir o espaço auxiliar de prefixo/sufixo no produto exceto o elemento atual? Qual invariante deve valer antes de atualizar o acumulador?",
+  "back": {
+    "answer": "Use a própria saída para guardar os produtos à esquerda na primeira passada. Na passada inversa, mantenha apenas um acumulador do produto à direita. Primeiro multiplique a saída pelo acumulador; só depois inclua o elemento atual nele. Atualizar na ordem inversa incluiria a[i], quebrando a exclusão. O espaço auxiliar é O(1), mas a saída continua ocupando O(n).",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "vector<long long> produtoCompacto(const vector<int>& a){\n    int n=a.size();vector<long long>ans(n,1);long long acum=1;\n    for(int i=0;i<n;++i){ans[i]=acum;acum*=a[i];}\n    acum=1;\n    for(int i=n-1;i>=0;--i){ans[i]*=acum;acum*=a[i];}\n    return ans;\n}",
+    "complexity": "O(n) de tempo, O(1) auxiliar além dos O(n) da saída; produtos devem caber em long long.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::reusar_saida_prefixo",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000057",
+      "title": "Product of Array Except Self",
+      "pages_1based": [
+        9,
+        10
+      ],
+      "source_snapshot_sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": "https://leetcode.com/problems/product-of-array-except-self/description/",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210835",
+    "card_ids": [
+      "1793230210836"
+    ],
+    "fields_sha256": "b3a59ada33019adbaa65ec88352b95ae003d8ee137e0c3d97f86a7893e0f7724",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

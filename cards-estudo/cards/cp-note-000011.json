@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000011",
+  "content_key": "xor_paridade_segmento",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Por que aplicar duas vezes a operação de substituir um segmento pelo XOR de seus valores zera um segmento de comprimento par? Como lidar com comprimento ímpar?",
+  "back": {
+    "answer": "Na primeira operação, todos os elementos viram o mesmo XOR x. Na segunda, o XOR de uma quantidade par de cópias de x é zero, porque x^x=0. Para n ímpar, zere [1,n-1] com duas operações e depois [n-1,n], também de comprimento par. A sobreposição não desfaz o prefixo já zerado. Essa construção usa no máximo quatro operações.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "vector<pair<int,int>> operacoesZero(int n) {\n    if(n%2==0) return {{1,n},{1,n}};\n    return {{1,n-1},{1,n-1},{n-1,n},{n-1,n}};\n}",
+    "complexity": "O(1) para emitir os intervalos; simular as operações custa O(n). Assume n>=2.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::xor_paridade_segmento",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000010",
+      "title": "Make It Zero",
+      "pages_1based": [
+        54
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1869/A",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210783",
+    "card_ids": [
+      "1793230210784"
+    ],
+    "fields_sha256": "70e7e68b7ce9f0eb0a31621f695c6cc1bf65a4e48d2889e0f3cb75f6b84d6e24",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

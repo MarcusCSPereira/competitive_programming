@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000028",
+  "content_key": "subconjuntos_zeros_uns",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Quando um array tem soma S, como contar subsequências por índices cuja soma é S-1? Por que zeros multiplicam possibilidades e como evitar pow com ponto flutuante?",
+  "back": {
+    "answer": "Considere os elementos que ficam de fora: sua soma precisa ser 1. Como todos os valores são não negativos, devemos excluir exatamente um 1, qualquer subconjunto de zeros e nenhum valor maior. São quantidadeDeUns * 2^quantidadeDeZeros escolhas. Subsequências são contadas pelas posições, mesmo com valores repetidos. Use aritmética inteira; sob n<=60 o resultado cabe em unsigned long long e o shift é válido.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "unsigned long long contarSubsequencias(const vector<int>& a) {\n    int zeros=0,uns=0;\n    for(int x:a){ zeros+=(x==0); uns+=(x==1); }\n    return (unsigned long long)uns*(1ULL<<zeros);\n}",
+    "complexity": "O(n) de tempo e O(1) de espaço; n<=60, valores não negativos.",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::subconjuntos_zeros_uns",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000027",
+      "title": "Luntik and Subsequences",
+      "pages_1based": [
+        71,
+        72
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1582/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210800",
+    "card_ids": [
+      "1793230210801"
+    ],
+    "fields_sha256": "85f5eee7c1d5f2aac62ebea825786849e0a9c08fb00d774aa2f1ad4e5774e199",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000076",
+  "content_key": "diferencas_atualizacao_intervalos",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Qual a diferença entre prefix sums para consultar intervalos e vetor de diferenças para atualizar intervalos? Como somar valores em muitos trechos e reconstruir o resultado em C++?",
+  "back": {
+    "answer": "Prefix sums respondem quanto há em [l,r] subtraindo duas somas. Um vetor de diferenças registra onde uma atualização começa e termina: para somar x em [l,r], base zero e inclusivo, faça delta[l]+=x e delta[r+1]-=x. Um prefixo de delta reconstrói a contribuição ativa em cada posição.\n\nÉ a mesma ideia dos eventos +peso/-peso da sweep line, aplicada a um domínio pequeno e indexável. Reserve N+1 posições para registrar a saída depois da última posição. Só reconstrua depois de aplicar todas as atualizações; isso é um processamento offline. Para coordenadas enormes, use eventos ordenados, como no card de sweep line.\n\nEste é um complemento didático: Odd Queries faz consultas hipotéticas independentes e não exige mutações permanentes no array. Não aplique suas substituições ao estado acumulado entre consultas.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "vector<long long> aplicarIntervalos(\n    int n,const vector<tuple<int,int,long long>>& atualizacoes) {\n    vector<long long> delta(n+1,0),resposta(n);\n    for (auto [l,r,x]:atualizacoes) {\n        delta[l]+=x;\n        delta[r+1]-=x;\n    }\n    long long ativo=0;\n    for (int i=0;i<n;++i) {ativo+=delta[i];resposta[i]=ativo;}\n    return resposta;\n}",
+    "complexity": "O(Q+N) de tempo e O(N) de espaço para Q atualizações válidas, com 0≤l≤r<N. Resposta e deltas devem caber em long long.",
+    "success_criteria": [
+      "Distinguir consulta de intervalo de atualização em intervalo.",
+      "Cancelar em r+1 e reservar a posição sentinela N.",
+      "Reconhecer quando o domínio exige eventos esparsos em vez de vetor."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::expansao_20261028",
+    "assunto::diferencas_atualizacao_intervalos",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000009",
+      "title": "Porquinho da Índia",
+      "pages_1based": [
+        46,
+        47,
+        48
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": null,
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    },
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000015",
+      "title": "Odd Queries",
+      "pages_1based": [
+        58,
+        59
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1807/D",
+      "highlight_color": "purple_and_context",
+      "provenance": "Revisão de cobertura do mesmo snapshot; código e explicação autorais."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-28-expansao-072",
+    "sync_run_id": "b9f78700-9140-42d3-9354-cee80c562b26",
+    "learning_origin": "didactic_extension",
+    "technical_references": []
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-expansao.json",
+    "validated_at": "2026-10-28T20:56:56-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793231826523",
+    "card_ids": [
+      "1793231826523"
+    ],
+    "fields_sha256": "318ddcbd56e8d89de062b584b5ee702e9aa238505eb59907b5f6be802a0d74c2",
+    "last_batch_id": "2026-10-28-expansao"
+  }
+}

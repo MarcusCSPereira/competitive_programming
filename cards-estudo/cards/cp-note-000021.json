@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000021",
+  "content_key": "greedy_direita_esquerda",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Por que, ao tornar um array estritamente crescente usando divisões por 2, devemos decidir da direita para a esquerda? Como reconhecer impossibilidade?",
+  "back": {
+    "answer": "A operação só reduz valores. Preserve o elemento à direita tão grande quanto possível para não restringir desnecessariamente os anteriores. Para cada posição, reduza apenas até ficar menor que a seguinte. Isso usa o mínimo de divisões necessário com o sufixo já fixo. Se o valor à direita é zero, nenhum valor não negativo à esquerda pode ser menor: é impossível. O primeiro elemento pode ser zero sem problema.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int tornarCrescente(vector<long long> a) {\n    int ops=0;\n    for(int i=(int)a.size()-2;i>=0;--i){\n        if(a[i+1]==0) return -1;\n        while(a[i]>=a[i+1]){ a[i]/=2; ++ops; }\n    }\n    return ops;\n}",
+    "complexity": "O(n log(A+1)) de tempo; cópia do array O(n).",
+    "success_criteria": [
+      "Explicar o invariante ou a justificativa do padrão.",
+      "Reconstruir o uso em C++ e reconhecer as condições de validade."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::historico_20261028",
+    "assunto::greedy_direita_esquerda",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000020",
+      "title": "Make It Increasing",
+      "pages_1based": [
+        63,
+        64
+      ],
+      "source_snapshot_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1675/B",
+      "highlight_color": "purple_and_context",
+      "provenance": "PDF colorido lido visualmente; explicação e código autorais conferidos."
+    }
+  ],
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-historico.json",
+    "validated_at": "2026-10-28T20:30:03-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793230210793",
+    "card_ids": [
+      "1793230210794"
+    ],
+    "fields_sha256": "c3a21713f65efbe4fc3a0fd7b98d843aef7a662bce6ff7d539e0307450978d38",
+    "last_batch_id": "2026-10-28-historico"
+  }
+}

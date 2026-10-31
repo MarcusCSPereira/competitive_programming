@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "revision": 103,
+  "revision": 104,
   "timezone": "America/Bahia",
   "created_at": "2026-10-28T16:57:29-03:00",
-  "updated_at": "2026-10-29T22:20:55-03:00",
+  "updated_at": "2026-10-31T19:50:10.455564-03:00",
   "phase": "historical_backfill",
-  "last_run_id": "2026-10-29-diaria-099",
+  "last_run_id": "2026-10-31-diaria",
   "drive_account": "marcus.cesar.sp@gmail.com",
   "drive_folder_url": "https://drive.google.com/drive/u/3/folders/14BAvQwVD7kuo90RbTmYZgLkFtLGJpyhc",
   "id_counters": {
@@ -884,25 +884,11 @@
     }
   },
   "daily_pipeline": {
-    "status": "synced",
-    "run_id": "2026-10-29-diaria-099",
-    "sync_run_id": "7ac7852b-c9b9-4165-9d16-fb68258b23cf",
-    "started_at": "2026-10-29T21:55:25.007632-03:00",
-    "old_problemas_sha256": "2446f6a988a66805ea578961e258c31bdf8616ccd584ffa922664f71ef896250",
-    "new_problemas_sha256": "ff8cc3dab9ddcdce4f2b905f652ddea06618d35bbef6a62de75db15e5d12c7f7",
-    "changed_authorized_pages": [
-      99
-    ],
-    "validated_card_ids": [
-      "cp-note-000092",
-      "cp-note-000093"
-    ],
-    "validation_report": "estado/validacao-diaria-2026-10-29.json",
-    "batch_id": "2026-10-29-diaria",
-    "new_cards": 2,
-    "total_cards": 93,
-    "verified_at": "2026-10-29T22:06:52-03:00",
-    "manifest": "exportacoes/2026-10-29-diaria-manifest.json",
-    "report": "analises/2026-10-29-rotina-diaria.md"
+    "status": "source_verified_analysis_started",
+    "run_id": "2026-10-31-diaria",
+    "started_at": "2026-10-31T19:50:10.455564-03:00",
+    "sync_run_id": "67d7a4c5-5122-4abf-8dc5-2a0a42770a9b",
+    "batch_start_within_gate_validity": true,
+    "previous_cards": 93
   }
 }

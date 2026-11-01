@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000094",
+  "content_key": "triangulo_extremos_base_altura",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Há pontos em todos os lados de um retângulo de largura w e altura h. Como maximizar a área de um triângulo com exatamente dois vértices no mesmo lado? Como implementar sem testar todas as trincas?",
+  "back": {
+    "answer": "Fixando o lado que contém dois vértices, esses dois pontos formam a base. A maior base usa as duas coordenadas extremas desse lado. A altura é a distância perpendicular do terceiro vértice à reta da base, e não a distância até um extremo.\n\nPara base horizontal, essa distância não passa de h e qualquer ponto do lado horizontal oposto atinge h. Para base vertical, use w. Como há pontos em todos os lados e nenhum é canto, sempre existe um terceiro vértice válido no lado oposto. Assim, para cada um dos quatro lados, a melhor área dobrada é (máximo−mínimo)×distância ao lado oposto. O máximo desses quatro candidatos é a resposta global. A coordenada do terceiro ponto ao longo do lado oposto não altera a altura.\n\nA entrada já fornece as coordenadas em ordem crescente: bastam primeiro e último. O código guarda os extremos de cada lado, na ordem inferior, superior, esquerdo, direito. Durante a leitura, é possível descartar as coordenadas intermediárias. Se a lista não estiver ordenada, é necessário calcular mínimo e máximo.\n\nTrabalhar com 2×área elimina a divisão por dois e preserva resultados sem arredondamento, inclusive quando a área é meio inteira. Use long long antes da multiplicação: com dimensões até 10^6, o produto pode se aproximar de 10^12 e ultrapassar int.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "long long maiorAreaDobrada(\n     long long w, long long h,\n     const array<pair<long long,long long>,4>& extremos) {\n     // Cada par = {menor coordenada, maior coordenada} no lado.\n     long long melhor=0;\n     for (int lado=0;lado<4;++lado) {\n         auto [menor,maior]=extremos[lado];\n         long long base=maior-menor;\n         long long altura=(lado<2 ? h : w);\n         melhor=max(melhor,base*altura);\n     }\n     return melhor; // já é 2*área; não dividir por 2\n }",
+    "complexity": "O(P) de tempo para ler P pontos e O(1) auxiliar guardando só quatro pares de extremos. Após a leitura, a função executa O(1) operações e usa O(1) espaço.",
+    "success_criteria": [
+      "Justificar extremos na base e lado oposto para maximizar a altura.",
+      "Associar bases horizontais a h e verticais a w.",
+      "Usar área dobrada e multiplicação em 64 bits."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::diaria_20261031",
+    "assunto::triangulo_extremos_base_altura",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000062",
+      "title": "Triangles on a Rectangle",
+      "pages_1based": [
+        101
+      ],
+      "source_snapshot_sha256": "585dfd68e54feeaec2f8e02319e935f40a41ccd7a9e7dd14ff3acc8745511e07",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1620/B",
+      "local_code_path": "codeforces/rating_1000/triangles_on_a_rectangle-1620B.cpp",
+      "local_code_sha256": "91cb2716cd0a19325df2609f1ddbd304ddb3e92d1d35a801654e16ae369ede52",
+      "highlight_color": "black_statement_blue_logic",
+      "provenance": "Página 101 contém enunciado, entrada e lógica azul; ainda sem código em imagem, tópicos roxos ou complexidade verde no final. Implementação e limites conferidos com solução local commit e7519d7 e fonte oficial. A função de extremos é adaptação didática. O título incorreto do commit (1629B) não substitui o ID 1620B conferido no arquivo/enunciado."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-31-diaria",
+    "sync_run_id": "67d7a4c5-5122-4abf-8dc5-2a0a42770a9b",
+    "learning_origin": "manuscript_logic_plus_local_solution_and_official_statement"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-diaria-2026-10-31.json",
+    "validated_at": "2026-10-31T19:54:10.327813-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793487255841",
+    "card_ids": [
+      "1793487255841"
+    ],
+    "fields_sha256": "7a5909e5679e09ae5f8ad8ff6a79fc11bbc88c6b56ec9591bd6c30ae2002e520",
+    "last_batch_id": "2026-10-31-diaria"
+  }
+}

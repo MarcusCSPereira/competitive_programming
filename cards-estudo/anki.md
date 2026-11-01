@@ -178,3 +178,18 @@ do Mac, a partir do próximo login. Isso permite à rotina das 12:30 usar a API
 sem trazer a janela à frente. A configuração está validada; o primeiro login
 ainda está pendente de observação. Todos os cards e o limite de 10/dia foram
 preservados. Veja `estado/anki-inicio-sessao.json`.
+
+## Execução incremental de 31/10
+
+Lote `2026-10-31-diaria`: 3 notas novas e 2 aprimoradas, total **96 cards**.
+Os 93 IDs anteriores e seus agendamentos foram conferidos e preservados. Os
+cinco conteúdos foram relidos, renderizados por API e sincronizados (coleção
+e mídias completas). Reexecução: criar0, atualizar0, manter5. Limite **10 novos/dia**
+e revisões primeiro preservados. Relatório: `estado/verificacao-diaria-2026-10-31.json`.
+
+## Inicialização automática removida — 01/11/2026
+
+A pedido do usuário, o serviço de início de sessão do Anki foi descarregado,
+desabilitado e retirado de Library/LaunchAgents. A rotina diária também está
+pausada. Cards e revisões permanecem preservados; iniciar manualmente quando
+necessário. Não reinstalar a abertura automática sem novo pedido.

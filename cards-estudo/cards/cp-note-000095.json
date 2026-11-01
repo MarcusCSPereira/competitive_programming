@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000095",
+  "content_key": "sequencia_consecutiva_hash_inicio_cadeia",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como achar a maior sequência de valores inteiros consecutivos de um array não ordenado usando hash set, em tempo esperado O(n)? Por que os laços não tornam o algoritmo quadrático?",
+  "back": {
+    "answer": "A sequência é de valores: eles não precisam aparecer juntos nem ordenados no array. Construa um unordered_set para consultar presença e eliminar duplicatas. Um valor x só inicia uma sequência se x−1 não estiver no conjunto. A partir desse início, avance enquanto o próximo valor existir e atualize o maior comprimento.\n\nCada sequência maximal é percorrida uma vez, somente a partir do menor elemento. Os demais valores falham no teste de início. Somando todos os avanços, visitamos O(u) valores distintos, onde u≤n: dois laços aninhados não implicam O(n²) quando o trabalho interno total é linear. Com consultas de hash O(1) em média, o tempo total esperado é O(n). Colisões ruins podem degradá-lo; não é uma garantia de pior caso O(n). std::set usa O(log n) por consulta e não dá a mesma complexidade.\n\nItere o conjunto de valores distintos, não o array original: muitas cópias do início de uma sequência fariam repetir a mesma varredura. Para [100,4,200,1,3,2], a resposta é 4, pela sequência 1,2,3,4. Para array vazio, retorne zero.\n\nO código promove os int a long long antes de calcular predecessor/sucessor, evitando overflow em INT_MIN−1 e INT_MAX+1. Essa proteção é um complemento didático: o enunciado restringe valores a ±10^9, mas a função abaixo também aceita todos os int.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int maiorSequenciaConsecutiva(const vector<int>& nums) {\n     unordered_set<long long> valores(nums.begin(),nums.end());\n     int melhor=0;\n     for (long long inicio:valores) {\n         if (valores.count(inicio-1)) continue;\n         long long atual=inicio;\n         int tamanho=1;\n         while (valores.count(atual+1)) {\n             ++atual;\n             ++tamanho;\n         }\n         melhor=max(melhor,tamanho);\n     }\n     return melhor;\n }",
+    "complexity": "O(n) esperado de tempo, O(n) espaço; pior caso O(n²) se o hash se degradar. Contrato: entrada vector<int> de até 10^5 elementos; valores promovidos antes da aritmética.",
+    "success_criteria": [
+      "Detectar somente o início usando ausência de x−1.",
+      "Iterar valores únicos e justificar o total linear de avanços.",
+      "Distinguir valores consecutivos de subarray e tempo esperado de pior caso."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::diaria_20261031",
+    "assunto::sequencia_consecutiva_hash_inicio_cadeia",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000063",
+      "title": "Longest Consecutive Sequence",
+      "pages_1based": [
+        15
+      ],
+      "source_snapshot_sha256": "01fb7e4909364ec82c643ba30ebd518d14b4e27b44626f068d88f79872b47235",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "official_statement_url": "https://leetcode.com/problems/longest-consecutive-sequence/description/",
+      "local_code_path": "leet_code/medium/longest_consecutive_sequence-128.cpp",
+      "local_code_sha256": "b2a45f0f3c08ba334facaf3ec10480174fa6e561298ce9503afc4298afef8445",
+      "highlight_color": "black_statement_blue_logic",
+      "provenance": "Página 15 contém título, enunciado e lógica azul de hash set e início de sequência; ainda sem imagem de código/roxo/complexidade verde. Solução local commit e7519d7 e fonte oficial conferidos. A descrição manuscrita de hash set não significa std::set. Deduplicação no laço, análise amortizada e proteção de limites são explicitadas didaticamente."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-31-diaria",
+    "sync_run_id": "67d7a4c5-5122-4abf-8dc5-2a0a42770a9b",
+    "learning_origin": "manuscript_logic_plus_local_solution_and_official_statement"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-diaria-2026-10-31.json",
+    "validated_at": "2026-10-31T19:54:10.332368-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793487255842",
+    "card_ids": [
+      "1793487255842"
+    ],
+    "fields_sha256": "b841c18578315ad13a844200766daef935cdf1e1ed7c832d893618998399fe7f",
+    "last_batch_id": "2026-10-31-diaria"
+  }
+}

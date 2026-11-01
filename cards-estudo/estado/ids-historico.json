@@ -1,5 +1,5 @@
 {
-  "next_id": 94,
+  "next_id": 97,
   "keys": {
     "casa_dos_pombos": "cp-note-000001",
     "construir_linked_list": "cp-note-000002",
@@ -93,6 +93,9 @@
     "fatorial_modulo_reutilizavel": "cp-note-000090",
     "validar_construcao_por_propriedades": "cp-note-000091",
     "xor_bit_mais_significativo": "cp-note-000092",
-    "minimax_xor_permutacao_por_grupos": "cp-note-000093"
+    "minimax_xor_permutacao_por_grupos": "cp-note-000093",
+    "triangulo_extremos_base_altura": "cp-note-000094",
+    "sequencia_consecutiva_hash_inicio_cadeia": "cp-note-000095",
+    "greedy_pesos_distancias_prova_troca": "cp-note-000096"
   }
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-29T22:06:52-03:00",
+  "updated_at": "2026-10-31T19:55:32.865543-03:00",
   "units": [
     {
       "id": "cp-problem-000001",
@@ -167,7 +167,8 @@
       "id": "cp-problem-000006",
       "notebook_id": "problemas",
       "pages": [
-        99
+        99,
+        100
       ],
       "title": "Roof Construction",
       "platform_id_observed": "cf-1632B",
@@ -177,36 +178,41 @@
         "cp-note-000092",
         "cp-note-000093"
       ],
-      "notes": "A página 99 passou a conter enunciado em 29/10. Campo de lógica manuscrita vazio. Solução local concluída no commit 2a79895 e enunciado oficial usados para validar e gerar dois cards, preservando o ID da questão. Quando a lógica manuscrita aparecer, reanalisar sem duplicar.",
+      "notes": "Lógica manuscrita completada nas páginas99–100; roxo dentro da lógica, tópicos e complexidade verde conferidos. Dois cards existentes aprimorados, sem novos IDs. Esclarecer índice de msb versus potência e máximo adjacente versus XOR acumulado.",
       "platform_id": "1632B",
       "rating_verified": 1000,
       "local_code": "codeforces/rating_1000/roof_construction-1632B.cpp",
       "local_code_sha256": "06cdd05b97358f13e8d48a29ba2d63dc292632dc227623e43cd34c5cf958a77f",
       "official_statement_url": "https://codeforces.com/problemset/problem/1632/B",
-      "source_snapshot_sha256": "ff8cc3dab9ddcdce4f2b905f652ddea06618d35bbef6a62de75db15e5d12c7f7",
+      "source_snapshot_sha256": "585dfd68e54feeaec2f8e02319e935f40a41ccd7a9e7dd14ff3acc8745511e07",
       "topics": [
         "XOR e bit mais significativo",
         "maior potência de dois por inteiros",
         "minimax e limite inferior",
         "construção de permutação por grupos"
       ],
-      "handwriting_status": "statement_present_logic_empty",
-      "logic_source": "local_solution_and_official_statement",
+      "handwriting_status": "statement_logic_code_purple_and_complexity_present",
+      "logic_source": "manuscript_cross_checked_with_local_solution_and_official_statement",
       "correction": "Minimizar o maior XOR entre pares adjacentes, conforme enunciado oficial; anotação sugere maximização.",
       "notes_history": [
         {
           "note": "Só título no final da fonte atual. Retomar se a questão ganhar conteúdo.",
           "superseded_at": "2026-10-29T22:06:52-03:00"
+        },
+        {
+          "note": "A página 99 passou a conter enunciado em 29/10. Campo de lógica manuscrita vazio. Solução local concluída no commit 2a79895 e enunciado oficial usados para validar e gerar dois cards, preservando o ID da questão. Quando a lógica manuscrita aparecer, reanalisar sem duplicar.",
+          "superseded_at": "2026-10-31T19:54:10.322296-03:00"
         }
       ],
       "correction_record": {
         "anotacao_original": "Descrição indica buscar o maior valor entre XORs de pares.",
         "correcao": "Minimizar o máximo XOR entre vizinhos da permutação.",
         "evidencia": "https://codeforces.com/problemset/problem/1632/B",
-        "status_validacao": "confirmed_against_official_statement_and_local_solution"
+        "status_validacao": "confirmed_against_official_statement_and_local_solution",
+        "additional_clarification": "A prova refere-se ao máximo XOR adjacente; XOR acumulado não dá o mesmo limite. msb como índice requer floor(log2(x))."
       },
       "import_confirmed": true,
-      "last_batch_id": "2026-10-29-diaria"
+      "last_batch_id": "2026-10-31-diaria"
     },
     {
       "id": "cp-problem-000007",
@@ -1497,6 +1503,81 @@
           "cp-note-000090"
         ]
       }
+    },
+    {
+      "id": "cp-problem-000062",
+      "notebook_id": "problemas",
+      "title": "Triangles on a Rectangle",
+      "pages": [
+        101
+      ],
+      "platform_id": "1620B",
+      "official_statement_verified": true,
+      "official_statement_url": "https://codeforces.com/problemset/problem/1620/B",
+      "local_code": "codeforces/rating_1000/triangles_on_a_rectangle-1620B.cpp",
+      "local_code_sha256": "91cb2716cd0a19325df2609f1ddbd304ddb3e92d1d35a801654e16ae369ede52",
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000094"
+      ],
+      "topics": [
+        "triangulo_extremos_base_altura"
+      ],
+      "import_confirmed": true,
+      "last_batch_id": "2026-10-31-diaria",
+      "notes": "Página 101 contém enunciado, entrada e lógica azul; ainda sem código em imagem, tópicos roxos ou complexidade verde no final. Implementação e limites conferidos com solução local commit e7519d7 e fonte oficial. A função de extremos é adaptação didática. O título incorreto do commit (1629B) não substitui o ID 1620B conferido no arquivo/enunciado.",
+      "source_snapshot_sha256": "585dfd68e54feeaec2f8e02319e935f40a41ccd7a9e7dd14ff3acc8745511e07",
+      "handwriting_status": "statement_and_logic_present_code_and_purple_not_yet_present"
+    },
+    {
+      "id": "cp-problem-000063",
+      "notebook_id": "big-tech-problems",
+      "title": "Longest Consecutive Sequence",
+      "pages": [
+        15
+      ],
+      "platform_id": "128",
+      "official_statement_verified": true,
+      "official_statement_url": "https://leetcode.com/problems/longest-consecutive-sequence/description/",
+      "local_code": "leet_code/medium/longest_consecutive_sequence-128.cpp",
+      "local_code_sha256": "b2a45f0f3c08ba334facaf3ec10480174fa6e561298ce9503afc4298afef8445",
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000095"
+      ],
+      "topics": [
+        "sequencia_consecutiva_hash_inicio_cadeia"
+      ],
+      "import_confirmed": true,
+      "last_batch_id": "2026-10-31-diaria",
+      "notes": "Página 15 contém título, enunciado e lógica azul de hash set e início de sequência; ainda sem imagem de código/roxo/complexidade verde. Solução local commit e7519d7 e fonte oficial conferidos. A descrição manuscrita de hash set não significa std::set. Deduplicação no laço, análise amortizada e proteção de limites são explicitadas didaticamente.",
+      "source_snapshot_sha256": "01fb7e4909364ec82c643ba30ebd518d14b4e27b44626f068d88f79872b47235",
+      "handwriting_status": "statement_and_logic_present_code_and_purple_not_yet_present",
+      "reading_clarification": "Exemplo manuscrito ambíguo; usado exemplo oficial validado, sem atribuir erro de transcrição ao usuário."
+    },
+    {
+      "id": "cp-problem-000064",
+      "notebook_id": "repositorio-cpp",
+      "title": "Divan and a New Project",
+      "pages": [],
+      "platform_id": "1614B",
+      "official_statement_verified": true,
+      "official_statement_url": "https://codeforces.com/problemset/problem/1614/B",
+      "local_code": "codeforces/rating_1000/divan_and_new_project-1614B.cpp",
+      "local_code_sha256": "2a2561030cc0573d228bbc35471877716d1999cc934c2f4cbb9772e50ac5ad18",
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000096"
+      ],
+      "topics": [
+        "greedy_pesos_distancias_prova_troca"
+      ],
+      "import_confirmed": true,
+      "last_batch_id": "2026-10-31-diaria",
+      "notes": "Solução local passou a estar concluída/versionada durante esta execução (commit 7ffb9c3 de 31/10/2026 19:51 America/Bahia). Conferida com fonte oficial. Nenhuma página correspondente em Problemas45–101/BigTech1–15; manter ID ao aparecer no manuscrito. Prova por troca é complemento didático.",
+      "source_kind": "repository_solution_and_official_statement",
+      "manuscript_mapping_status": "not_located_in_authorized_pdf_snapshot",
+      "rating_verified": 1000
     }
   ],
   "note": "Faixas autorizadas lidas integralmente; melhores assuntos selecionados em 69 cards. Roof Construction permanece sem conteúdo."

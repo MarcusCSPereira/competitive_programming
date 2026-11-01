@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "revision": 104,
+  "revision": 110,
   "timezone": "America/Bahia",
   "created_at": "2026-10-28T16:57:29-03:00",
-  "updated_at": "2026-10-31T19:50:10.455564-03:00",
+  "updated_at": "2026-11-01T15:17:46.026154-03:00",
   "phase": "historical_backfill",
   "last_run_id": "2026-10-31-diaria",
   "drive_account": "marcus.cesar.sp@gmail.com",
   "drive_folder_url": "https://drive.google.com/drive/u/3/folders/14BAvQwVD7kuo90RbTmYZgLkFtLGJpyhc",
   "id_counters": {
-    "next_problem": 62,
-    "next_card": 94
+    "next_problem": 65,
+    "next_card": 97
   },
   "notebooks": {
     "problemas": {
@@ -24,70 +24,72 @@
       },
       "source_snapshot": {
         "method": "drive_desktop_local_verified_snapshot",
-        "local_path": ".cache/sync/snapshots/ff8cc3dab9ddcdce4f2b905f652ddea06618d35bbef6a62de75db15e5d12c7f7.pdf",
-        "sha256": "ff8cc3dab9ddcdce4f2b905f652ddea06618d35bbef6a62de75db15e5d12c7f7",
-        "size_bytes": 68663286,
-        "page_count": 99,
+        "local_path": ".cache/sync/snapshots/585dfd68e54feeaec2f8e02319e935f40a41ccd7a9e7dd14ff3acc8745511e07.pdf",
+        "sha256": "585dfd68e54feeaec2f8e02319e935f40a41ccd7a9e7dd14ff3acc8745511e07",
+        "size_bytes": 70510005,
+        "page_count": 101,
         "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
         "same_bytes_as_drive_verified": false,
         "matches_fresh_cloud_size_and_mtime": true,
-        "sync_run_id": "7ac7852b-c9b9-4165-9d16-fb68258b23cf",
-        "page_image_sha256": {
-          "45": "9ffedcba31c800c1b4b1d36d5688f3f49c54ca2affea15b641bb29ce8a8083bd",
-          "46": "0d18ba92f88c5db3d3d054a726c95dae036d1ce7a92b1c379fc9265bd5988833",
-          "47": "7ec1400a2158ae61282e251daeab49bd15f1f377e57a1aa090162aa3d8234e3c",
-          "48": "a1a01f09a2d9190d03bc2bac7e811641aa90254bd439233c3956e93d5163eece",
-          "49": "758da2b8922341b2c0214815e163f58b81d447a578408d83bb32ebf9c74fe3eb",
-          "50": "b83c00961af78e0eb2b6f0989cc24f5d2667d2559607a8cb074d2d5dda808280",
-          "51": "780182df8a62c22895aaad8301e70aef7a02990dac94b2c8421c2a996a6d23e1",
-          "52": "07d8f891b98641974f9f17fda9afecab28fb8165db8ae46fd4713f64d51f08fa",
-          "53": "7741978f662730009590a72eca6f3657bf2a7c5095923eafe0ec5a9b244c918a",
-          "54": "e98041fdb0e2070b427674bc34e3cb11e7a2e4e5c52197d12eca4084f1eb9291",
-          "55": "3af1bfbeb423b96ae191670f1586ac2a1614170eabae6c1355e852e54357615a",
-          "56": "392e6adbf251d45aadc212012bce79e27eb7818397e7cdaf44dbb99e9e00af67",
-          "57": "b7c9fc41cf15ebda3928cf427ac8166eadb2a044e6c63dbc5682792f8ce5ec07",
-          "58": "299cc6bec2e3e568f4b149f346761a8e495fdda323ffc84723008b27d42f4d09",
-          "59": "4607da875ea20256b1b0ab42751b25fd101131858f5967e9367779a0d9a19c56",
-          "60": "027c6ad4d36d08d3d525dfd1fe469eab140a6296ea2ca8c9d130a308ee081d26",
-          "61": "965c85a780b8885c1d4bb4624569d75d518ca92b878da1a34ce0965d1e9654b4",
-          "62": "bdaa85e7b70ea6d49c788d9c058acd33f785e647f62dca9d9e86009f0f02c617",
-          "63": "d91e3b079f93a6d468310fd59b18904868929961f76dd0e8245d025da97d7405",
-          "64": "a41d776918996c93c4228caa7c0ef18b7a0e5f393b002f6213445c9200926dc5",
-          "65": "4fb0df045a2fdd903727726df8afdf56794d93332a5bf0a1dc11a1339ee6f564",
-          "66": "772c55a7b28fbd89a3fe21ffee868a0ad4fc1529f22b220c835806c6f14cd7d3",
-          "67": "be941fffb6559a588ddf592b54cfff7498ace996fcde397cbbfafaae1f2c9b74",
-          "68": "55a440c8c1ea1760f25fe5f18f917e4dea71f2cf65fd469fecc8ab1554c342f5",
-          "69": "2976321bae8c879adc1715d0b0eeb9d328507886acc97a51ea20d5c721e2eb8d",
-          "70": "3cdd965315f9dbb490a7451072f16722e42a49f6287511b27eda108a65fe75be",
-          "71": "fb6ca060a135510d4c9c8e7b4c420f71643e5c8d4aca928b008b926cd63c71b1",
-          "72": "65e41b3f3a1fdf06cdbca42ae1c9928b0d8458de5deffa39faab62419a4f2532",
-          "73": "1e8db663cd02327c2922cd2832f71145a69c72786e3597bb9bfe7e67e77c5103",
-          "74": "cf288df5bdb82de7790961e805957e0f1e1f3cb62004e1ee080cbc4366668156",
-          "75": "08f302fbbd1be3a8dce54dd7871bd40c4b317055b25db392d45454e9c7488805",
-          "76": "598dbd5a75e834c448e93685b70b1ab8d02ff4f40cbf7279dbb8f80ee947f49b",
-          "77": "9faa8cda4e60484bdfbe4fccf42db5bb8d5ed043e670e31191d45c3bd37586c9",
-          "78": "7d35b7e4fce370732236c764caeb4d6b56b15f1e3f0b6df6b267464344fe4aaa",
-          "79": "d5576aa5b399d053c815dc2f8ce68ef0d172d8ee40b06a0cf69fd73489472fe6",
-          "80": "532f3dca2e59fd2fbd2834f8060ca2e1fefd225ae22ac574909ffb7312fc3f07",
-          "81": "0e24accbfc8cb0676c72f35e7543fc39e4f33458346f9a200b565b1f658bd75e",
-          "82": "4235e9d722489abf46b5e962ac0e54628b998f3afbba7b06479fbbf18e61d8a5",
-          "83": "dc78126f860b3317614ec15838f9054754c607cea645a9076b38605366f635de",
-          "84": "86612cfa514117254662b514e49a93ab3a7c680d42e0f751490b3efb69085219",
-          "85": "6a3607c22865594c1c3bb1e92a2aff0ee89f1d4f4d83716e667611dc8e71a6dd",
-          "86": "52b26d642cefe167f2cc8ce6be88e86484a18ddf769344cc1b7d90ef610577ce",
-          "87": "788caeca9b7d58bac2be0a8fbee25587b09ca0a63db441010febc9b2e710fc0b",
-          "88": "50a61c381f1650e37ebce6bcebc8a6f9b8f7f85ca4061ae668abb710fc2d3ed6",
-          "89": "145321e21ea9975ffa0a2dec163b80a58283ad4bd846527463cdb4b4dd7d19ea",
-          "90": "5f61d48ae90dfc267a988e0f4c02efc458fe4808af7f89ba30baca95853d4a1e",
-          "91": "930008760124a83a6cb3f660b09c6425201fa8368cf3ef1d4a0eb5ebbf64690d",
-          "92": "1355bf4db331722a3d95e95226ff05a3631b652175af91e1161af77b9dd23f4b",
-          "93": "5d1ce68aca016968355fb75fb0c66abf3a9f479262540733646ed60ed6b1c869",
-          "94": "b0bc47d2d3c37643cd2be5070bee57e8c3c21a9502333b6f2c723d6cb9bc7253",
-          "95": "ac42db639051864e30e4e9b77b8521d0f3ec5909767c50794ff14bdd8cd87f9d",
-          "96": "9b72bed54d284d8023f302716b71e1662694868b588ca4be54d4e233d32e19c1",
-          "97": "8b0cb7911eca2079b4127e09041155a973e164f4ee57af3d4bdcb793b7f3cf0a",
-          "98": "3af6be3d12d544a2ec070230d724f8321d3b7fa2ece13e1cb8d936eda3fa5538",
-          "99": "88d8f329d60f965686524505640df46e1e5e7f22981d7578e582e2c6235de017"
+        "sync_run_id": "67d7a4c5-5122-4abf-8dc5-2a0a42770a9b",
+        "page_ppm72_sha256": {
+          "45": "006de0a9decfa240f701f67eadcd788769856fea4cd5cdd9a5b65c52ef0eb3a0",
+          "46": "86570d9fda4af20ee23e3077f6ae978771067c5a7e0c6888869ccc8e974f633f",
+          "47": "3aa0e8613345a3274f5f4333c286217aab65605d016d2de9fec0163566891608",
+          "48": "662f6bcc835fc22427f182df27e065b7c9c7d944737c55e628bef6d0140a4f1c",
+          "49": "21582f79e6e3c29247c2e5aea39c03e8b4a3afc09a2b74e3400d738d093bdfd0",
+          "50": "206817ff555163e1d772ac373259c1f81b6419ff229c0924904fc775ded5eb8d",
+          "51": "c4b21b4067d880e90dc54b7aeee1429d6e478c6184aeb4d5650cd2816fb2e527",
+          "52": "9f064aad7f49fb1aadc3d8bed7d593c1a42f6e9322d3c4aa1a9b13ece1dcf5d5",
+          "53": "6fbc20018eea8650d6103e2ab883dc41773856d4c28e65063bc45ec7c4802889",
+          "54": "53bae7ce0529dee57fcd390ef6ef582002dff4f46a8f159362b347265e5c97b4",
+          "55": "a94dfda205d477936e38760d96362cc634f228728af8db1b348c3446c9a75358",
+          "56": "c16ce98039b272cf87357473bb3f5da9e4d7180a56ece91a0e6a4463495d881e",
+          "57": "e7338c651cc4252c5163ae4a1feb0b73d72c3eebd935d4e468e346f9fb21a975",
+          "58": "bad7eb48e3b470ad3cf19cbedf18966904ad7075dc0ebac1ed0bfea32fb3d640",
+          "59": "eb53cd4fd0932f3fb139ad8581c04f382b77c6171fa998cf912edc2c005ffc21",
+          "60": "dfec77f0760d8c895a437df30361f4dbf227f1524d2ace2d419428b0d9fc0b7e",
+          "61": "b3b0105a72e64ae90de8cd3b3f5049d655efe88ad8fae157c8828749987b65f6",
+          "62": "c417a6dedc008e5204b97a46b173258f5daa6d4b43b0661d7ceb9a03c61bc136",
+          "63": "3ee8806a77f7f0d2504559faf40ce430b05795b3698ba87a65b6e12c848edfeb",
+          "64": "91474021e62267daf613c3858aba07f2050e74d1c973171ddd80b90070dab479",
+          "65": "e87a1e0c90b9ba8b9a239f6d17363284ada809d9a77859b9e565f9345e8f97f0",
+          "66": "e95fdbddfc3ca8d66c46df3c8d5fa331e3a4af54c7183ee73a62b9f4c05ff80f",
+          "67": "35e059ba8fca781e2e02366bc0904cb2e4b2b3480b4e15eac26625ee775fe8d7",
+          "68": "86cfb18b79e0cc650abbe97bb2e1c767fe1b9e1a97a774641b1f66a07f3d5dcb",
+          "69": "f803ee9dd5dbd3337df9ce4590f0941ed0cfb82b960a031000d1717241158e38",
+          "70": "7af7085f75c6aca002a20f1f0f94e8af883f4266a440c28d7e74342cb5295ab2",
+          "71": "a1e3ff1968655114fe7cc877dffc875c7a727e29028e84e135d960a1ad4238e0",
+          "72": "9178c3489ed448a954354dd09be83c42ca54b29b3f85c06e05227776015aef34",
+          "73": "471d52e207fe6e2b727f29ad63936c5b621e30efd887ab6dd8cc6c6b5c91d35c",
+          "74": "9acaeca7d3d86f4b4bbfa14463cda4b620182b2323e4d189cff65d2354b6a603",
+          "75": "38ec08194f4f9f18ee30736697e35802d773315aa11001931c1a53682ad68032",
+          "76": "a63e3305818398ef5397c4fedd8faf3ffb7ecf5a99ed67b627370ab50eb7903a",
+          "77": "7393779668a44ece393df6f1378d1d7db7a629bc9c99fa2f92f2c35f5bf58781",
+          "78": "99a8cec8a854b00f9685c4b08c70b30741692aae0a8ad54a3157504fd9c97a2e",
+          "79": "963632b06ddf822c5f7a6615de860c9245b53daaed463447b22dfb6542bc2433",
+          "80": "fd1548eec9f252facbfa1ff55658dc9fe332d706c2018a17619ca4a170cb5319",
+          "81": "cdd8caff8e96f069ee7029b64b5696fb831865d4e4be72c42333957f8a710d62",
+          "82": "842383615fa1c5a724a137cb2cccc06b91dce2c0e144cd5d5e20e2c867a098bf",
+          "83": "b63780d6b57e0e0fdeac8cdbefc91fab564ad80409bb2463bc0ce2974c209c4c",
+          "84": "b853c704eca0bfb78a1937b67a0f480f911fd96fac67c2881f697254417b581a",
+          "85": "72657a86173699e8ec231276b282211c5c270a1ca644f0b7bc9fabd2022d7999",
+          "86": "7e864797ec5a63a4c125158f8d7a8cc7d6aa3326ea830c85e2c73a33b1177a77",
+          "87": "434083d55dab5e93b7d3467be79e3f01e1c448afaa9d74c2a2f8a71e7297c26c",
+          "88": "86e0d4baf1220ecb1768256f0c1452638d7e117b92752852da2f55001e112982",
+          "89": "301149e952968454cb30c93507f2adf8441a2d380aeb5e18b034bd8aaac04c44",
+          "90": "b2ccc4515afc09adcc06de8bfbdb64b9b3bd8f203b585559a2d158d917338d71",
+          "91": "47cca927a586443b4e8a2d68aadd76a36def9b8bd1761af5a42117359e7a6fc3",
+          "92": "f0fd69dba19cd34664e1f7663abdc0f378276a281c2c08438341fd002599c93b",
+          "93": "592e73607858718d9fd7bf9bc088603e80325278b18f6859fcdb474243829df4",
+          "94": "80f34bf3d902513a757139e1257cc52d54b0f0453e9097c41460115cc61ccfd9",
+          "95": "4db867d7995cbc45dc59f1fc2b027b401ad8590c6aede897a2896842df78c5e5",
+          "96": "d365ba65ddbdf5dfdeb9d2f89a37c4cea94d5e5380b636f2d2b36326315ae0e7",
+          "97": "20e1d7d5aef7856ecd42678f652b4564e27d372db693050e5770226c9d4b4d9b",
+          "98": "7d0d27ea1bb5fce448eeef2d978bf43e0d814aac5c7031da544916f20923d23e",
+          "99": "40868f26d25c6c38c236db9aa737d1e50c119c18b0a498147b997b5da66e0de9",
+          "100": "c7e601085ed27c9b4b4d494a4d00d09b53085e63d3d0308e56efa54e3e451d39",
+          "101": "caa2f6cf5a7729e91af9a7681a2b465e974260e26646c4f6ec1cbe4e299ed78a"
         }
       },
       "inspection": {
@@ -146,11 +148,14 @@
           96,
           97,
           98,
-          99
+          99,
+          100,
+          101
         ],
         "mode": "complete_authorized_range_color_pdf",
         "full_historical_read_complete": true,
-        "pending_page_ranges": []
+        "pending_page_ranges": [],
+        "incremental_comparison_report": "estado/comparacao-2026-10-31.json"
       },
       "analysis": {
         "catalog_file": "estado/catalogo.json",
@@ -205,22 +210,23 @@
           "cp-problem-000051",
           "cp-problem-000052",
           "cp-problem-000007",
-          "cp-problem-000006"
+          "cp-problem-000006",
+          "cp-problem-000062"
         ],
         "full_extraction_complete": true,
         "selection_policy": "Melhores assuntos transferíveis; uma ou mais perguntas por unidade, deduplicando conceitos.",
         "remaining_handwritten_gaps": [
           {
-            "unit_id": "cp-problem-000006",
-            "field": "handwritten_logic",
-            "resolution": "Validated logic supplied by solved repository code and official statement; handwritten field still blank."
+            "unit_id": "cp-problem-000062",
+            "field": "code_image_purple_topics_green_complexity",
+            "resolution": "Lógica manuscrita e solução local/oficial validaram card94; rever futuras continuações."
           }
         ]
       },
       "generation": {
-        "next_page": 100,
+        "next_page": 102,
         "next_unit_id": null,
-        "last_completed_unit_id": "cp-problem-000006",
+        "last_completed_unit_id": "cp-problem-000062",
         "completed_unit_ids": [
           "cp-problem-000008",
           "cp-problem-000009",
@@ -272,7 +278,8 @@
           "cp-problem-000051",
           "cp-problem-000052",
           "cp-problem-000007",
-          "cp-problem-000006"
+          "cp-problem-000006",
+          "cp-problem-000062"
         ],
         "validated_card_ids": [
           "cp-note-000001",
@@ -342,15 +349,16 @@
           "cp-note-000083",
           "cp-note-000091",
           "cp-note-000092",
-          "cp-note-000093"
+          "cp-note-000093",
+          "cp-note-000094"
         ],
         "open_unit": null,
         "pending_units": []
       },
       "export": {
-        "last_batch_id": "2026-10-29-diaria",
+        "last_batch_id": "2026-10-31-diaria",
         "import_confirmed": true,
-        "manifest": "exportacoes/2026-10-29-diaria-manifest.json"
+        "manifest": "exportacoes/2026-10-31-diaria-manifest.json"
       },
       "source_snapshot_history": [
         {
@@ -475,6 +483,74 @@
             "98": "3af6be3d12d544a2ec070230d724f8321d3b7fa2ece13e1cb8d936eda3fa5538",
             "99": "a1f84cbe6ededba36d275fb7693081dc39d296858079ab1bd91b916b0caa56ee"
           }
+        },
+        {
+          "method": "drive_desktop_local_verified_snapshot",
+          "local_path": ".cache/sync/snapshots/ff8cc3dab9ddcdce4f2b905f652ddea06618d35bbef6a62de75db15e5d12c7f7.pdf",
+          "sha256": "ff8cc3dab9ddcdce4f2b905f652ddea06618d35bbef6a62de75db15e5d12c7f7",
+          "size_bytes": 68663286,
+          "page_count": 99,
+          "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+          "same_bytes_as_drive_verified": false,
+          "matches_fresh_cloud_size_and_mtime": true,
+          "sync_run_id": "7ac7852b-c9b9-4165-9d16-fb68258b23cf",
+          "page_image_sha256": {
+            "45": "9ffedcba31c800c1b4b1d36d5688f3f49c54ca2affea15b641bb29ce8a8083bd",
+            "46": "0d18ba92f88c5db3d3d054a726c95dae036d1ce7a92b1c379fc9265bd5988833",
+            "47": "7ec1400a2158ae61282e251daeab49bd15f1f377e57a1aa090162aa3d8234e3c",
+            "48": "a1a01f09a2d9190d03bc2bac7e811641aa90254bd439233c3956e93d5163eece",
+            "49": "758da2b8922341b2c0214815e163f58b81d447a578408d83bb32ebf9c74fe3eb",
+            "50": "b83c00961af78e0eb2b6f0989cc24f5d2667d2559607a8cb074d2d5dda808280",
+            "51": "780182df8a62c22895aaad8301e70aef7a02990dac94b2c8421c2a996a6d23e1",
+            "52": "07d8f891b98641974f9f17fda9afecab28fb8165db8ae46fd4713f64d51f08fa",
+            "53": "7741978f662730009590a72eca6f3657bf2a7c5095923eafe0ec5a9b244c918a",
+            "54": "e98041fdb0e2070b427674bc34e3cb11e7a2e4e5c52197d12eca4084f1eb9291",
+            "55": "3af1bfbeb423b96ae191670f1586ac2a1614170eabae6c1355e852e54357615a",
+            "56": "392e6adbf251d45aadc212012bce79e27eb7818397e7cdaf44dbb99e9e00af67",
+            "57": "b7c9fc41cf15ebda3928cf427ac8166eadb2a044e6c63dbc5682792f8ce5ec07",
+            "58": "299cc6bec2e3e568f4b149f346761a8e495fdda323ffc84723008b27d42f4d09",
+            "59": "4607da875ea20256b1b0ab42751b25fd101131858f5967e9367779a0d9a19c56",
+            "60": "027c6ad4d36d08d3d525dfd1fe469eab140a6296ea2ca8c9d130a308ee081d26",
+            "61": "965c85a780b8885c1d4bb4624569d75d518ca92b878da1a34ce0965d1e9654b4",
+            "62": "bdaa85e7b70ea6d49c788d9c058acd33f785e647f62dca9d9e86009f0f02c617",
+            "63": "d91e3b079f93a6d468310fd59b18904868929961f76dd0e8245d025da97d7405",
+            "64": "a41d776918996c93c4228caa7c0ef18b7a0e5f393b002f6213445c9200926dc5",
+            "65": "4fb0df045a2fdd903727726df8afdf56794d93332a5bf0a1dc11a1339ee6f564",
+            "66": "772c55a7b28fbd89a3fe21ffee868a0ad4fc1529f22b220c835806c6f14cd7d3",
+            "67": "be941fffb6559a588ddf592b54cfff7498ace996fcde397cbbfafaae1f2c9b74",
+            "68": "55a440c8c1ea1760f25fe5f18f917e4dea71f2cf65fd469fecc8ab1554c342f5",
+            "69": "2976321bae8c879adc1715d0b0eeb9d328507886acc97a51ea20d5c721e2eb8d",
+            "70": "3cdd965315f9dbb490a7451072f16722e42a49f6287511b27eda108a65fe75be",
+            "71": "fb6ca060a135510d4c9c8e7b4c420f71643e5c8d4aca928b008b926cd63c71b1",
+            "72": "65e41b3f3a1fdf06cdbca42ae1c9928b0d8458de5deffa39faab62419a4f2532",
+            "73": "1e8db663cd02327c2922cd2832f71145a69c72786e3597bb9bfe7e67e77c5103",
+            "74": "cf288df5bdb82de7790961e805957e0f1e1f3cb62004e1ee080cbc4366668156",
+            "75": "08f302fbbd1be3a8dce54dd7871bd40c4b317055b25db392d45454e9c7488805",
+            "76": "598dbd5a75e834c448e93685b70b1ab8d02ff4f40cbf7279dbb8f80ee947f49b",
+            "77": "9faa8cda4e60484bdfbe4fccf42db5bb8d5ed043e670e31191d45c3bd37586c9",
+            "78": "7d35b7e4fce370732236c764caeb4d6b56b15f1e3f0b6df6b267464344fe4aaa",
+            "79": "d5576aa5b399d053c815dc2f8ce68ef0d172d8ee40b06a0cf69fd73489472fe6",
+            "80": "532f3dca2e59fd2fbd2834f8060ca2e1fefd225ae22ac574909ffb7312fc3f07",
+            "81": "0e24accbfc8cb0676c72f35e7543fc39e4f33458346f9a200b565b1f658bd75e",
+            "82": "4235e9d722489abf46b5e962ac0e54628b998f3afbba7b06479fbbf18e61d8a5",
+            "83": "dc78126f860b3317614ec15838f9054754c607cea645a9076b38605366f635de",
+            "84": "86612cfa514117254662b514e49a93ab3a7c680d42e0f751490b3efb69085219",
+            "85": "6a3607c22865594c1c3bb1e92a2aff0ee89f1d4f4d83716e667611dc8e71a6dd",
+            "86": "52b26d642cefe167f2cc8ce6be88e86484a18ddf769344cc1b7d90ef610577ce",
+            "87": "788caeca9b7d58bac2be0a8fbee25587b09ca0a63db441010febc9b2e710fc0b",
+            "88": "50a61c381f1650e37ebce6bcebc8a6f9b8f7f85ca4061ae668abb710fc2d3ed6",
+            "89": "145321e21ea9975ffa0a2dec163b80a58283ad4bd846527463cdb4b4dd7d19ea",
+            "90": "5f61d48ae90dfc267a988e0f4c02efc458fe4808af7f89ba30baca95853d4a1e",
+            "91": "930008760124a83a6cb3f660b09c6425201fa8368cf3ef1d4a0eb5ebbf64690d",
+            "92": "1355bf4db331722a3d95e95226ff05a3631b652175af91e1161af77b9dd23f4b",
+            "93": "5d1ce68aca016968355fb75fb0c66abf3a9f479262540733646ed60ed6b1c869",
+            "94": "b0bc47d2d3c37643cd2be5070bee57e8c3c21a9502333b6f2c723d6cb9bc7253",
+            "95": "ac42db639051864e30e4e9b77b8521d0f3ec5909767c50794ff14bdd8cd87f9d",
+            "96": "9b72bed54d284d8023f302716b71e1662694868b588ca4be54d4e233d32e19c1",
+            "97": "8b0cb7911eca2079b4127e09041155a973e164f4ee57af3d4bdcb793b7f3cf0a",
+            "98": "3af6be3d12d544a2ec070230d724f8321d3b7fa2ece13e1cb8d936eda3fa5538",
+            "99": "88d8f329d60f965686524505640df46e1e5e7f22981d7578e582e2c6235de017"
+          }
         }
       ]
     },
@@ -489,30 +565,30 @@
       },
       "source_snapshot": {
         "method": "drive_desktop_local_verified_snapshot",
-        "local_path": ".cache/sync/snapshots/5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9.pdf",
-        "sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
-        "size_bytes": 10072014,
+        "local_path": ".cache/sync/snapshots/01fb7e4909364ec82c643ba30ebd518d14b4e27b44626f068d88f79872b47235.pdf",
+        "sha256": "01fb7e4909364ec82c643ba30ebd518d14b4e27b44626f068d88f79872b47235",
+        "size_bytes": 10383619,
         "page_count": 15,
         "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
         "same_bytes_as_drive_verified": false,
         "matches_fresh_cloud_size_and_mtime": true,
-        "sync_run_id": "e7a260ec-99cb-4f89-9052-d1ac727383a7",
-        "page_image_sha256": {
-          "1": "51dd6d382897baa5daeb1b0c034cbf29c641e5aafbedd4530a4d6589a2664447",
-          "2": "f4d4309319f91c56124fbfe333be150bcf90064f69fe903a1610e3970003a46d",
-          "3": "52d7b82452803f10d33ae4d4a6946c2f3fd2788feebef9ddc30ce273d976397a",
-          "4": "e353f24631ca938169cb7afbe879900cf34fa465fbfbf7a370cb96b73f06ea17",
-          "5": "db2b7e7d6102da8db92b7e5073e4539c5f05e86b86ad3e7524ee8bdf176a8c45",
-          "6": "c337fc0a00473e1e6c423fd49eb5a8b6f688c0f5f6be00c44ba61b10813c50cf",
-          "7": "f9b4e5eaf40861db80e4bd5b482bc72b606cf95c4cc961c0b4e31e95da2010e6",
-          "8": "80909c2b86c207c24381b31717ada77993901aafeedd71889f8c0e205a1fc528",
-          "9": "3e8b19f229445edffcd764559fad62ebda68d7548770f228ed3edd5aa2b2940f",
-          "10": "4e2625efbd940f84852092099069d34d020fe1a0503e7736dde94499b59af878",
-          "11": "3b7a1407e209bf5c00c1a01786b620ae2266c5165c31a5881dc3659fe996dddb",
-          "12": "c36f86ef40b046e587454d7400c5af91ee1420433a665af1dd7d57244ac20446",
-          "13": "7f3cca5aed970ca2f6c6ed4057ce63da0a26b3720e9edc46dd229bea47185aca",
-          "14": "05f8984ed43557d2f0205e4f6b78a0707bc14d487fa334b08e11ef7af4e56f19",
-          "15": "b1936ee5978df21bd10b8419d2c83c15ed8386adf4ab28bfd8dc61e87e5f351a"
+        "sync_run_id": "67d7a4c5-5122-4abf-8dc5-2a0a42770a9b",
+        "page_ppm72_sha256": {
+          "1": "29f684512c58a872fbe803c55d8bb85d5f9d997384214b3f3823e0119b19c08d",
+          "2": "533ba1ac5d069d06f4c9af4a62f8ad41ed36d354df9fe73fb2dd14e07f99b727",
+          "3": "4c6768b22d1501f4fc45096f1ad6e3553bfb8ec746f50fcb146e5a7cc5d5f5fe",
+          "4": "36d539d3159234a323da368a041c57e63adde63a6d5292bf3fe1243fd51fbc7b",
+          "5": "7f2e5f9edfaf48649299a8aa9b6ff97a55a007c681256759b0071b4d7d192ee5",
+          "6": "a571956c862a46b9d75b752a9a1a830b03a121d5f915f297e4780a07db6f222a",
+          "7": "3db8cdd480f2036a7157a193a9859489a7de78fda48d9a594bc2e936d60ee77b",
+          "8": "6b90cfc399fb9ad9d236888d3b8e8d8bc07e9bc8822ce0ba29d93624ed9ac542",
+          "9": "90a1462d348407323f0b310ae00765d4698cc44c955e0dbab7c0419cf2b0f4ff",
+          "10": "4dd8bcfbed8cf8b563f4147ae71865049c6cd89b77b471be0b430efeff50fb86",
+          "11": "8e353507c65a102c1a0174e39fd7841a312bad56cdc00305c5ad62e0bd05fced",
+          "12": "918e9c30cced7d1ed996f99a80c03ffbb0e9ecaeb7b29690d496743c28a3774e",
+          "13": "2aabc0432a00fe53476595882ba470f143b5cc9e819ee5891af718765b7099a3",
+          "14": "42857c7c8f2520435a160b5029e1093f260aa7a6686910effdbbb2bf38ada04e",
+          "15": "89c5b4ad4dc6f0b52e1d054acefa054cf4d6829a77341605be3d661a198f56ad"
         }
       },
       "inspection": {
@@ -535,7 +611,8 @@
         ],
         "mode": "complete_authorized_range_color_pdf",
         "full_historical_read_complete": true,
-        "pending_page_ranges": []
+        "pending_page_ranges": [],
+        "incremental_comparison_report": "estado/comparacao-2026-10-31.json"
       },
       "analysis": {
         "catalog_file": "estado/catalogo.json",
@@ -548,15 +625,23 @@
           "cp-problem-000058",
           "cp-problem-000059",
           "cp-problem-000060",
-          "cp-problem-000005"
+          "cp-problem-000005",
+          "cp-problem-000063"
         ],
         "full_extraction_complete": true,
-        "selection_policy": "Melhores assuntos transferíveis; uma ou mais perguntas por unidade, deduplicando conceitos."
+        "selection_policy": "Melhores assuntos transferíveis; uma ou mais perguntas por unidade, deduplicando conceitos.",
+        "remaining_handwritten_gaps": [
+          {
+            "unit_id": "cp-problem-000063",
+            "field": "code_image_purple_topics_green_complexity",
+            "resolution": "Lógica manuscrita e solução local/oficial validaram card95; rever futuras continuações."
+          }
+        ]
       },
       "generation": {
         "next_page": 16,
         "next_unit_id": null,
-        "last_completed_unit_id": "cp-problem-000005",
+        "last_completed_unit_id": "cp-problem-000063",
         "completed_unit_ids": [
           "cp-problem-000053",
           "cp-problem-000054",
@@ -566,7 +651,8 @@
           "cp-problem-000058",
           "cp-problem-000059",
           "cp-problem-000060",
-          "cp-problem-000005"
+          "cp-problem-000005",
+          "cp-problem-000063"
         ],
         "validated_card_ids": [
           "cp-note-000002",
@@ -589,15 +675,16 @@
           "cp-note-000078",
           "cp-note-000084",
           "cp-note-000085",
-          "cp-note-000086"
+          "cp-note-000086",
+          "cp-note-000095"
         ],
         "open_unit": null,
         "pending_units": []
       },
       "export": {
-        "last_batch_id": "2026-10-28-expansao",
+        "last_batch_id": "2026-10-31-diaria",
         "import_confirmed": true,
-        "manifest": "exportacoes/2026-10-28-expansao-manifest.json"
+        "manifest": "exportacoes/2026-10-31-diaria-manifest.json"
       },
       "source_snapshot_history": [
         {
@@ -607,6 +694,34 @@
           "sha256": null,
           "drive_file_id": null,
           "same_bytes_as_drive_verified": false
+        },
+        {
+          "method": "drive_desktop_local_verified_snapshot",
+          "local_path": ".cache/sync/snapshots/5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9.pdf",
+          "sha256": "5ad1d1cddf6ebb85f357ea00eb33031820f37ff80b432b1f33955b43024302b9",
+          "size_bytes": 10072014,
+          "page_count": 15,
+          "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+          "same_bytes_as_drive_verified": false,
+          "matches_fresh_cloud_size_and_mtime": true,
+          "sync_run_id": "e7a260ec-99cb-4f89-9052-d1ac727383a7",
+          "page_image_sha256": {
+            "1": "51dd6d382897baa5daeb1b0c034cbf29c641e5aafbedd4530a4d6589a2664447",
+            "2": "f4d4309319f91c56124fbfe333be150bcf90064f69fe903a1610e3970003a46d",
+            "3": "52d7b82452803f10d33ae4d4a6946c2f3fd2788feebef9ddc30ce273d976397a",
+            "4": "e353f24631ca938169cb7afbe879900cf34fa465fbfbf7a370cb96b73f06ea17",
+            "5": "db2b7e7d6102da8db92b7e5073e4539c5f05e86b86ad3e7524ee8bdf176a8c45",
+            "6": "c337fc0a00473e1e6c423fd49eb5a8b6f688c0f5f6be00c44ba61b10813c50cf",
+            "7": "f9b4e5eaf40861db80e4bd5b482bc72b606cf95c4cc961c0b4e31e95da2010e6",
+            "8": "80909c2b86c207c24381b31717ada77993901aafeedd71889f8c0e205a1fc528",
+            "9": "3e8b19f229445edffcd764559fad62ebda68d7548770f228ed3edd5aa2b2940f",
+            "10": "4e2625efbd940f84852092099069d34d020fe1a0503e7736dde94499b59af878",
+            "11": "3b7a1407e209bf5c00c1a01786b620ae2266c5165c31a5881dc3659fe996dddb",
+            "12": "c36f86ef40b046e587454d7400c5af91ee1420433a665af1dd7d57244ac20446",
+            "13": "7f3cca5aed970ca2f6c6ed4057ce63da0a26b3720e9edc46dd229bea47185aca",
+            "14": "05f8984ed43557d2f0205e4f6b78a0707bc14d487fa334b08e11ef7af4e56f19",
+            "15": "b1936ee5978df21bd10b8419d2c83c15ed8386adf4ab28bfd8dc61e87e5f351a"
+          }
         }
       ]
     },
@@ -639,21 +754,20 @@
   "pending_actions": [
     "Conferir mudanças em páginas anteriores antes de retomar futuras versões dos PDFs.",
     "Ao localizar Make it Alternating no PDF, vincular a cp-problem-000061 e aos cards 000087–000090, sem duplicar.",
-    "Conferir a primeira execução disparada pela rotina diária às 12:30.",
-    "Ao surgir lógica manuscrita de Roof Construction, vincular ao mesmo ID e complementar os cards existentes.",
-    "Conferir a primeira abertura oculta do Codex no próximo início de sessão do macOS.",
-    "Conferir a primeira abertura oculta do Anki no próximo início de sessão do macOS."
+    "Ao localizar Divan and a New Project no PDF, vincular cp-problem-000064/card000096 sem duplicar.",
+    "Rever futuras continuações de Triangles on a Rectangle (101) e Longest Consecutive Sequence (15), incluindo roxo/código/complexidade.",
+    "Rotina automática desativada por solicitação em 01/11/2026; não reativar nem reinstalar início automático sem novo pedido do usuário."
   ],
   "automation": {
     "created": true,
     "id": "gerar-cards-do-goodnotes",
     "kind": "heartbeat",
-    "status": "ACTIVE",
+    "status": "PAUSED",
     "time": "12:30",
     "timezone": "America/Bahia",
     "schedule": "Todos os dias às 12:30",
     "created_at": "2026-10-29T21:55:25.007632-03:00",
-    "first_unattended_run_verified": false,
+    "first_unattended_run_verified": true,
     "manual_pipeline_validation": "passed",
     "name": "Gerar cards do Goodnotes",
     "target_thread_id": "01a183a6-2aeb-7b61-bd6d-2ad18227b3b6",
@@ -661,12 +775,18 @@
     "workflow_file": "rotina-diaria.md",
     "state_file": "estado/automacao-diaria.json",
     "definition_readback_verified": true,
-    "verified_at": "2026-10-29T22:13:53-03:00",
-    "codex_start_at_login": true,
+    "verified_at": "2026-11-01T15:17:46.026154-03:00",
+    "codex_start_at_login": false,
     "codex_launch_hidden": true,
     "startup_config": "estado/codex-inicio-sessao.json",
-    "anki_start_at_login": true,
-    "anki_launch_hidden": true
+    "anki_start_at_login": false,
+    "anki_launch_hidden": true,
+    "first_unattended_run_completed_at": "2026-10-31T19:55:32.865543-03:00",
+    "last_successful_run_id": "2026-10-31-diaria",
+    "last_trigger_received_at": "2026-10-31T22:47:14.425Z",
+    "schedule_punctuality_verified": false,
+    "disabled_at": "2026-11-01T15:17:46.026154-03:00",
+    "disabled_by": "explicit_user_request"
   },
   "anki": {
     "deck_name_proposed": "Programação competitiva",
@@ -689,7 +809,7 @@
     "deck_id": 1793225719777,
     "deck_visible_in_ankiweb": true,
     "bidirectional_sync_verified": true,
-    "last_sync_verified_at": "2026-10-29T22:06:52-03:00",
+    "last_sync_verified_at": "2026-10-31T19:55:32.865543-03:00",
     "note_type_configured": true,
     "proof_file": ".cache/anki/2026-10-28-baralho-sincronizado.png",
     "note_type_id": "1793226284779",
@@ -717,29 +837,29 @@
       "idempotent_rerun_verified": true
     },
     "first_batch_import_confirmed": true,
-    "imported_notes": 93,
-    "imported_cards": 93,
+    "imported_notes": 96,
+    "imported_cards": 96,
     "scheduler_observed": "sm2",
     "daily_new_limit": 10,
     "preset_id": "1793233318088",
     "preset_name": "Programação competitiva",
     "available_new_verified": 10,
     "new_mix": "afterReviews",
-    "start_at_login": true,
+    "start_at_login": false,
     "launch_hidden_on_login": true,
     "startup_config": "estado/anki-inicio-sessao.json"
   },
   "acquisition": {
     "config_file": "estado/fontes.json",
     "preferred_transport": "drive_desktop_local",
-    "verified_at": "2026-10-30T00:54:50.770089+00:00",
+    "verified_at": "2026-10-31T22:49:44.595845+00:00",
     "report_file": "analises/2026-10-28-acesso-drive.md",
     "note": "Disponibilidade offline e inicialização do Drive verificadas; gate de metadados remotos recentes e snapshots locais validado. Cursores e inspeção preservados.",
     "sync_protocol": "sincronizacao.md",
     "sync_status_file": "estado/sincronizacao.json",
     "sync_required_before_every_run": true,
     "drive_to_mac_owner": "agent",
-    "last_sync_run_id": "7ac7852b-c9b9-4165-9d16-fb68258b23cf"
+    "last_sync_run_id": "67d7a4c5-5122-4abf-8dc5-2a0a42770a9b"
   },
   "format_pilot": {
     "status": "approved",
@@ -829,11 +949,11 @@
     "verified_at": "2026-10-28T21:00:10-03:00"
   },
   "current_totals": {
-    "cards": 93,
-    "problemas": 68,
-    "big-tech-problems": 21,
-    "repositorio-cpp": 4,
-    "verified_at": "2026-10-29T22:06:52-03:00"
+    "cards": 96,
+    "problemas": 69,
+    "big-tech-problems": 22,
+    "repositorio-cpp": 5,
+    "verified_at": "2026-10-31T19:55:32.865543-03:00"
   },
   "recent_problem_review": {
     "status": "synced",
@@ -881,14 +1001,48 @@
       "manuscript_mapping_pending": true,
       "import_confirmed": true,
       "last_batch_id": "2026-10-28-rating1300"
+    },
+    "cp-problem-000064": {
+      "title": "Divan and a New Project",
+      "source_kind": "repository_solution_and_official_statement",
+      "local_path": "codeforces/rating_1000/divan_and_new_project-1614B.cpp",
+      "sha256": "2a2561030cc0573d228bbc35471877716d1999cc934c2f4cbb9772e50ac5ad18",
+      "official_statement_url": "https://codeforces.com/problemset/problem/1614/B",
+      "rating_verified": 1000,
+      "generation": {
+        "validated_card_ids": [
+          "cp-note-000096"
+        ]
+      },
+      "manuscript_mapping_pending": true,
+      "import_confirmed": true,
+      "last_batch_id": "2026-10-31-diaria"
     }
   },
   "daily_pipeline": {
-    "status": "source_verified_analysis_started",
+    "status": "synced",
     "run_id": "2026-10-31-diaria",
     "started_at": "2026-10-31T19:50:10.455564-03:00",
     "sync_run_id": "67d7a4c5-5122-4abf-8dc5-2a0a42770a9b",
     "batch_start_within_gate_validity": true,
-    "previous_cards": 93
+    "previous_cards": 93,
+    "validated_card_ids": [
+      "cp-note-000092",
+      "cp-note-000093",
+      "cp-note-000094",
+      "cp-note-000095",
+      "cp-note-000096"
+    ],
+    "validation_report": "estado/validacao-diaria-2026-10-31.json",
+    "batch_id": "2026-10-31-diaria",
+    "new_cards": 3,
+    "updated_cards": 2,
+    "comparison_report": "estado/comparacao-2026-10-31.json",
+    "total_cards": 96,
+    "verified_at": "2026-10-31T19:55:32.865543-03:00",
+    "manifest": "exportacoes/2026-10-31-diaria-manifest.json",
+    "report": "analises/2026-10-31-rotina-diaria.md",
+    "verification_report": "estado/verificacao-diaria-2026-10-31.json",
+    "pending_imports": 0
   }
 }

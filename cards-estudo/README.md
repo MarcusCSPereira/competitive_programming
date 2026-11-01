@@ -9,29 +9,25 @@ Transformar aprendizados das questões já estudadas em revisões curtas no celu
 preservando a escrita no iPad como rotina principal. Primeiro recuperar o passado;
 depois incorporar questões novas e alterações em anotações antigas.
 
-**Fase atual: 93 cards sincronizados**, após o primeiro lote de 69, uma revisão
-de cobertura com 17 novos e a revisão das questões recentes com **5 novos e
-2 atualizações**, e 2 cards de Roof Construction no primeiro processamento
-incremental de 29/10. Todos têm teoria e uso
-concreto em C++17, com validação de código. Os dois pilotos aprovados preservam
-seus IDs. Veja o [lote inicial](exportacoes/2026-10-28-historico.md), os
-[17 complementos](exportacoes/2026-10-28-expansao.md), a
-[distribuição por problema](exportacoes/distribuicao.md) e a
-[revisão das questões recentes](analises/2026-10-28-rating1300.md) e a
-[validação da rotina diária](analises/2026-10-29-rotina-diaria.md).
-**Automação ativa: todos os dias às 12:30, America/Bahia**, neste chat.
-Operação e condições de execução em [rotina-diaria.md](rotina-diaria.md).
+**Fase atual: 96 cards sincronizados.** A execução de 31/10 acrescentou
+3 cards (Triangles on a Rectangle, Longest Consecutive Sequence e Divan and a
+New Project) e aprimorou os 2 de Roof Construction com a lógica manuscrita nova.
+Todos têm teoria, justificativa e C++17 validado. Os IDs e agendamentos anteriores
+foram preservados. Veja a [análise atual](analises/2026-10-31-rotina-diaria.md),
+os [cards do lote](exportacoes/2026-10-31-diaria.md) e a
+[distribuição por problema](exportacoes/distribuicao.md).
 
-**Rotina configurada:** 10 cards novos por dia, com revisões antes dos novos.
-Todos os 93 continuam no baralho; o número diário mostrado na tela não é o
-total da coleção. Configuração e verificação em `estado/anki-limite-diario.json`.
+**Automação desativada em 01/11/2026 a pedido do usuário.** A rotina das
+12:30 está pausada; Codex e Anki tiveram a abertura automática no login removida.
+O fluxo completo de um disparo recebido do agendador foi confirmado em 31/10;
+a execução observada chegou às 19:47, sem comprovar pontualidade às 12:30.
+Condições em [rotina-diaria.md](rotina-diaria.md).
 
-Make it Alternating (1879C, rating 1300 verificado) recebeu quatro cards a partir
-da solução do repositório e do enunciado oficial. Sua página não foi localizada
-no snapshot autorizado do caderno: a origem é `repositorio-cpp`, sem página
-inventada. Há 68 cards de Problemas, 21 de Big Tech Problems e 4 dessa fonte local.
-O [lote mais recente](exportacoes/2026-10-28-rating1300.md) inclui também um novo
-card de Red Versus Blue e as versões aprimoradas de Luke Is a Foodie e Shoe Shuffling.
+**Rotina configurada: 10 cards novos por dia, revisões primeiro.** Todos os 96
+continuam no baralho; o número diário mostrado na tela não é o total da coleção.
+Há **69 cards de Problemas, 22 de Big Tech Problems e 5 de fonte no repositório**.
+Make it Alternating e Divan and a New Project ainda não têm página localizada:
+reutilizar suas identidades ao surgirem no PDF, sem inventar associação.
 
 ## Fontes e escopo autorizado
 
@@ -165,12 +161,12 @@ fora do escopo. A faixa 45–99 foi lida em cores no snapshot validado do Drive.
 A 45 começa com a legenda e Microwaves; a continuação de Forked na 49 foi
 reconciliada com o início nas 48–50, preservando o ID previamente catalogado.
 
-O cursor de Problemas está em **100**, após as 99 páginas atuais. Roof Construction
-recebeu enunciado na página 99 e foi resolvida no repositório; os cards foram
-validados com o código e o enunciado oficial. O campo manuscrito de lógica ainda
-está vazio, e essa origem complementar está declarada. Em Big Tech Problems, o
-próximo ponto é **16**, após as 15 páginas atuais. Sempre verificar alterações
-anteriores antes de continuar, inclusive a lógica manuscrita que vier a ser incluída.
+O cursor de Problemas está em **102**, após as 101 páginas atuais. Roof Construction
+foi completada nas páginas 99–100; Triangles on a Rectangle começa na 101. Em
+Big Tech Problems, o próximo ponto é **16**, após as 15 páginas atuais; a 15
+recebeu Longest Consecutive Sequence. As lógicas e soluções locais/oficiais foram
+validadas; futuras continuações com código, roxo e complexidade devem ser
+reavaliadas, assim como qualquer alteração em páginas anteriores.
 
 ## Como transformar aprendizados em cards
 
@@ -274,10 +270,10 @@ templates ou recriar IDs exige cuidado específico com o histórico. Não substi
 
 ## Rotina diária
 
-A automação `gerar-cards-do-goodnotes` executa o processo neste chat às 12:30
-todos os dias, no fuso America/Bahia. É necessário o Mac ligado e o Codex aberto;
-a rotina confere o Drive e pode iniciar o Anki quando estiver fechado. Não há
-geração artificial quando nada mudou; retomar lotes pendentes continua necessário.
+A automação `gerar-cards-do-goodnotes` está **PAUSED** desde 01/11/2026 por
+solicitação do usuário. Não há execução diária nem abertura automática do Codex
+e do Anki. Os passos abaixo documentam o processo disponível para uma execução
+manual solicitada. A retomada da agenda ou da inicialização exige novo pedido.
 
 1. Resolver e anotar normalmente no Goodnotes; o backup atualiza o PDF no Drive.
 2. Uma execução lê `estado/fontes.json`, verifica a sincronização e obtém uma
@@ -293,9 +289,9 @@ geração artificial quando nada mudou; retomar lotes pendentes continua necess�
 6. Reservar prática no computador para reimplementar padrões e questões difíceis.
 
 Aquisição, comparação incremental, cursor, testes e publicação foram exercitados
-manualmente em 29/10. A agenda foi criada e relida; a primeira execução disparada
-pelo agendador ainda será confirmada pelo seu resultado. A configuração está em
-`estado/automacao-diaria.json`. A criação da agenda não comprova execução futura.
+manualmente em 29/10 e confirmados num disparo do agendador em 31/10. Este chegou
+às 19:47, portanto o resultado não comprova pontualidade às 12:30. Configuração e
+evidências estão em `estado/automacao-diaria.json` e na análise mais recente.
 
 ## Critério para começar o primeiro lote
 

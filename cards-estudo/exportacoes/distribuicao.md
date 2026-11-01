@@ -1,22 +1,24 @@
 # Distribuição dos cards por questão
 
-**93 cards únicos:** 68 de Problemas, 21 de Big Tech Problems e 4 de uma solução local do repositório.
+**96 cards únicos:** 69 de Problemas, 22 de Big Tech Problems e 5 de soluções locais do repositório.
 
-Os lotes acrescentaram 69, 17, 5 e 2 novos cards. Duas notas foram aprimoradas sem serem recriadas. Conceitos compartilhados aparecem em mais de uma questão, mas existem uma única vez no Anki; por isso a soma das linhas pode superar o total de cards únicos.
+Os lotes acrescentaram 69,17,5,2 e3 cards. As atualizações preservam notas e revisões. Conceitos compartilhados podem aparecer em mais de uma linha, mas existem uma única vez no Anki.
 
 ## Problemas
 
 | Questão/seção | Cards associados |
 | --- | ---: |
-| Microwaves | 5 |
-| Porquinho da Índia | 6 |
 | Forked! | 1 |
 | Chemistry | 1 |
 | Vasilije in Cacak | 2 |
 | Jellyfish and Undertale | 1 |
+| Roof Construction | 2 |
+| Red Versus Blue | 2 |
+| Microwaves | 5 |
+| Porquinho da Índia | 6 |
 | Make It Zero | 1 |
-| Balanced Round | 1 |
 | Longest Divisors Interval | 1 |
+| Balanced Round | 1 |
 | Comparison String | 1 |
 | Permutation Swap | 1 |
 | Odd Queries | 2 |
@@ -57,13 +59,13 @@ Os lotes acrescentaram 69, 17, 5 e 2 novos cards. Duas notas foram aprimoradas s
 | Shoe Shuffling | 1 |
 | Word Capitalization | 1 |
 | Black and White Stripe | 2 |
-| Red Versus Blue | 2 |
-| Roof Construction | 2 |
+| Triangles on a Rectangle | 1 |
 
 ## Big Tech Problems
 
 | Questão/seção | Cards associados |
 | --- | ---: |
+| Add Two Numbers | 3 |
 | LRU Cache | 5 |
 | Group Anagrams | 3 |
 | Top K Frequent Elements | 3 |
@@ -72,21 +74,11 @@ Os lotes acrescentaram 69, 17, 5 e 2 novos cards. Duas notas foram aprimoradas s
 | Encode and Decode Strings | 2 |
 | Valid Sudoku | 2 |
 | Inicialização de contêineres compostos | 3 |
-| Add Two Numbers | 3 |
+| Longest Consecutive Sequence | 1 |
 
-## Solução local e enunciado oficial
+## Repositório C++
 
 | Questão/seção | Cards associados |
 | --- | ---: |
 | Make it Alternating | 4 |
-
-Roof Construction foi concluída para geração com a solução local e o enunciado oficial; a lógica manuscrita permanece vazia. Make it Alternating ainda não tem página associada no PDF atual.
-
-## Leitura dos lotes
-
-- [Primeiro lote: 69](2026-10-28-historico.md).
-- [Expansão: 17 novos](2026-10-28-expansao.md).
-- [Recentes: 5 novos e 2 atualizados](2026-10-28-rating1300.md).
-- [Primeiro incremental diário: 2 novos](2026-10-29-diaria.md).
-
-Os lotes anteriores preservam a versão enviada em sua execução. O JSON autoral e seu último lote indicam o conteúdo atual de cada nota.
+| Divan and a New Project | 1 |

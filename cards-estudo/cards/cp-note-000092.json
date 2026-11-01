@@ -2,12 +2,12 @@
   "schema_version": 1,
   "id": "cp-note-000092",
   "content_key": "xor_bit_mais_significativo",
-  "revision": 1,
+  "revision": 2,
   "status": "validated",
   "skill": "teoria_e_implementacao",
   "front": "Como o bit mais significativo ajuda a limitar o valor de a XOR b? Como achar a maior potência de dois até um inteiro sem log2 nem pow em C++17?",
   "back": {
-    "answer": "XOR liga um bit exatamente quando os operandos diferem naquela posição. Logo o bit mais alto em que a e b diferem domina o valor do XOR: se essa posição vale K=2^k, então K≤(a XOR b)<2K. Os bits abaixo dela somam no máximo K-1. Em C++, ^ é XOR; não é exponenciação.\n\nSe 0≤a<K e K≤b<2K, o bit de valor K difere e a XOR b é pelo menos K. Se ambos estão no mesmo lado desse corte e são menores que 2K, esse bit se cancela e o XOR fica abaixo de K. Essa divisão em grupos é o ponto central da construção de Roof Construction.\n\nPara achar a maior potência de dois K≤x, dobre K enquanto o próximo dobro couber em x. A condição K≤x/2 evita testar 2*K antes de saber que a multiplicação cabe. O domínio é x≥1, aplicável a x=n-1 porque o problema garante n≥2. O laço inteiro evita depender de arredondamento de funções de ponto flutuante perto de potências de dois.",
+    "answer": "XOR liga um bit exatamente quando os operandos diferem naquela posição. Logo o bit mais alto em que a e b diferem domina o valor do XOR: se essa posição vale K=2^k, então K≤(a XOR b)<2K. Os bits abaixo dela somam no máximo K-1. Em C++, ^ é XOR; não é exponenciação.\n\nSe 0≤a<K e K≤b<2K, o bit de valor K difere e a XOR b é pelo menos K. Se ambos estão no mesmo lado desse corte e são menores que 2K, esse bit se cancela e o XOR fica abaixo de K. Essa divisão em grupos é o ponto central da construção de Roof Construction.\n\nPara achar a maior potência de dois K≤x, dobre K enquanto o próximo dobro couber em x. A condição K≤x/2 evita testar 2*K antes de saber que a multiplicação cabe. O domínio é x≥1, aplicável a x=n-1 porque o problema garante n≥2. O laço inteiro evita depender de arredondamento de funções de ponto flutuante perto de potências de dois.\n\nHá duas quantidades diferentes: o índice k=floor(log2(x)) do maior bit ligado e seu valor K=2^k. Para x=6, k=2 e K=4. O código retorna K diretamente; não retorna o índice. log2(x) sem o piso não é, em geral, um inteiro.",
     "why": "Justificativa integrada na resposta.",
     "cpp17": "int maiorPotenciaAte(int x) {\n    assert(x>=1);\n    int K=1;\n    while (K<=x/2) K<<=1;\n    return K;\n}\nbool ladosDiferentes(int a,int b,int K) {\n    // Contrato: K é potência de dois e 0<=a,b<2*K.\n    return ((a&K)!=0) != ((b&K)!=0);\n}",
     "complexity": "O(log x) de tempo e O(1) de espaço. Os testes de bit e a operação XOR custam O(1) para inteiros da máquina.",
@@ -29,35 +29,38 @@
       "problem_id": "cp-problem-000006",
       "title": "Roof Construction",
       "pages_1based": [
-        99
+        99,
+        100
       ],
-      "source_snapshot_sha256": "ff8cc3dab9ddcdce4f2b905f652ddea06618d35bbef6a62de75db15e5d12c7f7",
+      "source_snapshot_sha256": "585dfd68e54feeaec2f8e02319e935f40a41ccd7a9e7dd14ff3acc8745511e07",
       "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
       "official_statement_url": "https://codeforces.com/problemset/problem/1632/B",
       "local_code_path": "codeforces/rating_1000/roof_construction-1632B.cpp",
       "local_code_sha256": "06cdd05b97358f13e8d48a29ba2d63dc292632dc227623e43cd34c5cf958a77f",
-      "highlight_color": "context_black_blue_red",
-      "provenance": "Página 99 contém título/enunciado e cabeçalho de lógica vazio. Raciocínio conferido a partir da solução local do usuário e do enunciado oficial; não atribuir a prova a uma anotação manuscrita inexistente."
+      "highlight_color": "purple_in_logic_and_topics",
+      "provenance": "Enunciado e lógica manuscrita das páginas 99–100 conferidos em cores, incluindo roxo dentro da lógica, código e complexidade verde. Conferência cruzada com solução local e enunciado oficial. O raciocínio é sobre o máximo XOR adjacente, não XOR acumulado de todos os valores."
     }
   ],
   "coverage_review": {
-    "run_id": "2026-10-29-diaria-099",
-    "sync_run_id": "7ac7852b-c9b9-4165-9d16-fb68258b23cf",
-    "learning_origin": "partial_notebook_plus_local_solution_and_official_statement"
+    "run_id": "2026-10-31-diaria",
+    "sync_run_id": "67d7a4c5-5122-4abf-8dc5-2a0a42770a9b",
+    "learning_origin": "completed_manuscript_plus_local_solution_and_official_statement"
   },
   "validation": {
     "handwriting_checked": true,
-    "handwriting_scope": "Statement only; handwritten logic still empty.",
+    "handwriting_scope": "Full statement and logic on pages 99–100, including purple notes.",
     "technical_correctness_checked": true,
     "code_tested": true,
     "user_format_approved": true,
     "pending_questions": [],
     "clarifications": [
       "A anotação fala em maior valor; o enunciado oficial pede minimizar o máximo XOR entre pares adjacentes.",
-      "O código local calcula potência de dois com log2/pow; o card usa inteiros sem ponto flutuante."
+      "O código local calcula potência de dois com log2/pow; o card usa inteiros sem ponto flutuante.",
+      "msb como índice é floor(log2(x)); a potência correspondente é K=2^índice. O card mantém cálculo inteiro seguro.",
+      "A expressão manuscrita XOR de todos os elementos é ambígua; a prova limita o máximo de XORs adjacentes."
     ],
-    "test_report": "estado/validacao-diaria-2026-10-29.json",
-    "validated_at": "2026-10-29T22:01:37-03:00"
+    "test_report": "estado/validacao-diaria-2026-10-31.json",
+    "validated_at": "2026-10-31T19:54:10.322296-03:00"
   },
   "anki": {
     "note_type": "CP Goodnotes",
@@ -68,7 +71,7 @@
     "card_ids": [
       "1793322132685"
     ],
-    "fields_sha256": "84ef69c21f83d104aec40558a10c638444776822986e3156cc98830b20cd74cd",
-    "last_batch_id": "2026-10-29-diaria"
+    "fields_sha256": "3d635edb74a95c4c2d4a16cc5ab1cac5373e468e1eff6c6c2b10f5f04ffdc86c",
+    "last_batch_id": "2026-10-31-diaria"
   }
 }

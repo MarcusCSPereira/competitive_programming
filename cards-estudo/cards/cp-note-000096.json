@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000096",
+  "content_key": "greedy_pesos_distancias_prova_troca",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como minimizar uma soma de frequências × distâncias ao distribuir prédios em coordenadas inteiras distintas? Por que os mais visitados ficam perto, e como devolver as coordenadas na ordem original?",
+  "back": {
+    "answer": "Podemos fixar a sede em x[0]=0, pois transladar todas as posições não muda as distâncias. As posições livres mais próximas são +1,−1,+2,−2,…: há dois lugares para cada distância positiva. Como as frequências são não negativas, usar posições mais distantes quando há uma mais próxima livre nunca melhora o custo. Frequência zero pode ocupar qualquer posição restante sem alterar o custo.\n\nOrdene as frequências em ordem decrescente e atribua essas posições em ordem de distância crescente. A prova é por troca: se A≥B e d≤D, associar A a d e B a D custa A*d+B*D. A associação inversa custa A*D+B*d; a diferença é (A−B)*(D−d)≥0. Portanto eliminar inversões nunca piora a solução. O fator 2, pela ida e volta, multiplica todo o custo e não muda a ordenação ótima.\n\nGuarde pares (frequência,índice original). Ordenar somente os valores perderia a identidade dos prédios: a saída precisa ser x[0],x[1],…,x[n], com cada prédio no seu índice inicial. No código, a posição escolhida é salva em x[id+1]. Use long long desde a multiplicação e na soma, pois 2*distância*frequência acumulado excede int. Empates podem ser resolvidos em qualquer ordem.\n\nEsse argumento é um complemento didático derivado da solução local e do enunciado oficial; não foi encontrada uma anotação desta questão nos PDFs autorizados atuais.",
+    "why": "Prova por troca integrada na resposta.",
+    "cpp17": "pair<long long,vector<int>> posicionarPredios(const vector<int>& visitas) {\n     int n=(int)visitas.size();\n     vector<pair<int,int>> ordem;\n     for(int i=0;i<n;++i) ordem.push_back({visitas[i],i});\n     sort(ordem.rbegin(),ordem.rend());\n     vector<int> x(n+1,0); // sede no índice 0\n     long long custo=0;\n     for(int i=0;i<n;++i) {\n         int distancia=i/2+1;\n         int pos=(i%2==0 ? distancia : -distancia);\n         auto [frequencia,id]=ordem[i];\n         x[id+1]=pos;\n         custo+=2LL*distancia*frequencia;\n     }\n     return {custo,x};\n }",
+    "complexity": "O(n log n) de tempo e O(n) espaço. Para n≤200.000 e frequências≤10^6, coordenadas até 100.000 e custo até 20.000.200.000.000.000 cabem em long long.",
+    "success_criteria": [
+      "Provar a escolha gulosa por troca de dois pesos/distâncias.",
+      "Usar +1,−1,+2,−2,… e incluir ida e volta.",
+      "Preservar índices originais e aritmética em 64 bits."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::diaria_20261031",
+    "assunto::greedy_pesos_distancias_prova_troca",
+    "origem::repositorio-cpp"
+  ],
+  "sources": [
+    {
+      "notebook_id": "repositorio-cpp",
+      "problem_id": "cp-problem-000064",
+      "title": "Divan and a New Project",
+      "pages_1based": [],
+      "official_statement_url": "https://codeforces.com/problemset/problem/1614/B",
+      "local_code_path": "codeforces/rating_1000/divan_and_new_project-1614B.cpp",
+      "local_code_sha256": "2a2561030cc0573d228bbc35471877716d1999cc934c2f4cbb9772e50ac5ad18",
+      "commit": "7ffb9c3",
+      "provenance": "Solução local passou a estar concluída/versionada durante esta execução (commit 7ffb9c3 de 31/10/2026 19:51 America/Bahia). Conferida com fonte oficial. Nenhuma página correspondente em Problemas45–101/BigTech1–15; manter ID ao aparecer no manuscrito. Prova por troca é complemento didático."
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-10-31-diaria",
+    "sync_run_id": "67d7a4c5-5122-4abf-8dc5-2a0a42770a9b",
+    "learning_origin": "repository_solution_and_official_statement"
+  },
+  "validation": {
+    "handwriting_checked": false,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-diaria-2026-10-31.json",
+    "validated_at": "2026-10-31T19:54:10.336389-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1793487255843",
+    "card_ids": [
+      "1793487255843"
+    ],
+    "fields_sha256": "eebf6feccd813c3d5aae1e6577b76f711d5eb78af264780d6fdea67d26dcbc50",
+    "last_batch_id": "2026-10-31-diaria"
+  }
+}

@@ -71,3 +71,10 @@
     Execute geração, testes e publicação dos conteúdos validados dentro do
     escopo autorizado; não exigir nova aprovação a cada lote. Não confundir
     validação manual do fluxo com confirmação de uma execução futura agendada.
+
+16. Em 01/11/2026 o usuário mandou desativar a rotina e retirar Codex/Anki
+    da inicialização do macOS. Automação `gerar-cards-do-goodnotes` está PAUSED.
+    Os dois LaunchAgents foram descarregados/desabilitados e removidos da pasta
+    de login. Não executar geração recorrente, reativar a agenda ou reinstalar
+    início automático sem novo pedido explícito. O método de análise permanece
+    disponível para execuções manuais solicitadas; preservar cards e cursores.

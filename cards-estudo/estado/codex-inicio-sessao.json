@@ -3,12 +3,20 @@
   "plist_path": "/Users/marcus_cs_pereira/Library/LaunchAgents/local.codex.open-at-login.plist",
   "bundle_id": "com.openai.codex",
   "app_path_verified": "/Applications/ChatGPT.app",
-  "start_at_user_login": true,
+  "start_at_user_login": false,
   "launch_hidden": true,
   "launch_in_background": true,
   "configuration_validated": true,
-  "takes_effect": "next_user_login",
+  "takes_effect": "disabled_immediately",
   "first_login_launch_verified": false,
   "configured_at": "2026-10-29T22:13:53-03:00",
-  "explicitly_disabled": false
+  "explicitly_disabled": true,
+  "launch_agent_removed": true,
+  "service_unloaded": true,
+  "disabled_at": "2026-11-01T15:17:46.026154-03:00",
+  "disabled_by": "explicit_user_request",
+  "backup_path": "/Users/marcus_cs_pereira/.codex/backups/startup-disabled-2026-11-01/local.codex.open-at-login.plist",
+  "login_item_absent_verified_in_system_settings": true,
+  "verified_at": "2026-11-01T15:18:42.717464-03:00",
+  "additional_chatgpt_app_login_item_removed": true
 }

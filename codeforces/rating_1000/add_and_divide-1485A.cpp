@@ -11,8 +11,8 @@ bool many_cases = true;
 
 void solve(){
   ll a, b; cin >> a >> b;
-  ll ans = INT_MAX;
-  for(int i=0;i<=32;i++){
+  ll ans = a+1;
+  for(int i=0;i<=log2(a);i++){
     if(b+i == 1){
       continue;
     }

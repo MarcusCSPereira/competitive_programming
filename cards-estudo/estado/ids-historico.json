@@ -1,5 +1,5 @@
 {
-  "next_id": 97,
+  "next_id": 114,
   "keys": {
     "casa_dos_pombos": "cp-note-000001",
     "construir_linked_list": "cp-note-000002",
@@ -96,6 +96,23 @@
     "minimax_xor_permutacao_por_grupos": "cp-note-000093",
     "triangulo_extremos_base_altura": "cp-note-000094",
     "sequencia_consecutiva_hash_inicio_cadeia": "cp-note-000095",
-    "greedy_pesos_distancias_prova_troca": "cp-note-000096"
+    "greedy_pesos_distancias_prova_troca": "cp-note-000096",
+    "xor_prefixo_periodo_quatro": "cp-note-000097",
+    "mex_xor_elemento_proibido": "cp-note-000098",
+    "remover_pontas_maior_substring": "cp-note-000099",
+    "dp_substring_comum_diagonal": "cp-note-000100",
+    "divisor_incrementos_limite_viavel": "cp-note-000101",
+    "contar_divisores_expoentes_fatoracao": "cp-note-000102",
+    "divisores_separados_limite_primos": "cp-note-000103",
+    "paridade_sinais_caminho_matriz": "cp-note-000104",
+    "palindromo_dois_ponteiros_filtrados": "cp-note-000105",
+    "parenteses_pilha_fechamentos_pendentes": "cp-note-000106",
+    "pilha_minimo_delta_restaurar": "cp-note-000107",
+    "tres_soma_ordenacao_ponteiros_duplicatas": "cp-note-000108",
+    "palindromo_uma_remocao_primeira_divergencia": "cp-note-000109",
+    "boyer_moore_cancelamento_maioria": "cp-note-000110",
+    "hashset_colisao_encadeamento_separado": "cp-note-000111",
+    "merge_sort_dividir_intercalar_estavel": "cp-note-000112",
+    "busca_binaria_exata_intervalo_invariante": "cp-note-000113"
   }
 }

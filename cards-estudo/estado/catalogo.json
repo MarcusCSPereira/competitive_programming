@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-31T19:55:32.865543-03:00",
+  "updated_at": "2026-11-12T08:41:53.325925-03:00",
   "units": [
     {
       "id": "cp-problem-000001",
@@ -1525,9 +1525,15 @@
       ],
       "import_confirmed": true,
       "last_batch_id": "2026-10-31-diaria",
-      "notes": "Página 101 contém enunciado, entrada e lógica azul; ainda sem código em imagem, tópicos roxos ou complexidade verde no final. Implementação e limites conferidos com solução local commit e7519d7 e fonte oficial. A função de extremos é adaptação didática. O título incorreto do commit (1629B) não substitui o ID 1620B conferido no arquivo/enunciado.",
-      "source_snapshot_sha256": "585dfd68e54feeaec2f8e02319e935f40a41ccd7a9e7dd14ff3acc8745511e07",
-      "handwriting_status": "statement_and_logic_present_code_and_purple_not_yet_present"
+      "notes": "A página 101 ganhou a imagem do código, a nota roxa de geometria e a complexidade linear em verde. A prova e o código do card 000094 já cobrem o assunto.",
+      "source_snapshot_sha256": "8f17590d3733ffaa3ed8cf638a7e7d1cc95ba98ce95cc56bd467ceb876b77275",
+      "handwriting_status": "statement_logic_code_purple_and_complexity_present",
+      "notes_history": [
+        {
+          "note": "Página 101 contém enunciado, entrada e lógica azul; ainda sem código em imagem, tópicos roxos ou complexidade verde no final. Implementação e limites conferidos com solução local commit e7519d7 e fonte oficial. A função de extremos é adaptação didática. O título incorreto do commit (1629B) não substitui o ID 1620B conferido no arquivo/enunciado.",
+          "superseded_at": "2026-11-12T08:41:13.213993-03:00"
+        }
+      ]
     },
     {
       "id": "cp-problem-000063",
@@ -1557,9 +1563,11 @@
     },
     {
       "id": "cp-problem-000064",
-      "notebook_id": "repositorio-cpp",
+      "notebook_id": "problemas",
       "title": "Divan and a New Project",
-      "pages": [],
+      "pages": [
+        102
+      ],
       "platform_id": "1614B",
       "official_statement_verified": true,
       "official_statement_url": "https://codeforces.com/problemset/problem/1614/B",
@@ -1573,11 +1581,396 @@
         "greedy_pesos_distancias_prova_troca"
       ],
       "import_confirmed": true,
-      "last_batch_id": "2026-10-31-diaria",
-      "notes": "Solução local passou a estar concluída/versionada durante esta execução (commit 7ffb9c3 de 31/10/2026 19:51 America/Bahia). Conferida com fonte oficial. Nenhuma página correspondente em Problemas45–101/BigTech1–15; manter ID ao aparecer no manuscrito. Prova por troca é complemento didático.",
+      "last_batch_id": "2026-11-12-manual",
+      "notes": "Página 102 contém enunciado, lógica, código, preenchimento alternado destacado em roxo e complexidade. Solução local do commit 7ffb9c3 e enunciado oficial conferidos. A prova por troca é complemento didático.",
+      "source_kind": "manuscript_plus_local_solution",
+      "manuscript_mapping_status": "mapped",
+      "rating_verified": 1000,
+      "notes_history": [
+        {
+          "note": "Solução local passou a estar concluída/versionada durante esta execução (commit 7ffb9c3 de 31/10/2026 19:51 America/Bahia). Conferida com fonte oficial. Nenhuma página correspondente em Problemas45–101/BigTech1–15; manter ID ao aparecer no manuscrito. Prova por troca é complemento didático.",
+          "superseded_at": "2026-11-12T08:41:13.221694-03:00"
+        }
+      ],
+      "source_snapshot_sha256": "8f17590d3733ffaa3ed8cf638a7e7d1cc95ba98ce95cc56bd467ceb876b77275",
+      "handwriting_status": "statement_logic_code_purple_and_complexity_present"
+    },
+    {
+      "id": "cp-problem-000065",
+      "notebook_id": "problemas",
+      "title": "MEXor Mixup",
+      "pages": [
+        103,
+        104
+      ],
+      "platform_id": "1567B",
+      "platform": "codeforces",
+      "official_statement_verified": true,
+      "official_statement_url": "https://codeforces.com/problemset/problem/1567/B",
+      "local_code": "codeforces/rating_1000/mexor_mixup-1567B.cpp",
+      "local_code_sha256": "c07bdc9c12e9eaaae9024b150ae000560f0b539abb8b575389f0b40ffa6e63e9",
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000097",
+        "cp-note-000098"
+      ],
+      "topics": [
+        "xor_prefixo_periodo_quatro",
+        "mex_xor_elemento_proibido"
+      ],
+      "import_confirmed": true,
+      "last_batch_id": "2026-11-12-manual",
+      "notes": "Roxo define MEX, compara pré-cálculo e período de quatro do XOR e cancela prefixos. A lógica azul separa três comprimentos conforme o valor que falta no XOR.",
+      "source_snapshot_sha256": "8f17590d3733ffaa3ed8cf638a7e7d1cc95ba98ce95cc56bd467ceb876b77275",
+      "handwriting_status": "statement_logic_code_purple_and_complexity_present"
+    },
+    {
+      "id": "cp-problem-000066",
+      "notebook_id": "problemas",
+      "title": "Double-ended Strings",
+      "pages": [
+        105,
+        106
+      ],
+      "platform_id": "1506C",
+      "platform": "codeforces",
+      "official_statement_verified": true,
+      "official_statement_url": "https://codeforces.com/problemset/problem/1506/C",
+      "local_code": "codeforces/rating_1000/double_ended_strings-1506C.cpp",
+      "local_code_sha256": "4843aed899ffb8151aa488a21932b43bf95297fc242cd328348a3d1133288339",
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000099",
+        "cp-note-000100"
+      ],
+      "topics": [
+        "remover_pontas_maior_substring",
+        "dp_substring_comum_diagonal"
+      ],
+      "import_confirmed": true,
+      "last_batch_id": "2026-11-12-manual",
+      "notes": "Anotação relaciona remoções nas pontas à maior substring comum e desenha DP de sufixos. Roxo distingue substring de subsequência. O custo do brute force depende de como se compara.",
+      "source_snapshot_sha256": "8f17590d3733ffaa3ed8cf638a7e7d1cc95ba98ce95cc56bd467ceb876b77275",
+      "handwriting_status": "statement_logic_code_purple_and_complexity_present"
+    },
+    {
+      "id": "cp-problem-000067",
+      "notebook_id": "problemas",
+      "title": "Add and Divide",
+      "pages": [
+        106,
+        107
+      ],
+      "platform_id": "1485A",
+      "platform": "codeforces",
+      "official_statement_verified": true,
+      "official_statement_url": "https://codeforces.com/problemset/problem/1485/A",
+      "local_code": "codeforces/rating_1000/add_and_divide-1485A.cpp",
+      "local_code_sha256": "abc6f2754c30d05859179729a5ef59322076d66dfbf4c8e6a1828218c2ee6d59",
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000101"
+      ],
+      "topics": [
+        "divisor_incrementos_limite_viavel"
+      ],
+      "import_confirmed": true,
+      "last_batch_id": "2026-11-12-manual",
+      "notes": "Manuscrito propõe testar poucos incrementos e contar divisões inteiras. Corrigido custo geral do laço interno vezes o externo. O limite vem de uma solução viável.",
+      "source_snapshot_sha256": "8f17590d3733ffaa3ed8cf638a7e7d1cc95ba98ce95cc56bd467ceb876b77275",
+      "handwriting_status": "statement_logic_code_purple_and_complexity_present"
+    },
+    {
+      "id": "cp-problem-000068",
+      "notebook_id": "problemas",
+      "title": "Different Divisors",
+      "pages": [
+        107,
+        108,
+        109
+      ],
+      "platform_id": "1474B",
+      "platform": "codeforces",
+      "official_statement_verified": true,
+      "official_statement_url": "https://codeforces.com/problemset/problem/1474/B",
+      "local_code": "codeforces/rating_1000/different_divisors-1474B.cpp",
+      "local_code_sha256": "7c970b4aa6e8fba8e617a9b01faed59ecc4bd71f5b82826d95c15cc0422ebe51",
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000102",
+        "cp-note-000103"
+      ],
+      "topics": [
+        "contar_divisores_expoentes_fatoracao",
+        "divisores_separados_limite_primos"
+      ],
+      "import_confirmed": true,
+      "last_batch_id": "2026-11-12-manual",
+      "notes": "Roxo destaca produto dos expoentes mais um e teste de primalidade até raiz. A prova completa trata números com quatro ou mais divisores. A busca de primo por tentativa não é logarítmica.",
+      "source_snapshot_sha256": "8f17590d3733ffaa3ed8cf638a7e7d1cc95ba98ce95cc56bd467ceb876b77275",
+      "handwriting_status": "statement_logic_code_purple_and_complexity_present"
+    },
+    {
+      "id": "cp-problem-000069",
+      "notebook_id": "problemas",
+      "title": "Numbers Box",
+      "pages": [
+        109,
+        110
+      ],
+      "platform_id": "1447B",
+      "platform": "codeforces",
+      "official_statement_verified": true,
+      "official_statement_url": "https://codeforces.com/problemset/problem/1447/B",
+      "local_code": "codeforces/rating_1000/numbers_box-1447B.cpp",
+      "local_code_sha256": "b8d7b896517e50c17ad181ede3ae1c0540135a3303fb94bf4e5951b3e7019e8b",
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000104"
+      ],
+      "topics": [
+        "paridade_sinais_caminho_matriz"
+      ],
+      "import_confirmed": true,
+      "last_batch_id": "2026-11-12-manual",
+      "notes": "Roxo marca paridade, sinais e variáveis de controle. A prova por caminho justifica que a restrição de adjacência não impede mover um sinal. O mínimo absoluto zero já absorve a penalidade.",
+      "source_snapshot_sha256": "8f17590d3733ffaa3ed8cf638a7e7d1cc95ba98ce95cc56bd467ceb876b77275",
+      "handwriting_status": "statement_logic_code_purple_and_complexity_present"
+    },
+    {
+      "id": "cp-problem-000070",
+      "notebook_id": "big-tech-problems",
+      "title": "Valid Palindrome",
+      "pages": [
+        15
+      ],
+      "platform_id": "125",
+      "platform": "leetcode",
+      "official_statement_verified": true,
+      "official_statement_url": "https://leetcode.com/problems/valid-palindrome/description/",
+      "local_code": "leet_code/easy/valid_palindrome-125.cpp",
+      "local_code_sha256": "e616be81596f326c2f54f4cf9a26c73a734db63cfd889bbbefe61ae59752a965",
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000105"
+      ],
+      "topics": [
+        "palindromo_dois_ponteiros_filtrados"
+      ],
+      "import_confirmed": true,
+      "last_batch_id": "2026-11-12-manual",
+      "notes": "Roxo destaca caracteres alfanuméricos, conversão para minúscula e dois ponteiros. Varredura evita uma cópia filtrada.",
+      "source_snapshot_sha256": "a822418245a68f00f70f2b9d5e9c4af510b1b5f3639b93a7a7e40529f0b8241e",
+      "handwriting_status": "statement_logic_code_purple_and_complexity_present"
+    },
+    {
+      "id": "cp-problem-000071",
+      "notebook_id": "big-tech-problems",
+      "title": "Valid Parentheses",
+      "pages": [
+        16
+      ],
+      "platform_id": "20",
+      "platform": "leetcode",
+      "official_statement_verified": true,
+      "official_statement_url": "https://leetcode.com/problems/valid-parentheses/description/",
+      "local_code": "leet_code/easy/valid_parentheses-20.cpp",
+      "local_code_sha256": "aa0690c459d7e7bd3a95db79857513dc975450d7e46c5af8209e73c6429e7e46",
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000106"
+      ],
+      "topics": [
+        "parenteses_pilha_fechamentos_pendentes"
+      ],
+      "import_confirmed": true,
+      "last_batch_id": "2026-11-12-manual",
+      "notes": "Roxo cita operações da pilha. O invariante é a ordem dos fechamentos pendentes. O card guarda o fechamento esperado no topo.",
+      "source_snapshot_sha256": "a822418245a68f00f70f2b9d5e9c4af510b1b5f3639b93a7a7e40529f0b8241e",
+      "handwriting_status": "statement_logic_code_purple_and_complexity_present"
+    },
+    {
+      "id": "cp-problem-000072",
+      "notebook_id": "big-tech-problems",
+      "title": "Min Stack",
+      "pages": [
+        16,
+        17
+      ],
+      "platform_id": "155",
+      "platform": "leetcode",
+      "official_statement_verified": true,
+      "official_statement_url": "https://leetcode.com/problems/min-stack/description/",
+      "local_code": "leet_code/medium/min_stack-155.cpp",
+      "local_code_sha256": "7a30d692f7d620d991b20ee7075a2f3a3704b52253ef005b3cf54ed2131a25ec",
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000107"
+      ],
+      "topics": [
+        "pilha_minimo_delta_restaurar"
+      ],
+      "import_confirmed": true,
+      "last_batch_id": "2026-11-12-manual",
+      "notes": "O manuscrito codifica diferença para o mínimo anterior e usa valor negativo como marcador. Em C++17, long long mantém diferenças de int32 portáveis.",
+      "source_snapshot_sha256": "a822418245a68f00f70f2b9d5e9c4af510b1b5f3639b93a7a7e40529f0b8241e",
+      "handwriting_status": "statement_logic_code_purple_and_complexity_present"
+    },
+    {
+      "id": "cp-problem-000073",
+      "notebook_id": "big-tech-problems",
+      "title": "3Sum",
+      "pages": [
+        17,
+        18
+      ],
+      "platform_id": "15",
+      "platform": "leetcode",
+      "official_statement_verified": true,
+      "official_statement_url": "https://leetcode.com/problems/3sum/description/",
+      "local_code": "leet_code/medium/three_sum-15.cpp",
+      "local_code_sha256": "f127d54fc37e0e05901a2df0436a5e1cdbcee4178e87d65d7fc431b1066a46d8",
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000108"
+      ],
+      "topics": [
+        "tres_soma_ordenacao_ponteiros_duplicatas"
+      ],
+      "import_confirmed": true,
+      "last_batch_id": "2026-11-12-manual",
+      "notes": "Roxo liga o problema a Two Sum em array ordenado e controla os laços. Zero pode ser âncora, o corte seguro é valor positivo. Espaço da ordenação e da saída é separado da varredura.",
+      "source_snapshot_sha256": "a822418245a68f00f70f2b9d5e9c4af510b1b5f3639b93a7a7e40529f0b8241e",
+      "handwriting_status": "statement_logic_code_purple_and_complexity_present"
+    },
+    {
+      "id": "cp-problem-000074",
+      "notebook_id": "big-tech-problems",
+      "title": "Valid Palindrome II",
+      "pages": [
+        18
+      ],
+      "platform_id": "680",
+      "platform": "leetcode",
+      "official_statement_verified": true,
+      "official_statement_url": "https://leetcode.com/problems/valid-palindrome-ii/description/",
+      "local_code": "leet_code/python_training/easy/valid_palindrome_II-680.py",
+      "local_code_sha256": "b1faf79a34ffc1fe703da0f892ce6d2fa3624d6ed88169f4f893ef44796dd515",
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000109"
+      ],
+      "topics": [
+        "palindromo_uma_remocao_primeira_divergencia"
+      ],
+      "import_confirmed": true,
+      "last_batch_id": "2026-11-12-manual",
+      "notes": "Roxo destaca dois ponteiros e auxiliar por índices. Tradução da solução Python para C++17. Classificação oficial Easy e até uma remoção.",
+      "source_snapshot_sha256": "a822418245a68f00f70f2b9d5e9c4af510b1b5f3639b93a7a7e40529f0b8241e",
+      "handwriting_status": "statement_logic_code_purple_and_complexity_present"
+    },
+    {
+      "id": "cp-problem-000075",
+      "notebook_id": "big-tech-problems",
+      "title": "Majority Element",
+      "pages": [
+        19
+      ],
+      "platform_id": "169",
+      "platform": "leetcode",
+      "official_statement_verified": true,
+      "official_statement_url": "https://leetcode.com/problems/majority-element/description/",
+      "local_code": "leet_code/python_training/easy/majority_element-169.py",
+      "local_code_sha256": "2f23d1df53e5e0402f42aca7578abb23d41735160c3b6767f4c4b86f8414152c",
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000110"
+      ],
+      "topics": [
+        "boyer_moore_cancelamento_maioria"
+      ],
+      "import_confirmed": true,
+      "last_batch_id": "2026-11-12-manual",
+      "notes": "Roxo registra Boyer–Moore. Maioria precisa aparecer estritamente mais que n/2. A segunda passada é complemento para o caso sem garantia.",
+      "source_snapshot_sha256": "a822418245a68f00f70f2b9d5e9c4af510b1b5f3639b93a7a7e40529f0b8241e",
+      "handwriting_status": "statement_logic_code_purple_and_complexity_present"
+    },
+    {
+      "id": "cp-problem-000076",
+      "notebook_id": "big-tech-problems",
+      "title": "Design HashSet",
+      "pages": [
+        19,
+        20
+      ],
+      "platform_id": "705",
+      "platform": "leetcode",
+      "official_statement_verified": true,
+      "official_statement_url": "https://leetcode.com/problems/design-hashset/description/",
+      "local_code": "leet_code/python_training/easy/design_hashset-705.py",
+      "local_code_sha256": "ba52dab9007b1684bde2ea53458b1a608d135db2b5e3e41e7ac66fc77e436103",
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000111"
+      ],
+      "topics": [
+        "hashset_colisao_encadeamento_separado"
+      ],
+      "import_confirmed": true,
+      "last_batch_id": "2026-11-12-manual",
+      "notes": "Roxo marca listas e hashing. O código do caderno usa encadeamento separado, inclusive em trechos que o chamam de open addressing. O limite de 10⁴ é de chamadas.",
+      "source_snapshot_sha256": "a822418245a68f00f70f2b9d5e9c4af510b1b5f3639b93a7a7e40529f0b8241e",
+      "handwriting_status": "statement_logic_code_purple_and_complexity_present"
+    },
+    {
+      "id": "cp-problem-000077",
+      "notebook_id": "big-tech-problems",
+      "title": "Sort an Array",
+      "pages": [
+        20
+      ],
+      "platform_id": "912",
+      "platform": "leetcode",
+      "official_statement_verified": true,
+      "official_statement_url": "https://leetcode.com/problems/sort-an-array/description/",
+      "local_code": "leet_code/python_training/medium/sort_an_array-912.py",
+      "local_code_sha256": "ac4937282255f982e514d0a29e3f78706b4e4d5c579829cf233bbe0b01c8859f",
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000112"
+      ],
+      "topics": [
+        "merge_sort_dividir_intercalar_estavel"
+      ],
+      "import_confirmed": true,
+      "last_batch_id": "2026-11-12-manual",
+      "notes": "Roxo descreve caso base, dividir, recursão, merge com três índices e cópia das sobras. Adaptação C++ usa buffer único. Caso base também cobre vazio.",
+      "source_snapshot_sha256": "a822418245a68f00f70f2b9d5e9c4af510b1b5f3639b93a7a7e40529f0b8241e",
+      "handwriting_status": "statement_logic_code_purple_and_complexity_present"
+    },
+    {
+      "id": "cp-problem-000078",
+      "notebook_id": "repositorio-cpp",
+      "title": "Binary Search",
+      "pages": [],
+      "platform_id": "704",
+      "platform": "leetcode",
+      "official_statement_verified": true,
+      "official_statement_url": "https://leetcode.com/problems/binary-search/description/",
+      "local_code": "leet_code/easy/binary_search-704.cpp",
+      "local_code_sha256": "888244389dd45e6dcc9f7d84342627f5ce9d3fa10fc84b98712c11062efd8be4",
+      "status": "selected_topics_generated_validated",
+      "cards_generated": [
+        "cp-note-000113"
+      ],
+      "topics": [
+        "busca_binaria_exata_intervalo_invariante"
+      ],
+      "import_confirmed": true,
+      "last_batch_id": "2026-11-12-manual",
+      "notes": "Solução local localizada no commit c17e69a pelo arquivo e enunciado oficiais. O título do commit troca IDs. Não encontrada nas páginas autorizadas. Aplicação em array é distinta de busca binária em predicado de resposta.",
       "source_kind": "repository_solution_and_official_statement",
-      "manuscript_mapping_status": "not_located_in_authorized_pdf_snapshot",
-      "rating_verified": 1000
+      "manuscript_mapping_status": "not_located_in_authorized_pdf_snapshot"
     }
   ],
   "note": "Faixas autorizadas lidas integralmente; melhores assuntos selecionados em 69 cards. Roof Construction permanece sem conteúdo."

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000108",
+  "content_key": "tres_soma_ordenacao_ponteiros_duplicatas",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como encontrar todas as trincas distintas de soma zero com ordenação e dois ponteiros? Por que mover cada ponteiro é seguro e onde eliminar duplicatas?",
+  "back": {
+    "answer": "Ordene e fixe a primeira posição i. Busque as outras duas no sufixo usando l=i+1 e r=n−1. Se a soma for pequena, com aquele l nenhum índice ≤r dá um termo maior, então descarte l. Se for grande, com aquele r nenhum índice ≥l dá um termo menor, então descarte r. Cada movimento elimina possibilidades impossíveis e mantém os três índices distintos.\n\nPule valores repetidos de i, pois a primeira ocorrência já examinou um sufixo que inclui as demais. Ao registrar uma trinca, avance os dois ponteiros além das repetições dos valores usados. Se a[i]>0, os três termos seriam positivos e o laço externo pode parar. Zero pode ser âncora e [0,0,0] pode ser uma resposta.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "vector<array<int, 3>> tresSomas(vector<int>& a) {\n    sort(a.begin(), a.end());\n    vector<array<int, 3>> resposta;\n    const int n = static_cast<int>(a.size());\n    for (int i = 0; i + 2 < n && a[i] <= 0; ++i) {\n        if (i > 0 && a[i] == a[i - 1]) continue;\n        int l = i + 1, r = n - 1;\n        while (l < r) {\n            const long long soma = 0LL + a[i] + a[l] + a[r];\n            if (soma < 0) ++l;\n            else if (soma > 0) --r;\n            else {\n                resposta.push_back({a[i], a[l], a[r]});\n                const int x = a[l], y = a[r];\n                while (l < r && a[l] == x) ++l;\n                while (l < r && a[r] == y) --r;\n            }\n        }\n    }\n    return resposta;\n}",
+    "complexity": "O(n²) de tempo. Varredura com O(1) auxiliar, além da pilha da ordenação e da saída.",
+    "success_criteria": [
+      "Provar qual lado descartar para cada sinal da soma.",
+      "Distinguir índices distintos de valores que podem repetir.",
+      "Pular duplicatas sem perder [0,0,0]."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::manual_20261112",
+    "assunto::tres_soma_ordenacao_ponteiros_duplicatas",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000073",
+      "title": "3Sum",
+      "pages_1based": [
+        17,
+        18
+      ],
+      "official_statement_url": "https://leetcode.com/problems/3sum/description/",
+      "local_code_path": "leet_code/medium/three_sum-15.cpp",
+      "local_code_sha256": "f127d54fc37e0e05901a2df0436a5e1cdbcee4178e87d65d7fc431b1066a46d8",
+      "provenance": "Roxo liga o problema a Two Sum em array ordenado e controla os laços. Zero pode ser âncora, o corte seguro é valor positivo. Espaço da ordenação e da saída é separado da varredura.",
+      "source_snapshot_sha256": "a822418245a68f00f70f2b9d5e9c4af510b1b5f3639b93a7a7e40529f0b8241e",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "highlight_color": "blue_purple_green"
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-11-12-manual",
+    "sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
+    "learning_origin": "manuscript_plus_local_solution"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-2026-11-12-manual.json",
+    "validated_at": "2026-11-12T08:41:13.253658-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1794483682297",
+    "card_ids": [
+      "1794483682297"
+    ],
+    "fields_sha256": "86af1fd54c14f888f855bc01575965f787c005b44468d3a5fa2cddb1ae48c359",
+    "last_batch_id": "2026-11-12-manual"
+  }
+}

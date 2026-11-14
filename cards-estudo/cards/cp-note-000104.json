@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000104",
+  "content_key": "paridade_sinais_caminho_matriz",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Ao inverter os sinais de duas células adjacentes por vez, por que a maior soma é a soma dos módulos, possivelmente menos duas vezes o menor módulo? Como provar que a adjacência permite atingir a resposta?",
+  "back": {
+    "answer": "Sem zeros, inverter dois sinais conserva a paridade da contagem de negativos. Se ela for ímpar, pelo menos um negativo sobra. Para perder o mínimo da soma de módulos, escolha a célula de menor módulo para esse sinal. Sua contribuição muda de +m para −m, perda 2m.\n\nEm uma grade conectada, escolha um caminho simples entre duas células e aplique a operação a cada aresta do caminho. Cada célula interna muda duas vezes e só os extremos ficam invertidos. Isso permite cancelar pares de negativos ou mover um único sinal para a célula desejada. Com zero, use-o como um extremo: seu valor continua zero e o outro extremo troca de sinal. A mesma fórmula já cobre esse caso, pois o menor módulo é zero.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "long long maiorSomaSinais(const vector<vector<int>>& grade) {\n    long long soma = 0, menor = LLONG_MAX;\n    bool impar = false;\n    for (const auto& linha : grade) {\n        for (int x : linha) {\n            long long modulo = llabs(static_cast<long long>(x));\n            soma += modulo;\n            menor = min(menor, modulo);\n            if (x < 0) impar = !impar;\n        }\n    }\n    return impar ? soma - 2 * menor : soma;\n}",
+    "complexity": "O(n·m) de tempo e O(1) de espaço auxiliar para uma grade retangular conectada e não vazia.",
+    "success_criteria": [
+      "Identificar a paridade sem zeros e a penalidade de manter um negativo.",
+      "Provar que inverter arestas de um caminho só altera os extremos.",
+      "Explicar o papel do zero."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::manual_20261112",
+    "assunto::paridade_sinais_caminho_matriz",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000069",
+      "title": "Numbers Box",
+      "pages_1based": [
+        109,
+        110
+      ],
+      "official_statement_url": "https://codeforces.com/problemset/problem/1447/B",
+      "local_code_path": "codeforces/rating_1000/numbers_box-1447B.cpp",
+      "local_code_sha256": "b8d7b896517e50c17ad181ede3ae1c0540135a3303fb94bf4e5951b3e7019e8b",
+      "provenance": "Roxo marca paridade, sinais e variáveis de controle. A prova por caminho justifica que a restrição de adjacência não impede mover um sinal. O mínimo absoluto zero já absorve a penalidade.",
+      "source_snapshot_sha256": "8f17590d3733ffaa3ed8cf638a7e7d1cc95ba98ce95cc56bd467ceb876b77275",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "highlight_color": "blue_purple_green"
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-11-12-manual",
+    "sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
+    "learning_origin": "manuscript_plus_local_solution"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-2026-11-12-manual.json",
+    "validated_at": "2026-11-12T08:41:13.237526-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1794483682293",
+    "card_ids": [
+      "1794483682293"
+    ],
+    "fields_sha256": "69277d00d01eb438cefc1403dad21f810f5d2837001877371f6dcea988aaf8db",
+    "last_batch_id": "2026-11-12-manual"
+  }
+}

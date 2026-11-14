@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000101",
+  "content_key": "divisor_incrementos_limite_viavel",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Em Add and Divide, por que posso testar todos os incrementos de b antes de dividir a? Como saber quando parar de testar b sem escolher um limite arbitrário?",
+  "back": {
+    "answer": "Para a≥0, dividir por b+1 dá um quociente menor ou igual ao de dividir por b. Se uma divisão vier logo antes de um incremento, trocar sua ordem deixa b igual e a não aumenta. As divisões seguintes preservam essa vantagem. Repetindo a troca, existe uma solução ótima que faz todos os incrementos primeiro.\n\nEncontre um custo viável começando com divisor max(b,2). Dividir por 1 nunca reduz a. Após k incrementos, só eles já custam k, então k≥melhor não pode melhorar a resposta. Para cada k menor, conte quantas divisões inteiras por b+k zeram a. Por exemplo, para a=9 e b=2, dividir quatro vezes empata com aumentar b para 3 e dividir três vezes.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int custoMinimoDivisoes(int a, int b) {\n    auto contar = [a](int divisor) {\n        int passos = 0;\n        for (int x = a; x > 0; x /= divisor) ++passos;\n        return passos;\n    };\n    const int primeiro = b == 1 ? 1 : 0;\n    int melhor = primeiro + contar(b + primeiro);\n    for (int k = primeiro + 1; k < melhor; ++k) {\n        melhor = min(melhor, k + contar(b + k));\n    }\n    return melhor;\n}",
+    "complexity": "O(log²(a+1)) de tempo e O(1) auxiliar. O primeiro custo dá O(log(a+1)) candidatos, cada qual com O(log(a+1)) divisões no pior caso.",
+    "success_criteria": [
+      "Justificar trocar divisão com incremento.",
+      "Descartar b=1 e podar pelo melhor custo viável.",
+      "Contar tanto incrementos quanto divisões."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::manual_20261112",
+    "assunto::divisor_incrementos_limite_viavel",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000067",
+      "title": "Add and Divide",
+      "pages_1based": [
+        106,
+        107
+      ],
+      "official_statement_url": "https://codeforces.com/problemset/problem/1485/A",
+      "local_code_path": "codeforces/rating_1000/add_and_divide-1485A.cpp",
+      "local_code_sha256": "abc6f2754c30d05859179729a5ef59322076d66dfbf4c8e6a1828218c2ee6d59",
+      "provenance": "Manuscrito propõe testar poucos incrementos e contar divisões inteiras. Corrigido custo geral do laço interno vezes o externo. O limite vem de uma solução viável.",
+      "source_snapshot_sha256": "8f17590d3733ffaa3ed8cf638a7e7d1cc95ba98ce95cc56bd467ceb876b77275",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "highlight_color": "blue_purple_green"
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-11-12-manual",
+    "sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
+    "learning_origin": "manuscript_plus_local_solution"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-2026-11-12-manual.json",
+    "validated_at": "2026-11-12T08:41:13.231557-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1794483682290",
+    "card_ids": [
+      "1794483682290"
+    ],
+    "fields_sha256": "20f007906ff7fa7b656aafcc42ab30c60225639fa4448d4db398883a7802aade",
+    "last_batch_id": "2026-11-12-manual"
+  }
+}

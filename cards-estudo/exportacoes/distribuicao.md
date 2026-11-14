@@ -1,8 +1,8 @@
 # Distribuição dos cards por questão
 
-**96 cards únicos:** 69 de Problemas, 22 de Big Tech Problems e 5 de soluções locais do repositório.
+**113 cards únicos.** 78 de Problemas, 30 de Big Tech Problems e 5 de soluções locais do repositório.
 
-Os lotes acrescentaram 69,17,5,2 e3 cards. As atualizações preservam notas e revisões. Conceitos compartilhados podem aparecer em mais de uma linha, mas existem uma única vez no Anki.
+Conceitos compartilhados podem aparecer em mais de uma linha e existem uma única vez no Anki.
 
 ## Problemas
 
@@ -60,6 +60,12 @@ Os lotes acrescentaram 69,17,5,2 e3 cards. As atualizações preservam notas e r
 | Word Capitalization | 1 |
 | Black and White Stripe | 2 |
 | Triangles on a Rectangle | 1 |
+| Divan and a New Project | 1 |
+| MEXor Mixup | 2 |
+| Double-ended Strings | 2 |
+| Add and Divide | 1 |
+| Different Divisors | 2 |
+| Numbers Box | 1 |
 
 ## Big Tech Problems
 
@@ -75,10 +81,18 @@ Os lotes acrescentaram 69,17,5,2 e3 cards. As atualizações preservam notas e r
 | Valid Sudoku | 2 |
 | Inicialização de contêineres compostos | 3 |
 | Longest Consecutive Sequence | 1 |
+| Valid Palindrome | 1 |
+| Valid Parentheses | 1 |
+| Min Stack | 1 |
+| 3Sum | 1 |
+| Valid Palindrome II | 1 |
+| Majority Element | 1 |
+| Design HashSet | 1 |
+| Sort an Array | 1 |
 
 ## Repositório C++
 
 | Questão/seção | Cards associados |
 | --- | ---: |
 | Make it Alternating | 4 |
-| Divan and a New Project | 1 |
+| Binary Search | 1 |

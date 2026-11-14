@@ -9,12 +9,10 @@ Transformar aprendizados das questões já estudadas em revisões curtas no celu
 preservando a escrita no iPad como rotina principal. Primeiro recuperar o passado;
 depois incorporar questões novas e alterações em anotações antigas.
 
-**Fase atual: 96 cards sincronizados.** A execução de 31/10 acrescentou
-3 cards (Triangles on a Rectangle, Longest Consecutive Sequence e Divan and a
-New Project) e aprimorou os 2 de Roof Construction com a lógica manuscrita nova.
-Todos têm teoria, justificativa e C++17 validado. Os IDs e agendamentos anteriores
-foram preservados. Veja a [análise atual](analises/2026-10-31-rotina-diaria.md),
-os [cards do lote](exportacoes/2026-10-31-diaria.md) e a
+**Fase atual: 113 cards sincronizados.** Em 12/11, a execução manual
+acrescentou 17 cards e atualizou o de Divan and a New Project para
+vincular a página 102. Veja a [análise atual](analises/2026-11-12-rotina-manual.md),
+os [cards do lote](exportacoes/2026-11-12-manual.md) e a
 [distribuição por problema](exportacoes/distribuicao.md).
 
 **Automação desativada em 01/11/2026 a pedido do usuário.** A rotina das
@@ -23,11 +21,10 @@ O fluxo completo de um disparo recebido do agendador foi confirmado em 31/10;
 a execução observada chegou às 19:47, sem comprovar pontualidade às 12:30.
 Condições em [rotina-diaria.md](rotina-diaria.md).
 
-**Rotina configurada: 10 cards novos por dia, revisões primeiro.** Todos os 96
-continuam no baralho; o número diário mostrado na tela não é o total da coleção.
-Há **69 cards de Problemas, 22 de Big Tech Problems e 5 de fonte no repositório**.
-Make it Alternating e Divan and a New Project ainda não têm página localizada:
-reutilizar suas identidades ao surgirem no PDF, sem inventar associação.
+**Estudo: 10 cards novos por dia, revisões primeiro.** O baralho tem
+78 cards de Problemas, 30 de Big Tech Problems e 5 de fonte no repositório.
+Make it Alternating e Binary Search ainda não têm página localizada.
+Reutilize suas identidades quando aparecerem no PDF.
 
 ## Fontes e escopo autorizado
 
@@ -161,12 +158,11 @@ fora do escopo. A faixa 45–99 foi lida em cores no snapshot validado do Drive.
 A 45 começa com a legenda e Microwaves; a continuação de Forked na 49 foi
 reconciliada com o início nas 48–50, preservando o ID previamente catalogado.
 
-O cursor de Problemas está em **102**, após as 101 páginas atuais. Roof Construction
-foi completada nas páginas 99–100; Triangles on a Rectangle começa na 101. Em
-Big Tech Problems, o próximo ponto é **16**, após as 15 páginas atuais; a 15
-recebeu Longest Consecutive Sequence. As lógicas e soluções locais/oficiais foram
-validadas; futuras continuações com código, roxo e complexidade devem ser
-reavaliadas, assim como qualquer alteração em páginas anteriores.
+O cursor de Problemas está em **111**, após as 110 páginas atuais.
+Em Big Tech Problems, o próximo ponto é **21**, após as 20 páginas atuais.
+A execução de 12/11 reconciliou as páginas 101 e 15, incluindo a continuação
+de Triangles on a Rectangle e o início de Valid Palindrome. Sempre comparar
+alterações em páginas anteriores antes de avançar.
 
 ## Como transformar aprendizados em cards
 

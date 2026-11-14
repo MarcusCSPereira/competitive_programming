@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000099",
+  "content_key": "remover_pontas_maior_substring",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Por que igualar duas strings removendo apenas pelas pontas equivale a achar a maior substring comum? Como calcular o custo e testar a ideia diretamente em C++17?",
+  "back": {
+    "answer": "Depois de remover pela esquerda e pela direita, os caracteres restantes são um intervalo contíguo da string inicial. Qualquer intervalo pode ser obtido apagando seu prefixo e seu sufixo. Se as duas sobras iguais têm comprimento L, foram feitas |a|−L remoções em a e |b|−L em b. Portanto minimize |a|+|b|−2L maximizando L, inclusive L=0.\n\nPara strings curtas, tente todo par de inícios e estenda enquanto os caracteres casam. Esse teste usa índices e dispensa cópias de substrings. Em abc e axbc, a sobra ótima é bc, com custo 3. Os três caracteres abc formam uma subsequência de axbc, mas o x está no meio e não pode ser retirado com as duas pontas intactas.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int custoRemoverPontas(const string& a, const string& b) {\n    int melhor = 0;\n    for (size_t i = 0; i < a.size(); ++i) {\n        for (size_t j = 0; j < b.size(); ++j) {\n            int k = 0;\n            while (i + k < a.size() && j + k < b.size()\n                   && a[i + k] == b[j + k]) {\n                ++k;\n            }\n            melhor = max(melhor, k);\n        }\n    }\n    return static_cast<int>(a.size() + b.size()) - 2 * melhor;\n}",
+    "complexity": "O(n·m·min(n,m)) de tempo e O(1) auxiliar. Para strings maiores, a DP reduz o tempo para O(n·m).",
+    "success_criteria": [
+      "Mostrar que só resta um trecho contíguo e que todo trecho é alcançável.",
+      "Derivar n+m−2L e aceitar a sobra vazia."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::manual_20261112",
+    "assunto::remover_pontas_maior_substring",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000066",
+      "title": "Double-ended Strings",
+      "pages_1based": [
+        105,
+        106
+      ],
+      "official_statement_url": "https://codeforces.com/problemset/problem/1506/C",
+      "local_code_path": "codeforces/rating_1000/double_ended_strings-1506C.cpp",
+      "local_code_sha256": "4843aed899ffb8151aa488a21932b43bf95297fc242cd328348a3d1133288339",
+      "provenance": "Anotação relaciona remoções nas pontas à maior substring comum e desenha DP de sufixos. Roxo distingue substring de subsequência. O custo do brute force depende de como se compara.",
+      "source_snapshot_sha256": "8f17590d3733ffaa3ed8cf638a7e7d1cc95ba98ce95cc56bd467ceb876b77275",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "highlight_color": "blue_purple_green"
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-11-12-manual",
+    "sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
+    "learning_origin": "manuscript_plus_local_solution"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-2026-11-12-manual.json",
+    "validated_at": "2026-11-12T08:41:13.228348-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1794483682288",
+    "card_ids": [
+      "1794483682288"
+    ],
+    "fields_sha256": "cb2be27a6d1b3bbb0af35b945b52d0bfc551694a09c2b242b6964b6c05130b6f",
+    "last_batch_id": "2026-11-12-manual"
+  }
+}

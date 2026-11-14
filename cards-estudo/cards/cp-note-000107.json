@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000107",
+  "content_key": "pilha_minimo_delta_restaurar",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como implementar uma pilha com mínimo em O(1) usando uma diferença por posição? Como decodificar o topo e restaurar o mínimo anterior ao remover?",
+  "back": {
+    "answer": "No push, guarde d=x−mínimo anterior. Quando d≥0, x não muda o mínimo e o topo é mínimo+d. Quando d<0, x passa a ser o mínimo e o topo é o próprio mínimo atual. Nessa situação, ao fazer pop, recupere o mínimo anterior com mínimo atual−d. A restauração funciona porque os elementos empilhados depois já foram removidos.\n\nNo primeiro push, inicialize o mínimo com x e guarde 0. Empates também dão 0 e não exigem restauração. Faça a subtração em long long desde o início: INT_MAX−INT_MIN não cabe em int. O contrato do problema garante pilha não vazia para top, pop e getMin.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "class PilhaMin {\n    stack<long long> deltas;\n    long long minimo = 0;\npublic:\n    void push(int x) {\n        if (deltas.empty()) minimo = x;\n        const long long d = static_cast<long long>(x) - minimo;\n        deltas.push(d);\n        if (d < 0) minimo = x;\n    }\n\n    void pop() {\n        const long long d = deltas.top();\n        deltas.pop();\n        if (d < 0) minimo -= d;\n    }\n\n    int top() const {\n        return static_cast<int>(minimo + max(0LL, deltas.top()));\n    }\n\n    int getMin() const { return static_cast<int>(minimo); }\n};",
+    "complexity": "O(1) por operação e O(n) de espaço para a pilha. Além dos deltas, há um acumulador de mínimo.",
+    "success_criteria": [
+      "Deduzir as regras de topo e restauração a partir de d=x−mínimo anterior.",
+      "Tratar primeiro push, empates e diferenças entre extremos de int."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::manual_20261112",
+    "assunto::pilha_minimo_delta_restaurar",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000072",
+      "title": "Min Stack",
+      "pages_1based": [
+        16,
+        17
+      ],
+      "official_statement_url": "https://leetcode.com/problems/min-stack/description/",
+      "local_code_path": "leet_code/medium/min_stack-155.cpp",
+      "local_code_sha256": "7a30d692f7d620d991b20ee7075a2f3a3704b52253ef005b3cf54ed2131a25ec",
+      "provenance": "O manuscrito codifica diferença para o mínimo anterior e usa valor negativo como marcador. Em C++17, long long mantém diferenças de int32 portáveis.",
+      "source_snapshot_sha256": "a822418245a68f00f70f2b9d5e9c4af510b1b5f3639b93a7a7e40529f0b8241e",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "highlight_color": "blue_purple_green"
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-11-12-manual",
+    "sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
+    "learning_origin": "manuscript_plus_local_solution"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-2026-11-12-manual.json",
+    "validated_at": "2026-11-12T08:41:13.250754-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1794483682296",
+    "card_ids": [
+      "1794483682296"
+    ],
+    "fields_sha256": "b11b2fb20a01cc0cd4401168ffc89e6c22deab7e471a96574029b53ae8b8bc07",
+    "last_batch_id": "2026-11-12-manual"
+  }
+}

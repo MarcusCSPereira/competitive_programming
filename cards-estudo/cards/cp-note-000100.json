@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000100",
+  "content_key": "dp_substring_comum_diagonal",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Na DP da maior substring comum, o que representa dp[i][j]? Por que zerar quando as letras diferem, guardar o máximo global e percorrer j de trás para frente se só houver uma linha?",
+  "back": {
+    "answer": "dp[i][j] é o tamanho da maior coincidência contígua que termina em a[i−1] e b[j−1]. Se as letras finais batem, acrescente 1 à diagonal dp[i−1][j−1]. Se diferem, nenhuma substring comum termina nesses dois pontos e o estado vale zero. A maior coincidência pode terminar no meio das strings, então registre o máximo em todas as células.\n\nNa maior subsequência comum, o estado trata prefixos e permite ignorar letras, por isso pode herdar de cima ou da esquerda. Para compactar a DP de substring em uma linha, percorra j em ordem decrescente. Assim dp[j−1] ainda guarda a diagonal da linha anterior. A coluna zero permanece zero. A compactação é um complemento à tabela 2D do caderno.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int maiorSubstringComum(const string& a, const string& b) {\n    vector<int> dp(b.size() + 1, 0);\n    int melhor = 0;\n    for (char letra : a) {\n        for (size_t j = b.size(); j > 0; --j) {\n            dp[j] = letra == b[j - 1] ? dp[j - 1] + 1 : 0;\n            melhor = max(melhor, dp[j]);\n        }\n    }\n    return melhor;\n}",
+    "complexity": "O(n·m) de tempo, O(m) auxiliar. Passe a string mais curta como b para usar O(min(n,m)) espaço.",
+    "success_criteria": [
+      "Dar o significado de sufixo que termina no par de posições.",
+      "Explicar diagonal, reset, máximo global e ordem decrescente."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::manual_20261112",
+    "assunto::dp_substring_comum_diagonal",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000066",
+      "title": "Double-ended Strings",
+      "pages_1based": [
+        105,
+        106
+      ],
+      "official_statement_url": "https://codeforces.com/problemset/problem/1506/C",
+      "local_code_path": "codeforces/rating_1000/double_ended_strings-1506C.cpp",
+      "local_code_sha256": "4843aed899ffb8151aa488a21932b43bf95297fc242cd328348a3d1133288339",
+      "provenance": "Anotação relaciona remoções nas pontas à maior substring comum e desenha DP de sufixos. Roxo distingue substring de subsequência. O custo do brute force depende de como se compara.",
+      "source_snapshot_sha256": "8f17590d3733ffaa3ed8cf638a7e7d1cc95ba98ce95cc56bd467ceb876b77275",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "highlight_color": "blue_purple_green"
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-11-12-manual",
+    "sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
+    "learning_origin": "manuscript_plus_local_solution"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-2026-11-12-manual.json",
+    "validated_at": "2026-11-12T08:41:13.228601-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1794483682289",
+    "card_ids": [
+      "1794483682289"
+    ],
+    "fields_sha256": "7a4eb30568bfbf4849d76567f401474651123b11c1e24fa395bc1de9288ffa47",
+    "last_batch_id": "2026-11-12-manual"
+  }
+}

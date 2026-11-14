@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "revision": 110,
+  "revision": 129,
   "timezone": "America/Bahia",
   "created_at": "2026-10-28T16:57:29-03:00",
-  "updated_at": "2026-11-01T15:17:46.026154-03:00",
+  "updated_at": "2026-11-12T09:06:32.580663-03:00",
   "phase": "historical_backfill",
   "last_run_id": "2026-10-31-diaria",
   "drive_account": "marcus.cesar.sp@gmail.com",
   "drive_folder_url": "https://drive.google.com/drive/u/3/folders/14BAvQwVD7kuo90RbTmYZgLkFtLGJpyhc",
   "id_counters": {
-    "next_problem": 65,
-    "next_card": 97
+    "next_problem": 79,
+    "next_card": 114
   },
   "notebooks": {
     "problemas": {
@@ -24,14 +24,14 @@
       },
       "source_snapshot": {
         "method": "drive_desktop_local_verified_snapshot",
-        "local_path": ".cache/sync/snapshots/585dfd68e54feeaec2f8e02319e935f40a41ccd7a9e7dd14ff3acc8745511e07.pdf",
-        "sha256": "585dfd68e54feeaec2f8e02319e935f40a41ccd7a9e7dd14ff3acc8745511e07",
-        "size_bytes": 70510005,
-        "page_count": 101,
+        "local_path": ".cache/sync/snapshots/8f17590d3733ffaa3ed8cf638a7e7d1cc95ba98ce95cc56bd467ceb876b77275.pdf",
+        "sha256": "8f17590d3733ffaa3ed8cf638a7e7d1cc95ba98ce95cc56bd467ceb876b77275",
+        "size_bytes": 77062289,
+        "page_count": 110,
         "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
         "same_bytes_as_drive_verified": false,
         "matches_fresh_cloud_size_and_mtime": true,
-        "sync_run_id": "67d7a4c5-5122-4abf-8dc5-2a0a42770a9b",
+        "sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
         "page_ppm72_sha256": {
           "45": "006de0a9decfa240f701f67eadcd788769856fea4cd5cdd9a5b65c52ef0eb3a0",
           "46": "86570d9fda4af20ee23e3077f6ae978771067c5a7e0c6888869ccc8e974f633f",
@@ -89,7 +89,16 @@
           "98": "7d0d27ea1bb5fce448eeef2d978bf43e0d814aac5c7031da544916f20923d23e",
           "99": "40868f26d25c6c38c236db9aa737d1e50c119c18b0a498147b997b5da66e0de9",
           "100": "c7e601085ed27c9b4b4d494a4d00d09b53085e63d3d0308e56efa54e3e451d39",
-          "101": "caa2f6cf5a7729e91af9a7681a2b465e974260e26646c4f6ec1cbe4e299ed78a"
+          "101": "307e02f6d881b8fdea660b45fd83d03649b1255cccb7c772aef3b93656a3c932",
+          "102": "a5963dc481a125fdac200d5a6f0260d308b42313d690ba9ba0bb0cc0f07af4b0",
+          "103": "a7df696f7001e1f7202df974abb271f297552e9b5e969cab2ff12b65542c2170",
+          "104": "d542f8a55f0ee85369d327d5dcf9e5bf67eedcc72fc861d095c6e73d47be3488",
+          "105": "1d1def2581ad12ea7b6d279433179993d4e397ca8b2786875fbc82a8d4b5f950",
+          "106": "8ae048029afe34c6bea3b8757792cea1fcd70e1341e15bf2b8087caf97651e74",
+          "107": "42617ff3e61818852f96d574bae6a1b61c6863261d765322e33d832c879bb56c",
+          "108": "95be81602b75bd9bfc629053516a77fb80a74645057d26808463cce30aa18a59",
+          "109": "e73237bd7d5268fb39952c814a619c765949321d853977e8eaaa7fa097a7f373",
+          "110": "ad76c68ea7c00331633583a14e573f92e69842921c51a2f540f52e91cfed5d70"
         }
       },
       "inspection": {
@@ -150,12 +159,21 @@
           98,
           99,
           100,
-          101
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110
         ],
         "mode": "complete_authorized_range_color_pdf",
         "full_historical_read_complete": true,
         "pending_page_ranges": [],
-        "incremental_comparison_report": "estado/comparacao-2026-10-31.json"
+        "incremental_comparison_report": "estado/comparacao-2026-11-12.json"
       },
       "analysis": {
         "catalog_file": "estado/catalogo.json",
@@ -211,22 +229,22 @@
           "cp-problem-000052",
           "cp-problem-000007",
           "cp-problem-000006",
-          "cp-problem-000062"
+          "cp-problem-000062",
+          "cp-problem-000064",
+          "cp-problem-000065",
+          "cp-problem-000066",
+          "cp-problem-000067",
+          "cp-problem-000068",
+          "cp-problem-000069"
         ],
         "full_extraction_complete": true,
         "selection_policy": "Melhores assuntos transferíveis; uma ou mais perguntas por unidade, deduplicando conceitos.",
-        "remaining_handwritten_gaps": [
-          {
-            "unit_id": "cp-problem-000062",
-            "field": "code_image_purple_topics_green_complexity",
-            "resolution": "Lógica manuscrita e solução local/oficial validaram card94; rever futuras continuações."
-          }
-        ]
+        "remaining_handwritten_gaps": []
       },
       "generation": {
-        "next_page": 102,
+        "next_page": 111,
         "next_unit_id": null,
-        "last_completed_unit_id": "cp-problem-000062",
+        "last_completed_unit_id": "cp-problem-000069",
         "completed_unit_ids": [
           "cp-problem-000008",
           "cp-problem-000009",
@@ -279,7 +297,13 @@
           "cp-problem-000052",
           "cp-problem-000007",
           "cp-problem-000006",
-          "cp-problem-000062"
+          "cp-problem-000062",
+          "cp-problem-000064",
+          "cp-problem-000065",
+          "cp-problem-000066",
+          "cp-problem-000067",
+          "cp-problem-000068",
+          "cp-problem-000069"
         ],
         "validated_card_ids": [
           "cp-note-000001",
@@ -350,15 +374,24 @@
           "cp-note-000091",
           "cp-note-000092",
           "cp-note-000093",
-          "cp-note-000094"
+          "cp-note-000094",
+          "cp-note-000096",
+          "cp-note-000097",
+          "cp-note-000098",
+          "cp-note-000099",
+          "cp-note-000100",
+          "cp-note-000101",
+          "cp-note-000102",
+          "cp-note-000103",
+          "cp-note-000104"
         ],
         "open_unit": null,
         "pending_units": []
       },
       "export": {
-        "last_batch_id": "2026-10-31-diaria",
+        "last_batch_id": "2026-11-12-manual",
         "import_confirmed": true,
-        "manifest": "exportacoes/2026-10-31-diaria-manifest.json"
+        "manifest": "exportacoes/2026-11-12-manual-manifest.json"
       },
       "source_snapshot_history": [
         {
@@ -551,6 +584,76 @@
             "98": "3af6be3d12d544a2ec070230d724f8321d3b7fa2ece13e1cb8d936eda3fa5538",
             "99": "88d8f329d60f965686524505640df46e1e5e7f22981d7578e582e2c6235de017"
           }
+        },
+        {
+          "method": "drive_desktop_local_verified_snapshot",
+          "local_path": ".cache/sync/snapshots/585dfd68e54feeaec2f8e02319e935f40a41ccd7a9e7dd14ff3acc8745511e07.pdf",
+          "sha256": "585dfd68e54feeaec2f8e02319e935f40a41ccd7a9e7dd14ff3acc8745511e07",
+          "size_bytes": 70510005,
+          "page_count": 101,
+          "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+          "same_bytes_as_drive_verified": false,
+          "matches_fresh_cloud_size_and_mtime": true,
+          "sync_run_id": "67d7a4c5-5122-4abf-8dc5-2a0a42770a9b",
+          "page_ppm72_sha256": {
+            "45": "006de0a9decfa240f701f67eadcd788769856fea4cd5cdd9a5b65c52ef0eb3a0",
+            "46": "86570d9fda4af20ee23e3077f6ae978771067c5a7e0c6888869ccc8e974f633f",
+            "47": "3aa0e8613345a3274f5f4333c286217aab65605d016d2de9fec0163566891608",
+            "48": "662f6bcc835fc22427f182df27e065b7c9c7d944737c55e628bef6d0140a4f1c",
+            "49": "21582f79e6e3c29247c2e5aea39c03e8b4a3afc09a2b74e3400d738d093bdfd0",
+            "50": "206817ff555163e1d772ac373259c1f81b6419ff229c0924904fc775ded5eb8d",
+            "51": "c4b21b4067d880e90dc54b7aeee1429d6e478c6184aeb4d5650cd2816fb2e527",
+            "52": "9f064aad7f49fb1aadc3d8bed7d593c1a42f6e9322d3c4aa1a9b13ece1dcf5d5",
+            "53": "6fbc20018eea8650d6103e2ab883dc41773856d4c28e65063bc45ec7c4802889",
+            "54": "53bae7ce0529dee57fcd390ef6ef582002dff4f46a8f159362b347265e5c97b4",
+            "55": "a94dfda205d477936e38760d96362cc634f228728af8db1b348c3446c9a75358",
+            "56": "c16ce98039b272cf87357473bb3f5da9e4d7180a56ece91a0e6a4463495d881e",
+            "57": "e7338c651cc4252c5163ae4a1feb0b73d72c3eebd935d4e468e346f9fb21a975",
+            "58": "bad7eb48e3b470ad3cf19cbedf18966904ad7075dc0ebac1ed0bfea32fb3d640",
+            "59": "eb53cd4fd0932f3fb139ad8581c04f382b77c6171fa998cf912edc2c005ffc21",
+            "60": "dfec77f0760d8c895a437df30361f4dbf227f1524d2ace2d419428b0d9fc0b7e",
+            "61": "b3b0105a72e64ae90de8cd3b3f5049d655efe88ad8fae157c8828749987b65f6",
+            "62": "c417a6dedc008e5204b97a46b173258f5daa6d4b43b0661d7ceb9a03c61bc136",
+            "63": "3ee8806a77f7f0d2504559faf40ce430b05795b3698ba87a65b6e12c848edfeb",
+            "64": "91474021e62267daf613c3858aba07f2050e74d1c973171ddd80b90070dab479",
+            "65": "e87a1e0c90b9ba8b9a239f6d17363284ada809d9a77859b9e565f9345e8f97f0",
+            "66": "e95fdbddfc3ca8d66c46df3c8d5fa331e3a4af54c7183ee73a62b9f4c05ff80f",
+            "67": "35e059ba8fca781e2e02366bc0904cb2e4b2b3480b4e15eac26625ee775fe8d7",
+            "68": "86cfb18b79e0cc650abbe97bb2e1c767fe1b9e1a97a774641b1f66a07f3d5dcb",
+            "69": "f803ee9dd5dbd3337df9ce4590f0941ed0cfb82b960a031000d1717241158e38",
+            "70": "7af7085f75c6aca002a20f1f0f94e8af883f4266a440c28d7e74342cb5295ab2",
+            "71": "a1e3ff1968655114fe7cc877dffc875c7a727e29028e84e135d960a1ad4238e0",
+            "72": "9178c3489ed448a954354dd09be83c42ca54b29b3f85c06e05227776015aef34",
+            "73": "471d52e207fe6e2b727f29ad63936c5b621e30efd887ab6dd8cc6c6b5c91d35c",
+            "74": "9acaeca7d3d86f4b4bbfa14463cda4b620182b2323e4d189cff65d2354b6a603",
+            "75": "38ec08194f4f9f18ee30736697e35802d773315aa11001931c1a53682ad68032",
+            "76": "a63e3305818398ef5397c4fedd8faf3ffb7ecf5a99ed67b627370ab50eb7903a",
+            "77": "7393779668a44ece393df6f1378d1d7db7a629bc9c99fa2f92f2c35f5bf58781",
+            "78": "99a8cec8a854b00f9685c4b08c70b30741692aae0a8ad54a3157504fd9c97a2e",
+            "79": "963632b06ddf822c5f7a6615de860c9245b53daaed463447b22dfb6542bc2433",
+            "80": "fd1548eec9f252facbfa1ff55658dc9fe332d706c2018a17619ca4a170cb5319",
+            "81": "cdd8caff8e96f069ee7029b64b5696fb831865d4e4be72c42333957f8a710d62",
+            "82": "842383615fa1c5a724a137cb2cccc06b91dce2c0e144cd5d5e20e2c867a098bf",
+            "83": "b63780d6b57e0e0fdeac8cdbefc91fab564ad80409bb2463bc0ce2974c209c4c",
+            "84": "b853c704eca0bfb78a1937b67a0f480f911fd96fac67c2881f697254417b581a",
+            "85": "72657a86173699e8ec231276b282211c5c270a1ca644f0b7bc9fabd2022d7999",
+            "86": "7e864797ec5a63a4c125158f8d7a8cc7d6aa3326ea830c85e2c73a33b1177a77",
+            "87": "434083d55dab5e93b7d3467be79e3f01e1c448afaa9d74c2a2f8a71e7297c26c",
+            "88": "86e0d4baf1220ecb1768256f0c1452638d7e117b92752852da2f55001e112982",
+            "89": "301149e952968454cb30c93507f2adf8441a2d380aeb5e18b034bd8aaac04c44",
+            "90": "b2ccc4515afc09adcc06de8bfbdb64b9b3bd8f203b585559a2d158d917338d71",
+            "91": "47cca927a586443b4e8a2d68aadd76a36def9b8bd1761af5a42117359e7a6fc3",
+            "92": "f0fd69dba19cd34664e1f7663abdc0f378276a281c2c08438341fd002599c93b",
+            "93": "592e73607858718d9fd7bf9bc088603e80325278b18f6859fcdb474243829df4",
+            "94": "80f34bf3d902513a757139e1257cc52d54b0f0453e9097c41460115cc61ccfd9",
+            "95": "4db867d7995cbc45dc59f1fc2b027b401ad8590c6aede897a2896842df78c5e5",
+            "96": "d365ba65ddbdf5dfdeb9d2f89a37c4cea94d5e5380b636f2d2b36326315ae0e7",
+            "97": "20e1d7d5aef7856ecd42678f652b4564e27d372db693050e5770226c9d4b4d9b",
+            "98": "7d0d27ea1bb5fce448eeef2d978bf43e0d814aac5c7031da544916f20923d23e",
+            "99": "40868f26d25c6c38c236db9aa737d1e50c119c18b0a498147b997b5da66e0de9",
+            "100": "c7e601085ed27c9b4b4d494a4d00d09b53085e63d3d0308e56efa54e3e451d39",
+            "101": "caa2f6cf5a7729e91af9a7681a2b465e974260e26646c4f6ec1cbe4e299ed78a"
+          }
         }
       ]
     },
@@ -565,14 +668,14 @@
       },
       "source_snapshot": {
         "method": "drive_desktop_local_verified_snapshot",
-        "local_path": ".cache/sync/snapshots/01fb7e4909364ec82c643ba30ebd518d14b4e27b44626f068d88f79872b47235.pdf",
-        "sha256": "01fb7e4909364ec82c643ba30ebd518d14b4e27b44626f068d88f79872b47235",
-        "size_bytes": 10383619,
-        "page_count": 15,
+        "local_path": ".cache/sync/snapshots/a822418245a68f00f70f2b9d5e9c4af510b1b5f3639b93a7a7e40529f0b8241e.pdf",
+        "sha256": "a822418245a68f00f70f2b9d5e9c4af510b1b5f3639b93a7a7e40529f0b8241e",
+        "size_bytes": 14323774,
+        "page_count": 20,
         "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
         "same_bytes_as_drive_verified": false,
         "matches_fresh_cloud_size_and_mtime": true,
-        "sync_run_id": "67d7a4c5-5122-4abf-8dc5-2a0a42770a9b",
+        "sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
         "page_ppm72_sha256": {
           "1": "29f684512c58a872fbe803c55d8bb85d5f9d997384214b3f3823e0119b19c08d",
           "2": "533ba1ac5d069d06f4c9af4a62f8ad41ed36d354df9fe73fb2dd14e07f99b727",
@@ -588,7 +691,12 @@
           "12": "918e9c30cced7d1ed996f99a80c03ffbb0e9ecaeb7b29690d496743c28a3774e",
           "13": "2aabc0432a00fe53476595882ba470f143b5cc9e819ee5891af718765b7099a3",
           "14": "42857c7c8f2520435a160b5029e1093f260aa7a6686910effdbbb2bf38ada04e",
-          "15": "89c5b4ad4dc6f0b52e1d054acefa054cf4d6829a77341605be3d661a198f56ad"
+          "15": "2b63eee2c59fbdc291d122e2484ef76e83e8d9b9cade149f9ceeec9379ef5a52",
+          "16": "26d9758bde145efefc4c4fc59c780acb49084829909f6443276cc39e9339f89b",
+          "17": "41dda05011d151e0f668e8091d2efe23c9db8a6ba3a5e1bf92c7893629810d0d",
+          "18": "b7ede1a6b7dab7284fa313d52f1f0ab7607e82def65b330d4921cd97dd5f7c21",
+          "19": "a694136e0a9033641c9f4d7681a7f9d07fda1fa75c52a9f41a7edcaba62e6ba8",
+          "20": "c7af1835ce0a1f79e28b9bd06360719aa7670e8fb516eb3489b1079abd9b37a6"
         }
       },
       "inspection": {
@@ -607,12 +715,17 @@
           12,
           13,
           14,
-          15
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
         ],
         "mode": "complete_authorized_range_color_pdf",
         "full_historical_read_complete": true,
         "pending_page_ranges": [],
-        "incremental_comparison_report": "estado/comparacao-2026-10-31.json"
+        "incremental_comparison_report": "estado/comparacao-2026-11-12.json"
       },
       "analysis": {
         "catalog_file": "estado/catalogo.json",
@@ -626,7 +739,15 @@
           "cp-problem-000059",
           "cp-problem-000060",
           "cp-problem-000005",
-          "cp-problem-000063"
+          "cp-problem-000063",
+          "cp-problem-000070",
+          "cp-problem-000071",
+          "cp-problem-000072",
+          "cp-problem-000073",
+          "cp-problem-000074",
+          "cp-problem-000075",
+          "cp-problem-000076",
+          "cp-problem-000077"
         ],
         "full_extraction_complete": true,
         "selection_policy": "Melhores assuntos transferíveis; uma ou mais perguntas por unidade, deduplicando conceitos.",
@@ -639,9 +760,9 @@
         ]
       },
       "generation": {
-        "next_page": 16,
+        "next_page": 21,
         "next_unit_id": null,
-        "last_completed_unit_id": "cp-problem-000063",
+        "last_completed_unit_id": "cp-problem-000077",
         "completed_unit_ids": [
           "cp-problem-000053",
           "cp-problem-000054",
@@ -652,7 +773,15 @@
           "cp-problem-000059",
           "cp-problem-000060",
           "cp-problem-000005",
-          "cp-problem-000063"
+          "cp-problem-000063",
+          "cp-problem-000070",
+          "cp-problem-000071",
+          "cp-problem-000072",
+          "cp-problem-000073",
+          "cp-problem-000074",
+          "cp-problem-000075",
+          "cp-problem-000076",
+          "cp-problem-000077"
         ],
         "validated_card_ids": [
           "cp-note-000002",
@@ -676,15 +805,23 @@
           "cp-note-000084",
           "cp-note-000085",
           "cp-note-000086",
-          "cp-note-000095"
+          "cp-note-000095",
+          "cp-note-000105",
+          "cp-note-000106",
+          "cp-note-000107",
+          "cp-note-000108",
+          "cp-note-000109",
+          "cp-note-000110",
+          "cp-note-000111",
+          "cp-note-000112"
         ],
         "open_unit": null,
         "pending_units": []
       },
       "export": {
-        "last_batch_id": "2026-10-31-diaria",
+        "last_batch_id": "2026-11-12-manual",
         "import_confirmed": true,
-        "manifest": "exportacoes/2026-10-31-diaria-manifest.json"
+        "manifest": "exportacoes/2026-11-12-manual-manifest.json"
       },
       "source_snapshot_history": [
         {
@@ -722,6 +859,34 @@
             "14": "05f8984ed43557d2f0205e4f6b78a0707bc14d487fa334b08e11ef7af4e56f19",
             "15": "b1936ee5978df21bd10b8419d2c83c15ed8386adf4ab28bfd8dc61e87e5f351a"
           }
+        },
+        {
+          "method": "drive_desktop_local_verified_snapshot",
+          "local_path": ".cache/sync/snapshots/01fb7e4909364ec82c643ba30ebd518d14b4e27b44626f068d88f79872b47235.pdf",
+          "sha256": "01fb7e4909364ec82c643ba30ebd518d14b4e27b44626f068d88f79872b47235",
+          "size_bytes": 10383619,
+          "page_count": 15,
+          "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+          "same_bytes_as_drive_verified": false,
+          "matches_fresh_cloud_size_and_mtime": true,
+          "sync_run_id": "67d7a4c5-5122-4abf-8dc5-2a0a42770a9b",
+          "page_ppm72_sha256": {
+            "1": "29f684512c58a872fbe803c55d8bb85d5f9d997384214b3f3823e0119b19c08d",
+            "2": "533ba1ac5d069d06f4c9af4a62f8ad41ed36d354df9fe73fb2dd14e07f99b727",
+            "3": "4c6768b22d1501f4fc45096f1ad6e3553bfb8ec746f50fcb146e5a7cc5d5f5fe",
+            "4": "36d539d3159234a323da368a041c57e63adde63a6d5292bf3fe1243fd51fbc7b",
+            "5": "7f2e5f9edfaf48649299a8aa9b6ff97a55a007c681256759b0071b4d7d192ee5",
+            "6": "a571956c862a46b9d75b752a9a1a830b03a121d5f915f297e4780a07db6f222a",
+            "7": "3db8cdd480f2036a7157a193a9859489a7de78fda48d9a594bc2e936d60ee77b",
+            "8": "6b90cfc399fb9ad9d236888d3b8e8d8bc07e9bc8822ce0ba29d93624ed9ac542",
+            "9": "90a1462d348407323f0b310ae00765d4698cc44c955e0dbab7c0419cf2b0f4ff",
+            "10": "4dd8bcfbed8cf8b563f4147ae71865049c6cd89b77b471be0b430efeff50fb86",
+            "11": "8e353507c65a102c1a0174e39fd7841a312bad56cdc00305c5ad62e0bd05fced",
+            "12": "918e9c30cced7d1ed996f99a80c03ffbb0e9ecaeb7b29690d496743c28a3774e",
+            "13": "2aabc0432a00fe53476595882ba470f143b5cc9e819ee5891af718765b7099a3",
+            "14": "42857c7c8f2520435a160b5029e1093f260aa7a6686910effdbbb2bf38ada04e",
+            "15": "89c5b4ad4dc6f0b52e1d054acefa054cf4d6829a77341605be3d661a198f56ad"
+          }
         }
       ]
     },
@@ -754,9 +919,8 @@
   "pending_actions": [
     "Conferir mudanças em páginas anteriores antes de retomar futuras versões dos PDFs.",
     "Ao localizar Make it Alternating no PDF, vincular a cp-problem-000061 e aos cards 000087–000090, sem duplicar.",
-    "Ao localizar Divan and a New Project no PDF, vincular cp-problem-000064/card000096 sem duplicar.",
-    "Rever futuras continuações de Triangles on a Rectangle (101) e Longest Consecutive Sequence (15), incluindo roxo/código/complexidade.",
-    "Rotina automática desativada por solicitação em 01/11/2026; não reativar nem reinstalar início automático sem novo pedido do usuário."
+    "Rotina automática desativada por solicitação em 01/11/2026; não reativar nem reinstalar início automático sem novo pedido do usuário.",
+    "Se Binary Search 704 aparecer no manuscrito, reutilizar cp-problem-000078 e cp-note-000113."
   ],
   "automation": {
     "created": true,
@@ -809,7 +973,7 @@
     "deck_id": 1793225719777,
     "deck_visible_in_ankiweb": true,
     "bidirectional_sync_verified": true,
-    "last_sync_verified_at": "2026-10-31T19:55:32.865543-03:00",
+    "last_sync_verified_at": "2026-11-12T09:06:32.580663-03:00",
     "note_type_configured": true,
     "proof_file": ".cache/anki/2026-10-28-baralho-sincronizado.png",
     "note_type_id": "1793226284779",
@@ -837,8 +1001,8 @@
       "idempotent_rerun_verified": true
     },
     "first_batch_import_confirmed": true,
-    "imported_notes": 96,
-    "imported_cards": 96,
+    "imported_notes": 113,
+    "imported_cards": 113,
     "scheduler_observed": "sm2",
     "daily_new_limit": 10,
     "preset_id": "1793233318088",
@@ -847,19 +1011,21 @@
     "new_mix": "afterReviews",
     "start_at_login": false,
     "launch_hidden_on_login": true,
-    "startup_config": "estado/anki-inicio-sessao.json"
+    "startup_config": "estado/anki-inicio-sessao.json",
+    "new_gather_order": "randomCards",
+    "new_sort_order": "none"
   },
   "acquisition": {
     "config_file": "estado/fontes.json",
     "preferred_transport": "drive_desktop_local",
-    "verified_at": "2026-10-31T22:49:44.595845+00:00",
+    "verified_at": "2026-11-12T11:31:32.484340+00:00",
     "report_file": "analises/2026-10-28-acesso-drive.md",
     "note": "Disponibilidade offline e inicialização do Drive verificadas; gate de metadados remotos recentes e snapshots locais validado. Cursores e inspeção preservados.",
     "sync_protocol": "sincronizacao.md",
     "sync_status_file": "estado/sincronizacao.json",
     "sync_required_before_every_run": true,
     "drive_to_mac_owner": "agent",
-    "last_sync_run_id": "67d7a4c5-5122-4abf-8dc5-2a0a42770a9b"
+    "last_sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab"
   },
   "format_pilot": {
     "status": "approved",
@@ -949,11 +1115,11 @@
     "verified_at": "2026-10-28T21:00:10-03:00"
   },
   "current_totals": {
-    "cards": 96,
-    "problemas": 69,
-    "big-tech-problems": 22,
+    "cards": 113,
+    "big-tech-problems": 30,
+    "problemas": 78,
     "repositorio-cpp": 5,
-    "verified_at": "2026-10-31T19:55:32.865543-03:00"
+    "verified_at": "2026-11-12T08:41:53.325925-03:00"
   },
   "recent_problem_review": {
     "status": "synced",
@@ -1014,35 +1180,68 @@
           "cp-note-000096"
         ]
       },
+      "manuscript_mapping_pending": false,
+      "import_confirmed": true,
+      "last_batch_id": "2026-11-12-manual",
+      "mapped_notebook_id": "problemas",
+      "mapped_pages": [
+        102
+      ]
+    },
+    "cp-problem-000078": {
+      "title": "Binary Search",
+      "source_kind": "repository_solution_and_official_statement",
+      "local_path": "leet_code/easy/binary_search-704.cpp",
+      "sha256": "888244389dd45e6dcc9f7d84342627f5ce9d3fa10fc84b98712c11062efd8be4",
+      "official_statement_url": "https://leetcode.com/problems/binary-search/description/",
+      "generation": {
+        "validated_card_ids": [
+          "cp-note-000113"
+        ]
+      },
       "manuscript_mapping_pending": true,
       "import_confirmed": true,
-      "last_batch_id": "2026-10-31-diaria"
+      "last_batch_id": "2026-11-12-manual"
     }
   },
   "daily_pipeline": {
     "status": "synced",
-    "run_id": "2026-10-31-diaria",
-    "started_at": "2026-10-31T19:50:10.455564-03:00",
-    "sync_run_id": "67d7a4c5-5122-4abf-8dc5-2a0a42770a9b",
+    "run_id": "2026-11-12-manual",
+    "trigger": "user_manual_request",
+    "started_at": "2026-11-12T11:31:50.110938+00:00",
+    "sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
     "batch_start_within_gate_validity": true,
-    "previous_cards": 93,
+    "batch_id": "2026-11-12-manual",
+    "validation_report": "estado/validacao-2026-11-12-manual.json",
+    "comparison_report": "estado/comparacao-2026-11-12.json",
+    "previous_cards": 96,
+    "new_cards": 17,
+    "updated_cards": 1,
     "validated_card_ids": [
-      "cp-note-000092",
-      "cp-note-000093",
-      "cp-note-000094",
-      "cp-note-000095",
-      "cp-note-000096"
+      "cp-note-000096",
+      "cp-note-000097",
+      "cp-note-000098",
+      "cp-note-000099",
+      "cp-note-000100",
+      "cp-note-000101",
+      "cp-note-000102",
+      "cp-note-000103",
+      "cp-note-000104",
+      "cp-note-000105",
+      "cp-note-000106",
+      "cp-note-000107",
+      "cp-note-000108",
+      "cp-note-000109",
+      "cp-note-000110",
+      "cp-note-000111",
+      "cp-note-000112",
+      "cp-note-000113"
     ],
-    "validation_report": "estado/validacao-diaria-2026-10-31.json",
-    "batch_id": "2026-10-31-diaria",
-    "new_cards": 3,
-    "updated_cards": 2,
-    "comparison_report": "estado/comparacao-2026-10-31.json",
-    "total_cards": 96,
-    "verified_at": "2026-10-31T19:55:32.865543-03:00",
-    "manifest": "exportacoes/2026-10-31-diaria-manifest.json",
-    "report": "analises/2026-10-31-rotina-diaria.md",
-    "verification_report": "estado/verificacao-diaria-2026-10-31.json",
-    "pending_imports": 0
+    "manifest": "exportacoes/2026-11-12-manual-manifest.json",
+    "total_cards": 113,
+    "verified_at": "2026-11-12T08:41:53.325925-03:00",
+    "pending_imports": 0,
+    "report": "analises/2026-11-12-rotina-manual.md",
+    "verification_report": "estado/verificacao-2026-11-12-manual.json"
   }
 }

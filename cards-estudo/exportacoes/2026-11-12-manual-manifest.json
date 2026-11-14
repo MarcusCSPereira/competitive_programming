@@ -1,0 +1,143 @@
+{
+  "batch_id": "2026-11-12-manual",
+  "plan": {
+    "batch_id": "2026-11-12-manual",
+    "create": 17,
+    "update": 1,
+    "unchanged": 0,
+    "total": 18
+  },
+  "status": "synced",
+  "notes": {
+    "cp-note-000096": {
+      "note_id": "1793487255843",
+      "card_ids": [
+        "1793487255843"
+      ],
+      "fields_sha256": "48188d44451f651c98346a44e521c76ac8950e1b1cbc05c9df5030da313cb3d9"
+    },
+    "cp-note-000097": {
+      "note_id": "1794483682286",
+      "card_ids": [
+        "1794483682286"
+      ],
+      "fields_sha256": "6db9d4ae75c49e19759d7b0fb6cf019a7a71ad6c918a46caeaeb74a5abdfed18"
+    },
+    "cp-note-000098": {
+      "note_id": "1794483682287",
+      "card_ids": [
+        "1794483682287"
+      ],
+      "fields_sha256": "a974d5cbc67bd77c49a9a631bfc6a41a21188c88f8cf64a877d54fe3b2a06122"
+    },
+    "cp-note-000099": {
+      "note_id": "1794483682288",
+      "card_ids": [
+        "1794483682288"
+      ],
+      "fields_sha256": "cb2be27a6d1b3bbb0af35b945b52d0bfc551694a09c2b242b6964b6c05130b6f"
+    },
+    "cp-note-000100": {
+      "note_id": "1794483682289",
+      "card_ids": [
+        "1794483682289"
+      ],
+      "fields_sha256": "7a4eb30568bfbf4849d76567f401474651123b11c1e24fa395bc1de9288ffa47"
+    },
+    "cp-note-000101": {
+      "note_id": "1794483682290",
+      "card_ids": [
+        "1794483682290"
+      ],
+      "fields_sha256": "20f007906ff7fa7b656aafcc42ab30c60225639fa4448d4db398883a7802aade"
+    },
+    "cp-note-000102": {
+      "note_id": "1794483682291",
+      "card_ids": [
+        "1794483682291"
+      ],
+      "fields_sha256": "97f5012209fe29d4496ee116ad6440339e44e2ea4c839c9114f7e2e6040f491e"
+    },
+    "cp-note-000103": {
+      "note_id": "1794483682292",
+      "card_ids": [
+        "1794483682292"
+      ],
+      "fields_sha256": "896066b16a816be2a2be9d10eb749a7ff68a95250fc93f634d582f260a0235d2"
+    },
+    "cp-note-000104": {
+      "note_id": "1794483682293",
+      "card_ids": [
+        "1794483682293"
+      ],
+      "fields_sha256": "69277d00d01eb438cefc1403dad21f810f5d2837001877371f6dcea988aaf8db"
+    },
+    "cp-note-000105": {
+      "note_id": "1794483682294",
+      "card_ids": [
+        "1794483682294"
+      ],
+      "fields_sha256": "bef42218bdf55a0cc1cd266c0720490b64a7be032a4b3284195e57221279b9e5"
+    },
+    "cp-note-000106": {
+      "note_id": "1794483682295",
+      "card_ids": [
+        "1794483682295"
+      ],
+      "fields_sha256": "9d10e7514e68ca2c8b1453077bfb31ad2293818bb3fbf9b89d37f09770c4e8ab"
+    },
+    "cp-note-000107": {
+      "note_id": "1794483682296",
+      "card_ids": [
+        "1794483682296"
+      ],
+      "fields_sha256": "b11b2fb20a01cc0cd4401168ffc89e6c22deab7e471a96574029b53ae8b8bc07"
+    },
+    "cp-note-000108": {
+      "note_id": "1794483682297",
+      "card_ids": [
+        "1794483682297"
+      ],
+      "fields_sha256": "86af1fd54c14f888f855bc01575965f787c005b44468d3a5fa2cddb1ae48c359"
+    },
+    "cp-note-000109": {
+      "note_id": "1794483682298",
+      "card_ids": [
+        "1794483682298"
+      ],
+      "fields_sha256": "42bd8a26fe2cf54300a86273493cc71610f9c1ad3bffa4d682621378fbee06c8"
+    },
+    "cp-note-000110": {
+      "note_id": "1794483682299",
+      "card_ids": [
+        "1794483682299"
+      ],
+      "fields_sha256": "2c2f1b89545fe03c38c512b823736b6c4cb606e3dc76b30bbe3e4b6f3943e2e4"
+    },
+    "cp-note-000111": {
+      "note_id": "1794483682300",
+      "card_ids": [
+        "1794483682300"
+      ],
+      "fields_sha256": "696b2ba72a7dc2c5f789ffc72ae013b36c93f609ff4cc6e551f9a3f97a71e379"
+    },
+    "cp-note-000112": {
+      "note_id": "1794483682301",
+      "card_ids": [
+        "1794483682301"
+      ],
+      "fields_sha256": "e7b4596b49a8050b03c32718eda9b46d4105151248162a2d9e85d767506d978e"
+    },
+    "cp-note-000113": {
+      "note_id": "1794483682302",
+      "card_ids": [
+        "1794483682302"
+      ],
+      "fields_sha256": "a665b24419450889ab68c73e3d2397f33c573efcb85412f5ccf90f24af784c69"
+    }
+  },
+  "sync": {
+    "collectionComplete": true,
+    "mediaComplete": true
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000111",
+  "content_key": "hashset_colisao_encadeamento_separado",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como implementar add, contains e remove de um HashSet com encadeamento separado? O que ocorre quando duas chaves caem no mesmo bucket?",
+  "back": {
+    "answer": "Calcule o índice com hash(chave) % B. Chaves distintas podem cair no mesmo bucket. Cada bucket guarda uma lista e a comparação da chave completa resolve a colisão. Na solução do caderno, isso é encadeamento separado. Endereçamento aberto é a técnica que procura outra posição da própria tabela.\n\nNa inserção, procure a chave no bucket para evitar duplicata. Em contains, compare a chave inteira. Na remoção, apague só o elemento correspondente. A lista do C++ cuida dos nós e mantém a mesma estratégia do código manuscrito. O exemplo usa B fixo e chaves não negativas, dentro do contrato do LeetCode.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "class MeuHashSet {\n    static constexpr size_t B = 10007;\n    vector<list<int>> baldes = vector<list<int>>(B);\npublic:\n    bool contains(int chave) const {\n        const auto& balde = baldes[chave % B];\n        return find(balde.begin(), balde.end(), chave) != balde.end();\n    }\n\n    void add(int chave) {\n        if (!contains(chave)) baldes[chave % B].push_front(chave);\n    }\n\n    void remove(int chave) {\n        auto& balde = baldes[chave % B];\n        auto it = find(balde.begin(), balde.end(), chave);\n        if (it != balde.end()) balde.erase(it);\n    }\n};",
+    "complexity": "O(1+α) esperado por operação sob distribuição aproximadamente uniforme, com α=n/B. Pior caso O(n) por colisões e espaço O(B+n). B fixo não mantém α limitado para n arbitrário.",
+    "success_criteria": [
+      "Distinguir bucket, colisão e igualdade de chave.",
+      "Preservar as outras chaves ao remover e impedir duplicatas.",
+      "Dar o custo em termos do tamanho das listas."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::manual_20261112",
+    "assunto::hashset_colisao_encadeamento_separado",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000076",
+      "title": "Design HashSet",
+      "pages_1based": [
+        19,
+        20
+      ],
+      "official_statement_url": "https://leetcode.com/problems/design-hashset/description/",
+      "local_code_path": "leet_code/python_training/easy/design_hashset-705.py",
+      "local_code_sha256": "ba52dab9007b1684bde2ea53458b1a608d135db2b5e3e41e7ac66fc77e436103",
+      "provenance": "Roxo marca listas e hashing. O código do caderno usa encadeamento separado, inclusive em trechos que o chamam de open addressing. O limite de 10⁴ é de chamadas.",
+      "source_snapshot_sha256": "a822418245a68f00f70f2b9d5e9c4af510b1b5f3639b93a7a7e40529f0b8241e",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "highlight_color": "blue_purple_green"
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-11-12-manual",
+    "sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
+    "learning_origin": "manuscript_plus_local_solution"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-2026-11-12-manual.json",
+    "validated_at": "2026-11-12T08:41:13.262358-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1794483682300",
+    "card_ids": [
+      "1794483682300"
+    ],
+    "fields_sha256": "696b2ba72a7dc2c5f789ffc72ae013b36c93f609ff4cc6e551f9a3f97a71e379",
+    "last_batch_id": "2026-11-12-manual"
+  }
+}

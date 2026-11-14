@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000098",
+  "content_key": "mex_xor_elemento_proibido",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Se um array deve ter MEX a e XOR b, como provar o comprimento mínimo? O que fazer quando o único valor que corrigiria o XOR é proibido?",
+  "back": {
+    "answer": "MEX a exige os a valores de 0 a a−1 e proíbe incluir a. Remova mentalmente uma ocorrência de cada valor obrigatório. Se x é o XOR desses valores, os extras precisam ter XOR d=x^b, já que x^d=b.\n\nSe d=0, basta o bloco obrigatório. Se d≠0 e d≠a, acrescente d. Nesse caso pelo menos um extra é necessário. Se d=a, um único extra teria de ser a, então dois são necessários. Para construir dois válidos, escolha uma potência de dois H>a e acrescente H e H^a. Ambos são maiores que a e juntos dão XOR a. O C++ abaixo calcula só o comprimento, como pede o problema.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "unsigned xorAte(unsigned n) {\n    switch (n % 4) {\n        case 0: return n;\n        case 1: return 1;\n        case 2: return n + 1;\n        default: return 0;\n    }\n}\n\nunsigned menorTamanho(unsigned a, unsigned b) {\n    // MEX a >= 1. Limites de 1567B.\n    const unsigned falta = xorAte(a - 1) ^ b;\n    if (falta == 0) return a;\n    return a + (falta == a ? 2 : 1);\n}",
+    "complexity": "O(1) de tempo e espaço. Materializar o bloco obrigatório custaria O(a).",
+    "success_criteria": [
+      "Extrair uma ocorrência de cada valor obrigatório.",
+      "Deduzir d=x^b e provar os três limites inferiores.",
+      "Exibir dois extras válidos quando d=a."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::manual_20261112",
+    "assunto::mex_xor_elemento_proibido",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000065",
+      "title": "MEXor Mixup",
+      "pages_1based": [
+        103,
+        104
+      ],
+      "official_statement_url": "https://codeforces.com/problemset/problem/1567/B",
+      "local_code_path": "codeforces/rating_1000/mexor_mixup-1567B.cpp",
+      "local_code_sha256": "c07bdc9c12e9eaaae9024b150ae000560f0b539abb8b575389f0b40ffa6e63e9",
+      "provenance": "Roxo define MEX, compara pré-cálculo e período de quatro do XOR e cancela prefixos. A lógica azul separa três comprimentos conforme o valor que falta no XOR.",
+      "source_snapshot_sha256": "8f17590d3733ffaa3ed8cf638a7e7d1cc95ba98ce95cc56bd467ceb876b77275",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "highlight_color": "blue_purple_green"
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-11-12-manual",
+    "sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
+    "learning_origin": "manuscript_plus_local_solution"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-2026-11-12-manual.json",
+    "validated_at": "2026-11-12T08:41:13.225211-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1794483682287",
+    "card_ids": [
+      "1794483682287"
+    ],
+    "fields_sha256": "a974d5cbc67bd77c49a9a631bfc6a41a21188c88f8cf64a877d54fe3b2a06122",
+    "last_batch_id": "2026-11-12-manual"
+  }
+}

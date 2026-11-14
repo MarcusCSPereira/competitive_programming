@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "total_notes": 113,
+  "total_cards": 113,
+  "created_notes": 17,
+  "updated_notes": 1,
+  "previous_native_note_ids_preserved": 96,
+  "previous_card_scheduling_preserved": 96,
+  "unchanged_previous_fields_and_tags": 95,
+  "render_checked": 18,
+  "daily_new_limit": 10,
+  "new_mix": "afterReviews",
+  "sync": {
+    "collectionComplete": true,
+    "mediaComplete": true
+  },
+  "verified_at": "2026-11-12T08:41:53.325925-03:00"
+}

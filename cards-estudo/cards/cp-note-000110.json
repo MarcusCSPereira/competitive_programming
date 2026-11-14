@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000110",
+  "content_key": "boyer_moore_cancelamento_maioria",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como achar um elemento que aparece estritamente mais de n/2 vezes usando Boyer–Moore em O(1) de memória? Quando é preciso verificar o candidato?",
+  "back": {
+    "answer": "Cancele mentalmente pares de valores diferentes. Se existe maioria, remover um par elimina no máximo uma ocorrência dela e reduz o total em dois. A maioria continua estrita, então o último candidato sobrevivente só pode ser ela.\n\nGuarde um candidato e um saldo. Com saldo zero, o próximo valor vira candidato. Some 1 ao encontrar o candidato e subtraia 1 ao encontrar outro valor, representando o cancelamento de um par. O saldo conta os sobreviventes dessa etapa e não a frequência total. Com a garantia do problema, retorne o candidato. Sem garantia, conte suas ocorrências em outra passada e exija mais de n/2. Em [1,2,3], por exemplo, sobra 3 sem existir maioria.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int candidatoMaioria(const vector<int>& a) {\n    int candidato = 0, saldo = 0;\n    for (int x : a) {\n        if (saldo == 0) candidato = x;\n        saldo += (x == candidato ? 1 : -1);\n    }\n    return candidato;\n}\n\nbool existeMaioria(const vector<int>& a) {\n    const int x = candidatoMaioria(a);\n    return static_cast<size_t>(count(a.begin(), a.end(), x)) > a.size() / 2;\n}",
+    "complexity": "O(n) de tempo e O(1) auxiliar. A segunda passada mantém os mesmos limites.",
+    "success_criteria": [
+      "Explicar cancelamento de pares diferentes e o saldo.",
+      "Usar maioria estrita e validar em segunda passada quando não houver garantia."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::manual_20261112",
+    "assunto::boyer_moore_cancelamento_maioria",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000075",
+      "title": "Majority Element",
+      "pages_1based": [
+        19
+      ],
+      "official_statement_url": "https://leetcode.com/problems/majority-element/description/",
+      "local_code_path": "leet_code/python_training/easy/majority_element-169.py",
+      "local_code_sha256": "2f23d1df53e5e0402f42aca7578abb23d41735160c3b6767f4c4b86f8414152c",
+      "provenance": "Roxo registra Boyer–Moore. Maioria precisa aparecer estritamente mais que n/2. A segunda passada é complemento para o caso sem garantia.",
+      "source_snapshot_sha256": "a822418245a68f00f70f2b9d5e9c4af510b1b5f3639b93a7a7e40529f0b8241e",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "highlight_color": "blue_purple_green"
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-11-12-manual",
+    "sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
+    "learning_origin": "manuscript_plus_local_solution"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-2026-11-12-manual.json",
+    "validated_at": "2026-11-12T08:41:13.259510-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1794483682299",
+    "card_ids": [
+      "1794483682299"
+    ],
+    "fields_sha256": "2c2f1b89545fe03c38c512b823736b6c4cb606e3dc76b30bbe3e4b6f3943e2e4",
+    "last_batch_id": "2026-11-12-manual"
+  }
+}

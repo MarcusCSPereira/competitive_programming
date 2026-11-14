@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000102",
+  "content_key": "contar_divisores_expoentes_fatoracao",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como contar os divisores de n a partir de sua fatoração em primos? Quais formatos produzem exatamente quatro divisores e como tratar um fator primo que sobra?",
+  "back": {
+    "answer": "Se n=p₁^e₁·p₂^e₂·..., cada divisor escolhe para pᵢ um expoente entre 0 e eᵢ. Como as escolhas são independentes, multiplique (eᵢ+1) para todos os fatores. Para 12=2²·3, isso dá 3×2=6. Para exatamente quatro divisores, o produto 4 pode vir de 4 sozinho ou de 2×2, então os formatos são p³ e p·q com primos distintos.\n\nNo código, retire todas as cópias de cada fator antes de avançar. Quando p passa da raiz do resto, se sobrou algo maior que 1, é um primo de expoente 1. Para n=1, o produto vazio vale 1. Usar p≤n/p mantém a comparação equivalente a p²≤n em inteiros positivos sem multiplicar p por p.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "long long numeroDivisores(long long n) {\n    long long resposta = 1;\n    for (long long p = 2; p <= n / p; ++p) {\n        int exp = 0;\n        while (n % p == 0) {\n            n /= p;\n            ++exp;\n        }\n        resposta *= exp + 1;\n    }\n    if (n > 1) resposta *= 2;\n    return resposta;\n}",
+    "complexity": "O(√n) de tempo no pior caso por tentativa e O(1) auxiliar, com n≥1.",
+    "success_criteria": [
+      "Derivar o produto por escolhas de expoente.",
+      "Reconhecer os dois formatos com quatro divisores.",
+      "Contar o fator primo restante."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::manual_20261112",
+    "assunto::contar_divisores_expoentes_fatoracao",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000068",
+      "title": "Different Divisors",
+      "pages_1based": [
+        107,
+        108,
+        109
+      ],
+      "official_statement_url": "https://codeforces.com/problemset/problem/1474/B",
+      "local_code_path": "codeforces/rating_1000/different_divisors-1474B.cpp",
+      "local_code_sha256": "7c970b4aa6e8fba8e617a9b01faed59ecc4bd71f5b82826d95c15cc0422ebe51",
+      "provenance": "Roxo destaca produto dos expoentes mais um e teste de primalidade até raiz. A prova completa trata números com quatro ou mais divisores. A busca de primo por tentativa não é logarítmica.",
+      "source_snapshot_sha256": "8f17590d3733ffaa3ed8cf638a7e7d1cc95ba98ce95cc56bd467ceb876b77275",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "highlight_color": "blue_purple_green"
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-11-12-manual",
+    "sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
+    "learning_origin": "manuscript_plus_local_solution"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-2026-11-12-manual.json",
+    "validated_at": "2026-11-12T08:41:13.234396-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1794483682291",
+    "card_ids": [
+      "1794483682291"
+    ],
+    "fields_sha256": "97f5012209fe29d4496ee116ad6440339e44e2ea4c839c9114f7e2e6040f491e",
+    "last_batch_id": "2026-11-12-manual"
+  }
+}

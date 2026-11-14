@@ -2,7 +2,7 @@
   "schema_version": 1,
   "id": "cp-note-000094",
   "content_key": "triangulo_extremos_base_altura",
-  "revision": 1,
+  "revision": 2,
   "status": "validated",
   "skill": "teoria_e_implementacao",
   "front": "Há pontos em todos os lados de um retângulo de largura w e altura h. Como maximizar a área de um triângulo com exatamente dois vértices no mesmo lado? Como implementar sem testar todas as trincas?",
@@ -31,13 +31,13 @@
       "pages_1based": [
         101
       ],
-      "source_snapshot_sha256": "585dfd68e54feeaec2f8e02319e935f40a41ccd7a9e7dd14ff3acc8745511e07",
+      "source_snapshot_sha256": "8f17590d3733ffaa3ed8cf638a7e7d1cc95ba98ce95cc56bd467ceb876b77275",
       "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
       "official_statement_url": "https://codeforces.com/problemset/problem/1620/B",
       "local_code_path": "codeforces/rating_1000/triangles_on_a_rectangle-1620B.cpp",
       "local_code_sha256": "91cb2716cd0a19325df2609f1ddbd304ddb3e92d1d35a801654e16ae369ede52",
-      "highlight_color": "black_statement_blue_logic",
-      "provenance": "Página 101 contém enunciado, entrada e lógica azul; ainda sem código em imagem, tópicos roxos ou complexidade verde no final. Implementação e limites conferidos com solução local commit e7519d7 e fonte oficial. A função de extremos é adaptação didática. O título incorreto do commit (1629B) não substitui o ID 1620B conferido no arquivo/enunciado."
+      "highlight_color": "blue_purple_green",
+      "provenance": "A página 101 ganhou a imagem do código, a nota roxa de geometria e a complexidade linear em verde. A prova e o código do card 000094 já cobrem o assunto."
     }
   ],
   "coverage_review": {

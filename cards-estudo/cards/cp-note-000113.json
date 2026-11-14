@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000113",
+  "content_key": "busca_binaria_exata_intervalo_invariante",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como implementar busca binária por um valor exato em um array ordenado? Qual invariante permite descartar o meio e retornar −1, inclusive com array vazio?",
+  "back": {
+    "answer": "Mantenha o intervalo fechado [l,r] com todos os índices que ainda podem conter o alvo. Se a[m]<alvo, todo índice ≤m também é pequeno demais e l vira m+1. Se a[m]>alvo, todo índice ≥m é grande demais e r vira m−1. Igualdade devolve o índice.\n\nCada atualização elimina m, o que garante progresso até l>r. Calcule o meio por l+(r−l)/2 e use índices assinados dentro do limite do problema. Converta size() antes de subtrair 1, pois a subtração no tipo sem sinal estoura quando o vetor está vazio. Com repetidos, essa versão pode devolver qualquer ocorrência.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "int buscaExata(const vector<int>& a, int alvo) {\n    int l = 0, r = static_cast<int>(a.size()) - 1;\n    while (l <= r) {\n        const int m = l + (r - l) / 2;\n        if (a[m] == alvo) return m;\n        if (a[m] < alvo) l = m + 1;\n        else r = m - 1;\n    }\n    return -1;\n}",
+    "complexity": "O(log(n+1)) de tempo e O(1) auxiliar. Requer array ordenado e tamanho representável em int.",
+    "success_criteria": [
+      "Enunciar intervalo fechado, atualizar excluindo o meio e parar quando ficar vazio.",
+      "Calcular o meio sem somar extremos e tratar n=0."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::manual_20261112",
+    "assunto::busca_binaria_exata_intervalo_invariante",
+    "origem::repositorio-cpp"
+  ],
+  "sources": [
+    {
+      "notebook_id": "repositorio-cpp",
+      "problem_id": "cp-problem-000078",
+      "title": "Binary Search",
+      "pages_1based": [],
+      "official_statement_url": "https://leetcode.com/problems/binary-search/description/",
+      "local_code_path": "leet_code/easy/binary_search-704.cpp",
+      "local_code_sha256": "888244389dd45e6dcc9f7d84342627f5ce9d3fa10fc84b98712c11062efd8be4",
+      "provenance": "Solução local localizada no commit c17e69a pelo arquivo e enunciado oficiais. O título do commit troca IDs. Não encontrada nas páginas autorizadas. Aplicação em array é distinta de busca binária em predicado de resposta.",
+      "commit": "c17e69a"
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-11-12-manual",
+    "sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
+    "learning_origin": "repository_solution_and_official_statement"
+  },
+  "validation": {
+    "handwriting_checked": false,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-2026-11-12-manual.json",
+    "validated_at": "2026-11-12T08:41:13.268637-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1794483682302",
+    "card_ids": [
+      "1794483682302"
+    ],
+    "fields_sha256": "a665b24419450889ab68c73e3d2397f33c573efcb85412f5ccf90f24af784c69",
+    "last_batch_id": "2026-11-12-manual"
+  }
+}

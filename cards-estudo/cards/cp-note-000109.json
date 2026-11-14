@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000109",
+  "content_key": "palindromo_uma_remocao_primeira_divergencia",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Para tornar uma string palíndromo com até uma remoção, por que a primeira divergência entre as pontas produz só duas tentativas? Como testá-las sem copiar a string?",
+  "back": {
+    "answer": "Enquanto as pontas são iguais, podemos preservá-las. Se uma solução apagasse uma dessas pontas iguais, o palíndromo restante teria a outra ponta e um caractere igual a ela no novo extremo. É possível preservar as duas pontas originais apagando esse caractere vizinho em vez disso.\n\nAo chegar a s[l]≠s[r], apagar uma posição interna manteria as pontas diferentes. Logo tente [l+1,r] e [l,r−1]. Em cada tentativa já gastamos a remoção, então basta verificar palíndromo comum no intervalo. Teste as duas opções, pois a escolha correta depende do restante. Uma string já palíndroma atende sem remoção.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "bool palindromoAteUmaRemocao(const string& s) {\n    auto igualAoReverso = [&s](int l, int r) {\n        while (l < r) {\n            if (s[l] != s[r]) return false;\n            ++l;\n            --r;\n        }\n        return true;\n    };\n    int l = 0, r = static_cast<int>(s.size()) - 1;\n    while (l < r && s[l] == s[r]) {\n        ++l;\n        --r;\n    }\n    return l >= r || igualAoReverso(l + 1, r) || igualAoReverso(l, r - 1);\n}",
+    "complexity": "O(n) de tempo e O(1) auxiliar. Há no máximo duas verificações depois da primeira divergência.",
+    "success_criteria": [
+      "Justificar ignorar pares iguais e testar os dois lados da primeira diferença.",
+      "Verificar o intervalo restante sem substr e sem permitir outra remoção."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::manual_20261112",
+    "assunto::palindromo_uma_remocao_primeira_divergencia",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000074",
+      "title": "Valid Palindrome II",
+      "pages_1based": [
+        18
+      ],
+      "official_statement_url": "https://leetcode.com/problems/valid-palindrome-ii/description/",
+      "local_code_path": "leet_code/python_training/easy/valid_palindrome_II-680.py",
+      "local_code_sha256": "b1faf79a34ffc1fe703da0f892ce6d2fa3624d6ed88169f4f893ef44796dd515",
+      "provenance": "Roxo destaca dois ponteiros e auxiliar por índices. Tradução da solução Python para C++17. Classificação oficial Easy e até uma remoção.",
+      "source_snapshot_sha256": "a822418245a68f00f70f2b9d5e9c4af510b1b5f3639b93a7a7e40529f0b8241e",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "highlight_color": "blue_purple_green"
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-11-12-manual",
+    "sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
+    "learning_origin": "manuscript_plus_local_solution"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-2026-11-12-manual.json",
+    "validated_at": "2026-11-12T08:41:13.256827-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1794483682298",
+    "card_ids": [
+      "1794483682298"
+    ],
+    "fields_sha256": "42bd8a26fe2cf54300a86273493cc71610f9c1ad3bffa4d682621378fbee06c8",
+    "last_batch_id": "2026-11-12-manual"
+  }
+}

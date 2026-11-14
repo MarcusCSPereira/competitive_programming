@@ -1,0 +1,26 @@
+{
+  "id": "2026-11-12-manual",
+  "card_ids": [
+    "cp-note-000096",
+    "cp-note-000097",
+    "cp-note-000098",
+    "cp-note-000099",
+    "cp-note-000100",
+    "cp-note-000101",
+    "cp-note-000102",
+    "cp-note-000103",
+    "cp-note-000104",
+    "cp-note-000105",
+    "cp-note-000106",
+    "cp-note-000107",
+    "cp-note-000108",
+    "cp-note-000109",
+    "cp-note-000110",
+    "cp-note-000111",
+    "cp-note-000112",
+    "cp-note-000113"
+  ],
+  "validation_report": "estado/validacao-2026-11-12-manual.json",
+  "source_sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
+  "purpose": "Execução manual solicitada em 12/11. Conteúdos novos dos cadernos, Binary Search do repositório e vínculo de Divan ao manuscrito."
+}

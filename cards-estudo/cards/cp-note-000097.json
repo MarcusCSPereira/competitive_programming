@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000097",
+  "content_key": "xor_prefixo_periodo_quatro",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como calcular o XOR de todos os inteiros em [L,R] em tempo constante? De onde vem o padrão n, 1, n+1, 0 do prefixo?",
+  "back": {
+    "answer": "Todo bloco alinhado [4k,4k+3] tem XOR zero. Os dois primeiros dão 1 e os dois últimos também dão 1, pois em cada par só muda o bit menos significativo. Assim só sobram os termos do último bloco. Se n é o último termo incluído, para n % 4 igual a 0, 1, 2 ou 3 o XOR de [0,n] vale, respectivamente, n, 1, n+1 ou 0.\n\nPara obter [L,R], combine o prefixo até R com o prefixo até L−1. Cada termo anterior a L aparece duas vezes e cancela porque x^x=0. Quando L=0, o prefixo anterior está vazio. Para um array arbitrário o mesmo cancelamento funciona com prefixos pré-calculados, mas a fórmula do módulo 4 depende da sequência de inteiros consecutivos.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "unsigned xorAte(unsigned n) {\n    switch (n % 4) {\n        case 0: return n;\n        case 1: return 1;\n        case 2: return n + 1;\n        default: return 0;\n    }\n}\n\nunsigned xorIntervalo(unsigned l, unsigned r) {\n    return xorAte(r) ^ (l == 0 ? 0 : xorAte(l - 1));\n}",
+    "complexity": "O(1) de tempo e espaço por consulta, para inteiros de largura fixa.",
+    "success_criteria": [
+      "Justificar por que um bloco de quatro alinhado cancela.",
+      "Incluir R no prefixo e tratar L=0."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::manual_20261112",
+    "assunto::xor_prefixo_periodo_quatro",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000065",
+      "title": "MEXor Mixup",
+      "pages_1based": [
+        103,
+        104
+      ],
+      "official_statement_url": "https://codeforces.com/problemset/problem/1567/B",
+      "local_code_path": "codeforces/rating_1000/mexor_mixup-1567B.cpp",
+      "local_code_sha256": "c07bdc9c12e9eaaae9024b150ae000560f0b539abb8b575389f0b40ffa6e63e9",
+      "provenance": "Roxo define MEX, compara pré-cálculo e período de quatro do XOR e cancela prefixos. A lógica azul separa três comprimentos conforme o valor que falta no XOR.",
+      "source_snapshot_sha256": "8f17590d3733ffaa3ed8cf638a7e7d1cc95ba98ce95cc56bd467ceb876b77275",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "highlight_color": "blue_purple_green"
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-11-12-manual",
+    "sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
+    "learning_origin": "manuscript_plus_local_solution"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-2026-11-12-manual.json",
+    "validated_at": "2026-11-12T08:41:13.224924-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1794483682286",
+    "card_ids": [
+      "1794483682286"
+    ],
+    "fields_sha256": "6db9d4ae75c49e19759d7b0fb6cf019a7a71ad6c918a46caeaeb74a5abdfed18",
+    "last_batch_id": "2026-11-12-manual"
+  }
+}

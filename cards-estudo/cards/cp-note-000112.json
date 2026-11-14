@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000112",
+  "content_key": "merge_sort_dividir_intercalar_estavel",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como implementar merge sort com um único buffer? Qual é o invariante da intercalação, como tratar empates e por que o tempo é O(n log n)?",
+  "back": {
+    "answer": "Use intervalos [l,r). Tamanhos 0 e 1 já estão ordenados. Ordene [l,m) e [m,r) recursivamente, depois intercale. O trecho já escrito no buffer contém os menores elementos já consumidos em ordem, e as pontas das metades são os menores candidatos restantes. Escolha a menor e avance seu índice. Quando uma metade acabar, copie a sobra da outra.\n\nEm empate, escolha primeiro a metade esquerda para preservar a ordem relativa de elementos equivalentes. No código, cada elemento é um par (chave, id) para tornar a estabilidade visível. Compare apenas a chave. Com O(n) de intercalação total por nível e O(log n) níveis, o tempo é O(n log n). O mesmo buffer pode ser reutilizado porque cada chamada termina de copiar seu trecho antes de o pai intercalar.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "using Item = pair<int, int>; // chave, id original\n\nvoid ordenarMerge(vector<Item>& a) {\n    vector<Item> tmp(a.size());\n    auto rec = [&](auto&& self, size_t l, size_t r) -> void {\n        if (r - l <= 1) return;\n        const size_t m = l + (r - l) / 2;\n        self(self, l, m);\n        self(self, m, r);\n        size_t i = l, j = m, k = l;\n        while (i < m && j < r) {\n            if (a[i].first <= a[j].first) tmp[k++] = a[i++];\n            else tmp[k++] = a[j++];\n        }\n        while (i < m) tmp[k++] = a[i++];\n        while (j < r) tmp[k++] = a[j++];\n        for (size_t t = l; t < r; ++t) a[t] = tmp[t];\n    };\n    rec(rec, 0, a.size());\n}",
+    "complexity": "O(n log n) de tempo, O(n) para o buffer e O(log n) para a pilha de chamadas.",
+    "success_criteria": [
+      "Definir caso base, intervalos e invariante da intercalação.",
+      "Copiar as sobras e preservar empates pela esquerda.",
+      "Explicar custo por nível e reutilização do buffer."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::manual_20261112",
+    "assunto::merge_sort_dividir_intercalar_estavel",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000077",
+      "title": "Sort an Array",
+      "pages_1based": [
+        20
+      ],
+      "official_statement_url": "https://leetcode.com/problems/sort-an-array/description/",
+      "local_code_path": "leet_code/python_training/medium/sort_an_array-912.py",
+      "local_code_sha256": "ac4937282255f982e514d0a29e3f78706b4e4d5c579829cf233bbe0b01c8859f",
+      "provenance": "Roxo descreve caso base, dividir, recursão, merge com três índices e cópia das sobras. Adaptação C++ usa buffer único. Caso base também cobre vazio.",
+      "source_snapshot_sha256": "a822418245a68f00f70f2b9d5e9c4af510b1b5f3639b93a7a7e40529f0b8241e",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "highlight_color": "blue_purple_green"
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-11-12-manual",
+    "sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
+    "learning_origin": "manuscript_plus_local_solution"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-2026-11-12-manual.json",
+    "validated_at": "2026-11-12T08:41:13.265451-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1794483682301",
+    "card_ids": [
+      "1794483682301"
+    ],
+    "fields_sha256": "e7b4596b49a8050b03c32718eda9b46d4105151248162a2d9e85d767506d978e",
+    "last_batch_id": "2026-11-12-manual"
+  }
+}

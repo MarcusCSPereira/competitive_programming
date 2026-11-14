@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000106",
+  "content_key": "parenteses_pilha_fechamentos_pendentes",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como validar parênteses, colchetes e chaves aninhados com uma pilha? Por que contar aberturas e fechamentos por tipo é insuficiente?",
+  "back": {
+    "answer": "Cada abertura cria uma obrigação de fechamento. A última abertura pendente precisa ser fechada primeiro, então a pilha guarda o fechamento esperado para cada abertura. Ao ler um fechamento, a pilha precisa estar não vazia e o topo deve ser o próprio símbolo. Remova o topo quando o par estiver completo.\n\nA sequência ([)] tem contagens equilibradas, mas depois de ([ o próximo fechamento deve ser ]. Também rejeite um fechamento sem abertura e aberturas que sobrarem ao final. Guardar o símbolo esperado é equivalente a guardar a abertura e consultar um mapa.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "bool parentesesValidos(const string& s) {\n    stack<char> espera;\n    for (char c : s) {\n        switch (c) {\n            case '(': espera.push(')'); break;\n            case '[': espera.push(']'); break;\n            case '{': espera.push('}'); break;\n            default:\n                if (espera.empty() || espera.top() != c) return false;\n                espera.pop();\n        }\n    }\n    return espera.empty();\n}",
+    "complexity": "O(n) de tempo e O(n) de espaço no pior caso, quando todas as aberturas ficam pendentes.",
+    "success_criteria": [
+      "Enunciar o invariante LIFO para fechamentos.",
+      "Checar empty antes de top e exigir pilha vazia no fim."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::manual_20261112",
+    "assunto::parenteses_pilha_fechamentos_pendentes",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000071",
+      "title": "Valid Parentheses",
+      "pages_1based": [
+        16
+      ],
+      "official_statement_url": "https://leetcode.com/problems/valid-parentheses/description/",
+      "local_code_path": "leet_code/easy/valid_parentheses-20.cpp",
+      "local_code_sha256": "aa0690c459d7e7bd3a95db79857513dc975450d7e46c5af8209e73c6429e7e46",
+      "provenance": "Roxo cita operações da pilha. O invariante é a ordem dos fechamentos pendentes. O card guarda o fechamento esperado no topo.",
+      "source_snapshot_sha256": "a822418245a68f00f70f2b9d5e9c4af510b1b5f3639b93a7a7e40529f0b8241e",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "highlight_color": "blue_purple_green"
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-11-12-manual",
+    "sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
+    "learning_origin": "manuscript_plus_local_solution"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-2026-11-12-manual.json",
+    "validated_at": "2026-11-12T08:41:13.247349-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1794483682295",
+    "card_ids": [
+      "1794483682295"
+    ],
+    "fields_sha256": "9d10e7514e68ca2c8b1453077bfb31ad2293818bb3fbf9b89d37f09770c4e8ab",
+    "last_batch_id": "2026-11-12-manual"
+  }
+}

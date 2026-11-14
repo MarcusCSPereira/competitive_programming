@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000103",
+  "content_key": "divisores_separados_limite_primos",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como achar o menor inteiro com pelo menos quatro divisores separados por d? Por que basta comparar p³ e p·q, mesmo que a busca permita mais de quatro divisores?",
+  "back": {
+    "answer": "Escolha p como o menor primo ≥d+1 e q como o menor primo ≥p+d. Num candidato válido, todo divisor primo r precisa satisfazer r−1≥d, pois 1 também é divisor. Se só há um primo r, o expoente precisa ser ≥3, então o candidato vale pelo menos p³. Se há dois primos distintos r<s, temos r≥p e s≥r+d≥p+d. O candidato contém o produto r·s e vale pelo menos p·q.\n\nOs dois limites são atingíveis. Os divisores de p³ são 1,p,p²,p³, com primeiro salto p−1 e saltos seguintes maiores. Os de p·q são 1,p,q,p·q, com saltos p−1, q−p, q(p−1), todos ≥d. Em ordem crescente, checar saltos adjacentes basta. Pegue o menor candidato.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "bool primo(long long x) {\n    if (x < 2) return false;\n    for (long long d = 2; d <= x / d; ++d)\n        if (x % d == 0) return false;\n    return true;\n}\n\nlong long primeiroPrimo(long long inicio) {\n    for (long long x = max(2LL, inicio); ; ++x)\n        if (primo(x)) return x;\n}\n\nlong long menorInteiroSeparado(int d) {\n    const long long p = primeiroPrimo(d + 1LL);\n    const long long q = primeiroPrimo(p + d);\n    return min(p * p * p, p * q);\n}",
+    "complexity": "O(K·√q) de tempo, com K candidatos a primo testados nas duas buscas, e O(1) auxiliar. Produtos em 64 bits para d≤10⁴.",
+    "success_criteria": [
+      "Usar a distância a 1 e entre divisores primos como limites.",
+      "Mostrar que os dois candidatos respeitam todos os saltos.",
+      "Distinguir teste até raiz de busca logarítmica."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::manual_20261112",
+    "assunto::divisores_separados_limite_primos",
+    "origem::problemas"
+  ],
+  "sources": [
+    {
+      "notebook_id": "problemas",
+      "problem_id": "cp-problem-000068",
+      "title": "Different Divisors",
+      "pages_1based": [
+        107,
+        108,
+        109
+      ],
+      "official_statement_url": "https://codeforces.com/problemset/problem/1474/B",
+      "local_code_path": "codeforces/rating_1000/different_divisors-1474B.cpp",
+      "local_code_sha256": "7c970b4aa6e8fba8e617a9b01faed59ecc4bd71f5b82826d95c15cc0422ebe51",
+      "provenance": "Roxo destaca produto dos expoentes mais um e teste de primalidade até raiz. A prova completa trata números com quatro ou mais divisores. A busca de primo por tentativa não é logarítmica.",
+      "source_snapshot_sha256": "8f17590d3733ffaa3ed8cf638a7e7d1cc95ba98ce95cc56bd467ceb876b77275",
+      "drive_file_id": "1AkxfbwlI2Fkz6DYmqGqqyFf0MQyZJbRy",
+      "highlight_color": "blue_purple_green"
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-11-12-manual",
+    "sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
+    "learning_origin": "manuscript_plus_local_solution"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-2026-11-12-manual.json",
+    "validated_at": "2026-11-12T08:41:13.234630-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1794483682292",
+    "card_ids": [
+      "1794483682292"
+    ],
+    "fields_sha256": "896066b16a816be2a2be9d10eb749a7ff68a95250fc93f634d582f260a0235d2",
+    "last_batch_id": "2026-11-12-manual"
+  }
+}

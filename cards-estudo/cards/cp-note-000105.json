@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "cp-note-000105",
+  "content_key": "palindromo_dois_ponteiros_filtrados",
+  "revision": 1,
+  "status": "validated",
+  "skill": "teoria_e_implementacao",
+  "front": "Como verificar se uma string ASCII é palíndromo ignorando pontuação e maiúsculas, sem construir outra string?",
+  "back": {
+    "answer": "Mantenha dois índices voltados para dentro. Pule caracteres que não sejam letras ou dígitos em cada ponta e compare os próximos válidos, normalizando as maiúsculas. Quando o par coincide, o problema restante fica dentro dos dois índices. Cada índice anda em um único sentido, então os laços de pulo não multiplicam o custo.\n\nUse o intervalo semiaberto [esquerda,direita) para que a string vazia seja representada por [0,0). Só acesse direita−1 quando houver elementos. A função abaixo usa faixas ASCII explícitas, como permite o enunciado. Uma string com só pontuação se reduz ao vazio e é válida.",
+    "why": "Justificativa integrada na resposta.",
+    "cpp17": "bool palindromoAscii(const string& s) {\n    auto valido = [](unsigned char c) {\n        return ('0' <= c && c <= '9') || ('a' <= c && c <= 'z')\n            || ('A' <= c && c <= 'Z');\n    };\n    auto minuscula = [](unsigned char c) {\n        return 'A' <= c && c <= 'Z' ? c - 'A' + 'a' : c;\n    };\n    size_t l = 0, r = s.size();\n    while (l < r) {\n        if (!valido(s[l])) { ++l; continue; }\n        if (!valido(s[r - 1])) { --r; continue; }\n        if (minuscula(s[l]) != minuscula(s[r - 1])) return false;\n        ++l;\n        if (l < r) --r;\n    }\n    return true;\n}",
+    "complexity": "O(n) de tempo e O(1) auxiliar.",
+    "success_criteria": [
+      "Pular em ambos os lados e comparar apenas pares alfanuméricos normalizados.",
+      "Manter os índices válidos quando sobra só pontuação ou um caractere."
+    ]
+  },
+  "tags": [
+    "cp_goodnotes",
+    "lote::manual_20261112",
+    "assunto::palindromo_dois_ponteiros_filtrados",
+    "origem::big-tech-problems"
+  ],
+  "sources": [
+    {
+      "notebook_id": "big-tech-problems",
+      "problem_id": "cp-problem-000070",
+      "title": "Valid Palindrome",
+      "pages_1based": [
+        15
+      ],
+      "official_statement_url": "https://leetcode.com/problems/valid-palindrome/description/",
+      "local_code_path": "leet_code/easy/valid_palindrome-125.cpp",
+      "local_code_sha256": "e616be81596f326c2f54f4cf9a26c73a734db63cfd889bbbefe61ae59752a965",
+      "provenance": "Roxo destaca caracteres alfanuméricos, conversão para minúscula e dois ponteiros. Varredura evita uma cópia filtrada.",
+      "source_snapshot_sha256": "a822418245a68f00f70f2b9d5e9c4af510b1b5f3639b93a7a7e40529f0b8241e",
+      "drive_file_id": "1m0LdMy9r2tpeT_E9ifYj7nKVx7QVd5uN",
+      "highlight_color": "blue_purple_green"
+    }
+  ],
+  "coverage_review": {
+    "run_id": "2026-11-12-manual",
+    "sync_run_id": "109cf8d8-ff3a-41ea-a881-986d807ac0ab",
+    "learning_origin": "manuscript_plus_local_solution"
+  },
+  "validation": {
+    "handwriting_checked": true,
+    "technical_correctness_checked": true,
+    "code_tested": true,
+    "user_format_approved": true,
+    "pending_questions": [],
+    "test_report": "estado/validacao-2026-11-12-manual.json",
+    "validated_at": "2026-11-12T08:41:13.242178-03:00"
+  },
+  "anki": {
+    "note_type": "CP Goodnotes",
+    "deck": "Programação competitiva",
+    "first_field": "ID",
+    "import_confirmed": true,
+    "note_id": "1794483682294",
+    "card_ids": [
+      "1794483682294"
+    ],
+    "fields_sha256": "bef42218bdf55a0cc1cd266c0720490b64a7be032a4b3284195e57221279b9e5",
+    "last_batch_id": "2026-11-12-manual"
+  }
+}

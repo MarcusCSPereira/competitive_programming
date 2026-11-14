@@ -1,0 +1,283 @@
+#separator:Tab
+#html:true
+#notetype:CP Goodnotes
+#deck:Programação competitiva
+#tags column:5
+cp-note-000096	<p>Como minimizar uma soma de frequências × distâncias ao distribuir prédios em coordenadas inteiras distintas? Por que os mais visitados ficam perto, e como devolver as coordenadas na ordem original?</p>	"<p>Podemos fixar a sede em x[0]=0, pois transladar todas as posições não muda as distâncias. As posições livres mais próximas são +1,−1,+2,−2,…: há dois lugares para cada distância positiva. Como as frequências são não negativas, usar posições mais distantes quando há uma mais próxima livre nunca melhora o custo. Frequência zero pode ocupar qualquer posição restante sem alterar o custo.</p><p>Ordene as frequências em ordem decrescente e atribua essas posições em ordem de distância crescente. A prova é por troca: se A≥B e d≤D, associar A a d e B a D custa A*d+B*D. A associação inversa custa A*D+B*d; a diferença é (A−B)*(D−d)≥0. Portanto eliminar inversões nunca piora a solução. O fator 2, pela ida e volta, multiplica todo o custo e não muda a ordenação ótima.</p><p>Guarde pares (frequência,índice original). Ordenar somente os valores perderia a identidade dos prédios: a saída precisa ser x[0],x[1],…,x[n], com cada prédio no seu índice inicial. No código, a posição escolhida é salva em x[id+1]. Use long long desde a multiplicação e na soma, pois 2*distância*frequência acumulado excede int. Empates podem ser resolvidos em qualquer ordem.</p><p>A página 102 mostra o preenchimento alternado +1, −1, +2, −2 e a restauração da ordem pelo índice. A prova por troca é o complemento didático.</p><pre><code class=""language-cpp"">pair&lt;long long,vector&lt;int&gt;&gt; posicionarPredios(const vector&lt;int&gt;&amp; visitas) {
+     int n=(int)visitas.size();
+     vector&lt;pair&lt;int,int&gt;&gt; ordem;
+     for(int i=0;i&lt;n;++i) ordem.push_back({visitas[i],i});
+     sort(ordem.rbegin(),ordem.rend());
+     vector&lt;int&gt; x(n+1,0); // sede no índice 0
+     long long custo=0;
+     for(int i=0;i&lt;n;++i) {
+         int distancia=i/2+1;
+         int pos=(i%2==0 ? distancia : -distancia);
+         auto [frequencia,id]=ordem[i];
+         x[id+1]=pos;
+         custo+=2LL*distancia*frequencia;
+     }
+     return {custo,x};
+ }</code></pre><p><strong>Complexidade:</strong> O(n log n) de tempo e O(n) espaço. Para n≤200.000 e frequências≤10^6, coordenadas até 100.000 e custo até 20.000.200.000.000.000 cabem em long long.</p><details><summary>Critério de acerto</summary><ul><li>Provar a escolha gulosa por troca de dois pesos/distâncias.</li><li>Usar +1,−1,+2,−2,… e incluir ida e volta.</li><li>Preservar índices originais e aritmética em 64 bits.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1614/B"">Divan and a New Project · problemas · páginas 102</a></li></ul>"	assunto::greedy_pesos_distancias_prova_troca cp_goodnotes lote::diaria_20261031 origem::problemas
+cp-note-000097	<p>Como calcular o XOR de todos os inteiros em [L,R] em tempo constante? De onde vem o padrão n, 1, n+1, 0 do prefixo?</p>	"<p>Todo bloco alinhado [4k,4k+3] tem XOR zero. Os dois primeiros dão 1 e os dois últimos também dão 1, pois em cada par só muda o bit menos significativo. Assim só sobram os termos do último bloco. Se n é o último termo incluído, para n % 4 igual a 0, 1, 2 ou 3 o XOR de [0,n] vale, respectivamente, n, 1, n+1 ou 0.</p><p>Para obter [L,R], combine o prefixo até R com o prefixo até L−1. Cada termo anterior a L aparece duas vezes e cancela porque x^x=0. Quando L=0, o prefixo anterior está vazio. Para um array arbitrário o mesmo cancelamento funciona com prefixos pré-calculados, mas a fórmula do módulo 4 depende da sequência de inteiros consecutivos.</p><pre><code class=""language-cpp"">unsigned xorAte(unsigned n) {
+    switch (n % 4) {
+        case 0: return n;
+        case 1: return 1;
+        case 2: return n + 1;
+        default: return 0;
+    }
+}
+
+unsigned xorIntervalo(unsigned l, unsigned r) {
+    return xorAte(r) ^ (l == 0 ? 0 : xorAte(l - 1));
+}</code></pre><p><strong>Complexidade:</strong> O(1) de tempo e espaço por consulta, para inteiros de largura fixa.</p><details><summary>Critério de acerto</summary><ul><li>Justificar por que um bloco de quatro alinhado cancela.</li><li>Incluir R no prefixo e tratar L=0.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1567/B"">MEXor Mixup · problemas · páginas 103, 104</a></li></ul>"	assunto::xor_prefixo_periodo_quatro cp_goodnotes lote::manual_20261112 origem::problemas
+cp-note-000098	<p>Se um array deve ter MEX a e XOR b, como provar o comprimento mínimo? O que fazer quando o único valor que corrigiria o XOR é proibido?</p>	"<p>MEX a exige os a valores de 0 a a−1 e proíbe incluir a. Remova mentalmente uma ocorrência de cada valor obrigatório. Se x é o XOR desses valores, os extras precisam ter XOR d=x^b, já que x^d=b.</p><p>Se d=0, basta o bloco obrigatório. Se d≠0 e d≠a, acrescente d. Nesse caso pelo menos um extra é necessário. Se d=a, um único extra teria de ser a, então dois são necessários. Para construir dois válidos, escolha uma potência de dois H&gt;a e acrescente H e H^a. Ambos são maiores que a e juntos dão XOR a. O C++ abaixo calcula só o comprimento, como pede o problema.</p><pre><code class=""language-cpp"">unsigned xorAte(unsigned n) {
+    switch (n % 4) {
+        case 0: return n;
+        case 1: return 1;
+        case 2: return n + 1;
+        default: return 0;
+    }
+}
+
+unsigned menorTamanho(unsigned a, unsigned b) {
+    // MEX a &gt;= 1. Limites de 1567B.
+    const unsigned falta = xorAte(a - 1) ^ b;
+    if (falta == 0) return a;
+    return a + (falta == a ? 2 : 1);
+}</code></pre><p><strong>Complexidade:</strong> O(1) de tempo e espaço. Materializar o bloco obrigatório custaria O(a).</p><details><summary>Critério de acerto</summary><ul><li>Extrair uma ocorrência de cada valor obrigatório.</li><li>Deduzir d=x^b e provar os três limites inferiores.</li><li>Exibir dois extras válidos quando d=a.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1567/B"">MEXor Mixup · problemas · páginas 103, 104</a></li></ul>"	assunto::mex_xor_elemento_proibido cp_goodnotes lote::manual_20261112 origem::problemas
+cp-note-000099	<p>Por que igualar duas strings removendo apenas pelas pontas equivale a achar a maior substring comum? Como calcular o custo e testar a ideia diretamente em C++17?</p>	"<p>Depois de remover pela esquerda e pela direita, os caracteres restantes são um intervalo contíguo da string inicial. Qualquer intervalo pode ser obtido apagando seu prefixo e seu sufixo. Se as duas sobras iguais têm comprimento L, foram feitas |a|−L remoções em a e |b|−L em b. Portanto minimize |a|+|b|−2L maximizando L, inclusive L=0.</p><p>Para strings curtas, tente todo par de inícios e estenda enquanto os caracteres casam. Esse teste usa índices e dispensa cópias de substrings. Em abc e axbc, a sobra ótima é bc, com custo 3. Os três caracteres abc formam uma subsequência de axbc, mas o x está no meio e não pode ser retirado com as duas pontas intactas.</p><pre><code class=""language-cpp"">int custoRemoverPontas(const string&amp; a, const string&amp; b) {
+    int melhor = 0;
+    for (size_t i = 0; i &lt; a.size(); ++i) {
+        for (size_t j = 0; j &lt; b.size(); ++j) {
+            int k = 0;
+            while (i + k &lt; a.size() &amp;&amp; j + k &lt; b.size()
+                   &amp;&amp; a[i + k] == b[j + k]) {
+                ++k;
+            }
+            melhor = max(melhor, k);
+        }
+    }
+    return static_cast&lt;int&gt;(a.size() + b.size()) - 2 * melhor;
+}</code></pre><p><strong>Complexidade:</strong> O(n·m·min(n,m)) de tempo e O(1) auxiliar. Para strings maiores, a DP reduz o tempo para O(n·m).</p><details><summary>Critério de acerto</summary><ul><li>Mostrar que só resta um trecho contíguo e que todo trecho é alcançável.</li><li>Derivar n+m−2L e aceitar a sobra vazia.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1506/C"">Double-ended Strings · problemas · páginas 105, 106</a></li></ul>"	assunto::remover_pontas_maior_substring cp_goodnotes lote::manual_20261112 origem::problemas
+cp-note-000100	<p>Na DP da maior substring comum, o que representa dp[i][j]? Por que zerar quando as letras diferem, guardar o máximo global e percorrer j de trás para frente se só houver uma linha?</p>	"<p>dp[i][j] é o tamanho da maior coincidência contígua que termina em a[i−1] e b[j−1]. Se as letras finais batem, acrescente 1 à diagonal dp[i−1][j−1]. Se diferem, nenhuma substring comum termina nesses dois pontos e o estado vale zero. A maior coincidência pode terminar no meio das strings, então registre o máximo em todas as células.</p><p>Na maior subsequência comum, o estado trata prefixos e permite ignorar letras, por isso pode herdar de cima ou da esquerda. Para compactar a DP de substring em uma linha, percorra j em ordem decrescente. Assim dp[j−1] ainda guarda a diagonal da linha anterior. A coluna zero permanece zero. A compactação é um complemento à tabela 2D do caderno.</p><pre><code class=""language-cpp"">int maiorSubstringComum(const string&amp; a, const string&amp; b) {
+    vector&lt;int&gt; dp(b.size() + 1, 0);
+    int melhor = 0;
+    for (char letra : a) {
+        for (size_t j = b.size(); j &gt; 0; --j) {
+            dp[j] = letra == b[j - 1] ? dp[j - 1] + 1 : 0;
+            melhor = max(melhor, dp[j]);
+        }
+    }
+    return melhor;
+}</code></pre><p><strong>Complexidade:</strong> O(n·m) de tempo, O(m) auxiliar. Passe a string mais curta como b para usar O(min(n,m)) espaço.</p><details><summary>Critério de acerto</summary><ul><li>Dar o significado de sufixo que termina no par de posições.</li><li>Explicar diagonal, reset, máximo global e ordem decrescente.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1506/C"">Double-ended Strings · problemas · páginas 105, 106</a></li></ul>"	assunto::dp_substring_comum_diagonal cp_goodnotes lote::manual_20261112 origem::problemas
+cp-note-000101	<p>Em Add and Divide, por que posso testar todos os incrementos de b antes de dividir a? Como saber quando parar de testar b sem escolher um limite arbitrário?</p>	"<p>Para a≥0, dividir por b+1 dá um quociente menor ou igual ao de dividir por b. Se uma divisão vier logo antes de um incremento, trocar sua ordem deixa b igual e a não aumenta. As divisões seguintes preservam essa vantagem. Repetindo a troca, existe uma solução ótima que faz todos os incrementos primeiro.</p><p>Encontre um custo viável começando com divisor max(b,2). Dividir por 1 nunca reduz a. Após k incrementos, só eles já custam k, então k≥melhor não pode melhorar a resposta. Para cada k menor, conte quantas divisões inteiras por b+k zeram a. Por exemplo, para a=9 e b=2, dividir quatro vezes empata com aumentar b para 3 e dividir três vezes.</p><pre><code class=""language-cpp"">int custoMinimoDivisoes(int a, int b) {
+    auto contar = [a](int divisor) {
+        int passos = 0;
+        for (int x = a; x &gt; 0; x /= divisor) ++passos;
+        return passos;
+    };
+    const int primeiro = b == 1 ? 1 : 0;
+    int melhor = primeiro + contar(b + primeiro);
+    for (int k = primeiro + 1; k &lt; melhor; ++k) {
+        melhor = min(melhor, k + contar(b + k));
+    }
+    return melhor;
+}</code></pre><p><strong>Complexidade:</strong> O(log²(a+1)) de tempo e O(1) auxiliar. O primeiro custo dá O(log(a+1)) candidatos, cada qual com O(log(a+1)) divisões no pior caso.</p><details><summary>Critério de acerto</summary><ul><li>Justificar trocar divisão com incremento.</li><li>Descartar b=1 e podar pelo melhor custo viável.</li><li>Contar tanto incrementos quanto divisões.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1485/A"">Add and Divide · problemas · páginas 106, 107</a></li></ul>"	assunto::divisor_incrementos_limite_viavel cp_goodnotes lote::manual_20261112 origem::problemas
+cp-note-000102	<p>Como contar os divisores de n a partir de sua fatoração em primos? Quais formatos produzem exatamente quatro divisores e como tratar um fator primo que sobra?</p>	"<p>Se n=p₁^e₁·p₂^e₂·..., cada divisor escolhe para pᵢ um expoente entre 0 e eᵢ. Como as escolhas são independentes, multiplique (eᵢ+1) para todos os fatores. Para 12=2²·3, isso dá 3×2=6. Para exatamente quatro divisores, o produto 4 pode vir de 4 sozinho ou de 2×2, então os formatos são p³ e p·q com primos distintos.</p><p>No código, retire todas as cópias de cada fator antes de avançar. Quando p passa da raiz do resto, se sobrou algo maior que 1, é um primo de expoente 1. Para n=1, o produto vazio vale 1. Usar p≤n/p mantém a comparação equivalente a p²≤n em inteiros positivos sem multiplicar p por p.</p><pre><code class=""language-cpp"">long long numeroDivisores(long long n) {
+    long long resposta = 1;
+    for (long long p = 2; p &lt;= n / p; ++p) {
+        int exp = 0;
+        while (n % p == 0) {
+            n /= p;
+            ++exp;
+        }
+        resposta *= exp + 1;
+    }
+    if (n &gt; 1) resposta *= 2;
+    return resposta;
+}</code></pre><p><strong>Complexidade:</strong> O(√n) de tempo no pior caso por tentativa e O(1) auxiliar, com n≥1.</p><details><summary>Critério de acerto</summary><ul><li>Derivar o produto por escolhas de expoente.</li><li>Reconhecer os dois formatos com quatro divisores.</li><li>Contar o fator primo restante.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1474/B"">Different Divisors · problemas · páginas 107, 108, 109</a></li></ul>"	assunto::contar_divisores_expoentes_fatoracao cp_goodnotes lote::manual_20261112 origem::problemas
+cp-note-000103	<p>Como achar o menor inteiro com pelo menos quatro divisores separados por d? Por que basta comparar p³ e p·q, mesmo que a busca permita mais de quatro divisores?</p>	"<p>Escolha p como o menor primo ≥d+1 e q como o menor primo ≥p+d. Num candidato válido, todo divisor primo r precisa satisfazer r−1≥d, pois 1 também é divisor. Se só há um primo r, o expoente precisa ser ≥3, então o candidato vale pelo menos p³. Se há dois primos distintos r&lt;s, temos r≥p e s≥r+d≥p+d. O candidato contém o produto r·s e vale pelo menos p·q.</p><p>Os dois limites são atingíveis. Os divisores de p³ são 1,p,p²,p³, com primeiro salto p−1 e saltos seguintes maiores. Os de p·q são 1,p,q,p·q, com saltos p−1, q−p, q(p−1), todos ≥d. Em ordem crescente, checar saltos adjacentes basta. Pegue o menor candidato.</p><pre><code class=""language-cpp"">bool primo(long long x) {
+    if (x &lt; 2) return false;
+    for (long long d = 2; d &lt;= x / d; ++d)
+        if (x % d == 0) return false;
+    return true;
+}
+
+long long primeiroPrimo(long long inicio) {
+    for (long long x = max(2LL, inicio); ; ++x)
+        if (primo(x)) return x;
+}
+
+long long menorInteiroSeparado(int d) {
+    const long long p = primeiroPrimo(d + 1LL);
+    const long long q = primeiroPrimo(p + d);
+    return min(p * p * p, p * q);
+}</code></pre><p><strong>Complexidade:</strong> O(K·√q) de tempo, com K candidatos a primo testados nas duas buscas, e O(1) auxiliar. Produtos em 64 bits para d≤10⁴.</p><details><summary>Critério de acerto</summary><ul><li>Usar a distância a 1 e entre divisores primos como limites.</li><li>Mostrar que os dois candidatos respeitam todos os saltos.</li><li>Distinguir teste até raiz de busca logarítmica.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1474/B"">Different Divisors · problemas · páginas 107, 108, 109</a></li></ul>"	assunto::divisores_separados_limite_primos cp_goodnotes lote::manual_20261112 origem::problemas
+cp-note-000104	<p>Ao inverter os sinais de duas células adjacentes por vez, por que a maior soma é a soma dos módulos, possivelmente menos duas vezes o menor módulo? Como provar que a adjacência permite atingir a resposta?</p>	"<p>Sem zeros, inverter dois sinais conserva a paridade da contagem de negativos. Se ela for ímpar, pelo menos um negativo sobra. Para perder o mínimo da soma de módulos, escolha a célula de menor módulo para esse sinal. Sua contribuição muda de +m para −m, perda 2m.</p><p>Em uma grade conectada, escolha um caminho simples entre duas células e aplique a operação a cada aresta do caminho. Cada célula interna muda duas vezes e só os extremos ficam invertidos. Isso permite cancelar pares de negativos ou mover um único sinal para a célula desejada. Com zero, use-o como um extremo: seu valor continua zero e o outro extremo troca de sinal. A mesma fórmula já cobre esse caso, pois o menor módulo é zero.</p><pre><code class=""language-cpp"">long long maiorSomaSinais(const vector&lt;vector&lt;int&gt;&gt;&amp; grade) {
+    long long soma = 0, menor = LLONG_MAX;
+    bool impar = false;
+    for (const auto&amp; linha : grade) {
+        for (int x : linha) {
+            long long modulo = llabs(static_cast&lt;long long&gt;(x));
+            soma += modulo;
+            menor = min(menor, modulo);
+            if (x &lt; 0) impar = !impar;
+        }
+    }
+    return impar ? soma - 2 * menor : soma;
+}</code></pre><p><strong>Complexidade:</strong> O(n·m) de tempo e O(1) de espaço auxiliar para uma grade retangular conectada e não vazia.</p><details><summary>Critério de acerto</summary><ul><li>Identificar a paridade sem zeros e a penalidade de manter um negativo.</li><li>Provar que inverter arestas de um caminho só altera os extremos.</li><li>Explicar o papel do zero.</li></ul></details>"	"<ul><li><a href=""https://codeforces.com/problemset/problem/1447/B"">Numbers Box · problemas · páginas 109, 110</a></li></ul>"	assunto::paridade_sinais_caminho_matriz cp_goodnotes lote::manual_20261112 origem::problemas
+cp-note-000105	<p>Como verificar se uma string ASCII é palíndromo ignorando pontuação e maiúsculas, sem construir outra string?</p>	"<p>Mantenha dois índices voltados para dentro. Pule caracteres que não sejam letras ou dígitos em cada ponta e compare os próximos válidos, normalizando as maiúsculas. Quando o par coincide, o problema restante fica dentro dos dois índices. Cada índice anda em um único sentido, então os laços de pulo não multiplicam o custo.</p><p>Use o intervalo semiaberto [esquerda,direita) para que a string vazia seja representada por [0,0). Só acesse direita−1 quando houver elementos. A função abaixo usa faixas ASCII explícitas, como permite o enunciado. Uma string com só pontuação se reduz ao vazio e é válida.</p><pre><code class=""language-cpp"">bool palindromoAscii(const string&amp; s) {
+    auto valido = [](unsigned char c) {
+        return (&#x27;0&#x27; &lt;= c &amp;&amp; c &lt;= &#x27;9&#x27;) || (&#x27;a&#x27; &lt;= c &amp;&amp; c &lt;= &#x27;z&#x27;)
+            || (&#x27;A&#x27; &lt;= c &amp;&amp; c &lt;= &#x27;Z&#x27;);
+    };
+    auto minuscula = [](unsigned char c) {
+        return &#x27;A&#x27; &lt;= c &amp;&amp; c &lt;= &#x27;Z&#x27; ? c - &#x27;A&#x27; + &#x27;a&#x27; : c;
+    };
+    size_t l = 0, r = s.size();
+    while (l &lt; r) {
+        if (!valido(s[l])) { ++l; continue; }
+        if (!valido(s[r - 1])) { --r; continue; }
+        if (minuscula(s[l]) != minuscula(s[r - 1])) return false;
+        ++l;
+        if (l &lt; r) --r;
+    }
+    return true;
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(1) auxiliar.</p><details><summary>Critério de acerto</summary><ul><li>Pular em ambos os lados e comparar apenas pares alfanuméricos normalizados.</li><li>Manter os índices válidos quando sobra só pontuação ou um caractere.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/valid-palindrome/description/"">Valid Palindrome · big-tech-problems · páginas 15</a></li></ul>"	assunto::palindromo_dois_ponteiros_filtrados cp_goodnotes lote::manual_20261112 origem::big-tech-problems
+cp-note-000106	<p>Como validar parênteses, colchetes e chaves aninhados com uma pilha? Por que contar aberturas e fechamentos por tipo é insuficiente?</p>	"<p>Cada abertura cria uma obrigação de fechamento. A última abertura pendente precisa ser fechada primeiro, então a pilha guarda o fechamento esperado para cada abertura. Ao ler um fechamento, a pilha precisa estar não vazia e o topo deve ser o próprio símbolo. Remova o topo quando o par estiver completo.</p><p>A sequência ([)] tem contagens equilibradas, mas depois de ([ o próximo fechamento deve ser ]. Também rejeite um fechamento sem abertura e aberturas que sobrarem ao final. Guardar o símbolo esperado é equivalente a guardar a abertura e consultar um mapa.</p><pre><code class=""language-cpp"">bool parentesesValidos(const string&amp; s) {
+    stack&lt;char&gt; espera;
+    for (char c : s) {
+        switch (c) {
+            case &#x27;(&#x27;: espera.push(&#x27;)&#x27;); break;
+            case &#x27;[&#x27;: espera.push(&#x27;]&#x27;); break;
+            case &#x27;{&#x27;: espera.push(&#x27;}&#x27;); break;
+            default:
+                if (espera.empty() || espera.top() != c) return false;
+                espera.pop();
+        }
+    }
+    return espera.empty();
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(n) de espaço no pior caso, quando todas as aberturas ficam pendentes.</p><details><summary>Critério de acerto</summary><ul><li>Enunciar o invariante LIFO para fechamentos.</li><li>Checar empty antes de top e exigir pilha vazia no fim.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/valid-parentheses/description/"">Valid Parentheses · big-tech-problems · páginas 16</a></li></ul>"	assunto::parenteses_pilha_fechamentos_pendentes cp_goodnotes lote::manual_20261112 origem::big-tech-problems
+cp-note-000107	<p>Como implementar uma pilha com mínimo em O(1) usando uma diferença por posição? Como decodificar o topo e restaurar o mínimo anterior ao remover?</p>	"<p>No push, guarde d=x−mínimo anterior. Quando d≥0, x não muda o mínimo e o topo é mínimo+d. Quando d&lt;0, x passa a ser o mínimo e o topo é o próprio mínimo atual. Nessa situação, ao fazer pop, recupere o mínimo anterior com mínimo atual−d. A restauração funciona porque os elementos empilhados depois já foram removidos.</p><p>No primeiro push, inicialize o mínimo com x e guarde 0. Empates também dão 0 e não exigem restauração. Faça a subtração em long long desde o início: INT_MAX−INT_MIN não cabe em int. O contrato do problema garante pilha não vazia para top, pop e getMin.</p><pre><code class=""language-cpp"">class PilhaMin {
+    stack&lt;long long&gt; deltas;
+    long long minimo = 0;
+public:
+    void push(int x) {
+        if (deltas.empty()) minimo = x;
+        const long long d = static_cast&lt;long long&gt;(x) - minimo;
+        deltas.push(d);
+        if (d &lt; 0) minimo = x;
+    }
+
+    void pop() {
+        const long long d = deltas.top();
+        deltas.pop();
+        if (d &lt; 0) minimo -= d;
+    }
+
+    int top() const {
+        return static_cast&lt;int&gt;(minimo + max(0LL, deltas.top()));
+    }
+
+    int getMin() const { return static_cast&lt;int&gt;(minimo); }
+};</code></pre><p><strong>Complexidade:</strong> O(1) por operação e O(n) de espaço para a pilha. Além dos deltas, há um acumulador de mínimo.</p><details><summary>Critério de acerto</summary><ul><li>Deduzir as regras de topo e restauração a partir de d=x−mínimo anterior.</li><li>Tratar primeiro push, empates e diferenças entre extremos de int.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/min-stack/description/"">Min Stack · big-tech-problems · páginas 16, 17</a></li></ul>"	assunto::pilha_minimo_delta_restaurar cp_goodnotes lote::manual_20261112 origem::big-tech-problems
+cp-note-000108	<p>Como encontrar todas as trincas distintas de soma zero com ordenação e dois ponteiros? Por que mover cada ponteiro é seguro e onde eliminar duplicatas?</p>	"<p>Ordene e fixe a primeira posição i. Busque as outras duas no sufixo usando l=i+1 e r=n−1. Se a soma for pequena, com aquele l nenhum índice ≤r dá um termo maior, então descarte l. Se for grande, com aquele r nenhum índice ≥l dá um termo menor, então descarte r. Cada movimento elimina possibilidades impossíveis e mantém os três índices distintos.</p><p>Pule valores repetidos de i, pois a primeira ocorrência já examinou um sufixo que inclui as demais. Ao registrar uma trinca, avance os dois ponteiros além das repetições dos valores usados. Se a[i]&gt;0, os três termos seriam positivos e o laço externo pode parar. Zero pode ser âncora e [0,0,0] pode ser uma resposta.</p><pre><code class=""language-cpp"">vector&lt;array&lt;int, 3&gt;&gt; tresSomas(vector&lt;int&gt;&amp; a) {
+    sort(a.begin(), a.end());
+    vector&lt;array&lt;int, 3&gt;&gt; resposta;
+    const int n = static_cast&lt;int&gt;(a.size());
+    for (int i = 0; i + 2 &lt; n &amp;&amp; a[i] &lt;= 0; ++i) {
+        if (i &gt; 0 &amp;&amp; a[i] == a[i - 1]) continue;
+        int l = i + 1, r = n - 1;
+        while (l &lt; r) {
+            const long long soma = 0LL + a[i] + a[l] + a[r];
+            if (soma &lt; 0) ++l;
+            else if (soma &gt; 0) --r;
+            else {
+                resposta.push_back({a[i], a[l], a[r]});
+                const int x = a[l], y = a[r];
+                while (l &lt; r &amp;&amp; a[l] == x) ++l;
+                while (l &lt; r &amp;&amp; a[r] == y) --r;
+            }
+        }
+    }
+    return resposta;
+}</code></pre><p><strong>Complexidade:</strong> O(n²) de tempo. Varredura com O(1) auxiliar, além da pilha da ordenação e da saída.</p><details><summary>Critério de acerto</summary><ul><li>Provar qual lado descartar para cada sinal da soma.</li><li>Distinguir índices distintos de valores que podem repetir.</li><li>Pular duplicatas sem perder [0,0,0].</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/3sum/description/"">3Sum · big-tech-problems · páginas 17, 18</a></li></ul>"	assunto::tres_soma_ordenacao_ponteiros_duplicatas cp_goodnotes lote::manual_20261112 origem::big-tech-problems
+cp-note-000109	<p>Para tornar uma string palíndromo com até uma remoção, por que a primeira divergência entre as pontas produz só duas tentativas? Como testá-las sem copiar a string?</p>	"<p>Enquanto as pontas são iguais, podemos preservá-las. Se uma solução apagasse uma dessas pontas iguais, o palíndromo restante teria a outra ponta e um caractere igual a ela no novo extremo. É possível preservar as duas pontas originais apagando esse caractere vizinho em vez disso.</p><p>Ao chegar a s[l]≠s[r], apagar uma posição interna manteria as pontas diferentes. Logo tente [l+1,r] e [l,r−1]. Em cada tentativa já gastamos a remoção, então basta verificar palíndromo comum no intervalo. Teste as duas opções, pois a escolha correta depende do restante. Uma string já palíndroma atende sem remoção.</p><pre><code class=""language-cpp"">bool palindromoAteUmaRemocao(const string&amp; s) {
+    auto igualAoReverso = [&amp;s](int l, int r) {
+        while (l &lt; r) {
+            if (s[l] != s[r]) return false;
+            ++l;
+            --r;
+        }
+        return true;
+    };
+    int l = 0, r = static_cast&lt;int&gt;(s.size()) - 1;
+    while (l &lt; r &amp;&amp; s[l] == s[r]) {
+        ++l;
+        --r;
+    }
+    return l &gt;= r || igualAoReverso(l + 1, r) || igualAoReverso(l, r - 1);
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(1) auxiliar. Há no máximo duas verificações depois da primeira divergência.</p><details><summary>Critério de acerto</summary><ul><li>Justificar ignorar pares iguais e testar os dois lados da primeira diferença.</li><li>Verificar o intervalo restante sem substr e sem permitir outra remoção.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/valid-palindrome-ii/description/"">Valid Palindrome II · big-tech-problems · páginas 18</a></li></ul>"	assunto::palindromo_uma_remocao_primeira_divergencia cp_goodnotes lote::manual_20261112 origem::big-tech-problems
+cp-note-000110	<p>Como achar um elemento que aparece estritamente mais de n/2 vezes usando Boyer–Moore em O(1) de memória? Quando é preciso verificar o candidato?</p>	"<p>Cancele mentalmente pares de valores diferentes. Se existe maioria, remover um par elimina no máximo uma ocorrência dela e reduz o total em dois. A maioria continua estrita, então o último candidato sobrevivente só pode ser ela.</p><p>Guarde um candidato e um saldo. Com saldo zero, o próximo valor vira candidato. Some 1 ao encontrar o candidato e subtraia 1 ao encontrar outro valor, representando o cancelamento de um par. O saldo conta os sobreviventes dessa etapa e não a frequência total. Com a garantia do problema, retorne o candidato. Sem garantia, conte suas ocorrências em outra passada e exija mais de n/2. Em [1,2,3], por exemplo, sobra 3 sem existir maioria.</p><pre><code class=""language-cpp"">int candidatoMaioria(const vector&lt;int&gt;&amp; a) {
+    int candidato = 0, saldo = 0;
+    for (int x : a) {
+        if (saldo == 0) candidato = x;
+        saldo += (x == candidato ? 1 : -1);
+    }
+    return candidato;
+}
+
+bool existeMaioria(const vector&lt;int&gt;&amp; a) {
+    const int x = candidatoMaioria(a);
+    return static_cast&lt;size_t&gt;(count(a.begin(), a.end(), x)) &gt; a.size() / 2;
+}</code></pre><p><strong>Complexidade:</strong> O(n) de tempo e O(1) auxiliar. A segunda passada mantém os mesmos limites.</p><details><summary>Critério de acerto</summary><ul><li>Explicar cancelamento de pares diferentes e o saldo.</li><li>Usar maioria estrita e validar em segunda passada quando não houver garantia.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/majority-element/description/"">Majority Element · big-tech-problems · páginas 19</a></li></ul>"	assunto::boyer_moore_cancelamento_maioria cp_goodnotes lote::manual_20261112 origem::big-tech-problems
+cp-note-000111	<p>Como implementar add, contains e remove de um HashSet com encadeamento separado? O que ocorre quando duas chaves caem no mesmo bucket?</p>	"<p>Calcule o índice com hash(chave) % B. Chaves distintas podem cair no mesmo bucket. Cada bucket guarda uma lista e a comparação da chave completa resolve a colisão. Na solução do caderno, isso é encadeamento separado. Endereçamento aberto é a técnica que procura outra posição da própria tabela.</p><p>Na inserção, procure a chave no bucket para evitar duplicata. Em contains, compare a chave inteira. Na remoção, apague só o elemento correspondente. A lista do C++ cuida dos nós e mantém a mesma estratégia do código manuscrito. O exemplo usa B fixo e chaves não negativas, dentro do contrato do LeetCode.</p><pre><code class=""language-cpp"">class MeuHashSet {
+    static constexpr size_t B = 10007;
+    vector&lt;list&lt;int&gt;&gt; baldes = vector&lt;list&lt;int&gt;&gt;(B);
+public:
+    bool contains(int chave) const {
+        const auto&amp; balde = baldes[chave % B];
+        return find(balde.begin(), balde.end(), chave) != balde.end();
+    }
+
+    void add(int chave) {
+        if (!contains(chave)) baldes[chave % B].push_front(chave);
+    }
+
+    void remove(int chave) {
+        auto&amp; balde = baldes[chave % B];
+        auto it = find(balde.begin(), balde.end(), chave);
+        if (it != balde.end()) balde.erase(it);
+    }
+};</code></pre><p><strong>Complexidade:</strong> O(1+α) esperado por operação sob distribuição aproximadamente uniforme, com α=n/B. Pior caso O(n) por colisões e espaço O(B+n). B fixo não mantém α limitado para n arbitrário.</p><details><summary>Critério de acerto</summary><ul><li>Distinguir bucket, colisão e igualdade de chave.</li><li>Preservar as outras chaves ao remover e impedir duplicatas.</li><li>Dar o custo em termos do tamanho das listas.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/design-hashset/description/"">Design HashSet · big-tech-problems · páginas 19, 20</a></li></ul>"	assunto::hashset_colisao_encadeamento_separado cp_goodnotes lote::manual_20261112 origem::big-tech-problems
+cp-note-000112	<p>Como implementar merge sort com um único buffer? Qual é o invariante da intercalação, como tratar empates e por que o tempo é O(n log n)?</p>	"<p>Use intervalos [l,r). Tamanhos 0 e 1 já estão ordenados. Ordene [l,m) e [m,r) recursivamente, depois intercale. O trecho já escrito no buffer contém os menores elementos já consumidos em ordem, e as pontas das metades são os menores candidatos restantes. Escolha a menor e avance seu índice. Quando uma metade acabar, copie a sobra da outra.</p><p>Em empate, escolha primeiro a metade esquerda para preservar a ordem relativa de elementos equivalentes. No código, cada elemento é um par (chave, id) para tornar a estabilidade visível. Compare apenas a chave. Com O(n) de intercalação total por nível e O(log n) níveis, o tempo é O(n log n). O mesmo buffer pode ser reutilizado porque cada chamada termina de copiar seu trecho antes de o pai intercalar.</p><pre><code class=""language-cpp"">using Item = pair&lt;int, int&gt;; // chave, id original
+
+void ordenarMerge(vector&lt;Item&gt;&amp; a) {
+    vector&lt;Item&gt; tmp(a.size());
+    auto rec = [&amp;](auto&amp;&amp; self, size_t l, size_t r) -&gt; void {
+        if (r - l &lt;= 1) return;
+        const size_t m = l + (r - l) / 2;
+        self(self, l, m);
+        self(self, m, r);
+        size_t i = l, j = m, k = l;
+        while (i &lt; m &amp;&amp; j &lt; r) {
+            if (a[i].first &lt;= a[j].first) tmp[k++] = a[i++];
+            else tmp[k++] = a[j++];
+        }
+        while (i &lt; m) tmp[k++] = a[i++];
+        while (j &lt; r) tmp[k++] = a[j++];
+        for (size_t t = l; t &lt; r; ++t) a[t] = tmp[t];
+    };
+    rec(rec, 0, a.size());
+}</code></pre><p><strong>Complexidade:</strong> O(n log n) de tempo, O(n) para o buffer e O(log n) para a pilha de chamadas.</p><details><summary>Critério de acerto</summary><ul><li>Definir caso base, intervalos e invariante da intercalação.</li><li>Copiar as sobras e preservar empates pela esquerda.</li><li>Explicar custo por nível e reutilização do buffer.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/sort-an-array/description/"">Sort an Array · big-tech-problems · páginas 20</a></li></ul>"	assunto::merge_sort_dividir_intercalar_estavel cp_goodnotes lote::manual_20261112 origem::big-tech-problems
+cp-note-000113	<p>Como implementar busca binária por um valor exato em um array ordenado? Qual invariante permite descartar o meio e retornar −1, inclusive com array vazio?</p>	"<p>Mantenha o intervalo fechado [l,r] com todos os índices que ainda podem conter o alvo. Se a[m]&lt;alvo, todo índice ≤m também é pequeno demais e l vira m+1. Se a[m]&gt;alvo, todo índice ≥m é grande demais e r vira m−1. Igualdade devolve o índice.</p><p>Cada atualização elimina m, o que garante progresso até l&gt;r. Calcule o meio por l+(r−l)/2 e use índices assinados dentro do limite do problema. Converta size() antes de subtrair 1, pois a subtração no tipo sem sinal estoura quando o vetor está vazio. Com repetidos, essa versão pode devolver qualquer ocorrência.</p><pre><code class=""language-cpp"">int buscaExata(const vector&lt;int&gt;&amp; a, int alvo) {
+    int l = 0, r = static_cast&lt;int&gt;(a.size()) - 1;
+    while (l &lt;= r) {
+        const int m = l + (r - l) / 2;
+        if (a[m] == alvo) return m;
+        if (a[m] &lt; alvo) l = m + 1;
+        else r = m - 1;
+    }
+    return -1;
+}</code></pre><p><strong>Complexidade:</strong> O(log(n+1)) de tempo e O(1) auxiliar. Requer array ordenado e tamanho representável em int.</p><details><summary>Critério de acerto</summary><ul><li>Enunciar intervalo fechado, atualizar excluindo o meio e parar quando ficar vazio.</li><li>Calcular o meio sem somar extremos e tratar n=0.</li></ul></details>"	"<ul><li><a href=""https://leetcode.com/problems/binary-search/description/"">Binary Search · repositorio-cpp · arquivo leet_code/easy/binary_search-704.cpp</a></li></ul>"	assunto::busca_binaria_exata_intervalo_invariante cp_goodnotes lote::manual_20261112 origem::repositorio-cpp
